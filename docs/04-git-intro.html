@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>5&nbsp; Git e GitHub – Manual de Git e GitHub</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./05-git-conceitos.html" rel="next">
+<link href="./03-winget.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-235dd20329987a67a70d4d8bf38af671.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-15d7b0bfd515104d1333b31a8b43e7b4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-235dd20329987a67a70d4d8bf38af671.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-git-intro.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Git e GitHub</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Manual de Git e GitHub</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo escuro"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Procurar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-terminal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Terminal</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-homebrew.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Homebrew</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-winget.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Winget</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-git-intro.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Git e GitHub</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-git-conceitos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conceitos do Git</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-git-inicialization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Configurando o Git e o GitHub</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-github-desktop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">GitHub Desktop</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-github-positron.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Git e GitHub no Positron</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-github-pages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">GitHub Pages</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-referencias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referências</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#controle-de-versão-versionamento" id="toc-controle-de-versão-versionamento" class="nav-link active" data-scroll-target="#controle-de-versão-versionamento"><span class="header-section-number">5.1</span> Controle de Versão (versionamento)</a></li>
+  <li><a href="#uma-breve-história-do-controle-de-versão" id="toc-uma-breve-história-do-controle-de-versão" class="nav-link" data-scroll-target="#uma-breve-história-do-controle-de-versão"><span class="header-section-number">5.2</span> Uma Breve História do Controle de Versão</a>
+  <ul class="collapse">
+  <li><a href="#a-primeira-geração-controle-local" id="toc-a-primeira-geração-controle-local" class="nav-link" data-scroll-target="#a-primeira-geração-controle-local"><span class="header-section-number">5.2.1</span> A Primeira Geração: Controle Local</a></li>
+  <li><a href="#a-segunda-geração-modelo-cliente-servidor" id="toc-a-segunda-geração-modelo-cliente-servidor" class="nav-link" data-scroll-target="#a-segunda-geração-modelo-cliente-servidor"><span class="header-section-number">5.2.2</span> A Segunda Geração: Modelo Cliente-Servidor</a></li>
+  <li><a href="#a-terceira-geração-sistemas-distribuídos" id="toc-a-terceira-geração-sistemas-distribuídos" class="nav-link" data-scroll-target="#a-terceira-geração-sistemas-distribuídos"><span class="header-section-number">5.2.3</span> A Terceira Geração: Sistemas Distribuídos</a></li>
+  <li><a href="#o-nascimento-do-git" id="toc-o-nascimento-do-git" class="nav-link" data-scroll-target="#o-nascimento-do-git"><span class="header-section-number">5.2.4</span> O Nascimento do Git</a></li>
+  <li><a href="#o-surgimento-do-github" id="toc-o-surgimento-do-github" class="nav-link" data-scroll-target="#o-surgimento-do-github"><span class="header-section-number">5.2.5</span> O Surgimento do GitHub</a></li>
+  </ul></li>
+  <li><a href="#além-do-código-github-pages" id="toc-além-do-código-github-pages" class="nav-link" data-scroll-target="#além-do-código-github-pages"><span class="header-section-number">5.3</span> Além do Código: GitHub Pages</a>
+  <ul class="collapse">
+  <li><a href="#na-academia" id="toc-na-academia" class="nav-link" data-scroll-target="#na-academia"><span class="header-section-number">5.3.1</span> Na Academia</a></li>
+  <li><a href="#outras-aplicações" id="toc-outras-aplicações" class="nav-link" data-scroll-target="#outras-aplicações"><span class="header-section-number">5.3.2</span> Outras Aplicações</a></li>
+  </ul></li>
+  <li><a href="#por-que-aprender-git-e-github" id="toc-por-que-aprender-git-e-github" class="nav-link" data-scroll-target="#por-que-aprender-git-e-github"><span class="header-section-number">5.4</span> Por que Aprender Git e GitHub?</a></li>
+  <li><a href="#o-que-é-git" id="toc-o-que-é-git" class="nav-link" data-scroll-target="#o-que-é-git"><span class="header-section-number">5.5</span> O que é Git?</a></li>
+  <li><a href="#o-que-é-github" id="toc-o-que-é-github" class="nav-link" data-scroll-target="#o-que-é-github"><span class="header-section-number">5.6</span> O que é GitHub?</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Git e GitHub</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Nos capítulos anteriores, preparamos o terreno. Você aprendeu a usar o <strong>Terminal</strong> — a interface de linha de comando que permite comunicar-se diretamente com o computador — e conheceu os gerenciadores de pacotes: <strong>Homebrew</strong> no Mac, <strong>winget</strong> no Windows. Com essas ferramentas, instalar o Git e qualquer outro software se torna uma questão de digitar um único comando. Agora, com o ambiente pronto, chegamos ao tema central deste manual: o <strong>Git</strong> e o <strong>GitHub</strong>. Nas próximas seções, você entenderá o que são, de onde vieram e por que se tornaram ferramentas indispensáveis para qualquer pessoa que trabalha com arquivos digitais e a importância do que chamamos de versionamento.</p>
+<section id="controle-de-versão-versionamento" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="controle-de-versão-versionamento"><span class="header-section-number">5.1</span> Controle de Versão (versionamento)</h2>
+<p>Quando trabalhamos em qualquer documento — seja um texto, uma planilha, um código de programação ou uma análise de dados — estamos constantemente fazendo alterações. Adicionamos parágrafos, corrigimos erros, reorganizamos seções, testamos ideias que às vezes funcionam e às vezes precisam ser descartadas. Esse processo de modificação contínua gera um problema fundamental: como manter o registro do que foi alterado, quando, por quem e por quê?</p>
+<p>O <strong>controle de versão</strong> (também chamado de <em>versionamento</em>) é a prática de gerenciar essas mudanças de forma sistemática. Em sua forma mais básica, é o que fazemos intuitivamente quando salvamos um arquivo com um novo nome antes de fazer alterações arriscadas: guardamos uma cópia do estado anterior para poder voltar a ele se necessário. Mas essa abordagem manual rapidamente se torna caótica.</p>
+<p>Na prática cotidiana, a maioria das pessoas tenta controlar versões através de nomes de arquivos. Um documento começa como <code>relatorio.docx</code>, depois vira <code>relatorio_v2.docx</code>, então <code>relatorio_revisado.docx</code>, seguido de <code>relatorio_final.docx</code> e, inevitavelmente, <code>relatorio_final_FINAL.docx</code> e <code>relatorio_final_FINAL_corrigido.docx</code>. Em pouco tempo, a pasta está repleta de arquivos com nomes confusos, e questões simples se tornam impossíveis de responder: Qual é realmente a versão mais atual? O que exatamente mudou entre a versão 2 e a versão final? Onde está aquele parágrafo que foi deletado há duas semanas mas agora precisa ser recuperado?</p>
+<p>O problema se agrava dramaticamente quando há colaboração. Se duas pessoas editam o mesmo documento simultaneamente, como combinar as alterações? Se alguém introduz um erro, como identificar exatamente o que foi modificado e por quem? Em equipes grandes, com dezenas ou centenas de pessoas trabalhando nos mesmos arquivos, o caos seria total sem um sistema adequado.</p>
+<p>Os <strong>sistemas de controle de versão</strong> surgiram para resolver esses problemas de forma automatizada e confiável. Em vez de depender de nomes de arquivos ou cópias manuais, essas ferramentas registram automaticamente cada conjunto de alterações (chamado de <em>commit</em>), criando um histórico completo e navegável do projeto. Cada commit guarda não apenas o estado dos arquivos, mas também quem fez a alteração, quando ela foi feita, e uma mensagem explicando o motivo. É possível comparar qualquer duas versões, voltar a estados anteriores, e trabalhar em modificações experimentais sem risco de perder o trabalho estável.</p>
+<p>Na indústria de software, o controle de versão é absolutamente essencial há décadas. Projetos como o Linux — com milhões de linhas de código e milhares de colaboradores ao redor do mundo — seriam simplesmente impossíveis sem essas ferramentas. Mas os benefícios se estendem a qualquer área que envolva trabalho com documentos digitais: pesquisa acadêmica, redação, análise de dados, design, e muito mais.</p>
+</section>
+<section id="uma-breve-história-do-controle-de-versão" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="uma-breve-história-do-controle-de-versão"><span class="header-section-number">5.2</span> Uma Breve História do Controle de Versão</h2>
+<p>A história dos sistemas de controle de versão acompanha a própria evolução da programação colaborativa. À medida que os projetos de software cresciam em tamanho e complexidade, a necessidade de ferramentas para gerenciar mudanças se tornava cada vez mais urgente.</p>
+<section id="a-primeira-geração-controle-local" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="a-primeira-geração-controle-local"><span class="header-section-number">5.2.1</span> A Primeira Geração: Controle Local</h3>
+<p>O primeiro sistema de controle de versão amplamente utilizado foi o <strong>SCCS</strong> (Source Code Control System), desenvolvido em 1972 por Marc Rochkind nos laboratórios da Bell Labs. O SCCS permitia que programadores registrassem alterações em arquivos individuais, mantendo um histórico de revisões. Porém, funcionava apenas localmente — em uma única máquina — e controlava um arquivo por vez.</p>
+<p>Em 1982, Walter Tichy, da Universidade de Purdue, criou o <strong>RCS</strong> (Revision Control System) como uma alternativa mais eficiente ao SCCS. O RCS introduziu um formato de armazenamento mais inteligente, guardando apenas as diferenças (<em>deltas</em>) entre versões em vez de cópias completas de cada arquivo. Isso economizava espaço em disco, um recurso precioso na época. O RCS ainda existe e é usado em alguns sistemas Unix até hoje, embora seja considerado obsoleto para a maioria das aplicações.</p>
+<p>Esses sistemas da primeira geração tinham uma limitação fundamental: eram locais. Apenas uma pessoa podia trabalhar em um arquivo de cada vez, e não havia forma de coordenar o trabalho entre múltiplos desenvolvedores em diferentes computadores.</p>
+</section>
+<section id="a-segunda-geração-modelo-cliente-servidor" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="a-segunda-geração-modelo-cliente-servidor"><span class="header-section-number">5.2.2</span> A Segunda Geração: Modelo Cliente-Servidor</h3>
+<p>Com a expansão das redes de computadores nos anos 1980 e 1990, surgiu a necessidade de sistemas que permitissem colaboração remota. A solução foi o modelo cliente-servidor: um servidor central armazenava o repositório oficial, e os desenvolvedores se conectavam a ele para obter arquivos e enviar suas alterações.</p>
+<p>O <strong>CVS</strong> (Concurrent Versions System), lançado em 1990 por Dick Grune, foi o primeiro sistema a permitir que múltiplos desenvolvedores trabalhassem simultaneamente nos mesmos arquivos. O CVS introduziu o conceito de <em>branching</em> (ramificação), permitindo criar linhas paralelas de desenvolvimento que depois podiam ser reunidas. Ele se tornou extremamente popular no mundo open source durante os anos 1990, sendo usado em projetos importantes como o Mozilla Firefox.</p>
+<p>Em 2000, o <strong>Subversion</strong> (também conhecido como <strong>SVN</strong>) foi criado pela CollabNet como um sucessor do CVS, corrigindo várias de suas limitações. O Subversion tratava commits como operações atômicas (ou todas as mudanças eram salvas, ou nenhuma), permitia versionar diretórios inteiros e não apenas arquivos individuais, e mantinha histórico de arquivos renomeados ou movidos. O SVN dominou o desenvolvimento de software durante boa parte dos anos 2000 e ainda é usado em algumas organizações.</p>
+<p>Porém, os sistemas cliente-servidor tinham um problema estrutural: a dependência do servidor central. Sem conexão com o servidor, não era possível fazer commits, ver o histórico ou criar branches. Se o servidor ficasse fora do ar, todo o trabalho parava. E se o servidor fosse perdido sem backup adequado, o histórico inteiro do projeto desaparecia.</p>
+</section>
+<section id="a-terceira-geração-sistemas-distribuídos" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="a-terceira-geração-sistemas-distribuídos"><span class="header-section-number">5.2.3</span> A Terceira Geração: Sistemas Distribuídos</h3>
+<p>A virada conceitual veio com os <strong>sistemas distribuídos</strong> de controle de versão. Neles, cada desenvolvedor possui uma cópia completa do repositório, incluindo todo o histórico. Não há dependência de um servidor central para as operações do dia a dia — commits, branches, navegação pelo histórico, tudo funciona localmente.</p>
+<p>O <strong>BitKeeper</strong>, criado em 1998 por Larry McVoy, foi um dos pioneiros dessa abordagem. Embora fosse um software proprietário (pago), McVoy ofereceu licenças gratuitas para projetos open source. Em 2002, Linus Torvalds, criador do Linux, adotou o BitKeeper para gerenciar o desenvolvimento do kernel — um projeto com milhões de linhas de código e milhares de colaboradores.</p>
+<p>A decisão foi controversa. Muitos na comunidade open source criticavam o uso de uma ferramenta proprietária para desenvolver o projeto open source mais importante do mundo. A tensão culminou em 2005, quando a licença gratuita do BitKeeper foi revogada após um desenvolvedor ser acusado de fazer engenharia reversa no software.</p>
+</section>
+<section id="o-nascimento-do-git" class="level3" data-number="5.2.4">
+<h3 data-number="5.2.4" class="anchored" data-anchor-id="o-nascimento-do-git"><span class="header-section-number">5.2.4</span> O Nascimento do Git</h3>
+<p>A revogação da licença do BitKeeper deixou a comunidade Linux em uma situação crítica. O kernel tinha milhares de desenvolvedores ao redor do mundo, e eles precisavam de uma ferramenta de controle de versão imediatamente. Linus Torvalds avaliou as alternativas disponíveis — CVS, Subversion, Monotone, GNU Arch — mas nenhuma atendia aos requisitos de um projeto do tamanho e complexidade do Linux.</p>
+<p>Torvalds decidiu, então, criar sua própria ferramenta. Em abril de 2005, ele começou a trabalhar no Git. Em apenas duas semanas, o sistema já estava funcional o suficiente para gerenciar seu próprio código-fonte. Em junho do mesmo ano, o kernel Linux já era oficialmente mantido com Git.</p>
+<p>O nome “Git” tem uma história curiosa. Em inglês britânico, a palavra é uma gíria para “pessoa desagradável” ou “idiota”. Torvalds, conhecido pelo senso de humor ácido e autoirônico, disse que nomeou o projeto em homenagem a si mesmo. A documentação oficial do Git brinca com múltiplos significados: pode ser uma combinação aleatória de três letras que não conflita com nenhum comando Unix; pode ser o verbo <em>get</em> mal escrito; ou pode significar “Global Information Tracker” quando você está de bom humor, e “Goddamn Idiotic Truckload of sh*t” quando não está.</p>
+<p>Piadas à parte, Torvalds projetou o Git com objetivos técnicos muito claros, baseados em sua experiência com o BitKeeper e nas necessidades específicas do desenvolvimento do Linux:</p>
+<p><strong>Velocidade.</strong> Operações como commits, diffs e merges deveriam ser extremamente rápidas, mesmo em repositórios com décadas de histórico e milhões de arquivos. Torvalds otimizou o Git para que a maioria das operações fosse quase instantânea.</p>
+<p><strong>Design distribuído.</strong> Cada cópia do repositório seria completa e autônoma. Desenvolvedores poderiam trabalhar offline, fazer commits, criar branches, navegar pelo histórico — tudo sem conexão com nenhum servidor. A sincronização aconteceria apenas quando desejado.</p>
+<p><strong>Integridade dos dados.</strong> Cada arquivo e cada commit no Git é identificado por um hash criptográfico (SHA-1). Isso significa que qualquer alteração, por menor que seja, muda completamente o identificador. É matematicamente impossível modificar o histórico sem que isso seja detectado.</p>
+<p><strong>Suporte a desenvolvimento não-linear.</strong> O Git foi projetado para lidar com milhares de branches paralelas sendo criadas, modificadas e mescladas constantemente. Branches no Git são leves — criar uma nova branch é praticamente instantâneo e ocupa espaço mínimo.</p>
+<p>O Git cresceu rapidamente para além do Linux. Em 2007, projetos como Perl, Ruby on Rails e Android já haviam migrado para ele. A combinação de velocidade, confiabilidade e o poderoso sistema de branches conquistou desenvolvedores ao redor do mundo.</p>
+</section>
+<section id="o-surgimento-do-github" class="level3" data-number="5.2.5">
+<h3 data-number="5.2.5" class="anchored" data-anchor-id="o-surgimento-do-github"><span class="header-section-number">5.2.5</span> O Surgimento do GitHub</h3>
+<p>O Git, por si só, é uma ferramenta de linha de comando. Poderosa, mas não exatamente amigável para iniciantes. E embora o Git seja distribuído por natureza, na prática as equipes precisam de um local comum para sincronizar seu trabalho.</p>
+<p>Em 2008, Tom Preston-Werner, Chris Wanstrath e PJ Hyett lançaram o <strong>GitHub</strong> — uma plataforma web que hospeda repositórios Git e adiciona uma camada de colaboração social. O GitHub não inventou nada tecnicamente novo, mas transformou a experiência de usar Git. Através de uma interface visual intuitiva, qualquer pessoa podia criar repositórios, navegar pelo código, ver o histórico de alterações, e contribuir para projetos.</p>
+<p>Mais do que isso, o GitHub introduziu recursos que facilitavam a colaboração aberta: <em>forks</em> (cópias pessoais de repositórios), <em>pull requests</em> (solicitações para incorporar alterações), <em>issues</em> (rastreamento de bugs e tarefas), e perfis públicos que funcionavam como portfólios de desenvolvedores.</p>
+<p>O impacto foi transformador. O GitHub se tornou a rede social dos programadores, o lugar onde o código open source vivia e crescia. Projetos que antes eram mantidos em listas de e-mail obscuras ganharam visibilidade. Contribuir para software open source, que antes exigia navegar por processos burocráticos complicados, passou a ser tão simples quanto clicar em um botão.</p>
+<p>Em 2018, a Microsoft adquiriu o GitHub por 7,5 bilhões de dólares — um reconhecimento de como a plataforma se tornou central para a indústria de tecnologia. Hoje, o GitHub hospeda mais de 200 milhões de repositórios e é usado por mais de 100 milhões de desenvolvedores. Mas a plataforma expandiu muito além do público programador.</p>
+</section>
+</section>
+<section id="além-do-código-github-pages" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="além-do-código-github-pages"><span class="header-section-number">5.3</span> Além do Código: GitHub Pages</h2>
+<p>Uma das funcionalidades mais interessantes do GitHub é o <strong>GitHub Pages</strong> — um serviço gratuito que transforma repositórios em sites na internet. Você escreve conteúdo em Markdown, HTML ou usando ferramentas como Quarto, faz push para o GitHub, e automaticamente seu site está no ar.</p>
+<p>Isso abriu portas para usos muito além do desenvolvimento de software:</p>
+<section id="na-academia" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="na-academia"><span class="header-section-number">5.3.1</span> Na Academia</h3>
+<p>O GitHub Pages revolucionou a forma como pesquisadores e professores compartilham conhecimento:</p>
+<ul>
+<li><strong>Material didático</strong>: professores publicam notas de aula, slides e exercícios que os alunos acessam diretamente pelo navegador</li>
+<li><strong>Livros e manuais</strong>: obras inteiras são escritas em Markdown ou Quarto e publicadas gratuitamente (como este manual que você está lendo!)</li>
+<li><strong>Documentação de pesquisa</strong>: protocolos, metodologias e materiais suplementares de artigos científicos</li>
+<li><strong>Portfólios acadêmicos</strong>: páginas pessoais com publicações, projetos e currículos</li>
+<li><strong>Blogs científicos</strong>: divulgação de pesquisa em linguagem acessível</li>
+</ul>
+<p>Projetos como o “R for Data Science” de Hadley Wickham, o “Happy Git with R” de Jenny Bryan, e inúmeros cursos de universidades ao redor do mundo usam GitHub Pages para disponibilizar conteúdo educacional de alta qualidade, gratuitamente.</p>
+</section>
+<section id="outras-aplicações" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="outras-aplicações"><span class="header-section-number">5.3.2</span> Outras Aplicações</h3>
+<ul>
+<li><strong>Documentação de projetos</strong>: manuais técnicos que acompanham software</li>
+<li><strong>Sites pessoais e blogs</strong>: com geradores como Jekyll, Hugo ou Quarto</li>
+<li><strong>Landing pages</strong>: páginas simples para produtos ou eventos</li>
+<li><strong>Currículos online</strong>: versões web de CVs sempre atualizados</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Vamos aprender GitHub Pages!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No último capítulo deste manual, você aprenderá a publicar seu próprio site usando GitHub Pages. Ao final, terá não apenas o conhecimento de Git, mas também uma forma prática e gratuita de compartilhar seu trabalho com o mundo.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="por-que-aprender-git-e-github" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="por-que-aprender-git-e-github"><span class="header-section-number">5.4</span> Por que Aprender Git e GitHub?</h2>
+<p>Mesmo que você nunca programe profissionalmente, Git e GitHub oferecem benefícios concretos:</p>
+<ol type="1">
+<li><strong>Histórico completo</strong>: nunca mais perca uma versão anterior do seu trabalho</li>
+<li><strong>Backup automático</strong>: seu trabalho fica seguro na nuvem</li>
+<li><strong>Colaboração</strong>: trabalhe com outras pessoas sem conflitos de “versão final v2 revisada FINAL.docx”</li>
+<li><strong>Publicação gratuita</strong>: compartilhe material na web sem pagar hospedagem</li>
+<li><strong>Reprodutibilidade</strong>: especialmente importante na pesquisa científica</li>
+<li><strong>Habilidade valorizada</strong>: Git é requisito em praticamente toda vaga de tecnologia e cada vez mais comum em outras áreas</li>
+</ol>
+</section>
+<section id="o-que-é-git" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="o-que-é-git"><span class="header-section-number">5.5</span> O que é Git?</h2>
+<p>Resumindo o que vimos na história: Git é um <strong>sistema de controle de versão distribuído</strong>. Pense nele como uma máquina do tempo para seus arquivos — ele registra cada alteração que você faz, permite voltar a versões anteriores e facilita o trabalho colaborativo.</p>
+<p>“Distribuído” significa que cada pessoa que trabalha em um projeto tem uma cópia completa de todo o histórico. Você não depende de um servidor central para ver versões antigas ou fazer commits — tudo funciona localmente, no seu computador.</p>
+</section>
+<section id="o-que-é-github" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="o-que-é-github"><span class="header-section-number">5.6</span> O que é GitHub?</h2>
+<p>Se o Git é a ferramenta, o GitHub é a plataforma. <strong>Git é a ferramenta local. GitHub é o serviço remoto.</strong> Você usa Git no seu computador e “empurra” (push) suas alterações para o GitHub, onde ficam acessíveis de qualquer lugar e podem ser compartilhadas com outras pessoas.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./03-winget.html" class="pagination-link" aria-label="Winget">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Winget</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./05-git-conceitos.html" class="pagination-link" aria-label="Conceitos do Git">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conceitos do Git</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Manual de Git e GitHub</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Criado com <a href="https://quarto.org/">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

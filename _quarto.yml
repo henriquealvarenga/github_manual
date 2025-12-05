@@ -1,0 +1,56 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Manual de Git e GitHub"
+  subtitle: "Do Zero ao Repositório Remoto"
+  author: "Henrique Alvarenga"
+  date: today
+  date-format: "DD/MM/YYYY"
+  
+  chapters:
+    - index.qmd
+    - 01-terminal.qmd
+    - 02-homebrew.qmd
+    - 03-winget.qmd
+    - 04-git-intro.qmd
+    - 05-git-conceitos.qmd
+    - 06-git-inicialization.qmd
+    - 07-github-desktop.qmd
+    - 08-github-positron.qmd
+    - 09-github-pages.qmd
+    - 10-referencias.qmd
+
+  sidebar:
+    style: docked
+    background: light
+    
+  page-footer:
+    left: |
+      Manual de Git e GitHub
+    right: |
+      Criado com [Quarto](https://quarto.org/)
+
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: darkly
+    css: styles.css
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-copy: true
+    code-overflow: wrap
+    highlight-style: github
+
+  pdf:
+    documentclass: book
+    lang: pt-BR  
+    
+lang: pt-BR
+
+execute:
+  freeze: auto

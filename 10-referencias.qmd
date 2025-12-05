@@ -1,0 +1,229 @@
+# Referências {.unnumbered}
+
+## Documentação Oficial
+
+### Git
+
+- [Documentação oficial do Git](https://git-scm.com/doc) — referência completa de todos os comandos
+- [Pro Git Book](https://git-scm.com/book/pt-br/v2) — livro gratuito disponível em português
+- [Git Cheat Sheet](https://training.github.com/downloads/pt_BR/github-git-cheat-sheet/) — folha de referência rápida em português
+
+### GitHub
+
+- [GitHub Docs](https://docs.github.com/pt) — documentação oficial do GitHub em português
+- [GitHub Skills](https://skills.github.com/) — cursos interativos gratuitos
+- [GitHub Desktop Documentation](https://docs.github.com/pt/desktop) — guia do GitHub Desktop
+
+### Positron
+
+- [Positron Documentation](https://positron.posit.co/) — documentação oficial do Positron
+- [Git Version Control no Positron](https://positron.posit.co/git.html) — guia específico de Git no Positron
+
+## Tutoriais Interativos
+
+[Learn Git Branching](https://learngitbranching.js.org/?locale=pt_BR)
+: Tutorial visual e interativo para aprender Git, disponível em português. Excelente para entender branches e merge.
+
+[Oh My Git!](https://ohmygit.org/)
+: Jogo para aprender Git de forma divertida.
+
+[Git Immersion](https://gitimmersion.com/)
+: Tutorial guiado com exercícios práticos.
+
+## Para Usuários de R
+
+[Happy Git and GitHub for the useR](https://happygitwithr.com/)
+: Guia completo de Jenny Bryan para usuários de R. Cobre desde a instalação até fluxos avançados de trabalho.
+
+[R Packages: Git and GitHub](https://r-pkgs.org/software-development-practices.html#sec-sw-dev-practices-git-github)
+: Capítulo do livro R Packages sobre uso de Git em desenvolvimento de pacotes.
+
+## Vídeos
+
+- [Git e GitHub para Iniciantes](https://www.youtube.com/results?search_query=git+github+iniciantes+português) — diversos tutoriais em português no YouTube
+- [Curso de Git e GitHub - Curso em Vídeo](https://www.cursoemvideo.com/curso/curso-de-git-e-github/) — curso gratuito completo
+
+## Glossário
+
+Repositório (repository)
+: Pasta que contém seu projeto e todo o histórico de versões. Pode ser local (no seu computador) ou remoto (no GitHub).
+
+Commit
+: Um "snapshot" do seu projeto em um momento específico. Cada commit tem uma mensagem descritiva e um identificador único (hash).
+
+Branch
+: Uma linha independente de desenvolvimento. Permite trabalhar em funcionalidades separadas sem afetar o código principal.
+
+Merge
+: Combinar alterações de uma branch em outra.
+
+Push
+: Enviar commits locais para o repositório remoto (GitHub).
+
+Pull
+: Baixar alterações do repositório remoto para o local.
+
+Clone
+: Criar uma cópia local de um repositório remoto.
+
+Fork
+: Criar uma cópia de um repositório de outra pessoa na sua conta GitHub.
+
+Pull Request (PR)
+: Solicitação para incorporar suas alterações em um repositório. Usado para revisão de código e colaboração.
+
+Staging Area
+: Área intermediária onde você seleciona quais alterações incluir no próximo commit.
+
+HEAD
+: Referência ao commit atual em que você está trabalhando.
+
+Origin
+: Nome padrão dado ao repositório remoto principal.
+
+Main/Master
+: Nome da branch principal do repositório.
+
+## Comandos Rápidos
+
+### Configuração
+
+```bash
+git config --global user.name "Seu Nome"
+git config --global user.email "seu@email.com"
+git config --list
+```
+
+### Básicos
+
+```bash
+git init                    # Inicializar repositório
+git clone URL               # Clonar repositório
+git status                  # Ver status
+git add .                   # Adicionar todos os arquivos
+git commit -m "mensagem"    # Fazer commit
+git push                    # Enviar para remoto
+git pull                    # Baixar do remoto
+```
+
+### Branches
+
+```bash
+git branch                  # Listar branches
+git branch nome             # Criar branch
+git checkout nome           # Trocar de branch
+git checkout -b nome        # Criar e trocar
+git merge nome              # Mesclar branch
+git branch -d nome          # Deletar branch
+```
+
+### Histórico
+
+```bash
+git log                     # Ver histórico
+git log --oneline           # Histórico resumido
+git diff                    # Ver alterações
+git show HASH               # Ver commit específico
+```
+
+### Desfazer
+
+```bash
+git checkout -- arquivo     # Descartar alterações
+git reset arquivo           # Remover do staging
+git reset --soft HEAD~1     # Desfazer último commit
+git revert HASH             # Reverter commit
+```
+
+## Arquivos Importantes
+
+### .gitignore
+
+Arquivo que lista padrões de arquivos a serem ignorados pelo Git:
+
+```
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# R
+.Rproj.user/
+.Rhistory
+.RData
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Dados sensíveis
+*.csv
+*.xlsx
+senhas.txt
+
+# IDEs
+.vscode/
+.idea/
+```
+
+### README.md
+
+Arquivo de apresentação do projeto. Deve conter:
+
+- Nome e descrição do projeto
+- Como instalar/configurar
+- Como usar
+- Como contribuir
+- Licença
+
+## Fluxo de Trabalho Recomendado
+
+```{mermaid}
+flowchart TD
+    A[Criar branch] --> B[Fazer alterações]
+    B --> C[git add .]
+    C --> D[git commit]
+    D --> E{Mais alterações?}
+    E -->|Sim| B
+    E -->|Não| F[git push]
+    F --> G[Criar Pull Request]
+    G --> H[Revisão]
+    H --> I[Merge]
+    I --> J[Deletar branch]
+```
+
+## Problemas Comuns
+
+### "Permission denied" ao fazer push
+
+Verifique se você está autenticado. Use token de acesso pessoal ou configure chave SSH.
+
+### "Your branch is behind"
+
+Execute `git pull` para baixar as alterações do remoto antes de fazer push.
+
+### Conflitos de merge
+
+Abra os arquivos conflitantes, resolva manualmente, depois:
+
+```bash
+git add arquivo-resolvido
+git commit -m "Resolve conflitos"
+```
+
+### Commit na branch errada
+
+```bash
+git reset --soft HEAD~1     # Desfaz commit, mantém alterações
+git checkout branch-correta
+git add .
+git commit -m "mensagem"
+```
+
+---
+
+::: {.callout-tip}
+## Continue aprendendo!
+
+Git é uma ferramenta poderosa e há sempre mais para aprender. Comece com o básico, pratique regularmente, e vá explorando recursos avançados conforme a necessidade surgir.
+:::

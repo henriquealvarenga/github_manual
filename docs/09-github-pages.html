@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>10&nbsp; GitHub Pages – Manual de Git e GitHub</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./10-referencias.html" rel="next">
+<link href="./08-github-positron.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-235dd20329987a67a70d4d8bf38af671.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-15d7b0bfd515104d1333b31a8b43e7b4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-235dd20329987a67a70d4d8bf38af671.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09-github-pages.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">GitHub Pages</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Manual de Git e GitHub</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo escuro"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Procurar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-terminal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Terminal</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-homebrew.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Homebrew</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-winget.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Winget</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-git-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Git e GitHub</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-git-conceitos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conceitos do Git</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-git-inicialization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Configurando o Git e o GitHub</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-github-desktop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">GitHub Desktop</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-github-positron.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Git e GitHub no Positron</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-github-pages.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">GitHub Pages</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-referencias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referências</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#o-que-é-github-pages" id="toc-o-que-é-github-pages" class="nav-link active" data-scroll-target="#o-que-é-github-pages"><span class="header-section-number">10.1</span> O que é GitHub Pages?</a></li>
+  <li><a href="#como-funciona" id="toc-como-funciona" class="nav-link" data-scroll-target="#como-funciona"><span class="header-section-number">10.2</span> Como funciona?</a></li>
+  <li><a href="#opções-de-publicação" id="toc-opções-de-publicação" class="nav-link" data-scroll-target="#opções-de-publicação"><span class="header-section-number">10.3</span> Opções de publicação</a>
+  <ul class="collapse">
+  <li><a href="#opção-1-raiz-do-repositório-branch-main" id="toc-opção-1-raiz-do-repositório-branch-main" class="nav-link" data-scroll-target="#opção-1-raiz-do-repositório-branch-main"><span class="header-section-number">10.3.1</span> Opção 1: Raiz do repositório (branch main)</a></li>
+  <li><a href="#opção-2-pasta-docs-branch-main" id="toc-opção-2-pasta-docs-branch-main" class="nav-link" data-scroll-target="#opção-2-pasta-docs-branch-main"><span class="header-section-number">10.3.2</span> Opção 2: Pasta /docs (branch main)</a></li>
+  <li><a href="#opção-3-branch-gh-pages" id="toc-opção-3-branch-gh-pages" class="nav-link" data-scroll-target="#opção-3-branch-gh-pages"><span class="header-section-number">10.3.3</span> Opção 3: Branch gh-pages</a></li>
+  </ul></li>
+  <li><a href="#publicando-um-site-quarto-passo-a-passo" id="toc-publicando-um-site-quarto-passo-a-passo" class="nav-link" data-scroll-target="#publicando-um-site-quarto-passo-a-passo"><span class="header-section-number">10.4</span> Publicando um site Quarto: passo a passo</a>
+  <ul class="collapse">
+  <li><a href="#passo-1-configure-o-quarto-para-gerar-na-pasta-docs" id="toc-passo-1-configure-o-quarto-para-gerar-na-pasta-docs" class="nav-link" data-scroll-target="#passo-1-configure-o-quarto-para-gerar-na-pasta-docs"><span class="header-section-number">10.4.1</span> Passo 1: Configure o Quarto para gerar na pasta docs</a></li>
+  <li><a href="#passo-2-renderize-o-projeto" id="toc-passo-2-renderize-o-projeto" class="nav-link" data-scroll-target="#passo-2-renderize-o-projeto"><span class="header-section-number">10.4.2</span> Passo 2: Renderize o projeto</a></li>
+  <li><a href="#passo-3-crie-o-repositório-no-github" id="toc-passo-3-crie-o-repositório-no-github" class="nav-link" data-scroll-target="#passo-3-crie-o-repositório-no-github"><span class="header-section-number">10.4.3</span> Passo 3: Crie o repositório no GitHub</a></li>
+  <li><a href="#passo-4-envie-o-projeto-para-o-github" id="toc-passo-4-envie-o-projeto-para-o-github" class="nav-link" data-scroll-target="#passo-4-envie-o-projeto-para-o-github"><span class="header-section-number">10.4.4</span> Passo 4: Envie o projeto para o GitHub</a></li>
+  <li><a href="#passo-5-ative-o-github-pages" id="toc-passo-5-ative-o-github-pages" class="nav-link" data-scroll-target="#passo-5-ative-o-github-pages"><span class="header-section-number">10.4.5</span> Passo 5: Ative o GitHub Pages</a></li>
+  <li><a href="#passo-6-aguarde-e-acesse" id="toc-passo-6-aguarde-e-acesse" class="nav-link" data-scroll-target="#passo-6-aguarde-e-acesse"><span class="header-section-number">10.4.6</span> Passo 6: Aguarde e acesse</a></li>
+  </ul></li>
+  <li><a href="#atualizando-o-site" id="toc-atualizando-o-site" class="nav-link" data-scroll-target="#atualizando-o-site"><span class="header-section-number">10.5</span> Atualizando o site</a></li>
+  <li><a href="#domínio-personalizado" id="toc-domínio-personalizado" class="nav-link" data-scroll-target="#domínio-personalizado"><span class="header-section-number">10.6</span> Domínio personalizado</a>
+  <ul class="collapse">
+  <li><a href="#como-configurar" id="toc-como-configurar" class="nav-link" data-scroll-target="#como-configurar"><span class="header-section-number">10.6.1</span> Como configurar</a></li>
+  </ul></li>
+  <li><a href="#arquivo-.nojekyll" id="toc-arquivo-.nojekyll" class="nav-link" data-scroll-target="#arquivo-.nojekyll"><span class="header-section-number">10.7</span> Arquivo .nojekyll</a></li>
+  <li><a href="#solucionando-problemas-comuns" id="toc-solucionando-problemas-comuns" class="nav-link" data-scroll-target="#solucionando-problemas-comuns"><span class="header-section-number">10.8</span> Solucionando problemas comuns</a>
+  <ul class="collapse">
+  <li><a href="#o-site-não-aparece" id="toc-o-site-não-aparece" class="nav-link" data-scroll-target="#o-site-não-aparece"><span class="header-section-number">10.8.1</span> O site não aparece</a></li>
+  <li><a href="#erro-404-página-não-encontrada" id="toc-erro-404-página-não-encontrada" class="nav-link" data-scroll-target="#erro-404-página-não-encontrada"><span class="header-section-number">10.8.2</span> Erro 404 (página não encontrada)</a></li>
+  <li><a href="#estilos-ou-imagens-não-carregam" id="toc-estilos-ou-imagens-não-carregam" class="nav-link" data-scroll-target="#estilos-ou-imagens-não-carregam"><span class="header-section-number">10.8.3</span> Estilos ou imagens não carregam</a></li>
+  <li><a href="#alterações-não-aparecem-no-site" id="toc-alterações-não-aparecem-no-site" class="nav-link" data-scroll-target="#alterações-não-aparecem-no-site"><span class="header-section-number">10.8.4</span> Alterações não aparecem no site</a></li>
+  </ul></li>
+  <li><a href="#alternativas-ao-github-pages" id="toc-alternativas-ao-github-pages" class="nav-link" data-scroll-target="#alternativas-ao-github-pages"><span class="header-section-number">10.9</span> Alternativas ao GitHub Pages</a></li>
+  <li><a href="#exemplos-de-sites-no-github-pages" id="toc-exemplos-de-sites-no-github-pages" class="nav-link" data-scroll-target="#exemplos-de-sites-no-github-pages"><span class="header-section-number">10.10</span> Exemplos de sites no GitHub Pages</a></li>
+  <li><a href="#conclusão" id="toc-conclusão" class="nav-link" data-scroll-target="#conclusão"><span class="header-section-number">10.11</span> Conclusão</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">GitHub Pages</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Você chegou ao último capítulo deste manual. Ao longo da jornada, aprendeu a usar o Terminal, instalar ferramentas com gerenciadores de pacotes, entendeu os conceitos do Git, configurou seu ambiente, e descobriu diferentes formas de trabalhar com controle de versão — pelo Terminal, pelo GitHub Desktop ou pelo Positron.</p>
+<p>Agora vem a recompensa: colocar seu trabalho no ar. Neste capítulo, você vai aprender a usar o <strong>GitHub Pages</strong>, um serviço gratuito do GitHub que transforma repositórios em sites na internet. Sem servidor para configurar, sem hospedagem para pagar, sem complicação.</p>
+<section id="o-que-é-github-pages" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="o-que-é-github-pages"><span class="header-section-number">10.1</span> O que é GitHub Pages?</h2>
+<p>O GitHub Pages é um serviço de hospedagem de sites estáticos oferecido gratuitamente pelo GitHub. Ele pega os arquivos do seu repositório — HTML, CSS, JavaScript, imagens — e publica em uma URL pública, acessível por qualquer pessoa no mundo.</p>
+<p>“Site estático” significa que as páginas são arquivos prontos, sem processamento no servidor. Diferente de um site dinâmico (como WordPress ou um sistema de e-commerce), onde cada página é gerada no momento do acesso, um site estático é simplesmente um conjunto de arquivos que o navegador baixa e exibe.</p>
+<p>Isso pode parecer limitado, mas é perfeito para:</p>
+<ul>
+<li>Documentação de projetos</li>
+<li>Portfólios pessoais</li>
+<li>Blogs</li>
+<li>Materiais didáticos</li>
+<li>Livros e manuais (como este que você está lendo!)</li>
+<li>Currículos online</li>
+<li>Landing pages</li>
+</ul>
+<p>Ferramentas como <strong>Quarto</strong>, <strong>Jekyll</strong>, <strong>Hugo</strong> e <strong>MkDocs</strong> geram sites estáticos sofisticados a partir de arquivos simples em Markdown. Você escreve em texto puro, executa um comando, e tem um site completo pronto para publicar.</p>
+</section>
+<section id="como-funciona" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="como-funciona"><span class="header-section-number">10.2</span> Como funciona?</h2>
+<p>O fluxo é simples:</p>
+<ol type="1">
+<li>Você cria um repositório no GitHub com os arquivos do seu site</li>
+<li>Você ativa o GitHub Pages nas configurações do repositório</li>
+<li>O GitHub publica os arquivos em uma URL como <code>seu-usuario.github.io/nome-do-repositorio</code></li>
+<li>Toda vez que você faz push de alterações, o site é atualizado automaticamente</li>
+</ol>
+<p>Não há etapa de “deploy” manual, não há servidor para gerenciar. O GitHub cuida de tudo.</p>
+</section>
+<section id="opções-de-publicação" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="opções-de-publicação"><span class="header-section-number">10.3</span> Opções de publicação</h2>
+<p>O GitHub Pages oferece três formas de definir de onde vêm os arquivos do site:</p>
+<section id="opção-1-raiz-do-repositório-branch-main" class="level3" data-number="10.3.1">
+<h3 data-number="10.3.1" class="anchored" data-anchor-id="opção-1-raiz-do-repositório-branch-main"><span class="header-section-number">10.3.1</span> Opção 1: Raiz do repositório (branch main)</h3>
+<p>Os arquivos do site ficam na raiz do repositório, na branch principal. Simples e direto — o que está no repositório é o que aparece no site.</p>
+<p><strong>Quando usar</strong>: projetos simples onde o repositório contém apenas o site.</p>
+</section>
+<section id="opção-2-pasta-docs-branch-main" class="level3" data-number="10.3.2">
+<h3 data-number="10.3.2" class="anchored" data-anchor-id="opção-2-pasta-docs-branch-main"><span class="header-section-number">10.3.2</span> Opção 2: Pasta /docs (branch main)</h3>
+<p>Os arquivos do site ficam dentro de uma pasta chamada <code>docs/</code> na branch principal. O restante do repositório pode conter código-fonte, dados ou outros arquivos que não fazem parte do site.</p>
+<p><strong>Quando usar</strong>: projetos onde você quer separar o código-fonte do site publicado. É a opção ideal para livros Quarto, onde os arquivos <code>.qmd</code> ficam na raiz e o site gerado vai para <code>docs/</code>.</p>
+</section>
+<section id="opção-3-branch-gh-pages" class="level3" data-number="10.3.3">
+<h3 data-number="10.3.3" class="anchored" data-anchor-id="opção-3-branch-gh-pages"><span class="header-section-number">10.3.3</span> Opção 3: Branch gh-pages</h3>
+<p>Os arquivos do site ficam em uma branch separada chamada <code>gh-pages</code>. A branch principal contém o código-fonte, e a branch <code>gh-pages</code> contém apenas os arquivos gerados.</p>
+<p><strong>Quando usar</strong>: fluxos de trabalho mais avançados, geralmente com automação (GitHub Actions).</p>
+<p>Para este manual e para a maioria dos projetos com Quarto, a <strong>Opção 2 (pasta /docs)</strong> é a mais prática.</p>
+</section>
+</section>
+<section id="publicando-um-site-quarto-passo-a-passo" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="publicando-um-site-quarto-passo-a-passo"><span class="header-section-number">10.4</span> Publicando um site Quarto: passo a passo</h2>
+<p>Vamos ao processo completo para publicar um livro ou site feito com Quarto.</p>
+<section id="passo-1-configure-o-quarto-para-gerar-na-pasta-docs" class="level3" data-number="10.4.1">
+<h3 data-number="10.4.1" class="anchored" data-anchor-id="passo-1-configure-o-quarto-para-gerar-na-pasta-docs"><span class="header-section-number">10.4.1</span> Passo 1: Configure o Quarto para gerar na pasta docs</h3>
+<p>No arquivo <code>_quarto.yml</code> do seu projeto, defina o diretório de saída:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">project</span><span class="kw">:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> book</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">output-dir</span><span class="kw">:</span><span class="at"> docs</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Isso faz com que o comando <code>quarto render</code> gere todos os arquivos HTML dentro da pasta <code>docs/</code>.</p>
+</section>
+<section id="passo-2-renderize-o-projeto" class="level3" data-number="10.4.2">
+<h3 data-number="10.4.2" class="anchored" data-anchor-id="passo-2-renderize-o-projeto"><span class="header-section-number">10.4.2</span> Passo 2: Renderize o projeto</h3>
+<p>No Terminal (ou no terminal integrado do Positron), execute:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>O Quarto processará todos os arquivos <code>.qmd</code> e gerará o site na pasta <code>docs/</code>.</p>
+</section>
+<section id="passo-3-crie-o-repositório-no-github" class="level3" data-number="10.4.3">
+<h3 data-number="10.4.3" class="anchored" data-anchor-id="passo-3-crie-o-repositório-no-github"><span class="header-section-number">10.4.3</span> Passo 3: Crie o repositório no GitHub</h3>
+<p>Se ainda não tiver um repositório para o projeto:</p>
+<ol type="1">
+<li>Acesse <a href="https://github.com">github.com</a> e faça login</li>
+<li>Clique em <strong>+</strong> → <strong>New repository</strong></li>
+<li>Dê um nome ao repositório (ex: <code>manual-git</code>)</li>
+<li>Deixe as opções de inicialização desmarcadas</li>
+<li>Clique em <strong>Create repository</strong></li>
+</ol>
+</section>
+<section id="passo-4-envie-o-projeto-para-o-github" class="level3" data-number="10.4.4">
+<h3 data-number="10.4.4" class="anchored" data-anchor-id="passo-4-envie-o-projeto-para-o-github"><span class="header-section-number">10.4.4</span> Passo 4: Envie o projeto para o GitHub</h3>
+<p>Se o projeto ainda não está conectado ao GitHub:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Primeiro commit"</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/seu-usuario/nome-do-repositorio.git</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-M</span> main</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Se já está conectado, basta:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Atualiza site"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="passo-5-ative-o-github-pages" class="level3" data-number="10.4.5">
+<h3 data-number="10.4.5" class="anchored" data-anchor-id="passo-5-ative-o-github-pages"><span class="header-section-number">10.4.5</span> Passo 5: Ative o GitHub Pages</h3>
+<ol type="1">
+<li>No repositório do GitHub, clique em <strong>Settings</strong> (ícone de engrenagem)</li>
+<li>No menu lateral esquerdo, clique em <strong>Pages</strong></li>
+<li>Em <strong>Source</strong>, selecione <strong>Deploy from a branch</strong></li>
+<li>Em <strong>Branch</strong>, selecione <code>main</code> e a pasta <code>/docs</code></li>
+<li>Clique em <strong>Save</strong></li>
+</ol>
+</section>
+<section id="passo-6-aguarde-e-acesse" class="level3" data-number="10.4.6">
+<h3 data-number="10.4.6" class="anchored" data-anchor-id="passo-6-aguarde-e-acesse"><span class="header-section-number">10.4.6</span> Passo 6: Aguarde e acesse</h3>
+<p>O GitHub levará alguns minutos para publicar o site. Você pode acompanhar o progresso na seção <strong>Actions</strong> do repositório.</p>
+<p>Quando estiver pronto, o site estará disponível em:</p>
+<pre><code>https://seu-usuario.github.io/nome-do-repositorio/</code></pre>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Dica</span>Encontrando a URL
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Após ativar o GitHub Pages, a URL do site aparece na própria página de configurações (Settings → Pages), no topo da seção.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="atualizando-o-site" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="atualizando-o-site"><span class="header-section-number">10.5</span> Atualizando o site</h2>
+<p>Depois da configuração inicial, atualizar o site é simples:</p>
+<ol type="1">
+<li>Edite seus arquivos <code>.qmd</code></li>
+<li>Execute <code>quarto render</code> para regenerar o site</li>
+<li>Faça commit e push:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Atualiza conteúdo"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>O GitHub Pages detecta automaticamente as alterações na pasta <code>docs/</code> e republica o site. Em poucos minutos, as mudanças estarão no ar.</p>
+</section>
+<section id="domínio-personalizado" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="domínio-personalizado"><span class="header-section-number">10.6</span> Domínio personalizado</h2>
+<p>Por padrão, seu site terá uma URL como <code>seu-usuario.github.io/repositorio</code>. Mas você pode configurar um domínio próprio, como <code>www.seusite.com.br</code>.</p>
+<section id="como-configurar" class="level3" data-number="10.6.1">
+<h3 data-number="10.6.1" class="anchored" data-anchor-id="como-configurar"><span class="header-section-number">10.6.1</span> Como configurar</h3>
+<ol type="1">
+<li><p>Compre um domínio em um registrador (Registro.br, GoDaddy, Namecheap, etc.)</p></li>
+<li><p>No GitHub, vá em <strong>Settings → Pages</strong> e digite seu domínio em <strong>Custom domain</strong></p></li>
+<li><p>No seu registrador de domínio, configure os registros DNS:</p>
+<ul>
+<li><p>Para domínio raiz (exemplo.com): crie registros A apontando para os IPs do GitHub:</p>
+<pre><code>185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153</code></pre></li>
+<li><p>Para subdomínio (www.exemplo.com): crie um registro CNAME apontando para <code>seu-usuario.github.io</code></p></li>
+</ul></li>
+<li><p>Aguarde a propagação DNS (pode levar até 24 horas)</p></li>
+<li><p>Marque a opção <strong>Enforce HTTPS</strong> para ter conexão segura</p></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>HTTPS gratuito
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>O GitHub Pages oferece certificado HTTPS gratuito, mesmo para domínios personalizados. Isso significa que seu site terá o cadeado de segurança no navegador sem custo adicional.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="arquivo-.nojekyll" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="arquivo-.nojekyll"><span class="header-section-number">10.7</span> Arquivo .nojekyll</h2>
+<p>Por padrão, o GitHub Pages processa os arquivos com Jekyll (um gerador de sites estáticos). Se você usa Quarto ou outro gerador, pode haver conflitos — especialmente com pastas que começam com underscore (<code>_</code>), que o Jekyll ignora.</p>
+<p>Para desativar o processamento Jekyll, crie um arquivo vazio chamado <code>.nojekyll</code> na pasta <code>docs/</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> docs/.nojekyll</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>O Quarto geralmente cria esse arquivo automaticamente, mas é bom verificar se ele existe.</p>
+</section>
+<section id="solucionando-problemas-comuns" class="level2" data-number="10.8">
+<h2 data-number="10.8" class="anchored" data-anchor-id="solucionando-problemas-comuns"><span class="header-section-number">10.8</span> Solucionando problemas comuns</h2>
+<section id="o-site-não-aparece" class="level3" data-number="10.8.1">
+<h3 data-number="10.8.1" class="anchored" data-anchor-id="o-site-não-aparece"><span class="header-section-number">10.8.1</span> O site não aparece</h3>
+<ul>
+<li>Verifique se a pasta <code>docs/</code> existe e contém um arquivo <code>index.html</code></li>
+<li>Confirme que você fez push após o <code>quarto render</code></li>
+<li>Aguarde alguns minutos — a primeira publicação pode demorar</li>
+<li>Verifique a aba <strong>Actions</strong> no GitHub para ver se há erros</li>
+</ul>
+</section>
+<section id="erro-404-página-não-encontrada" class="level3" data-number="10.8.2">
+<h3 data-number="10.8.2" class="anchored" data-anchor-id="erro-404-página-não-encontrada"><span class="header-section-number">10.8.2</span> Erro 404 (página não encontrada)</h3>
+<ul>
+<li>Verifique se a configuração do GitHub Pages está apontando para a pasta correta (<code>/docs</code>)</li>
+<li>Confirme que o arquivo <code>index.html</code> está na raiz da pasta <code>docs/</code></li>
+<li>Se estiver usando caminhos relativos, verifique se estão corretos</li>
+</ul>
+</section>
+<section id="estilos-ou-imagens-não-carregam" class="level3" data-number="10.8.3">
+<h3 data-number="10.8.3" class="anchored" data-anchor-id="estilos-ou-imagens-não-carregam"><span class="header-section-number">10.8.3</span> Estilos ou imagens não carregam</h3>
+<ul>
+<li>Verifique se o <code>_quarto.yml</code> tem a configuração correta de <code>output-dir</code></li>
+<li>Confirme que a pasta <code>docs/</code> contém as subpastas de estilos e imagens</li>
+<li>Limpe o cache do navegador e tente novamente</li>
+</ul>
+</section>
+<section id="alterações-não-aparecem-no-site" class="level3" data-number="10.8.4">
+<h3 data-number="10.8.4" class="anchored" data-anchor-id="alterações-não-aparecem-no-site"><span class="header-section-number">10.8.4</span> Alterações não aparecem no site</h3>
+<ul>
+<li>Confirme que você executou <code>quarto render</code> após editar os arquivos</li>
+<li>Verifique se fez commit e push</li>
+<li>Aguarde alguns minutos para o GitHub processar</li>
+<li>Verifique a aba <strong>Actions</strong> para confirmar que o deploy foi concluído</li>
+</ul>
+</section>
+</section>
+<section id="alternativas-ao-github-pages" class="level2" data-number="10.9">
+<h2 data-number="10.9" class="anchored" data-anchor-id="alternativas-ao-github-pages"><span class="header-section-number">10.9</span> Alternativas ao GitHub Pages</h2>
+<p>Embora o GitHub Pages seja excelente para a maioria dos casos, existem alternativas:</p>
+<dl>
+<dt><strong>Netlify</strong></dt>
+<dd>
+Oferece mais recursos, como formulários, funções serverless e deploy automático de branches. Também é gratuito para projetos pessoais.
+</dd>
+<dt><strong>Vercel</strong></dt>
+<dd>
+Focado em frameworks JavaScript modernos, mas funciona bem com sites estáticos. Gratuito para uso pessoal.
+</dd>
+<dt><strong>Cloudflare Pages</strong></dt>
+<dd>
+Boa performance global e generoso plano gratuito.
+</dd>
+<dt><strong>Quarto Pub</strong></dt>
+<dd>
+Serviço da própria Posit para publicar documentos Quarto. Simples de usar com o comando <code>quarto publish</code>.
+</dd>
+</dl>
+<p>Para a maioria dos usuários acadêmicos e projetos pessoais, o GitHub Pages é mais que suficiente — e tem a vantagem de manter tudo no mesmo lugar que seu código.</p>
+</section>
+<section id="exemplos-de-sites-no-github-pages" class="level2" data-number="10.10">
+<h2 data-number="10.10" class="anchored" data-anchor-id="exemplos-de-sites-no-github-pages"><span class="header-section-number">10.10</span> Exemplos de sites no GitHub Pages</h2>
+<p>Para inspiração, alguns exemplos de sites hospedados no GitHub Pages:</p>
+<ul>
+<li><strong>R for Data Science</strong> (r4ds.hadley.nz) — livro completo sobre R</li>
+<li><strong>Happy Git with R</strong> (happygitwithr.com) — guia de Git para usuários de R</li>
+<li><strong>Quarto documentation</strong> (quarto.org) — documentação oficial do Quarto</li>
+<li><strong>Este manual</strong> — sim, este manual que você está lendo!</li>
+</ul>
+<p>Todos são projetos de código aberto. Você pode visitar os repositórios, ver como são organizados e aprender com eles.</p>
+</section>
+<section id="conclusão" class="level2" data-number="10.11">
+<h2 data-number="10.11" class="anchored" data-anchor-id="conclusão"><span class="header-section-number">10.11</span> Conclusão</h2>
+<p>O GitHub Pages fecha o ciclo completo: você escreve, versiona com Git, colabora pelo GitHub, e publica para o mundo — tudo de graça, tudo integrado.</p>
+<p>Para acadêmicos, é uma ferramenta transformadora. Materiais didáticos que antes ficavam trancados em pastas ou sistemas fechados agora podem estar acessíveis a qualquer pessoa com um navegador. Pesquisas, tutoriais, livros, portfólios — tudo pode ser compartilhado de forma aberta e profissional.</p>
+<p>Você começou este manual aprendendo a navegar pelo Terminal. Agora termina sabendo publicar um site na internet. Esse é o poder de dominar suas ferramentas.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Dica</span>Próximos passos
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Agora que você conhece Git, GitHub e GitHub Pages, que tal:</p>
+<ol type="1">
+<li>Criar um site pessoal com seu portfólio ou currículo?</li>
+<li>Publicar os documentos de estudo de uma disciplina que você ensina ou estuda?</li>
+<li>Transformar sua dissertação ou tese em um livro online?</li>
+<li>Contribuir para um projeto open source que você admira?</li>
+</ol>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./08-github-positron.html" class="pagination-link" aria-label="Git e GitHub no Positron">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Git e GitHub no Positron</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./10-referencias.html" class="pagination-link" aria-label="Referências">
+        <span class="nav-page-text">Referências</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Manual de Git e GitHub</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Criado com <a href="https://quarto.org/">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

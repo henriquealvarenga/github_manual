@@ -1,0 +1,96 @@
+# === Sistema Operacional ===
+
+# Arquivos temporários do macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Arquivos temporários do Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# === Quarto ===
+
+# Pasta _site (se usar output-dir diferente)
+/_site/
+
+# A pasta docs/ NÃO é ignorada porque o GitHub Pages usa ela para publicar o site
+
+# Cache do Quarto
+/.quarto/
+*_cache/
+*_files/
+
+# Arquivos de freeze
+/_freeze/
+
+# === R e RStudio ===
+
+# Arquivos de sessão do R
+.Rhistory
+.Rdata
+.RData
+.Ruserdata
+
+# Arquivos de projeto do RStudio
+.Rproj.user/
+
+# === Python ===
+
+# Cache do Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ambientes virtuais
+.venv/
+venv/
+ENV/
+
+# === Editores e IDEs ===
+
+# VS Code / Positron
+.vscode/
+*.code-workspace
+
+# === Arquivos temporários ===
+
+# Logs
+*.log
+
+# Arquivos temporários
+*.tmp
+*.temp
+*.bak
+
+# === Dados e arquivos grandes ===
+
+# Arquivos de dados (descomente se necessário)
+# *.csv
+# *.xlsx
+# *.xls
+# *.sav
+# *.dta
+
+# === Credenciais e segredos ===
+
+# Nunca suba senhas ou tokens!
+.env
+.env.local
+*.secret
+*_secret*
+credentials.json
+
+# === Outros ===
+
+# Arquivos de lock do npm (se usar extensões JS)
+node_modules/
+package-lock.json
+
+# Arquivos compactados
+*.zip
+*.tar.gz
+*.rar
+
+**/*.quarto_ipynb

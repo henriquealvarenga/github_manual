@@ -1,0 +1,1292 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Manual de Git e GitHub",
+    "section": "",
+    "text": "1 Introdução\nBem-vindo ao Manual de Git e GitHub!\nEste material foi criado para quem está começando a usar controle de versão e quer aprender de forma prática e objetiva. Não é necessário nenhum conhecimento prévio — partimos do zero e avançamos gradualmente.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introdução</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#para-quem-é-este-manual",
+    "href": "index.html#para-quem-é-este-manual",
+    "title": "Manual de Git e GitHub",
+    "section": "1.1 Para quem é este manual?",
+    "text": "1.1 Para quem é este manual?\n\nEstudantes e pesquisadores que querem organizar seus projetos\nProfessores que desejam versionar e publicar materiais didáticos\nCientistas de dados iniciando com boas práticas de código\nQualquer pessoa curiosa sobre Git e GitHub",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introdução</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#o-que-você-vai-aprender",
+    "href": "index.html#o-que-você-vai-aprender",
+    "title": "Manual de Git e GitHub",
+    "section": "1.2 O que você vai aprender?",
+    "text": "1.2 O que você vai aprender?\nEste manual está organizado em uma sequência progressiva:\nPreparação do ambiente\nComeçamos pelo básico: como usar o Terminal (linha de comando) e como instalar programas de forma eficiente usando gerenciadores de pacotes — Homebrew no Mac e winget no Windows. Essas ferramentas facilitarão todo o resto.\nFundamentos do Git\nVocê vai conhecer a história do Git e do GitHub, entender o que é controle de versão e aprender os conceitos fundamentais: repositório, commit, branch, merge, push, pull e outros termos que fazem parte do vocabulário diário de quem usa Git.\nPrática com Git\nCom os conceitos claros, partimos para a prática: instalar e configurar o Git, criar repositórios, fazer commits e sincronizar com o GitHub.\nTrês formas de usar Git\nEste manual cobre três abordagens complementares:\n\nTerminal (linha de comando): a forma mais fundamental e poderosa de interagir com Git\nGitHub Desktop: interface gráfica oficial do GitHub, ideal para quem prefere clicar a digitar\nPositron IDE: integração nativa para cientistas de dados que trabalham com R e Python\n\nVocê não precisa dominar as três — escolha a que melhor se adapta ao seu fluxo de trabalho. O importante é entender os conceitos, que são os mesmos independentemente da ferramenta.\nPublicação com GitHub Pages\nPor fim, você aprenderá a transformar seu repositório em um site na internet usando o GitHub Pages. É a cereja do bolo: compartilhar seu trabalho com o mundo, de graça, sem complicação.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introdução</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#estrutura-do-manual",
+    "href": "index.html#estrutura-do-manual",
+    "title": "Manual de Git e GitHub",
+    "section": "1.3 Estrutura do manual",
+    "text": "1.3 Estrutura do manual\n\n\n\nCapítulo\nConteúdo\n\n\n\n\n1. Terminal\nIntrodução à linha de comando\n\n\n2. Homebrew\nGerenciador de pacotes para Mac\n\n\n3. Winget\nGerenciador de pacotes para Windows\n\n\n4. Git e GitHub\nHistória e contexto\n\n\n5. Conceitos do Git\nVocabulário e fundamentos\n\n\n6. Configuração\nInstalação e primeiros passos\n\n\n7. GitHub Desktop\nInterface gráfica\n\n\n8. Positron\nGit integrado ao IDE\n\n\n9. GitHub Pages\nPublicando seu site",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introdução</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#como-usar-este-manual",
+    "href": "index.html#como-usar-este-manual",
+    "title": "Manual de Git e GitHub",
+    "section": "1.4 Como usar este manual",
+    "text": "1.4 Como usar este manual\nCada capítulo foi pensado para ser lido em sequência, especialmente se você está começando do zero. Os capítulos iniciais preparam o terreno para os seguintes.\nSe você já conhece o Terminal e já tem o Git instalado, pode ir direto para os capítulos 4 e 5 (conceitos) e depois escolher entre Terminal, GitHub Desktop ou Positron para a prática.\n\n\n\n\n\n\nNotaUsuários Mac e Windows\n\n\n\nEste manual foi escrito para ambos os sistemas. Quando houver diferenças entre Mac e Windows, elas serão indicadas claramente. Os conceitos são os mesmos — apenas alguns comandos e atalhos mudam.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introdução</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#convenções",
+    "href": "index.html#convenções",
+    "title": "Manual de Git e GitHub",
+    "section": "1.5 Convenções",
+    "text": "1.5 Convenções\nAo longo do texto, você encontrará:\n\ncódigo em linha para comandos e nomes de arquivos\nNegrito para elementos de interface (botões, menus) e nomes de ferramentas\nItálico para ênfase e termos em inglês\n\nOs comandos de terminal são apresentados em blocos de código:\ngit status\nQuando um comando for diferente no Mac e no Windows, ambas as versões serão mostradas.\n\n\n\n\n\n\nDica\n\n\n\nCaixas verdes trazem dicas e boas práticas.\n\n\n\n\n\n\n\n\nAviso\n\n\n\nCaixas amarelas alertam sobre erros comuns ou situações que exigem atenção.\n\n\n\n\n\n\n\n\nNota\n\n\n\nCaixas azuis trazem informações complementares.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introdução</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#sobre-o-autor",
+    "href": "index.html#sobre-o-autor",
+    "title": "Manual de Git e GitHub",
+    "section": "1.6 Sobre o autor",
+    "text": "1.6 Sobre o autor\n\n\n\n\nEste manual foi escrito por Henrique Alvarenga, professor na Universidade Federal de São João del-Rei (UFSJ), como material de apoio para estudantes e pesquisadores que desejam adotar boas práticas de versionamento e publicação de materiais acadêmicos.\n\nSite pessoal: henriquealvarenga.com\nCurrículo Lattes: lattes.cnpq.br/6147640440978297\n\n\n\n\nBons estudos — e bons commits!",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introdução</span>"
+    ]
+  },
+  {
+    "objectID": "01-terminal.html",
+    "href": "01-terminal.html",
+    "title": "2  Terminal",
+    "section": "",
+    "text": "2.1 Uma Breve História\nAntes das interfaces gráficas com janelas, ícones e mouse, a única forma de interagir com um computador era através de texto. O usuário digitava comandos e o computador respondia — também em texto. Essa interação acontecia através de terminais físicos: máquinas compostas por um teclado e uma tela (ou impressora) conectadas a um computador central.\nNos anos 1960 e 1970, os terminais eram a porta de entrada para os grandes mainframes das universidades e empresas. Programadores, cientistas e engenheiros passavam horas diante dessas telas escuras com letras verdes ou âmbar, digitando comandos para executar cálculos, processar dados e desenvolver software.\nCom a chegada dos computadores pessoais nos anos 1980, as interfaces gráficas (GUI) começaram a se popularizar. O Macintosh da Apple (1984) e posteriormente o Windows da Microsoft tornaram os computadores acessíveis a pessoas sem conhecimento técnico. Bastava apontar e clicar.\nMas o terminal não desapareceu. Ele permaneceu como uma ferramenta essencial para desenvolvedores, administradores de sistemas e usuários avançados. Por quê? Porque a linha de comando oferece algo que a interface gráfica nem sempre consegue: precisão, automação e poder.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Terminal</span>"
+    ]
+  },
+  {
+    "objectID": "01-terminal.html#o-que-é-o-terminal-hoje",
+    "href": "01-terminal.html#o-que-é-o-terminal-hoje",
+    "title": "2  Terminal",
+    "section": "2.2 O que é o Terminal hoje?",
+    "text": "2.2 O que é o Terminal hoje?\nQuando falamos em “terminal” hoje, nos referimos a um emulador de terminal — um programa que simula aqueles antigos terminais físicos dentro do seu sistema operacional moderno. É uma janela onde você digita comandos de texto e recebe respostas do computador.\nPor trás do terminal existe um programa que interpreta seus comandos e os executa, chamado de shell. Pense no terminal como a janela (a interface visual) e no shell como o cérebro que entende o que você digita.\nNo Mac, o aplicativo se chama Terminal e vem instalado por padrão. No Windows, temos o Prompt de Comando (cmd), o PowerShell, e mais recentemente o Windows Terminal, que unifica diferentes shells em uma única interface moderna.\n\n2.2.1 Shells no Mac e Linux\nAté 2019, o shell padrão do macOS era o bash (Bourne Again Shell), criado em 1989 e extremamente popular no mundo Unix e Linux. A partir do macOS Catalina (10.15), a Apple mudou o padrão para o zsh (Z Shell).\nO zsh é compatível com o bash na maioria dos comandos básicos, mas oferece recursos adicionais como melhor autocompletar, correção de erros de digitação e temas visuais. Para o uso cotidiano e para tudo que faremos neste manual, os dois funcionam de forma idêntica.\nUma forma simples de identificar qual shell você está usando é olhar o prompt:\n\nzsh: termina com %\nseu-usuario@seu-mac ~ %\nbash: termina com $\nseu-usuario@seu-mac ~ $\n\nSe você encontrar tutoriais antigos que mencionam bash, não se preocupe — os comandos que aprenderemos aqui funcionam em ambos.\n\n\n2.2.2 Shells no Windows\nNo Windows, a situação é um pouco diferente:\n\nPrompt de Comando (cmd): o interpretador clássico do Windows, existe desde o MS-DOS. Simples, mas limitado.\n\nPowerShell: shell moderno da Microsoft, muito mais poderoso, com uma linguagem própria orientada a objetos. É o padrão em versões recentes do Windows.\n\nGit Bash: quando você instala o Git no Windows, ele inclui um emulador que permite usar comandos no estilo Unix (os mesmos do Mac e Linux). Muito útil para seguir tutoriais padronizados.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Terminal</span>"
+    ]
+  },
+  {
+    "objectID": "01-terminal.html#por-que-aprender-a-usar-o-terminal",
+    "href": "01-terminal.html#por-que-aprender-a-usar-o-terminal",
+    "title": "2  Terminal",
+    "section": "2.3 Por que aprender a usar o Terminal?",
+    "text": "2.3 Por que aprender a usar o Terminal?\nVocê pode estar se perguntando: se temos interfaces gráficas tão bonitas e intuitivas, por que alguém usaria o terminal?\nEficiência. Muitas tarefas que exigem vários cliques podem ser feitas com um único comando. Renomear 500 arquivos de uma vez? Uma linha de comando resolve.\nAutomação. Você pode criar scripts — sequências de comandos salvos em um arquivo — que executam tarefas repetitivas automaticamente.\nAcesso a ferramentas poderosas. Muitos programas de desenvolvimento, incluindo o Git, foram criados para a linha de comando. As versões gráficas são apenas “capas” sobre esses programas.\nControle preciso. O terminal permite especificar exatamente o que você quer fazer, com todas as opções disponíveis. Interfaces gráficas frequentemente escondem funcionalidades avançadas.\nUniversalidade. Os comandos básicos funcionam de forma similar em Mac, Linux e (com algumas diferenças) no Windows. Aprender uma vez serve para sempre.\nServidores e nuvem. Se você trabalhar com servidores remotos ou serviços em nuvem, a interface será quase sempre via terminal.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Terminal</span>"
+    ]
+  },
+  {
+    "objectID": "01-terminal.html#abrindo-o-terminal",
+    "href": "01-terminal.html#abrindo-o-terminal",
+    "title": "2  Terminal",
+    "section": "2.4 Abrindo o Terminal",
+    "text": "2.4 Abrindo o Terminal\n\n2.4.1 No Mac\nExistem várias formas de abrir o Terminal:\n\nSpotlight: Pressione Cmd + Espaço, digite “Terminal” e pressione Enter\nFinder: Vá em Aplicativos → Utilitários → Terminal\nLaunchpad: Abra o Launchpad e procure por Terminal na pasta “Outros”\n\nAo abrir, você verá uma janela com um prompt parecido com:\nseu-usuario@seu-mac ~ %\nEsse prompt indica que o terminal está pronto para receber comandos.\n\n\n2.4.2 No Windows\nO Windows oferece diferentes opções:\nPrompt de Comando (cmd)\n\nPressione Win + R, digite cmd e pressione Enter\nOu pesquise “Prompt de Comando” no menu Iniciar\n\nPowerShell\n\nClique com botão direito no menu Iniciar e selecione “Windows PowerShell”\nOu pesquise “PowerShell” no menu Iniciar\n\nWindows Terminal (recomendado)\nO Windows Terminal é um aplicativo moderno que unifica cmd, PowerShell e outros shells. Você pode instalá-lo gratuitamente pela Microsoft Store. Ele oferece abas, personalização visual e melhor suporte a caracteres especiais.\nGit Bash\nSe você instalar o Git para Windows, ele inclui o Git Bash — um emulador que permite usar comandos no estilo Unix/Mac dentro do Windows. Isso é especialmente útil porque os comandos serão idênticos aos do Mac e Linux.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Terminal</span>"
+    ]
+  },
+  {
+    "objectID": "01-terminal.html#anatomia-de-um-comando",
+    "href": "01-terminal.html#anatomia-de-um-comando",
+    "title": "2  Terminal",
+    "section": "2.5 Anatomia de um Comando",
+    "text": "2.5 Anatomia de um Comando\nUm comando de terminal geralmente segue esta estrutura:\ncomando [opções] [argumentos]\nPor exemplo:\nls -la Documents\nNeste comando:\n\nls é o comando (listar arquivos)\n-la são opções (formato longo + arquivos ocultos)\nDocuments é o argumento (a pasta a ser listada)\n\nAs opções geralmente começam com um hífen (-) para opções curtas ou dois hífens (--) para opções longas:\nls -a           # opção curta\nls --all        # opção longa (equivalente)",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Terminal</span>"
+    ]
+  },
+  {
+    "objectID": "01-terminal.html#comandos-essenciais",
+    "href": "01-terminal.html#comandos-essenciais",
+    "title": "2  Terminal",
+    "section": "2.6 Comandos Essenciais",
+    "text": "2.6 Comandos Essenciais\nVamos aprender os comandos básicos que você usará no dia a dia. Apresento as versões para Mac/Linux e, quando diferentes, para Windows.\n\n2.6.1 Navegação\nOnde estou?\npwd                 # Mac/Linux: Print Working Directory\ncd                  # Windows: sem argumentos, mostra o diretório atual\nEste comando mostra o caminho completo da pasta onde você está.\nListar arquivos\nls                  # Mac/Linux\ndir                 # Windows\nPara ver mais detalhes:\nls -la              # Mac/Linux: lista detalhada com arquivos ocultos\ndir /a              # Windows: mostra arquivos ocultos\nMudar de pasta\ncd Documents        # Entrar na pasta Documents\ncd ..               # Voltar uma pasta (diretório pai)\ncd ~                # Ir para a pasta do usuário (Mac/Linux)\ncd %USERPROFILE%    # Ir para a pasta do usuário (Windows cmd)\ncd /                # Ir para a raiz do sistema\nExemplos práticos:\ncd ~/Desktop        # Mac: vai para a Área de Trabalho\ncd Desktop          # Entra na pasta Desktop (se existir no diretório atual)\ncd ../..            # Volta duas pastas\n\n\n2.6.2 Manipulação de Arquivos e Pastas\nCriar pasta\nmkdir nova-pasta                # Cria uma pasta\nmkdir -p pasta/subpasta         # Mac/Linux: cria pasta e subpastas\nmkdir pasta\\subpasta            # Windows: cria estrutura de pastas\nCriar arquivo vazio\ntouch arquivo.txt               # Mac/Linux\ntype nul &gt; arquivo.txt          # Windows cmd\nNew-Item arquivo.txt            # Windows PowerShell\nCopiar\ncp arquivo.txt copia.txt        # Mac/Linux\ncopy arquivo.txt copia.txt      # Windows\nPara copiar pastas:\ncp -r pasta nova-pasta          # Mac/Linux: -r significa recursivo\nxcopy pasta nova-pasta /E       # Windows\nMover ou renomear\nmv arquivo.txt novo-nome.txt    # Mac/Linux: move ou renomeia\nmove arquivo.txt novo-nome.txt  # Windows\nRemover arquivo\nrm arquivo.txt                  # Mac/Linux\ndel arquivo.txt                 # Windows\nRemover pasta\nrm -r pasta                     # Mac/Linux: remove pasta e conteúdo\nrmdir /S pasta                  # Windows: remove pasta e conteúdo\n\n\n\n\n\n\nAvisoCuidado com rm e del\n\n\n\nOs comandos de remoção são permanentes. Diferente da Lixeira, arquivos deletados pelo terminal não podem ser recuperados facilmente. Sempre confira o que está deletando antes de pressionar Enter.\n\n\n\n\n2.6.3 Visualização de Conteúdo\nVer conteúdo de arquivo\ncat arquivo.txt                 # Mac/Linux: mostra todo o conteúdo\ntype arquivo.txt                # Windows\nVer arquivo página por página\nless arquivo.txt                # Mac/Linux: navegue com setas, saia com 'q'\nmore arquivo.txt                # Windows e Mac/Linux\nVer início ou fim de arquivo\nhead arquivo.txt                # Mac/Linux: primeiras 10 linhas\ntail arquivo.txt                # Mac/Linux: últimas 10 linhas\nhead -n 20 arquivo.txt          # Primeiras 20 linhas\n\n\n2.6.4 Busca e Filtros\nEncontrar arquivos\nfind . -name \"*.txt\"            # Mac/Linux: busca arquivos .txt\ndir /S *.txt                    # Windows: busca arquivos .txt\nBuscar texto dentro de arquivos\ngrep \"palavra\" arquivo.txt      # Mac/Linux\nfindstr \"palavra\" arquivo.txt   # Windows\n\n\n2.6.5 Informações do Sistema\nLimpar a tela\nclear                           # Mac/Linux\ncls                             # Windows\nVer histórico de comandos\nhistory                         # Mac/Linux\ndoskey /history                 # Windows cmd\nGet-History                     # Windows PowerShell\nManual de um comando\nman ls                          # Mac/Linux: manual completo\nls --help                       # Ajuda resumida\nhelp dir                        # Windows: ajuda do comando",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Terminal</span>"
+    ]
+  },
+  {
+    "objectID": "01-terminal.html#atalhos-de-teclado-úteis",
+    "href": "01-terminal.html#atalhos-de-teclado-úteis",
+    "title": "2  Terminal",
+    "section": "2.7 Atalhos de Teclado Úteis",
+    "text": "2.7 Atalhos de Teclado Úteis\nEstes atalhos funcionam na maioria dos terminais e economizam muito tempo:\n\n\n\nAtalho\nFunção\n\n\n\n\nTab\nAutocompleta nomes de arquivos e pastas\n\n\n↑ / ↓\nNavega pelo histórico de comandos\n\n\nCtrl + C\nCancela o comando em execução\n\n\nCtrl + L\nLimpa a tela (equivalente a clear)\n\n\nCtrl + A\nMove cursor para o início da linha\n\n\nCtrl + E\nMove cursor para o fim da linha\n\n\nCtrl + U\nApaga do cursor até o início da linha\n\n\nCtrl + K\nApaga do cursor até o fim da linha\n\n\nCtrl + R\nBusca no histórico de comandos\n\n\n\nO Tab é especialmente útil. Comece a digitar o nome de um arquivo ou pasta e pressione Tab — o terminal completará automaticamente. Se houver múltiplas opções, pressione Tab duas vezes para ver todas.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Terminal</span>"
+    ]
+  },
+  {
+    "objectID": "01-terminal.html#caminhos-absolutos-e-relativos",
+    "href": "01-terminal.html#caminhos-absolutos-e-relativos",
+    "title": "2  Terminal",
+    "section": "2.8 Caminhos Absolutos e Relativos",
+    "text": "2.8 Caminhos Absolutos e Relativos\nEntender caminhos é fundamental para navegar no terminal.\nCaminho absoluto começa da raiz do sistema:\n/Users/henrique/Documents/projeto    # Mac\nC:\\Users\\henrique\\Documents\\projeto  # Windows\nCaminho relativo parte da sua localização atual:\nDocuments/projeto                    # Se você está em /Users/henrique\n../Downloads                         # Volta uma pasta e entra em Downloads\n./script.sh                          # Arquivo na pasta atual\nSímbolos especiais:\n\n. — pasta atual\n.. — pasta pai (um nível acima)\n~ — pasta home do usuário (Mac/Linux)\n/ — raiz do sistema (Mac/Linux)\n\\ — separador de pastas (Windows)",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Terminal</span>"
+    ]
+  },
+  {
+    "objectID": "01-terminal.html#prática-criando-uma-estrutura-de-projeto",
+    "href": "01-terminal.html#prática-criando-uma-estrutura-de-projeto",
+    "title": "2  Terminal",
+    "section": "2.9 Prática: Criando uma Estrutura de Projeto",
+    "text": "2.9 Prática: Criando uma Estrutura de Projeto\nVamos praticar criando a estrutura de um projeto do zero:\n# Criar e entrar na pasta do projeto\nmkdir meu-projeto\ncd meu-projeto\n\n# Criar subpastas\nmkdir dados\nmkdir scripts\nmkdir resultados\n\n# Criar arquivos\ntouch README.md\ntouch scripts/analise.R\ntouch dados/.gitkeep\n\n# Verificar a estrutura\nls -la\nls scripts\nNo Windows (cmd):\nmkdir meu-projeto\ncd meu-projeto\nmkdir dados\nmkdir scripts\nmkdir resultados\ntype nul &gt; README.md\ntype nul &gt; scripts\\analise.R\ndir",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Terminal</span>"
+    ]
+  },
+  {
+    "objectID": "01-terminal.html#o-terminal-e-o-git",
+    "href": "01-terminal.html#o-terminal-e-o-git",
+    "title": "2  Terminal",
+    "section": "2.10 O Terminal e o Git",
+    "text": "2.10 O Terminal e o Git\nAgora que você conhece o terminal, está pronto para entender por que o Git foi feito para ele.\nO Git nasceu em 2005, criado por Linus Torvalds para gerenciar o código do Linux. Como Linus e outros desenvolvedores do Linux trabalham exclusivamente no terminal, o Git foi projetado como uma ferramenta de linha de comando.\nTodos os comandos Git seguem a estrutura que você aprendeu:\ngit comando [opções] [argumentos]\nPor exemplo:\ngit status              # Sem opções nem argumentos\ngit add .               # Com argumento (o ponto)\ngit commit -m \"msg\"     # Com opção (-m) e argumento (\"msg\")\ngit log --oneline       # Com opção longa\nNos próximos capítulos, você usará esses comandos. Mas antes de continuar, pratique um pouco no terminal. Crie pastas, navegue entre elas, crie arquivos, liste conteúdos. Quanto mais confortável você estiver com o terminal, mais natural será usar o Git.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Terminal</span>"
+    ]
+  },
+  {
+    "objectID": "01-terminal.html#resumo-dos-comandos",
+    "href": "01-terminal.html#resumo-dos-comandos",
+    "title": "2  Terminal",
+    "section": "2.11 Resumo dos Comandos",
+    "text": "2.11 Resumo dos Comandos\n\n2.11.1 Mac/Linux\n\n\n\nComando\nFunção\n\n\n\n\npwd\nMostra pasta atual\n\n\nls\nLista arquivos\n\n\ncd pasta\nMuda de pasta\n\n\nmkdir pasta\nCria pasta\n\n\ntouch arquivo\nCria arquivo vazio\n\n\ncp origem destino\nCopia\n\n\nmv origem destino\nMove/renomeia\n\n\nrm arquivo\nRemove arquivo\n\n\nrm -r pasta\nRemove pasta\n\n\ncat arquivo\nMostra conteúdo\n\n\nclear\nLimpa tela\n\n\n\n\n\n2.11.2 Windows (cmd)\n\n\n\nComando\nFunção\n\n\n\n\ncd\nMostra pasta atual\n\n\ndir\nLista arquivos\n\n\ncd pasta\nMuda de pasta\n\n\nmkdir pasta\nCria pasta\n\n\ntype nul &gt; arq\nCria arquivo vazio\n\n\ncopy origem destino\nCopia\n\n\nmove origem destino\nMove/renomeia\n\n\ndel arquivo\nRemove arquivo\n\n\nrmdir /S pasta\nRemove pasta\n\n\ntype arquivo\nMostra conteúdo\n\n\ncls\nLimpa tela\n\n\n\n\n\n\n\n\n\nDicaDica para usuários Windows\n\n\n\nSe você pretende usar Git regularmente, considere instalar o Git Bash. Ele vem junto com o Git para Windows e permite usar os mesmos comandos do Mac/Linux. Isso facilita seguir tutoriais e documentações, que geralmente usam comandos Unix.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Terminal</span>"
+    ]
+  },
+  {
+    "objectID": "02-homebrew.html",
+    "href": "02-homebrew.html",
+    "title": "3  Homebrew",
+    "section": "",
+    "text": "3.1 O que é o Homebrew?\nAgora que você já conhece o Terminal e compreende seu papel como uma forma direta de se comunicar com o computador, é natural perguntar-se como instalar programas apenas digitando comandos. Em sistemas baseados em Unix, como o macOS, existe uma ferramenta poderosa que simplifica completamente essa tarefa: o Homebrew.\nEle se tornou, ao longo da última década, o principal gerenciador de pacotes do macOS e um dos primeiros passos para qualquer pessoa que pretenda trabalhar com programação, ciência de dados ou desenvolvimento em geral.\nEste capítulo apresenta o Homebrew de forma narrativa e progressiva, explicando o que ele é, para que serve, como instalá-lo, como utilizá-lo e, por fim, como lidar com erros comuns. Depois, abordaremos o que usuários Windows devem usar como alternativa, dado que o sistema da Microsoft não dispõe de Homebrew.\nInstalar programas no macOS pode ser um processo trabalhoso: baixar arquivos .dmg, arrastar aplicativos para a pasta de Aplicativos, aguardar permissões, procurar atualizações, e assim por diante. Com o Homebrew, tudo isso é substituído por uma experiência fluida.\nHomebrew é um gerenciador de pacotes, ou seja, uma ferramenta que localiza, instala, atualiza e remove softwares diretamente pelo Terminal. Ele centraliza essas operações, organiza as dependências e evita que o sistema fique cheio de arquivos espalhados em múltiplas pastas.\nA filosofia do projeto é simples e direta: “The missing package manager for macOS.”\nO Homebrew permite instalar linguagens de programação (como Python, R e Node), ferramentas como Git, editores como VS Code, conversores como Pandoc, e até bancos de dados complexos, tudo com um único comando.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Homebrew</span>"
+    ]
+  },
+  {
+    "objectID": "02-homebrew.html#instalando-o-homebrew",
+    "href": "02-homebrew.html#instalando-o-homebrew",
+    "title": "3  Homebrew",
+    "section": "3.2 Instalando o Homebrew",
+    "text": "3.2 Instalando o Homebrew\nPara instalar o Homebrew, abra o aplicativo Terminal no macOS e digite:\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\nEsse comando baixa o instalador oficial e inicia o processo de instalação. O sistema pode pedir sua senha de administrador — embora nada apareça ao digitar, isso é normal.\nAo final, o Terminal exibirá algumas instruções adicionais, incluindo comandos para ativar o Homebrew automaticamente. Em computadores com chip Apple Silicon (M1, M2, M3), essas linhas costumam ser:\necho 'eval \"$(/opt/homebrew/bin/brew shellenv)\"' &gt;&gt; ~/.zprofile\neval \"$(/opt/homebrew/bin/brew shellenv)\"\nDepois disso, basta confirmar que tudo funcionou digitanto brew --version no Terminal:\nbrew --version\nSe uma versão aparecer, o Homebrew está ativo.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Homebrew</span>"
+    ]
+  },
+  {
+    "objectID": "02-homebrew.html#instalando-programas-com-o-homebrew",
+    "href": "02-homebrew.html#instalando-programas-com-o-homebrew",
+    "title": "3  Homebrew",
+    "section": "3.3 Instalando Programas com o Homebrew",
+    "text": "3.3 Instalando Programas com o Homebrew\nUma vez instalado, o Homebrew transforma o Terminal em uma central de controle. Por exemplo, para instalar o Git:\nbrew install git\nO Homebrew realiza todas as etapas em silêncio: baixa o pacote, confere a integridade, instala as dependências e registra internamente.\nPara instalar um aplicativo gráfico, utilize a opção --cask:\nbrew install --cask visual-studio-code\nO aplicativo surgirá automaticamente na sua pasta de Aplicativos.\nO Homebrew disponibiliza uma vasta coleção de ferramentas científicas, aplicativos de desenvolvimento, bancos de dados e utilitários de linha de comando.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Homebrew</span>"
+    ]
+  },
+  {
+    "objectID": "02-homebrew.html#atualizando-e-organizando-o-sistema",
+    "href": "02-homebrew.html#atualizando-e-organizando-o-sistema",
+    "title": "3  Homebrew",
+    "section": "3.4 Atualizando e Organizando o Sistema",
+    "text": "3.4 Atualizando e Organizando o Sistema\nCom o tempo, seus programas precisarão de atualizações. Com o Homebrew, esse processo é simples e unificado. Primeiro, atualize a lista interna de “receitas”:\nbrew update\nEm seguida, atualize os programas instalados:\nbrew upgrade\nAo final, limpe versões antigas:\nbrew cleanup\nEsse ciclo mantém o ambiente organizado, previsível e atualizado.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Homebrew</span>"
+    ]
+  },
+  {
+    "objectID": "02-homebrew.html#onde-o-homebrew-guarda-os-programas",
+    "href": "02-homebrew.html#onde-o-homebrew-guarda-os-programas",
+    "title": "3  Homebrew",
+    "section": "3.5 Onde o Homebrew Guarda os Programas?",
+    "text": "3.5 Onde o Homebrew Guarda os Programas?\nTodos os arquivos instalados pelo Homebrew ficam, por padrão, armazenados dentro de:\n/opt/homebrew/\nEssa estrutura evita interferências nos arquivos internos do macOS e centraliza todas as instalações em um único local. O diretório bin/ guarda programas executáveis, lib/ contém bibliotecas, e assim por diante.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Homebrew</span>"
+    ]
+  },
+  {
+    "objectID": "02-homebrew.html#exemplos-ilustrados",
+    "href": "02-homebrew.html#exemplos-ilustrados",
+    "title": "3  Homebrew",
+    "section": "3.6 Exemplos Ilustrados",
+    "text": "3.6 Exemplos Ilustrados\n\n3.6.1 Instalar o Python\nbrew install python\nSaída típica:\n==&gt; Downloading python...\n==&gt; Installing python...\n==&gt; Summary\n🍺  /opt/homebrew/Cellar/python/3.12.1: 5,234 files, 60MB\n\n\n3.6.2 Procurar um pacote\nbrew search quarto\nResposta:\n==&gt; Formulae\nquarto-cli\n\n\n3.6.3 Remover um programa\nbrew uninstall git",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Homebrew</span>"
+    ]
+  },
+  {
+    "objectID": "02-homebrew.html#alternativas-para-usuários-windows",
+    "href": "02-homebrew.html#alternativas-para-usuários-windows",
+    "title": "3  Homebrew",
+    "section": "3.7 Alternativas para Usuários Windows",
+    "text": "3.7 Alternativas para Usuários Windows\nEmbora o Windows não tenha Homebrew, ele possui alternativas modernas. A principal é o Windows Package Manager, conhecido como winget, integrado ao Windows 10 e 11.\nInstalar o Git no Windows com winget é tão simples quanto:\nwinget install Git.Git\nPara atualizar tudo:\nwinget upgrade --all\nOutra alternativa é o Chocolatey, uma ferramenta veterana e amplamente utilizada em ambientes corporativos.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Homebrew</span>"
+    ]
+  },
+  {
+    "objectID": "02-homebrew.html#problemas-e-erros-comuns",
+    "href": "02-homebrew.html#problemas-e-erros-comuns",
+    "title": "3  Homebrew",
+    "section": "3.8 Problemas e Erros Comuns",
+    "text": "3.8 Problemas e Erros Comuns\n\n3.8.1 1. Command not found: brew\nExecute:\necho 'eval \"$(/opt/homebrew/bin/brew shellenv)\"' &gt;&gt; ~/.zprofile\neval \"$(/opt/homebrew/bin/brew shellenv)\"\n\n\n\n3.8.2 2. Permissão negada na instalação\nsudo chown -R $(whoami) /opt/homebrew\n\n\n\n3.8.3 3. Erros de rede ao baixar pacotes\nbrew update\nbrew upgrade\nbrew reinstall nome-do-pacote\n\n\n\n3.8.4 4. Conflito entre versões do Python (sistema vs Homebrew)\nwhich python3",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Homebrew</span>"
+    ]
+  },
+  {
+    "objectID": "02-homebrew.html#exercícios-práticos",
+    "href": "02-homebrew.html#exercícios-práticos",
+    "title": "3  Homebrew",
+    "section": "3.9 Exercícios Práticos",
+    "text": "3.9 Exercícios Práticos\n\nInstale o Homebrew e confirme com brew --version.\n\nInstale o Git e confirme com git --version.\n\nBusque o pacote quarto com o comando brew search quarto.\n\nAtualize seu Homebrew com brew update, brew upgrade e brew cleanup.\n\n(Windows) Instale o Git usando o winget e compare com o processo no macOS.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Homebrew</span>"
+    ]
+  },
+  {
+    "objectID": "02-homebrew.html#conclusão",
+    "href": "02-homebrew.html#conclusão",
+    "title": "3  Homebrew",
+    "section": "3.10 Conclusão",
+    "text": "3.10 Conclusão\nO Homebrew representa um marco para quem começa a usar o Terminal. Ele substitui processos manuais por uma solução transparente, elegante e extremamente eficiente. Dominar o Homebrew é dominar a sua própria máquina.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Homebrew</span>"
+    ]
+  },
+  {
+    "objectID": "03-winget.html",
+    "href": "03-winget.html",
+    "title": "4  Winget",
+    "section": "",
+    "text": "4.1 O que é o winget?\nNo capítulo anterior, apresentamos o Homebrew como o gerenciador de pacotes padrão para macOS. Usuários de Windows, no entanto, possuem sua própria ferramenta nativa: o winget, também conhecido como Windows Package Manager.\nO winget surgiu em 2020 como resposta da Microsoft à demanda por uma forma mais simples e direta de instalar programas. Antes dele, usuários Windows dependiam de assistentes de instalação, sites de download e processos manuais. Com o winget, basta um comando no terminal para instalar praticamente qualquer programa.\nEste capítulo apresenta o winget de forma progressiva: o que é, como verificar se está instalado, como utilizá-lo e como resolver problemas comuns.\nO winget é um gerenciador de pacotes de linha de comando desenvolvido pela Microsoft. Ele permite instalar, atualizar e remover programas diretamente pelo terminal, sem precisar navegar por sites, baixar instaladores ou clicar em assistentes de instalação.\nA ferramenta acessa um repositório central mantido pela Microsoft e pela comunidade, que contém milhares de aplicativos — desde ferramentas de desenvolvimento como Git, Python e VS Code até programas do dia a dia como Spotify, Zoom e VLC.\nA filosofia é semelhante à do Homebrew: centralizar a gestão de software em comandos simples e previsíveis.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Winget</span>"
+    ]
+  },
+  {
+    "objectID": "03-winget.html#verificando-se-o-winget-está-instalado",
+    "href": "03-winget.html#verificando-se-o-winget-está-instalado",
+    "title": "4  Winget",
+    "section": "4.2 Verificando se o winget está instalado",
+    "text": "4.2 Verificando se o winget está instalado\nO winget vem pré-instalado no Windows 10 (versão 1809 ou superior) e no Windows 11. Para verificar se ele está disponível no seu sistema, abra o Windows Terminal, PowerShell ou Prompt de Comando e digite:\nwinget --version\nSe aparecer um número de versão (por exemplo, v1.7.10861), o winget está pronto para uso.\nCaso o comando não seja reconhecido, você pode instalar o winget através da Microsoft Store, buscando por App Installer (Instalador de Aplicativo). Esse pacote inclui o winget.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Winget</span>"
+    ]
+  },
+  {
+    "objectID": "03-winget.html#abrindo-o-terminal-no-windows",
+    "href": "03-winget.html#abrindo-o-terminal-no-windows",
+    "title": "4  Winget",
+    "section": "4.3 Abrindo o Terminal no Windows",
+    "text": "4.3 Abrindo o Terminal no Windows\nPara usar o winget, você precisa de um terminal. Antes de apresentar as opções, vale esclarecer uma distinção importante: terminal e shell são coisas diferentes.\nO shell é o programa que interpreta seus comandos — o “cérebro” que entende o que você digita. O terminal (ou emulador de terminal) é a janela onde você digita — a interface visual, o “corpo”.\nNo Windows, os principais shells são:\n\nPowerShell: moderno e poderoso, é o padrão atual\nPrompt de Comando (cmd): o clássico do MS-DOS, mais limitado\n\nE o principal emulador de terminal é:\n\nWindows Terminal: interface moderna que pode abrir qualquer shell em abas separadas\n\nWindows Terminal (recomendado)\nO Windows Terminal é a interface recomendada para trabalhar com linha de comando no Windows. Ele permite abrir PowerShell, Prompt de Comando, Git Bash e outros shells em abas dentro da mesma janela, com suporte a temas, atalhos de teclado e melhor visualização de fontes e cores. Quando você abre o Windows Terminal, ele inicia o PowerShell por padrão — ou seja, você tem o melhor dos dois mundos.\nO Windows Terminal já vem instalado no Windows 11. No Windows 10, você pode instalá-lo pela Microsoft Store buscando por “Windows Terminal”.\nPara abrir o Windows Terminal:\n\nPressione Win + X e selecione “Terminal”, ou\nPesquise “Terminal” no menu Iniciar\n\nÉ possível abrir o PowerShell ou o Prompt de Comando diretamente, sem usar o Windows Terminal, mas não há vantagem em fazer isso. O Windows Terminal oferece uma experiência superior e já executa o PowerShell por padrão, então não há motivo para usar as interfaces antigas.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Winget</span>"
+    ]
+  },
+  {
+    "objectID": "03-winget.html#instalando-programas-com-o-winget",
+    "href": "03-winget.html#instalando-programas-com-o-winget",
+    "title": "4  Winget",
+    "section": "4.4 Instalando Programas com o winget",
+    "text": "4.4 Instalando Programas com o winget\nA sintaxe básica para instalar um programa é:\nwinget install nome-do-pacote\nPor exemplo, para instalar o Git:\nwinget install Git.Git\nO winget baixa o instalador, executa a instalação silenciosamente e registra o programa no sistema. Você não precisa clicar em “Avançar” repetidamente nem desmarcar ofertas de software adicional.\nPara instalar o Visual Studio Code:\nwinget install Microsoft.VisualStudioCode\nPara instalar o Python:\nwinget install Python.Python.3.12\nAlguns programas possuem múltiplas versões disponíveis. O winget permite especificar exatamente qual você deseja.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Winget</span>"
+    ]
+  },
+  {
+    "objectID": "03-winget.html#procurando-pacotes",
+    "href": "03-winget.html#procurando-pacotes",
+    "title": "4  Winget",
+    "section": "4.5 Procurando Pacotes",
+    "text": "4.5 Procurando Pacotes\nNão tem certeza do nome exato de um pacote? Use o comando search:\nwinget search git\nO winget retornará uma lista de pacotes relacionados:\nNome                    Id                  Versão\n--------------------------------------------------------\nGit                     Git.Git             2.44.0\nGitHub Desktop          GitHub.GitHubDesktop 3.3.8\nGitHub CLI              GitHub.cli          2.45.0\nGit LFS                 GitHub.GitLFS       3.4.1\nA coluna Id mostra o identificador exato que você deve usar no comando install.\nPara buscar o Quarto:\nwinget search quarto",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Winget</span>"
+    ]
+  },
+  {
+    "objectID": "03-winget.html#atualizando-programas",
+    "href": "03-winget.html#atualizando-programas",
+    "title": "4  Winget",
+    "section": "4.6 Atualizando Programas",
+    "text": "4.6 Atualizando Programas\nUma das maiores vantagens de um gerenciador de pacotes é manter tudo atualizado com facilidade.\nPara ver quais programas têm atualizações disponíveis:\nwinget upgrade\nPara atualizar um programa específico:\nwinget upgrade Git.Git\nPara atualizar todos os programas de uma vez:\nwinget upgrade --all\nEsse comando percorre todos os programas instalados via winget e aplica as atualizações disponíveis.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Winget</span>"
+    ]
+  },
+  {
+    "objectID": "03-winget.html#removendo-programas",
+    "href": "03-winget.html#removendo-programas",
+    "title": "4  Winget",
+    "section": "4.7 Removendo Programas",
+    "text": "4.7 Removendo Programas\nPara desinstalar um programa:\nwinget uninstall nome-do-pacote\nPor exemplo:\nwinget uninstall Git.Git\nO winget executa o desinstalador do programa de forma silenciosa.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Winget</span>"
+    ]
+  },
+  {
+    "objectID": "03-winget.html#listando-programas-instalados",
+    "href": "03-winget.html#listando-programas-instalados",
+    "title": "4  Winget",
+    "section": "4.8 Listando Programas Instalados",
+    "text": "4.8 Listando Programas Instalados\nPara ver todos os programas que o winget reconhece no seu sistema:\nwinget list\nEssa lista inclui não apenas programas instalados via winget, mas também aqueles instalados manualmente. O winget consegue gerenciar atualizações para muitos deles.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Winget</span>"
+    ]
+  },
+  {
+    "objectID": "03-winget.html#obtendo-informações-sobre-um-pacote",
+    "href": "03-winget.html#obtendo-informações-sobre-um-pacote",
+    "title": "4  Winget",
+    "section": "4.9 Obtendo Informações sobre um Pacote",
+    "text": "4.9 Obtendo Informações sobre um Pacote\nAntes de instalar um programa, você pode querer saber mais sobre ele:\nwinget show Git.Git\nO comando exibe informações como descrição, versão, autor, site oficial e URL do instalador.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Winget</span>"
+    ]
+  },
+  {
+    "objectID": "03-winget.html#onde-o-winget-guarda-os-programas",
+    "href": "03-winget.html#onde-o-winget-guarda-os-programas",
+    "title": "4  Winget",
+    "section": "4.10 Onde o winget Guarda os Programas?",
+    "text": "4.10 Onde o winget Guarda os Programas?\nDiferente do Homebrew, que centraliza tudo em /opt/homebrew/, o winget instala cada programa no local padrão definido pelo próprio instalador. Isso significa que:\n\nProgramas de linha de comando geralmente vão para C:\\Program Files\\ ou C:\\Users\\SeuUsuario\\AppData\\\nAplicativos gráficos aparecem normalmente no Menu Iniciar\n\nO winget não altera essa estrutura tradicional do Windows — ele apenas automatiza o processo de instalação.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Winget</span>"
+    ]
+  },
+  {
+    "objectID": "03-winget.html#exemplos-práticos",
+    "href": "03-winget.html#exemplos-práticos",
+    "title": "4  Winget",
+    "section": "4.11 Exemplos Práticos",
+    "text": "4.11 Exemplos Práticos\n\n4.11.1 Configurando um ambiente de desenvolvimento\nVamos instalar Git, Python, VS Code e o Windows Terminal em sequência:\nwinget install Git.Git\nwinget install Python.Python.3.12\nwinget install Microsoft.VisualStudioCode\nwinget install Microsoft.WindowsTerminal\nApós a instalação, confirme que tudo funcionou:\ngit --version\npython --version\ncode --version\n\n\n4.11.2 Instalando o Quarto\nwinget install Posit.Quarto\n\n\n4.11.3 Instalando o R\nwinget install RProject.R\n\n\n4.11.4 Instalando o Positron\nwinget search positron\nSe disponível no repositório, o comando install seguirá o padrão habitual.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Winget</span>"
+    ]
+  },
+  {
+    "objectID": "03-winget.html#comparação-homebrew-vs-winget",
+    "href": "03-winget.html#comparação-homebrew-vs-winget",
+    "title": "4  Winget",
+    "section": "4.12 Comparação: Homebrew vs winget",
+    "text": "4.12 Comparação: Homebrew vs winget\n\n\n\n\n\n\n\n\nAspecto\nHomebrew (macOS)\nwinget (Windows)\n\n\n\n\nInstalação\nScript no Terminal\nPré-instalado ou via Microsoft Store\n\n\nComando base\nbrew\nwinget\n\n\nInstalar\nbrew install git\nwinget install Git.Git\n\n\nAtualizar tudo\nbrew upgrade\nwinget upgrade --all\n\n\nBuscar\nbrew search nome\nwinget search nome\n\n\nRemover\nbrew uninstall nome\nwinget uninstall nome\n\n\nLocal dos arquivos\n/opt/homebrew/\nPadrão de cada programa\n\n\n\nOs conceitos são os mesmos; apenas a sintaxe muda ligeiramente.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Winget</span>"
+    ]
+  },
+  {
+    "objectID": "03-winget.html#problemas-e-erros-comuns",
+    "href": "03-winget.html#problemas-e-erros-comuns",
+    "title": "4  Winget",
+    "section": "4.13 Problemas e Erros Comuns",
+    "text": "4.13 Problemas e Erros Comuns\n\n4.13.1 1. “winget não é reconhecido como comando”\nO winget pode não estar instalado ou não estar no PATH do sistema. Soluções:\n\nInstale o App Installer pela Microsoft Store\nReinicie o terminal após a instalação\nVerifique se o Windows está atualizado\n\n\n\n4.13.2 2. “Nenhum pacote encontrado”\nO nome do pacote pode estar incorreto. Use winget search para encontrar o identificador correto:\nwinget search visual studio\n\n\n4.13.3 3. Instalação requer privilégios de administrador\nAlguns programas precisam de permissões elevadas. Abra o terminal como administrador:\n\nClique com botão direito no Windows Terminal ou PowerShell\nSelecione “Executar como administrador”\nExecute o comando novamente\n\n\n\n4.13.4 4. Conflito com versão já instalada\nSe você já tem uma versão do programa instalada manualmente, o winget pode reportar conflito. Desinstale a versão antiga primeiro:\nwinget uninstall nome-do-pacote\nwinget install nome-do-pacote\n\n\n4.13.5 5. Download lento ou falha de rede\nTente novamente após alguns minutos. Se o problema persistir, verifique sua conexão ou tente usar uma fonte alternativa:\nwinget install Git.Git --source winget",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Winget</span>"
+    ]
+  },
+  {
+    "objectID": "03-winget.html#exercícios-práticos",
+    "href": "03-winget.html#exercícios-práticos",
+    "title": "4  Winget",
+    "section": "4.14 Exercícios Práticos",
+    "text": "4.14 Exercícios Práticos\n\nVerifique se o winget está instalado com winget --version.\nBusque o pacote do Git com winget search git.\nInstale o Git com winget install Git.Git e confirme com git --version.\nListe os programas instalados com winget list.\nVerifique atualizações disponíveis com winget upgrade.\nInstale o Visual Studio Code e o Python usando winget.\nCompare a experiência com a instalação tradicional via site de download.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Winget</span>"
+    ]
+  },
+  {
+    "objectID": "03-winget.html#conclusão",
+    "href": "03-winget.html#conclusão",
+    "title": "4  Winget",
+    "section": "4.15 Conclusão",
+    "text": "4.15 Conclusão\nO winget representa uma mudança significativa na forma como usuários Windows gerenciam software. O que antes exigia navegação por sites, downloads manuais e assistentes de instalação agora se resume a um comando no terminal.\nPara quem está aprendendo Git e ferramentas de desenvolvimento, o winget simplifica a preparação do ambiente. Instalar Git, Python, VS Code e outras ferramentas leva minutos em vez de uma tarde inteira.\nDominar o winget é dar o primeiro passo para um fluxo de trabalho mais eficiente no Windows.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Winget</span>"
+    ]
+  },
+  {
+    "objectID": "04-git-intro.html",
+    "href": "04-git-intro.html",
+    "title": "5  Git e GitHub",
+    "section": "",
+    "text": "5.1 Controle de Versão (versionamento)\nNos capítulos anteriores, preparamos o terreno. Você aprendeu a usar o Terminal — a interface de linha de comando que permite comunicar-se diretamente com o computador — e conheceu os gerenciadores de pacotes: Homebrew no Mac, winget no Windows. Com essas ferramentas, instalar o Git e qualquer outro software se torna uma questão de digitar um único comando. Agora, com o ambiente pronto, chegamos ao tema central deste manual: o Git e o GitHub. Nas próximas seções, você entenderá o que são, de onde vieram e por que se tornaram ferramentas indispensáveis para qualquer pessoa que trabalha com arquivos digitais e a importância do que chamamos de versionamento.\nQuando trabalhamos em qualquer documento — seja um texto, uma planilha, um código de programação ou uma análise de dados — estamos constantemente fazendo alterações. Adicionamos parágrafos, corrigimos erros, reorganizamos seções, testamos ideias que às vezes funcionam e às vezes precisam ser descartadas. Esse processo de modificação contínua gera um problema fundamental: como manter o registro do que foi alterado, quando, por quem e por quê?\nO controle de versão (também chamado de versionamento) é a prática de gerenciar essas mudanças de forma sistemática. Em sua forma mais básica, é o que fazemos intuitivamente quando salvamos um arquivo com um novo nome antes de fazer alterações arriscadas: guardamos uma cópia do estado anterior para poder voltar a ele se necessário. Mas essa abordagem manual rapidamente se torna caótica.\nNa prática cotidiana, a maioria das pessoas tenta controlar versões através de nomes de arquivos. Um documento começa como relatorio.docx, depois vira relatorio_v2.docx, então relatorio_revisado.docx, seguido de relatorio_final.docx e, inevitavelmente, relatorio_final_FINAL.docx e relatorio_final_FINAL_corrigido.docx. Em pouco tempo, a pasta está repleta de arquivos com nomes confusos, e questões simples se tornam impossíveis de responder: Qual é realmente a versão mais atual? O que exatamente mudou entre a versão 2 e a versão final? Onde está aquele parágrafo que foi deletado há duas semanas mas agora precisa ser recuperado?\nO problema se agrava dramaticamente quando há colaboração. Se duas pessoas editam o mesmo documento simultaneamente, como combinar as alterações? Se alguém introduz um erro, como identificar exatamente o que foi modificado e por quem? Em equipes grandes, com dezenas ou centenas de pessoas trabalhando nos mesmos arquivos, o caos seria total sem um sistema adequado.\nOs sistemas de controle de versão surgiram para resolver esses problemas de forma automatizada e confiável. Em vez de depender de nomes de arquivos ou cópias manuais, essas ferramentas registram automaticamente cada conjunto de alterações (chamado de commit), criando um histórico completo e navegável do projeto. Cada commit guarda não apenas o estado dos arquivos, mas também quem fez a alteração, quando ela foi feita, e uma mensagem explicando o motivo. É possível comparar qualquer duas versões, voltar a estados anteriores, e trabalhar em modificações experimentais sem risco de perder o trabalho estável.\nNa indústria de software, o controle de versão é absolutamente essencial há décadas. Projetos como o Linux — com milhões de linhas de código e milhares de colaboradores ao redor do mundo — seriam simplesmente impossíveis sem essas ferramentas. Mas os benefícios se estendem a qualquer área que envolva trabalho com documentos digitais: pesquisa acadêmica, redação, análise de dados, design, e muito mais.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Git e GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "04-git-intro.html#uma-breve-história-do-controle-de-versão",
+    "href": "04-git-intro.html#uma-breve-história-do-controle-de-versão",
+    "title": "5  Git e GitHub",
+    "section": "5.2 Uma Breve História do Controle de Versão",
+    "text": "5.2 Uma Breve História do Controle de Versão\nA história dos sistemas de controle de versão acompanha a própria evolução da programação colaborativa. À medida que os projetos de software cresciam em tamanho e complexidade, a necessidade de ferramentas para gerenciar mudanças se tornava cada vez mais urgente.\n\n5.2.1 A Primeira Geração: Controle Local\nO primeiro sistema de controle de versão amplamente utilizado foi o SCCS (Source Code Control System), desenvolvido em 1972 por Marc Rochkind nos laboratórios da Bell Labs. O SCCS permitia que programadores registrassem alterações em arquivos individuais, mantendo um histórico de revisões. Porém, funcionava apenas localmente — em uma única máquina — e controlava um arquivo por vez.\nEm 1982, Walter Tichy, da Universidade de Purdue, criou o RCS (Revision Control System) como uma alternativa mais eficiente ao SCCS. O RCS introduziu um formato de armazenamento mais inteligente, guardando apenas as diferenças (deltas) entre versões em vez de cópias completas de cada arquivo. Isso economizava espaço em disco, um recurso precioso na época. O RCS ainda existe e é usado em alguns sistemas Unix até hoje, embora seja considerado obsoleto para a maioria das aplicações.\nEsses sistemas da primeira geração tinham uma limitação fundamental: eram locais. Apenas uma pessoa podia trabalhar em um arquivo de cada vez, e não havia forma de coordenar o trabalho entre múltiplos desenvolvedores em diferentes computadores.\n\n\n5.2.2 A Segunda Geração: Modelo Cliente-Servidor\nCom a expansão das redes de computadores nos anos 1980 e 1990, surgiu a necessidade de sistemas que permitissem colaboração remota. A solução foi o modelo cliente-servidor: um servidor central armazenava o repositório oficial, e os desenvolvedores se conectavam a ele para obter arquivos e enviar suas alterações.\nO CVS (Concurrent Versions System), lançado em 1990 por Dick Grune, foi o primeiro sistema a permitir que múltiplos desenvolvedores trabalhassem simultaneamente nos mesmos arquivos. O CVS introduziu o conceito de branching (ramificação), permitindo criar linhas paralelas de desenvolvimento que depois podiam ser reunidas. Ele se tornou extremamente popular no mundo open source durante os anos 1990, sendo usado em projetos importantes como o Mozilla Firefox.\nEm 2000, o Subversion (também conhecido como SVN) foi criado pela CollabNet como um sucessor do CVS, corrigindo várias de suas limitações. O Subversion tratava commits como operações atômicas (ou todas as mudanças eram salvas, ou nenhuma), permitia versionar diretórios inteiros e não apenas arquivos individuais, e mantinha histórico de arquivos renomeados ou movidos. O SVN dominou o desenvolvimento de software durante boa parte dos anos 2000 e ainda é usado em algumas organizações.\nPorém, os sistemas cliente-servidor tinham um problema estrutural: a dependência do servidor central. Sem conexão com o servidor, não era possível fazer commits, ver o histórico ou criar branches. Se o servidor ficasse fora do ar, todo o trabalho parava. E se o servidor fosse perdido sem backup adequado, o histórico inteiro do projeto desaparecia.\n\n\n5.2.3 A Terceira Geração: Sistemas Distribuídos\nA virada conceitual veio com os sistemas distribuídos de controle de versão. Neles, cada desenvolvedor possui uma cópia completa do repositório, incluindo todo o histórico. Não há dependência de um servidor central para as operações do dia a dia — commits, branches, navegação pelo histórico, tudo funciona localmente.\nO BitKeeper, criado em 1998 por Larry McVoy, foi um dos pioneiros dessa abordagem. Embora fosse um software proprietário (pago), McVoy ofereceu licenças gratuitas para projetos open source. Em 2002, Linus Torvalds, criador do Linux, adotou o BitKeeper para gerenciar o desenvolvimento do kernel — um projeto com milhões de linhas de código e milhares de colaboradores.\nA decisão foi controversa. Muitos na comunidade open source criticavam o uso de uma ferramenta proprietária para desenvolver o projeto open source mais importante do mundo. A tensão culminou em 2005, quando a licença gratuita do BitKeeper foi revogada após um desenvolvedor ser acusado de fazer engenharia reversa no software.\n\n\n5.2.4 O Nascimento do Git\nA revogação da licença do BitKeeper deixou a comunidade Linux em uma situação crítica. O kernel tinha milhares de desenvolvedores ao redor do mundo, e eles precisavam de uma ferramenta de controle de versão imediatamente. Linus Torvalds avaliou as alternativas disponíveis — CVS, Subversion, Monotone, GNU Arch — mas nenhuma atendia aos requisitos de um projeto do tamanho e complexidade do Linux.\nTorvalds decidiu, então, criar sua própria ferramenta. Em abril de 2005, ele começou a trabalhar no Git. Em apenas duas semanas, o sistema já estava funcional o suficiente para gerenciar seu próprio código-fonte. Em junho do mesmo ano, o kernel Linux já era oficialmente mantido com Git.\nO nome “Git” tem uma história curiosa. Em inglês britânico, a palavra é uma gíria para “pessoa desagradável” ou “idiota”. Torvalds, conhecido pelo senso de humor ácido e autoirônico, disse que nomeou o projeto em homenagem a si mesmo. A documentação oficial do Git brinca com múltiplos significados: pode ser uma combinação aleatória de três letras que não conflita com nenhum comando Unix; pode ser o verbo get mal escrito; ou pode significar “Global Information Tracker” quando você está de bom humor, e “Goddamn Idiotic Truckload of sh*t” quando não está.\nPiadas à parte, Torvalds projetou o Git com objetivos técnicos muito claros, baseados em sua experiência com o BitKeeper e nas necessidades específicas do desenvolvimento do Linux:\nVelocidade. Operações como commits, diffs e merges deveriam ser extremamente rápidas, mesmo em repositórios com décadas de histórico e milhões de arquivos. Torvalds otimizou o Git para que a maioria das operações fosse quase instantânea.\nDesign distribuído. Cada cópia do repositório seria completa e autônoma. Desenvolvedores poderiam trabalhar offline, fazer commits, criar branches, navegar pelo histórico — tudo sem conexão com nenhum servidor. A sincronização aconteceria apenas quando desejado.\nIntegridade dos dados. Cada arquivo e cada commit no Git é identificado por um hash criptográfico (SHA-1). Isso significa que qualquer alteração, por menor que seja, muda completamente o identificador. É matematicamente impossível modificar o histórico sem que isso seja detectado.\nSuporte a desenvolvimento não-linear. O Git foi projetado para lidar com milhares de branches paralelas sendo criadas, modificadas e mescladas constantemente. Branches no Git são leves — criar uma nova branch é praticamente instantâneo e ocupa espaço mínimo.\nO Git cresceu rapidamente para além do Linux. Em 2007, projetos como Perl, Ruby on Rails e Android já haviam migrado para ele. A combinação de velocidade, confiabilidade e o poderoso sistema de branches conquistou desenvolvedores ao redor do mundo.\n\n\n5.2.5 O Surgimento do GitHub\nO Git, por si só, é uma ferramenta de linha de comando. Poderosa, mas não exatamente amigável para iniciantes. E embora o Git seja distribuído por natureza, na prática as equipes precisam de um local comum para sincronizar seu trabalho.\nEm 2008, Tom Preston-Werner, Chris Wanstrath e PJ Hyett lançaram o GitHub — uma plataforma web que hospeda repositórios Git e adiciona uma camada de colaboração social. O GitHub não inventou nada tecnicamente novo, mas transformou a experiência de usar Git. Através de uma interface visual intuitiva, qualquer pessoa podia criar repositórios, navegar pelo código, ver o histórico de alterações, e contribuir para projetos.\nMais do que isso, o GitHub introduziu recursos que facilitavam a colaboração aberta: forks (cópias pessoais de repositórios), pull requests (solicitações para incorporar alterações), issues (rastreamento de bugs e tarefas), e perfis públicos que funcionavam como portfólios de desenvolvedores.\nO impacto foi transformador. O GitHub se tornou a rede social dos programadores, o lugar onde o código open source vivia e crescia. Projetos que antes eram mantidos em listas de e-mail obscuras ganharam visibilidade. Contribuir para software open source, que antes exigia navegar por processos burocráticos complicados, passou a ser tão simples quanto clicar em um botão.\nEm 2018, a Microsoft adquiriu o GitHub por 7,5 bilhões de dólares — um reconhecimento de como a plataforma se tornou central para a indústria de tecnologia. Hoje, o GitHub hospeda mais de 200 milhões de repositórios e é usado por mais de 100 milhões de desenvolvedores. Mas a plataforma expandiu muito além do público programador.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Git e GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "04-git-intro.html#além-do-código-github-pages",
+    "href": "04-git-intro.html#além-do-código-github-pages",
+    "title": "5  Git e GitHub",
+    "section": "5.3 Além do Código: GitHub Pages",
+    "text": "5.3 Além do Código: GitHub Pages\nUma das funcionalidades mais interessantes do GitHub é o GitHub Pages — um serviço gratuito que transforma repositórios em sites na internet. Você escreve conteúdo em Markdown, HTML ou usando ferramentas como Quarto, faz push para o GitHub, e automaticamente seu site está no ar.\nIsso abriu portas para usos muito além do desenvolvimento de software:\n\n5.3.1 Na Academia\nO GitHub Pages revolucionou a forma como pesquisadores e professores compartilham conhecimento:\n\nMaterial didático: professores publicam notas de aula, slides e exercícios que os alunos acessam diretamente pelo navegador\nLivros e manuais: obras inteiras são escritas em Markdown ou Quarto e publicadas gratuitamente (como este manual que você está lendo!)\nDocumentação de pesquisa: protocolos, metodologias e materiais suplementares de artigos científicos\nPortfólios acadêmicos: páginas pessoais com publicações, projetos e currículos\nBlogs científicos: divulgação de pesquisa em linguagem acessível\n\nProjetos como o “R for Data Science” de Hadley Wickham, o “Happy Git with R” de Jenny Bryan, e inúmeros cursos de universidades ao redor do mundo usam GitHub Pages para disponibilizar conteúdo educacional de alta qualidade, gratuitamente.\n\n\n5.3.2 Outras Aplicações\n\nDocumentação de projetos: manuais técnicos que acompanham software\nSites pessoais e blogs: com geradores como Jekyll, Hugo ou Quarto\nLanding pages: páginas simples para produtos ou eventos\nCurrículos online: versões web de CVs sempre atualizados\n\n\n\n\n\n\n\nNotaVamos aprender GitHub Pages!\n\n\n\nNo último capítulo deste manual, você aprenderá a publicar seu próprio site usando GitHub Pages. Ao final, terá não apenas o conhecimento de Git, mas também uma forma prática e gratuita de compartilhar seu trabalho com o mundo.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Git e GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "04-git-intro.html#por-que-aprender-git-e-github",
+    "href": "04-git-intro.html#por-que-aprender-git-e-github",
+    "title": "5  Git e GitHub",
+    "section": "5.4 Por que Aprender Git e GitHub?",
+    "text": "5.4 Por que Aprender Git e GitHub?\nMesmo que você nunca programe profissionalmente, Git e GitHub oferecem benefícios concretos:\n\nHistórico completo: nunca mais perca uma versão anterior do seu trabalho\nBackup automático: seu trabalho fica seguro na nuvem\nColaboração: trabalhe com outras pessoas sem conflitos de “versão final v2 revisada FINAL.docx”\nPublicação gratuita: compartilhe material na web sem pagar hospedagem\nReprodutibilidade: especialmente importante na pesquisa científica\nHabilidade valorizada: Git é requisito em praticamente toda vaga de tecnologia e cada vez mais comum em outras áreas",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Git e GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "04-git-intro.html#o-que-é-git",
+    "href": "04-git-intro.html#o-que-é-git",
+    "title": "5  Git e GitHub",
+    "section": "5.5 O que é Git?",
+    "text": "5.5 O que é Git?\nResumindo o que vimos na história: Git é um sistema de controle de versão distribuído. Pense nele como uma máquina do tempo para seus arquivos — ele registra cada alteração que você faz, permite voltar a versões anteriores e facilita o trabalho colaborativo.\n“Distribuído” significa que cada pessoa que trabalha em um projeto tem uma cópia completa de todo o histórico. Você não depende de um servidor central para ver versões antigas ou fazer commits — tudo funciona localmente, no seu computador.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Git e GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "04-git-intro.html#o-que-é-github",
+    "href": "04-git-intro.html#o-que-é-github",
+    "title": "5  Git e GitHub",
+    "section": "5.6 O que é GitHub?",
+    "text": "5.6 O que é GitHub?\nSe o Git é a ferramenta, o GitHub é a plataforma. Git é a ferramenta local. GitHub é o serviço remoto. Você usa Git no seu computador e “empurra” (push) suas alterações para o GitHub, onde ficam acessíveis de qualquer lugar e podem ser compartilhadas com outras pessoas.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Git e GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "05-git-conceitos.html",
+    "href": "05-git-conceitos.html",
+    "title": "6  Conceitos do Git",
+    "section": "",
+    "text": "6.1 Repositório (repository)\nNo capítulo anterior, você conheceu a história do Git e do GitHub, entendeu o que é controle de versão e por que essas ferramentas se tornaram essenciais. Antes de colocar a mão na massa, porém, precisamos construir um vocabulário comum.\nO Git possui uma série de conceitos e termos específicos que podem parecer confusos à primeira vista: repositório, commit, staging, branch, merge, push, pull, clone, fork… São palavras que você encontrará em toda documentação, tutorial e mensagem de erro. Entendê-las bem agora vai facilitar muito o seu aprendizado — e evitar frustrações mais tarde.\nEste capítulo é um glossário expandido. Não vamos executar comandos ainda; vamos entender o que cada conceito significa e por que ele existe. Pense nisso como aprender as regras do jogo antes de começar a jogar.\nUm repositório — frequentemente abreviado como repo — é uma pasta que está sendo monitorada pelo Git. Ela contém todos os seus arquivos de trabalho e, além disso, uma pasta oculta chamada .git onde o Git armazena todo o histórico de alterações, configurações e metadados.\nExistem dois tipos de repositório:\nA grande sacada do Git é que o repositório local é completo e autônomo. Você pode fazer commits, criar branches, ver o histórico inteiro — tudo sem conexão com a internet. O repositório remoto é apenas uma cópia sincronizada que facilita colaboração e backup.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Conceitos do Git</span>"
+    ]
+  },
+  {
+    "objectID": "05-git-conceitos.html#repositório-repository",
+    "href": "05-git-conceitos.html#repositório-repository",
+    "title": "6  Conceitos do Git",
+    "section": "",
+    "text": "Repositório local\n\nFica no seu computador. É onde você trabalha, edita arquivos e faz commits. Só você tem acesso a ele (a menos que compartilhe a pasta de outra forma).\n\nRepositório remoto\n\nFica em um servidor na internet, como o GitHub, GitLab ou Bitbucket. Serve como ponto de sincronização entre diferentes pessoas (ou entre seus próprios computadores). Quando você “sobe” seu código para o GitHub, está enviando para um repositório remoto.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Conceitos do Git</span>"
+    ]
+  },
+  {
+    "objectID": "05-git-conceitos.html#commit",
+    "href": "05-git-conceitos.html#commit",
+    "title": "6  Conceitos do Git",
+    "section": "6.2 Commit",
+    "text": "6.2 Commit\nUm commit é um “instantâneo” (snapshot) do estado dos seus arquivos em um determinado momento. É a unidade básica do histórico no Git.\nPense em um commit como tirar uma foto do seu projeto. Cada foto registra exatamente como todos os arquivos estavam naquele instante. Se você quiser voltar a uma versão anterior, basta “olhar” para uma foto mais antiga.\nCada commit contém:\n\nAs alterações feitas desde o commit anterior\nUma mensagem explicando o que foi alterado e por quê\nO autor (nome e e-mail de quem fez o commit)\nA data e hora em que foi feito\nUm identificador único (um código hexadecimal chamado hash, como a1b2c3d4...)\n\nFazer commits frequentes é uma boa prática. Commits pequenos e bem descritos facilitam entender o histórico e, se algo der errado, permitem voltar a um ponto específico sem perder muito trabalho.\n\n\n\n\n\n\nDicaBoas mensagens de commit\n\n\n\nUma mensagem de commit deve ser clara e descritiva. Compare:\n\n❌ “Alterações”\n❌ “Ajustes”\n❌ “WIP” (work in progress)\n✅ “Corrige cálculo de média ponderada”\n✅ “Adiciona gráfico de dispersão ao relatório”\n✅ “Remove função duplicada no módulo de análise”\n\nA mensagem deve responder: “Se eu aplicar este commit, o que acontece com o projeto?”",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Conceitos do Git</span>"
+    ]
+  },
+  {
+    "objectID": "05-git-conceitos.html#área-de-preparação-staging-area",
+    "href": "05-git-conceitos.html#área-de-preparação-staging-area",
+    "title": "6  Conceitos do Git",
+    "section": "6.3 Área de preparação (staging area)",
+    "text": "6.3 Área de preparação (staging area)\nA área de preparação — também chamada de staging area ou index — é um conceito que confunde muitos iniciantes, mas é fundamental para entender o Git.\nQuando você modifica arquivos no seu projeto, essas alterações não vão automaticamente para o próximo commit. Primeiro, você precisa explicitamente dizer ao Git quais alterações quer incluir. Esse processo de selecionar alterações é chamado de staging (preparar).\nPor que isso existe? Porque às vezes você modifica vários arquivos, mas quer fazer commits separados para cada tipo de alteração. Por exemplo:\n\nVocê corrigiu um bug no arquivo analise.R\nVocê também adicionou um novo gráfico no arquivo visualizacao.R\nE aproveitou para corrigir uns erros de digitação no README.md\n\nEm vez de fazer um único commit gigante com tudo misturado, você pode:\n\nAdicionar analise.R à área de preparação → commit “Corrige bug no cálculo”\nAdicionar visualizacao.R à área de preparação → commit “Adiciona gráfico de dispersão”\nAdicionar README.md à área de preparação → commit “Corrige typos no README”\n\nResultado: três commits limpos e organizados, cada um com um propósito claro.\n\n6.3.1 Os três estados de um arquivo\nNo Git, um arquivo pode estar em três estados:\n\n\n\n\n\nflowchart LR\n    A[Modified&lt;br&gt;Modificado] --&gt;|git add| B[Staged&lt;br&gt;Preparado]\n    B --&gt;|git commit| C[Committed&lt;br&gt;Confirmado]\n    C --&gt;|editar arquivo| A\n\n\n\n\n\n\n\nModified (modificado): você alterou o arquivo, mas ainda não o adicionou à área de preparação\nStaged (preparado): você marcou o arquivo para entrar no próximo commit\nCommitted (confirmado): as alterações foram salvas no histórico do repositório",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Conceitos do Git</span>"
+    ]
+  },
+  {
+    "objectID": "05-git-conceitos.html#diretório-de-trabalho-working-directory",
+    "href": "05-git-conceitos.html#diretório-de-trabalho-working-directory",
+    "title": "6  Conceitos do Git",
+    "section": "6.4 Diretório de trabalho (working directory)",
+    "text": "6.4 Diretório de trabalho (working directory)\nO diretório de trabalho é simplesmente a pasta no seu computador onde estão os arquivos do projeto — a pasta que você vê no Finder, no Explorador de Arquivos ou no seu editor de código.\nQuando você edita um arquivo, está modificando o diretório de trabalho. Essas modificações ainda não fazem parte do histórico do Git; são apenas alterações locais que você pode escolher salvar (fazer commit) ou descartar.\n\n6.4.1 Resumo visual: os três “lugares” do Git\n\n\n\n\n\nflowchart LR\n    subgraph \"Seu Computador\"\n        A[Diretório de Trabalho&lt;br&gt;Working Directory] --&gt;|git add| B[Área de Preparação&lt;br&gt;Staging Area]\n        B --&gt;|git commit| C[Repositório Local&lt;br&gt;Local Repository]\n    end\n    subgraph \"Internet\"\n        D[Repositório Remoto&lt;br&gt;GitHub]\n    end\n    C --&gt;|git push| D\n    D --&gt;|git pull| C",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Conceitos do Git</span>"
+    ]
+  },
+  {
+    "objectID": "05-git-conceitos.html#branch-ramificação",
+    "href": "05-git-conceitos.html#branch-ramificação",
+    "title": "6  Conceitos do Git",
+    "section": "6.5 Branch (ramificação)",
+    "text": "6.5 Branch (ramificação)\nUma branch é uma linha independente de desenvolvimento. É como uma versão paralela do seu projeto onde você pode fazer alterações sem afetar a versão principal.\nImagine que você está escrevendo um livro. A versão oficial está pronta e publicada (branch main). Agora você quer experimentar reescrever o capítulo 3, mas não quer arriscar estragar o livro que já funciona. Você cria uma cópia paralela (branch reescrever-cap3), faz suas experiências lá, e só quando estiver satisfeito, incorpora as mudanças de volta ao livro oficial.\n\n6.5.1 Por que usar branches?\n\nExperimentação segura: teste ideias sem risco de quebrar o que funciona\nTrabalho paralelo: várias pessoas podem trabalhar em funcionalidades diferentes ao mesmo tempo\nOrganização: mantenha o trabalho em progresso separado do código estável\nRevisão: permita que outros revisem suas alterações antes de incorporá-las\n\n\n\n6.5.2 A branch principal: main (ou master)\nTodo repositório Git tem uma branch principal, que geralmente se chama main (em repositórios mais antigos, pode se chamar master). Essa é a linha de desenvolvimento “oficial” do projeto.\nQuando você cria branches adicionais, elas partem de algum ponto da branch principal (ou de outra branch). Depois, quando o trabalho estiver pronto, você faz um merge (fusão) para incorporar as alterações de volta.\n\n\n6.5.3 Visualizando branches\nBranches são frequentemente representadas como linhas em um gráfico:\n\n\n\n\n\ngitGraph\n    commit id: \"A\"\n    commit id: \"B\"\n    branch feature\n    commit id: \"C\"\n    commit id: \"D\"\n    checkout main\n    commit id: \"E\"\n    merge feature id: \"F\"\n    commit id: \"G\"\n\n\n\n\n\n\nNeste exemplo:\n\nA linha principal (main) tem os commits A, B, E, F e G\nUma branch chamada “feature” foi criada a partir de B\nA branch feature teve seus próprios commits (C e D)\nNo commit F, a branch feature foi incorporada de volta (merge)\nO desenvolvimento continua na main com o commit G",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Conceitos do Git</span>"
+    ]
+  },
+  {
+    "objectID": "05-git-conceitos.html#merge-fusão",
+    "href": "05-git-conceitos.html#merge-fusão",
+    "title": "6  Conceitos do Git",
+    "section": "6.6 Merge (fusão)",
+    "text": "6.6 Merge (fusão)\nMerge é o processo de combinar as alterações de uma branch em outra. É como pegar o trabalho que você fez em uma cópia paralela e incorporá-lo à versão principal.\nNa maioria dos casos, o Git consegue fazer merge automaticamente. Ele analisa as alterações de cada branch e combina tudo de forma inteligente.\n\n6.6.1 Conflitos de merge\nÀs vezes, porém, o Git encontra um conflito: duas branches modificaram a mesma parte do mesmo arquivo de formas incompatíveis. Nesses casos, o Git não consegue decidir sozinho qual versão manter e pede sua ajuda.\nUm conflito aparece no arquivo mais ou menos assim:\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD\nEsta é a versão da branch atual\n=======\nEsta é a versão da outra branch\n&gt;&gt;&gt;&gt;&gt;&gt;&gt; outra-branch\nVocê precisa editar o arquivo manualmente, escolhendo qual versão manter (ou combinando as duas), e depois remover os marcadores &lt;&lt;&lt;&lt;&lt;&lt;&lt;, ======= e &gt;&gt;&gt;&gt;&gt;&gt;&gt;.\nConflitos parecem assustadores no início, mas são uma parte normal do trabalho colaborativo. As ferramentas visuais (GitHub Desktop, Positron) tornam a resolução muito mais fácil, mostrando as diferenças lado a lado.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Conceitos do Git</span>"
+    ]
+  },
+  {
+    "objectID": "05-git-conceitos.html#clone",
+    "href": "05-git-conceitos.html#clone",
+    "title": "6  Conceitos do Git",
+    "section": "6.7 Clone",
+    "text": "6.7 Clone\nClone é a ação de copiar um repositório remoto para o seu computador. Quando você clona um repositório do GitHub, está baixando todos os arquivos e todo o histórico de commits.\nO resultado é um repositório local completo, conectado ao repositório remoto de origem. A partir daí, você pode fazer commits localmente e depois sincronizar com o remoto.\nClone é diferente de simplesmente baixar os arquivos. Um download comum (como um ZIP) traz apenas os arquivos na versão atual, sem histórico e sem conexão com o repositório original. O clone traz tudo e mantém a conexão.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Conceitos do Git</span>"
+    ]
+  },
+  {
+    "objectID": "05-git-conceitos.html#fork",
+    "href": "05-git-conceitos.html#fork",
+    "title": "6  Conceitos do Git",
+    "section": "6.8 Fork",
+    "text": "6.8 Fork\nFork é um conceito específico do GitHub (e plataformas similares), não do Git em si.\nUm fork é uma cópia de um repositório para a sua própria conta no GitHub. É diferente de clone porque:\n\nClone: copia do GitHub para seu computador (repositório remoto → local)\nFork: copia de uma conta do GitHub para outra conta do GitHub (repositório remoto → outro repositório remoto)\n\nPor que fazer fork? Quando você quer contribuir para um projeto de outra pessoa, mas não tem permissão de escrita no repositório original. Você faz fork para sua conta, faz as alterações no seu fork, e depois abre um pull request pedindo que o dono do projeto original incorpore suas alterações.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Conceitos do Git</span>"
+    ]
+  },
+  {
+    "objectID": "05-git-conceitos.html#push",
+    "href": "05-git-conceitos.html#push",
+    "title": "6  Conceitos do Git",
+    "section": "6.9 Push",
+    "text": "6.9 Push\nPush é a ação de enviar seus commits locais para o repositório remoto. Você trabalha no seu computador, faz vários commits, e quando está pronto para compartilhar (ou fazer backup), faz push.\n\n\n\n\n\nflowchart LR\n    A[Repositório Local] --&gt;|git push| B[Repositório Remoto&lt;br&gt;GitHub]\n\n\n\n\n\n\nApós o push, outras pessoas podem ver suas alterações no GitHub, e você pode acessá-las de outros computadores.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Conceitos do Git</span>"
+    ]
+  },
+  {
+    "objectID": "05-git-conceitos.html#pull",
+    "href": "05-git-conceitos.html#pull",
+    "title": "6  Conceitos do Git",
+    "section": "6.10 Pull",
+    "text": "6.10 Pull\nPull é o oposto do push: você baixa as alterações do repositório remoto para o seu computador. Se outra pessoa fez commits e enviou para o GitHub, você usa pull para trazer essas alterações para o seu repositório local.\n\n\n\n\n\nflowchart LR\n    A[Repositório Remoto&lt;br&gt;GitHub] --&gt;|git pull| B[Repositório Local]\n\n\n\n\n\n\nNa prática, é uma boa ideia fazer pull regularmente, especialmente antes de começar a trabalhar, para garantir que você tem a versão mais recente.\n\n6.10.1 Pull vs Fetch\nVocê pode encontrar também o termo fetch. A diferença:\n\nFetch: baixa as alterações do remoto, mas não aplica automaticamente no seu diretório de trabalho. Você pode revisar antes de decidir incorporar.\nPull: faz fetch e já aplica as alterações automaticamente (é um atalho para fetch + merge).\n\nPara a maioria dos casos de uso, pull é o que você quer.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Conceitos do Git</span>"
+    ]
+  },
+  {
+    "objectID": "05-git-conceitos.html#origin",
+    "href": "05-git-conceitos.html#origin",
+    "title": "6  Conceitos do Git",
+    "section": "6.11 Origin",
+    "text": "6.11 Origin\nOrigin é o nome padrão que o Git dá ao repositório remoto principal. Quando você clona um repositório do GitHub, o Git automaticamente cria uma referência chamada “origin” apontando para aquele repositório.\nEntão, quando você vê comandos como git push origin main, está dizendo: “envie a branch main para o repositório remoto chamado origin (que é o GitHub)”.\nVocê pode ter múltiplos remotos com nomes diferentes (útil em fluxos de trabalho avançados), mas para a maioria dos projetos, origin é o único que você vai usar.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Conceitos do Git</span>"
+    ]
+  },
+  {
+    "objectID": "05-git-conceitos.html#head",
+    "href": "05-git-conceitos.html#head",
+    "title": "6  Conceitos do Git",
+    "section": "6.12 HEAD",
+    "text": "6.12 HEAD\nHEAD é uma referência especial que aponta para o commit atual — ou seja, onde você está agora no histórico do repositório.\nNormalmente, HEAD aponta para uma branch (ex: main), que por sua vez aponta para o commit mais recente dessa branch. Quando você faz um novo commit, HEAD se move automaticamente para apontar para ele.\nVocê pode ver HEAD sendo mencionado em mensagens do Git ou em comandos avançados. Por enquanto, basta saber que HEAD = “onde você está agora”.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Conceitos do Git</span>"
+    ]
+  },
+  {
+    "objectID": "05-git-conceitos.html#diff",
+    "href": "05-git-conceitos.html#diff",
+    "title": "6  Conceitos do Git",
+    "section": "6.13 Diff",
+    "text": "6.13 Diff\nDiff (de “diferença”) é a comparação entre duas versões de um arquivo ou entre dois commits. O diff mostra exatamente quais linhas foram adicionadas, removidas ou modificadas.\nNa visualização de diff:\n\nLinhas vermelhas (com sinal de menos) foram removidas\nLinhas verdes (com sinal de mais) foram adicionadas\nLinhas sem marcação não foram alteradas\n\nDiffs são essenciais para entender o que mudou. Antes de fazer commit, é sempre bom revisar o diff para ter certeza de que você está incluindo apenas o que pretende.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Conceitos do Git</span>"
+    ]
+  },
+  {
+    "objectID": "05-git-conceitos.html#pull-request-pr",
+    "href": "05-git-conceitos.html#pull-request-pr",
+    "title": "6  Conceitos do Git",
+    "section": "6.14 Pull Request (PR)",
+    "text": "6.14 Pull Request (PR)\nPull Request — às vezes abreviado como PR — é uma funcionalidade do GitHub (não do Git em si) que permite propor alterações para um repositório.\nO fluxo típico é:\n\nVocê cria uma branch com suas alterações\nVocê faz push dessa branch para o GitHub\nVocê abre um Pull Request, que é uma solicitação para que suas alterações sejam incorporadas à branch principal\nOutras pessoas revisam suas alterações, fazem comentários, sugerem ajustes\nQuando aprovado, o Pull Request é “mergeado” (as alterações são incorporadas)\n\nPull Requests são fundamentais para colaboração em projetos open source e em equipes profissionais. Eles criam um registro formal das alterações propostas e permitem discussão antes da incorporação.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Conceitos do Git</span>"
+    ]
+  },
+  {
+    "objectID": "05-git-conceitos.html#issue",
+    "href": "05-git-conceitos.html#issue",
+    "title": "6  Conceitos do Git",
+    "section": "6.15 Issue",
+    "text": "6.15 Issue\nIssue é outra funcionalidade do GitHub. É basicamente um “chamado” ou “ticket” para reportar bugs, solicitar funcionalidades, fazer perguntas ou discutir ideias.\nIssues podem ser:\n\nMarcadas com labels (etiquetas) como “bug”, “enhancement”, “question”\nAtribuídas a pessoas responsáveis\nVinculadas a Pull Requests que as resolvem\nComentadas e discutidas pela comunidade\n\nEm projetos maiores, issues são a forma principal de organizar o trabalho e acompanhar o que precisa ser feito.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Conceitos do Git</span>"
+    ]
+  },
+  {
+    "objectID": "05-git-conceitos.html#resumo-visual-o-fluxo-completo",
+    "href": "05-git-conceitos.html#resumo-visual-o-fluxo-completo",
+    "title": "6  Conceitos do Git",
+    "section": "6.16 Resumo visual: o fluxo completo",
+    "text": "6.16 Resumo visual: o fluxo completo\n\n\n\n\n\nflowchart TB\n    subgraph \"Seu Computador\"\n        WD[Diretório de Trabalho&lt;br&gt;Working Directory]\n        SA[Área de Preparação&lt;br&gt;Staging Area]\n        LR[Repositório Local&lt;br&gt;Local Repository]\n    end\n    \n    subgraph \"GitHub\"\n        RR[Repositório Remoto&lt;br&gt;Remote Repository]\n    end\n    \n    WD --&gt;|\"git add\"| SA\n    SA --&gt;|\"git commit\"| LR\n    LR --&gt;|\"git push\"| RR\n    RR --&gt;|\"git pull\"| LR\n    RR --&gt;|\"git clone\"| LR\n    LR --&gt;|checkout| WD",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Conceitos do Git</span>"
+    ]
+  },
+  {
+    "objectID": "05-git-conceitos.html#glossário-rápido",
+    "href": "05-git-conceitos.html#glossário-rápido",
+    "title": "6  Conceitos do Git",
+    "section": "6.17 Glossário rápido",
+    "text": "6.17 Glossário rápido\n\n\n\n\n\n\n\nTermo\nSignificado\n\n\n\n\nRepository (repo)\nPasta monitorada pelo Git, contendo arquivos e histórico\n\n\nCommit\nInstantâneo do projeto em um momento específico\n\n\nStaging area\nÁrea intermediária onde você prepara alterações para o commit\n\n\nBranch\nLinha paralela de desenvolvimento\n\n\nMain/Master\nBranch principal do projeto\n\n\nMerge\nCombinar alterações de uma branch em outra\n\n\nConflict\nSituação onde o Git não consegue fazer merge automaticamente\n\n\nClone\nCopiar um repositório remoto para o computador\n\n\nFork\nCopiar um repositório para sua conta no GitHub\n\n\nPush\nEnviar commits locais para o repositório remoto\n\n\nPull\nBaixar alterações do repositório remoto\n\n\nFetch\nBaixar alterações sem aplicar automaticamente\n\n\nOrigin\nNome padrão do repositório remoto principal\n\n\nHEAD\nReferência ao commit/branch atual\n\n\nDiff\nComparação mostrando diferenças entre versões\n\n\nPull Request (PR)\nSolicitação para incorporar alterações (GitHub)\n\n\nIssue\nChamado para reportar bugs ou solicitar funcionalidades (GitHub)",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Conceitos do Git</span>"
+    ]
+  },
+  {
+    "objectID": "05-git-conceitos.html#uma-prévia-por-que-o-positron-facilita-tudo-isso",
+    "href": "05-git-conceitos.html#uma-prévia-por-que-o-positron-facilita-tudo-isso",
+    "title": "6  Conceitos do Git",
+    "section": "6.18 Uma prévia: por que o Positron facilita tudo isso?",
+    "text": "6.18 Uma prévia: por que o Positron facilita tudo isso?\nTodos esses conceitos — staging, commit, push, pull, branches — podem parecer abstratos agora. Mas quando você usar uma ferramenta como o Positron, tudo se torna visual e concreto. O Positron integra o terminal, o editor de código e o controle de versão em uma única janela. Quando você abre uma pasta no Positron, o terminal já abre diretamente nesse diretório — sem precisar navegar com cd. A aba Source Control mostra o estado dos seus arquivos em tempo real, e os botões de push e pull estão a um clique. No próximo capítulo vamos aprender a inicializar o git no terminal, mas nos capítulos seguintes vamos ver como podemos fazer tudo mais facilmente usando o GitHub Desktop ou o Positron.\n\nAgora que você conhece o vocabulário do Git, está pronto para a prática. No próximo capítulo, vamos instalar e configurar o Git no seu computador e fazer nosso primeiro commit.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Conceitos do Git</span>"
+    ]
+  },
+  {
+    "objectID": "06-git-inicialization.html",
+    "href": "06-git-inicialization.html",
+    "title": "7  Configurando o Git e o GitHub",
+    "section": "",
+    "text": "7.1 Criando a conta no GitHub\nNo capítulo anterior, você conheceu a história do Git e do GitHub, entendeu o que é controle de versão e por que essas ferramentas se tornaram essenciais. Agora é hora de colocar a mão na massa: vamos configurar tudo no seu computador para que você possa começar a versionar seus projetos.\nNeste capítulo, você vai criar uma conta no GitHub, instalar o Git (se ainda não tiver), configurar sua identidade e aprender o fluxo básico de trabalho — da criação de um repositório local até o envio para o GitHub.\nAntes de configurar o Git no seu computador, crie uma conta gratuita no GitHub. Acesse github.com e clique em Sign up.\nDurante o cadastro, você precisará informar:\nApós confirmar seu e-mail, sua conta estará pronta. Você pode voltar ao GitHub depois para completar seu perfil, adicionar uma foto e explorar a plataforma. Por enquanto, o importante é ter o username e o e-mail definidos.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "06-git-inicialization.html#criando-a-conta-no-github",
+    "href": "06-git-inicialization.html#criando-a-conta-no-github",
+    "title": "7  Configurando o Git e o GitHub",
+    "section": "",
+    "text": "Username: seu nome de usuário, que fará parte do endereço dos seus repositórios (ex: github.com/seu-username). Escolha algo profissional e fácil de lembrar.\nEmail: use um e-mail que você acessa regularmente. Este será o mesmo e-mail que configuraremos no Git.\nPassword: uma senha segura para sua conta.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "06-git-inicialization.html#verificando-se-o-git-já-está-instalado",
+    "href": "06-git-inicialization.html#verificando-se-o-git-já-está-instalado",
+    "title": "7  Configurando o Git e o GitHub",
+    "section": "7.2 Verificando se o Git já está instalado",
+    "text": "7.2 Verificando se o Git já está instalado\nAntes de instalar o Git, verifique se ele já está no seu computador. Abra o Terminal e digite:\ngit --version\nSe o Git estiver instalado, você verá uma mensagem indicando a versão:\ngit version 2.50.1\nSe aparecer uma versão, ótimo — você pode pular para a seção de configuração. Se não estiver instalado, siga as instruções da próxima seção.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "06-git-inicialization.html#instalando-o-git",
+    "href": "06-git-inicialization.html#instalando-o-git",
+    "title": "7  Configurando o Git e o GitHub",
+    "section": "7.3 Instalando o Git",
+    "text": "7.3 Instalando o Git\nA forma mais prática de instalar o Git é usando os gerenciadores de pacotes que você aprendeu nos capítulos anteriores.\nNo Mac (com Homebrew):\nbrew install git\nNo Windows (com winget):\nwinget install Git.Git\nApós a instalação, feche e reabra o Terminal, então confirme que funcionou:\ngit --version\n\n\n\n\n\n\nNotaAlternativas de instalação\n\n\n\n\nMac: se você não usa Homebrew, ao digitar git --version o sistema oferecerá automaticamente a instalação das Command Line Tools da Apple, que incluem o Git.\nWindows: se preferir não usar o winget, baixe o instalador em git-scm.com. Durante a instalação, mantenha as opções padrão. O instalador incluirá o Git Bash, que permite usar comandos no estilo Unix.\nLinux: use o gerenciador de pacotes da sua distribuição. No Ubuntu/Debian: sudo apt install git",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "06-git-inicialization.html#configuração-inicial",
+    "href": "06-git-inicialization.html#configuração-inicial",
+    "title": "7  Configurando o Git e o GitHub",
+    "section": "7.4 Configuração inicial",
+    "text": "7.4 Configuração inicial\nCom o Git instalado, configure sua identidade. Essas informações aparecerão em cada commit que você fizer:\ngit config --global user.name \"Seu Nome\"\ngit config --global user.email \"seu.email@exemplo.com\"\nUse o mesmo e-mail da sua conta GitHub. Isso permite que o GitHub associe seus commits ao seu perfil.\n\n\n\n\n\n\nDicaVerificando a configuração\n\n\n\nPara verificar se está tudo configurado corretamente:\ngit config --global user.name\ngit config --global user.email\nSe retornar seu nome e e-mail, está tudo certo!\nVocê também pode ver todas as configurações do Git com:\ngit config --list",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "06-git-inicialization.html#conceitos-fundamentais",
+    "href": "06-git-inicialization.html#conceitos-fundamentais",
+    "title": "7  Configurando o Git e o GitHub",
+    "section": "7.5 Conceitos fundamentais",
+    "text": "7.5 Conceitos fundamentais\nAntes de partir para os comandos, é importante entender três “lugares” onde seus arquivos podem estar:\n\nDiretório de trabalho (working directory): sua pasta normal, onde você edita arquivos\nÁrea de preparação (staging area): uma área intermediária onde você seleciona quais alterações quer registrar\nRepositório (repository): o histórico completo de todas as versões salvas\n\nO fluxo básico é: você edita arquivos → adiciona à área de preparação → confirma (commit) no repositório → envia (push) para o GitHub.\n\n\n\n\n\nflowchart LR\n    A[Diretório de Trabalho] --&gt;|git add| B[Área de Preparação]\n    B --&gt;|git commit| C[Repositório Local]\n    C --&gt;|git push| D[GitHub]",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "06-git-inicialization.html#subindo-uma-pasta-para-o-github-passo-a-passo",
+    "href": "06-git-inicialization.html#subindo-uma-pasta-para-o-github-passo-a-passo",
+    "title": "7  Configurando o Git e o GitHub",
+    "section": "7.6 Subindo uma pasta para o GitHub: passo a passo",
+    "text": "7.6 Subindo uma pasta para o GitHub: passo a passo\nVamos ao processo completo de versionar uma pasta local e enviá-la para o GitHub.\n\n7.6.1 Passo 1: Crie um repositório no GitHub\nAcesse github.com, faça login e clique no botão + no canto superior direito, depois em New repository. Dê um nome ao repositório (por exemplo, meu-projeto), escolha se será público ou privado, e clique em Create repository.\n\n\n\n\n\n\nAvisoRepositório vazio\n\n\n\nNão marque nenhuma opção de inicialização (README, .gitignore, etc.) — queremos um repositório vazio para este exemplo.\n\n\n\n\n7.6.2 Passo 2: Navegue até sua pasta no Terminal\ncd ~/caminho/para/sua/pasta\nPor exemplo, se sua pasta está na área de trabalho:\ncd ~/Desktop/minha-pasta\n\n\n7.6.3 Passo 3: Inicialize o Git na pasta\ngit init\nIsso cria uma pasta oculta .git que armazenará todo o histórico. Sua pasta agora é um repositório Git local.\n\n\n7.6.4 Passo 4: Adicione os arquivos à área de preparação\ngit add .\nO ponto (.) significa “todos os arquivos”. Se quiser adicionar apenas um arquivo específico:\ngit add nome-do-arquivo.txt\n\n\n7.6.5 Passo 5: Faça o primeiro commit\ngit commit -m \"Primeiro commit\"\nA flag -m permite adicionar uma mensagem descritiva. Sempre escreva mensagens claras sobre o que você alterou.\n\n\n7.6.6 Passo 6: Conecte ao repositório remoto\ngit remote add origin https://github.com/seu-usuario/meu-projeto.git\nSubstitua seu-usuario pelo seu nome de usuário do GitHub e meu-projeto pelo nome do repositório que você criou.\n\n\n7.6.7 Passo 7: Envie para o GitHub\ngit push -u origin main\nA flag -u (ou --set-upstream) cria uma conexão permanente entre sua branch local e a remota. Nas próximas vezes, bastará digitar git push.\n\n\n\n\n\n\nNotaBranch main vs master\n\n\n\nSe o Git reclamar que a branch se chama master em vez de main, use:\ngit branch -M main\ngit push -u origin main",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "06-git-inicialization.html#comandos-do-dia-a-dia",
+    "href": "06-git-inicialization.html#comandos-do-dia-a-dia",
+    "title": "7  Configurando o Git e o GitHub",
+    "section": "7.7 Comandos do dia a dia",
+    "text": "7.7 Comandos do dia a dia\nDepois que tudo estiver configurado, seu fluxo de trabalho será:\n# Ver o status dos arquivos\ngit status\n\n# Adicionar alterações\ngit add .\n\n# Confirmar alterações com uma mensagem\ngit commit -m \"Descrição do que você fez\"\n\n# Enviar para o GitHub\ngit push",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "06-git-inicialization.html#outros-comandos-úteis",
+    "href": "06-git-inicialization.html#outros-comandos-úteis",
+    "title": "7  Configurando o Git e o GitHub",
+    "section": "7.8 Outros comandos úteis",
+    "text": "7.8 Outros comandos úteis\n\n7.8.1 Histórico\n# Ver o histórico de commits\ngit log\n\n# Ver histórico resumido (uma linha por commit)\ngit log --oneline\n\n\n7.8.2 Sincronização\n# Baixar alterações do GitHub para seu computador\ngit pull\n\n# Clonar um repositório existente do GitHub\ngit clone https://github.com/usuario/repositorio.git\n\n# Ver quais repositórios remotos estão conectados\ngit remote -v\n\n\n7.8.3 Desfazendo alterações\n# Desfazer alterações em um arquivo (voltar à última versão commitada)\ngit checkout -- nome-do-arquivo.txt\n\n# Remover um arquivo da área de preparação (mas manter as alterações)\ngit reset nome-do-arquivo.txt",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "06-git-inicialization.html#autenticação-no-github",
+    "href": "06-git-inicialization.html#autenticação-no-github",
+    "title": "7  Configurando o Git e o GitHub",
+    "section": "7.9 Autenticação no GitHub",
+    "text": "7.9 Autenticação no GitHub\nNa primeira vez que você tentar fazer push, o GitHub pedirá autenticação. Há duas formas principais:\n\n7.9.1 Opção 1: Token de acesso pessoal (HTTPS)\n\nAcesse GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token\nSelecione os escopos necessários (pelo menos repo)\nCopie o token gerado\nUse-o como senha quando o Terminal pedir\n\n\n\n7.9.2 Opção 2: Chave SSH (recomendada para uso frequente)\nEssa opção é mais segura e prática para quem usa Git diariamente, mas a configuração é mais complexa. Ela será tratada em um capítulo à parte.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "06-git-inicialization.html#arquivos-ocultos",
+    "href": "06-git-inicialization.html#arquivos-ocultos",
+    "title": "7  Configurando o Git e o GitHub",
+    "section": "7.10 Arquivos ocultos",
+    "text": "7.10 Arquivos ocultos\nAntes de falarmos sobre o próximo tópicos, sobre o arquivo .gitignore, precisamos entender um conceito importante: arquivos ocultos.\nVocê já deve ter notado que alguns arquivos e pastas no seu computador parecem “invisíveis” — eles existem, mas não aparecem quando você abre uma pasta no Finder (Mac) ou no Explorador de Arquivos (Windows). Esses são os arquivos ocultos.\n\n7.10.1 Por que existem arquivos ocultos?\nSistemas operacionais e programas criam arquivos de configuração, caches e dados internos que o usuário comum não precisa ver no dia a dia. Para evitar confusão e impedir que esses arquivos sejam deletados acidentalmente, eles ficam escondidos por padrão.\nNo Mac e no Linux, a convenção é simples: qualquer arquivo ou pasta cujo nome começa com um ponto (.) é considerado oculto. Por exemplo:\n\n.gitignore — arquivo de configuração do Git\n.git/ — pasta onde o Git armazena todo o histórico do repositório\n.DS_Store — arquivo que o macOS cria automaticamente em cada pasta\n.Rhistory — histórico de comandos do R\n\nNo Windows, arquivos ocultos são marcados através de um atributo especial do sistema, não necessariamente pelo nome.\n\n\n7.10.2 Por que isso importa para o Git?\nO Git usa arquivos ocultos extensivamente. Quando você executa git init em uma pasta, ele cria uma pasta oculta chamada .git que contém todo o histórico, configurações e metadados do repositório. Se você não souber visualizar arquivos ocultos, vai parecer que nada aconteceu.\nAlém disso, o arquivo .gitignore — que ensinaremos a criar na próxima seção — também é oculto. Se você criá-lo mas não conseguir vê-lo, pode ficar confuso achando que algo deu errado.\nPor isso, saber visualizar arquivos ocultos é uma habilidade fundamental para trabalhar com Git.\n\n\n7.10.3 Como visualizar arquivos ocultos\nNo Mac (Finder):\nPressione Cmd + Shift + . (ponto). Os arquivos ocultos aparecerão com um tom mais claro, indicando que normalmente são invisíveis. Pressione a mesma combinação novamente para escondê-los.\nNo Windows (Explorador de Arquivos):\n\nAbra o Explorador de Arquivos\nClique na aba Exibir\nMarque a caixa Itens ocultos\n\nNo Terminal (Mac, Linux e Git Bash no Windows):\nO comando ls lista arquivos, mas por padrão não mostra os ocultos. Para ver todos os arquivos, incluindo os ocultos, use a flag -a:\nls -a\nPara uma listagem detalhada com arquivos ocultos:\nls -la\nVocê verá arquivos como .git, .gitignore e .DS_Store que normalmente não aparecem.\n\n\n\n\n\n\nDicaExperimente agora\n\n\n\nNavegue até uma pasta onde você já executou git init e use ls -la no Terminal. Você verá a pasta .git que antes parecia não existir. Ou ative a visualização de arquivos ocultos no Finder/Explorador e observe quantos arquivos “secretos” existem nas suas pastas.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "06-git-inicialization.html#o-arquivo-.gitignore",
+    "href": "06-git-inicialization.html#o-arquivo-.gitignore",
+    "title": "7  Configurando o Git e o GitHub",
+    "section": "7.11 O arquivo .gitignore",
+    "text": "7.11 O arquivo .gitignore\nAgora que você sabe o que são arquivos ocultos e como visualizá-los, podemos falar sobre um dos arquivos ocultos mais importantes para o Git: o .gitignore.\n\n7.11.1 O problema: nem tudo deve ir para o repositório\nQuando você executa git add . para adicionar arquivos ao repositório, o Git inclui tudo o que encontrar na pasta — e nem sempre isso é desejável. Alguns arquivos são grandes demais e tornariam o repositório pesado e lento de clonar. Outros contêm informações sensíveis, como senhas ou dados pessoais, que jamais deveriam ser compartilhados. Há ainda arquivos temporários que o sistema operacional ou programas criam automaticamente e que não têm utilidade para outras pessoas.\nImagine que você está trabalhando em um projeto de análise de dados. Sua pasta contém:\n\nSeus scripts em R ou Python — devem ir para o GitHub\nUm arquivo CSV com 500MB de dados brutos — não deveria ir, é grande demais e pode conter dados sensíveis\nUm arquivo com senhas de banco de dados — definitivamente não deveria ir!\nArquivos .DS_Store que o macOS cria automaticamente — não têm utilidade para outras pessoas\n\nSem o .gitignore, toda vez que você executar git add ., todos esses arquivos seriam incluídos. O .gitignore resolve isso: ele diz ao Git quais arquivos e pastas devem ser completamente ignorados.\n\n\n7.11.2 Criando o arquivo .gitignore\nO .gitignore deve ficar na raiz do seu projeto (na mesma pasta onde está a pasta .git). Para criá-lo, você pode usar o Terminal:\ntouch .gitignore\nOu criar diretamente no seu editor de código. Como o nome começa com ponto, o arquivo será oculto — lembre-se de ativar a visualização de arquivos ocultos se quiser vê-lo no Finder ou Explorador.\nO .gitignore é um arquivo de texto simples. Cada linha representa um padrão de arquivos ou pastas que o Git deve ignorar.\n\n\n7.11.3 Sintaxe do .gitignore\nA sintaxe é simples, mas poderosa:\nIgnorar um arquivo específico:\nsenhas.txt\ndados_secretos.csv\nIgnorar todos os arquivos com determinada extensão:\n*.csv\n*.xlsx\n*.log\nO asterisco (*) funciona como curinga, significando “qualquer coisa”.\nIgnorar uma pasta inteira:\nnode_modules/\ndados/\n.Rproj.user/\nA barra (/) no final indica que é uma pasta. Tudo dentro dela será ignorado.\nIgnorar arquivos em qualquer subpasta:\n**/*.log\nO duplo asterisco (**) significa “em qualquer nível de subpastas”.\nAdicionar comentários:\n# Arquivos temporários do macOS\n.DS_Store\n\n# Dados que não devem ser compartilhados\n*.csv\nLinhas que começam com # são comentários e ajudam a organizar o arquivo.\nFazer exceções (não ignorar algo específico):\n# Ignora todos os CSVs\n*.csv\n\n# Mas não ignora este arquivo específico\n!exemplo_dados.csv\nO ponto de exclamação (!) no início nega a regra anterior.\n\n\n7.11.4 Exemplo completo de .gitignore\nAqui está um exemplo típico para projetos em R ou análise de dados:\n# === Sistema Operacional ===\n\n# Arquivos temporários do macOS\n.DS_Store\n\n# Arquivos temporários do Windows\nThumbs.db\ndesktop.ini\n\n# === R e RStudio ===\n\n# Arquivos de sessão do R\n.Rhistory\n.RData\n.Rproj.user/\n\n# === Dados ===\n\n# Arquivos de dados (geralmente grandes ou sensíveis)\n*.csv\n*.xlsx\n*.sav\n*.dta\ndados/\n\n# === Credenciais e segredos ===\n\n# Nunca suba senhas ou tokens!\n.env\nsenhas.txt\n*_secret*\n\n# === Arquivos temporários e de build ===\n\n# Pastas geradas automaticamente\n_site/\ndocs/\nnode_modules/\n\n# Arquivos de cache\n*.cache\n__pycache__/\n\n\n7.11.5 Quando criar o .gitignore\nO ideal é criar o .gitignore logo no início do projeto, antes do primeiro commit. Assim, os arquivos indesejados nunca chegam a entrar no histórico do Git.\nSe você já fez commit de arquivos que deveriam ser ignorados, adicioná-los ao .gitignore depois não os remove do histórico — apenas impede que futuras alterações sejam rastreadas. Para remover um arquivo que já está no repositório mas deveria ser ignorado:\ngit rm --cached nome-do-arquivo.csv\ngit commit -m \"Remove arquivo que deveria ser ignorado\"\nA flag --cached remove o arquivo do Git mas mantém ele na sua pasta local.\n\n\n\n\n\n\nDicaModelos prontos de .gitignore\n\n\n\nNão precisa criar tudo do zero. O GitHub mantém uma coleção de modelos de .gitignore para diversas linguagens e ambientes em github.com/github/gitignore.\nLá você encontra modelos para R, Python, Node.js e dezenas de outras tecnologias. É só copiar o conteúdo relevante para o seu projeto.\nOutra opção é o site gitignore.io, onde você digita as tecnologias que usa (ex: “R, macOS, Windows”) e ele gera um .gitignore personalizado.\n\n\n\n\n\n\n\n\nAvisoArquivos sensíveis\n\n\n\nNunca suba senhas, tokens de API, chaves de acesso ou dados pessoais para o GitHub — mesmo em repositórios privados. Uma vez que algo entra no histórico do Git, é difícil remover completamente. Sempre use .gitignore para proteger esses arquivos desde o início.\n\n\n\n\n\n\n\n\nDicaModelos de .gitignore\n\n\n\nO GitHub mantém uma coleção de modelos de .gitignore para diversas linguagens e ambientes em github.com/github/gitignore. Vale consultar o modelo para R, Python ou a linguagem que você usa.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "06-git-inicialization.html#dicas-finais",
+    "href": "06-git-inicialization.html#dicas-finais",
+    "title": "7  Configurando o Git e o GitHub",
+    "section": "7.12 Dicas finais",
+    "text": "7.12 Dicas finais\n\n\n\n\n\n\nDicaBoas práticas\n\n\n\n\nFaça commits pequenos e frequentes. É mais fácil entender o histórico e reverter problemas.\nEscreva mensagens de commit descritivas. “Corrige bug no cálculo de médias” é melhor que “Alterações”.\nUse .gitignore desde o início. Evite subir arquivos desnecessários ou sensíveis.\nNão tenha medo de errar. O Git foi feito justamente para permitir que você experimente e volte atrás se necessário.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
+    ]
+  },
+  {
+    "objectID": "07-github-desktop.html",
+    "href": "07-github-desktop.html",
+    "title": "8  GitHub Desktop",
+    "section": "",
+    "text": "8.1 O que é GitHub Desktop?\nNo capítulo anterior, você aprendeu a usar o Git pela linha de comando: git init, git add, git commit, git push. Digitou comandos, configurou credenciais, navegou pelo Terminal. Foi o caminho mais “difícil” — mas também o mais importante. Entender o que acontece por baixo dos panos é fundamental para não ficar perdido quando algo der errado.\nAgora, a boa notícia: existe uma forma muito mais visual e amigável de fazer tudo isso. O GitHub Desktop é um aplicativo gratuito que transforma cliques em comandos Git. Em vez de memorizar sintaxes, você vê seus arquivos, suas alterações e seu histórico em uma interface clara. O fluxo é o mesmo — a diferença é que agora você enxerga o que está fazendo.\nEste capítulo apresenta o GitHub Desktop como uma alternativa prática ao Terminal. Você aprenderá a realizar as mesmas operações que já conhece, mas de forma visual. E o melhor: o GitHub Desktop funciona tanto no Mac quanto no Windows, com uma interface praticamente idêntica nos dois sistemas.\nGitHub Desktop é um aplicativo gratuito criado pelo próprio GitHub que oferece uma interface gráfica para realizar operações Git. Em vez de digitar comandos no Terminal, você clica em botões, visualiza alterações lado a lado e gerencia repositórios de forma visual.\nÉ especialmente útil para quem está começando, prefere interfaces visuais, ou simplesmente quer agilizar tarefas rotineiras sem memorizar comandos.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>GitHub Desktop</span>"
+    ]
+  },
+  {
+    "objectID": "07-github-desktop.html#instalação",
+    "href": "07-github-desktop.html#instalação",
+    "title": "8  GitHub Desktop",
+    "section": "8.2 Instalação",
+    "text": "8.2 Instalação\n\n8.2.1 No Mac\n\nAcesse desktop.github.com e clique em Download for macOS\nAbra o arquivo .dmg baixado e arraste o aplicativo para a pasta Aplicativos\nNa primeira execução, faça login com sua conta GitHub\nO aplicativo pedirá permissão para acessar sua conta e configurará automaticamente seu nome e e-mail para commits\n\nVocê também pode instalar via Homebrew:\nbrew install --cask github\n\n\n8.2.2 No Windows\n\nAcesse desktop.github.com e clique em Download for Windows\nExecute o instalador baixado e siga as instruções\nNa primeira execução, faça login com sua conta GitHub\nO aplicativo configurará automaticamente seu nome e e-mail para commits\n\nVocê também pode instalar via winget:\nwinget install GitHub.GitHubDesktop\n\n\n\n\n\n\nDicaConfiguração automática\n\n\n\nUma das vantagens do GitHub Desktop é que ele configura o Git automaticamente. Se você ainda não tinha configurado user.name e user.email no Terminal, o aplicativo faz isso por você ao conectar sua conta GitHub.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>GitHub Desktop</span>"
+    ]
+  },
+  {
+    "objectID": "07-github-desktop.html#a-interface-principal",
+    "href": "07-github-desktop.html#a-interface-principal",
+    "title": "8  GitHub Desktop",
+    "section": "8.3 A interface principal",
+    "text": "8.3 A interface principal\nAo abrir o GitHub Desktop, você verá três áreas principais:\n\nBarra lateral esquerda: lista de repositórios locais e histórico de commits\nPainel central: arquivos modificados e suas alterações (diff)\nBarra inferior: área para escrever mensagens de commit\n\nNo topo, há botões para as ações principais: fetch/pull, push e a branch atual.\nA interface é praticamente idêntica no Mac e no Windows. As únicas diferenças são os atalhos de teclado: onde o Mac usa Cmd, o Windows usa Ctrl.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>GitHub Desktop</span>"
+    ]
+  },
+  {
+    "objectID": "07-github-desktop.html#operações-básicas-terminal-vs-github-desktop",
+    "href": "07-github-desktop.html#operações-básicas-terminal-vs-github-desktop",
+    "title": "8  GitHub Desktop",
+    "section": "8.4 Operações básicas: Terminal vs GitHub Desktop",
+    "text": "8.4 Operações básicas: Terminal vs GitHub Desktop\nNas seções a seguir, você verá lado a lado como realizar cada operação no Terminal e no GitHub Desktop. Isso ajuda a entender que são apenas formas diferentes de fazer a mesma coisa.\n\n8.4.1 Criar um novo repositório\n\nTerminalGitHub Desktop\n\n\ncd ~/Desktop/meu-projeto\ngit init\ngit add .\ngit commit -m \"Primeiro commit\"\ngit remote add origin https://github.com/usuario/meu-projeto.git\ngit push -u origin main\n\n\n\nClique em File → New Repository (Mac: Cmd+N / Windows: Ctrl+N)\nPreencha o nome, escolha a pasta local\nMarque “Initialize this repository with a README” se desejar\nClique em Create Repository\nPara publicar no GitHub, clique no botão Publish repository na barra superior\nEscolha se será público ou privado e confirme\n\n\n\n\n\n\n8.4.2 Clonar um repositório existente\n\nTerminalGitHub Desktop\n\n\ncd ~/Desktop\ngit clone https://github.com/usuario/repositorio.git\n\n\n\nClique em File → Clone Repository (Mac: Cmd+Shift+O / Windows: Ctrl+Shift+O)\nVocê verá três abas: GitHub.com (seus repositórios), GitHub Enterprise, e URL\nSelecione o repositório desejado ou cole a URL\nEscolha onde salvar localmente\nClique em Clone\n\n\n\n\n\n\n8.4.3 Ver status e alterações\n\nTerminalGitHub Desktop\n\n\ngit status\ngit diff\n\n\nAs alterações aparecem automaticamente no painel central. Arquivos modificados são listados à esquerda com ícones coloridos:\n\n🟡 Amarelo: arquivo modificado\n🟢 Verde: arquivo novo\n🔴 Vermelho: arquivo removido\n\nClicando em qualquer arquivo, você vê exatamente o que mudou: linhas removidas em vermelho, adicionadas em verde.\n\n\n\n\n\n8.4.4 Adicionar arquivos e fazer commit\n\nTerminalGitHub Desktop\n\n\ngit add .\ngit commit -m \"Adiciona função de cálculo\"\n\n\n\nOs arquivos modificados aparecem com caixas de seleção\nMarque os que deseja incluir no commit (ou deixe todos marcados)\nNa parte inferior, escreva um título para o commit (obrigatório) e uma descrição opcional\nClique no botão Commit to main\n\n\n\n\n\n\n8.4.5 Enviar para o GitHub (push)\n\nTerminalGitHub Desktop\n\n\ngit push\n\n\nApós fazer um commit, o botão na barra superior muda para Push origin com um número indicando quantos commits locais ainda não foram enviados. Clique nele.\n\n\n\n\n\n8.4.6 Baixar alterações do GitHub (pull)\n\nTerminalGitHub Desktop\n\n\ngit pull\n\n\n\nClique em Fetch origin na barra superior para verificar se há novidades no repositório remoto\nSe houver, o botão muda para Pull origin\nClique para baixar as alterações\n\n\n\n\n\n\n8.4.7 Ver histórico de commits\n\nTerminalGitHub Desktop\n\n\ngit log\ngit log --oneline --graph\n\n\n\nClique na aba History na barra lateral esquerda\nVocê verá uma lista visual de todos os commits, com autor, data e mensagem\nClicando em qualquer commit, o painel central mostra exatamente quais arquivos foram alterados\n\n\n\n\n\n\n8.4.8 Criar e trocar de branch\n\nTerminalGitHub Desktop\n\n\ngit branch nova-funcionalidade\ngit checkout nova-funcionalidade\n# ou, em um só comando:\ngit checkout -b nova-funcionalidade\n\n\n\nClique no botão Current Branch na barra superior\nVocê verá a lista de branches existentes\nPara criar uma nova, clique em New Branch, dê um nome e confirme\nPara trocar, basta clicar na branch desejada na lista\n\n\n\n\n\n\n8.4.9 Fazer merge de branches\n\nTerminalGitHub Desktop\n\n\ngit checkout main\ngit merge nova-funcionalidade\n\n\n\nEstando na branch de destino (ex: main), clique em Branch → Merge into Current Branch no menu\nSelecione a branch que deseja incorporar\nConfirme\n\n\n\n\n\n\n8.4.10 Resolver conflitos\n\nTerminalGitHub Desktop\n\n\nVocê precisa abrir cada arquivo conflitante, encontrar os marcadores &lt;&lt;&lt;&lt;&lt;&lt;&lt;, =======, &gt;&gt;&gt;&gt;&gt;&gt;&gt;, editar manualmente, salvar, e depois:\ngit add arquivo-resolvido.txt\ngit commit -m \"Resolve conflitos\"\n\n\n\nQuando há conflitos, o aplicativo exibe um aviso claro\nEle lista os arquivos conflitantes e oferece duas opções: abrir no editor de código padrão ou usar uma ferramenta de merge externa\nApós resolver manualmente, volte ao GitHub Desktop e clique em Continue Merge ou faça o commit normalmente\n\n\n\n\n\n\n8.4.11 Desfazer o último commit\n\nTerminalGitHub Desktop\n\n\ngit reset --soft HEAD~1\n\n\n\nClique com o botão direito no commit mais recente na aba History\nSelecione Undo Commit\nOs arquivos voltam para a área de preparação, prontos para serem editados ou commitados novamente",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>GitHub Desktop</span>"
+    ]
+  },
+  {
+    "objectID": "07-github-desktop.html#tabela-comparativa-resumida",
+    "href": "07-github-desktop.html#tabela-comparativa-resumida",
+    "title": "8  GitHub Desktop",
+    "section": "8.5 Tabela comparativa resumida",
+    "text": "8.5 Tabela comparativa resumida\n\n\n\n\n\n\n\n\nOperação\nTerminal\nGitHub Desktop\n\n\n\n\nInicializar repositório\ngit init\nFile → New Repository\n\n\nClonar\ngit clone URL\nFile → Clone Repository\n\n\nVer alterações\ngit status / git diff\nPainel central (automático)\n\n\nPreparar arquivos\ngit add .\nMarcar checkboxes\n\n\nCommit\ngit commit -m \"msg\"\nEscrever mensagem + botão Commit\n\n\nPush\ngit push\nBotão Push origin\n\n\nPull\ngit pull\nBotão Pull origin\n\n\nHistórico\ngit log\nAba History\n\n\nCriar branch\ngit checkout -b nome\nCurrent Branch → New Branch\n\n\nTrocar branch\ngit checkout nome\nClicar na branch\n\n\nMerge\ngit merge nome\nBranch → Merge into Current Branch\n\n\nDesfazer commit\ngit reset --soft HEAD~1\nBotão direito → Undo Commit",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>GitHub Desktop</span>"
+    ]
+  },
+  {
+    "objectID": "07-github-desktop.html#quando-usar-cada-um",
+    "href": "07-github-desktop.html#quando-usar-cada-um",
+    "title": "8  GitHub Desktop",
+    "section": "8.6 Quando usar cada um?",
+    "text": "8.6 Quando usar cada um?\n\n8.6.1 GitHub Desktop é ideal quando você:\n\nEstá aprendendo Git e quer visualizar o que está acontecendo\nPrefere interfaces gráficas a linhas de comando\nQuer revisar alterações visualmente antes de commitar\nTrabalha em projetos simples com fluxo básico (commit, push, pull)\nPrecisa resolver conflitos e quer ver claramente as diferenças\n\n\n\n8.6.2 O Terminal é preferível quando você:\n\nPrecisa de operações avançadas (rebase interativo, cherry-pick, bisect)\nTrabalha com scripts ou automação\nEstá em um servidor remoto sem interface gráfica\nQuer maior controle e flexibilidade\nPrecisa executar comandos específicos não disponíveis na interface\n\n\n\n\n\n\n\nDicaUse os dois!\n\n\n\nA boa notícia: você não precisa escolher. Muitos desenvolvedores usam GitHub Desktop para o dia a dia e recorrem ao Terminal quando precisam de algo mais específico. O repositório é o mesmo; as ferramentas são apenas formas diferentes de interagir com ele.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>GitHub Desktop</span>"
+    ]
+  },
+  {
+    "objectID": "07-github-desktop.html#configurações-úteis",
+    "href": "07-github-desktop.html#configurações-úteis",
+    "title": "8  GitHub Desktop",
+    "section": "8.7 Configurações úteis",
+    "text": "8.7 Configurações úteis\nAcesse as preferências do aplicativo para configurar:\n\nNo Mac: GitHub Desktop → Preferences (ou Cmd+,)\nNo Windows: File → Options (ou Ctrl+,)\n\nAs opções incluem:\n\nAccounts: gerenciar contas GitHub conectadas\nGit: alterar nome e e-mail padrão para commits\nAppearance: escolher tema claro ou escuro\nIntegrations: definir editor de código externo (VS Code, Positron, etc.) e shell padrão\nAdvanced: configurar comportamento de merge e outras opções",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>GitHub Desktop</span>"
+    ]
+  },
+  {
+    "objectID": "07-github-desktop.html#atalhos-de-teclado-úteis",
+    "href": "07-github-desktop.html#atalhos-de-teclado-úteis",
+    "title": "8  GitHub Desktop",
+    "section": "8.8 Atalhos de teclado úteis",
+    "text": "8.8 Atalhos de teclado úteis\n\n\n\n\n\n\n\n\nAção\nMac\nWindows\n\n\n\n\nNovo repositório\nCmd+N\nCtrl+N\n\n\nClonar repositório\nCmd+Shift+O\nCtrl+Shift+O\n\n\nAdicionar repositório local\nCmd+O\nCtrl+O\n\n\nCommit\nCmd+Enter\nCtrl+Enter\n\n\nPush\nCmd+P\nCtrl+P\n\n\nPull\nCmd+Shift+P\nCtrl+Shift+P\n\n\nNova branch\nCmd+Shift+N\nCtrl+Shift+N\n\n\nAlternar entre Changes e History\nCmd+1 / Cmd+2\nCtrl+1 / Ctrl+2\n\n\nAbrir no editor externo\nCmd+Shift+A\nCtrl+Shift+A\n\n\nAbrir no Terminal\nCtrl+`\nCtrl+`",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>GitHub Desktop</span>"
+    ]
+  },
+  {
+    "objectID": "07-github-desktop.html#dicas-práticas",
+    "href": "07-github-desktop.html#dicas-práticas",
+    "title": "8  GitHub Desktop",
+    "section": "8.9 Dicas práticas",
+    "text": "8.9 Dicas práticas\n\n\n\n\n\n\nDicaBoas práticas no GitHub Desktop\n\n\n\n\nUse “Open in Terminal” quando precisar. No menu Repository, você pode abrir o Terminal diretamente na pasta do repositório — útil quando precisa de um comando específico.\nConfigure seu editor favorito. Em Preferences/Options → Integrations, defina o VS Code, Positron ou outro editor de sua preferência.\nAproveite a visualização de diff. Antes de commitar, revise cada alteração clicando nos arquivos. É muito mais fácil identificar erros visualmente do que com git diff no Terminal.\nUse descrições nos commits. Além do título curto, o campo de descrição permite explicar o contexto da alteração. Seu eu do futuro agradece.\nNão tenha medo de explorar. O GitHub Desktop é bastante seguro: a maioria das ações destrutivas pede confirmação antes de executar.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>GitHub Desktop</span>"
+    ]
+  },
+  {
+    "objectID": "08-github-positron.html",
+    "href": "08-github-positron.html",
+    "title": "9  Git e GitHub no Positron",
+    "section": "",
+    "text": "9.1 Por que o Positron facilita tudo?\nAté aqui, você conheceu duas formas de trabalhar com Git: a linha de comando no Terminal e a interface visual do GitHub Desktop. Ambas são ferramentas dedicadas exclusivamente ao controle de versão — você as usa para gerenciar commits, branches e sincronização, mas edita seus arquivos em outro lugar.\nE se você pudesse fazer tudo em um único lugar? Escrever código, executar análises, visualizar resultados e gerenciar versões, tudo na mesma janela? É exatamente isso que um IDE oferece — e é o que vamos explorar neste capítulo com o Positron.\nSe você leu o capítulo sobre os conceitos do Git, deve estar se perguntando como tudo aquilo funciona na prática. O Positron torna essa experiência muito mais fluida porque integra tudo em um só lugar.\nQuando você abre uma pasta no Positron, o terminal integrado já abre diretamente nessa pasta — você não precisa navegar com cd para chegar ao diretório certo. Esse detalhe, que parece pequeno, elimina uma das maiores fontes de confusão para iniciantes: “será que estou na pasta certa?” No Positron, a resposta é sempre sim.\nAlém disso, a aba Source Control mostra visualmente o estado dos seus arquivos (modified, staged, committed), e os botões de push e pull estão a um clique de distância. Você pode escrever código, visualizar resultados, fazer commits, resolver conflitos e sincronizar com o GitHub sem alternar entre programas.\nPara quem está começando, isso significa menos atrito e menos oportunidades de erro. Para quem já tem experiência, significa um fluxo de trabalho mais rápido e integrado.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Git e GitHub no Positron</span>"
+    ]
+  },
+  {
+    "objectID": "08-github-positron.html#o-que-é-um-ide",
+    "href": "08-github-positron.html#o-que-é-um-ide",
+    "title": "9  Git e GitHub no Positron",
+    "section": "9.2 O que é um IDE?",
+    "text": "9.2 O que é um IDE?\nIDE é a sigla para Integrated Development Environment, ou Ambiente de Desenvolvimento Integrado. É um programa que reúne, em uma única interface, todas as ferramentas que você precisa para desenvolver software ou realizar análises de dados:\n\nEditor de código com realce de sintaxe e autocompletar\nConsole para executar comandos interativamente\nVisualizador para gráficos, tabelas e documentos\nGerenciador de arquivos para navegar pelo projeto\nTerminal integrado para comandos do sistema\nControle de versão integrado para Git\n\nA ideia é simples: em vez de alternar entre vários programas (um editor de texto, um terminal, um visualizador de Git), você tem tudo reunido em um só lugar. Isso torna o fluxo de trabalho mais fluido e produtivo.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Git e GitHub no Positron</span>"
+    ]
+  },
+  {
+    "objectID": "08-github-positron.html#o-contexto-rstudio-vs-code-e-o-nascimento-do-positron",
+    "href": "08-github-positron.html#o-contexto-rstudio-vs-code-e-o-nascimento-do-positron",
+    "title": "9  Git e GitHub no Positron",
+    "section": "9.3 O contexto: RStudio, VS Code e o nascimento do Positron",
+    "text": "9.3 O contexto: RStudio, VS Code e o nascimento do Positron\nSe você trabalha com R, provavelmente já ouviu falar do RStudio. Lançado em 2011, o RStudio revolucionou a forma como estatísticos e cientistas de dados trabalham com R. Antes dele, usar R significava alternar entre um editor de texto simples e o console do R. O RStudio unificou tudo em uma interface de quatro painéis que se tornou icônica.\nPor outro lado, o Visual Studio Code (VS Code), lançado pela Microsoft em 2015, conquistou a comunidade de programadores em geral. Com uma arquitetura baseada em extensões, o VS Code se tornou extremamente versátil: você pode usá-lo para Python, JavaScript, C++, ou praticamente qualquer linguagem. Ele é rápido, moderno e altamente personalizável.\nCada um tinha seus pontos fortes: o RStudio era perfeito para R, mas limitado para outras linguagens. O VS Code era versátil, mas não oferecia a mesma experiência integrada para ciência de dados que o RStudio proporcionava.\nEm 2024, a Posit (a empresa por trás do RStudio, que mudou de nome em 2022) lançou o Positron: um novo IDE que combina o melhor dos dois mundos. Construído sobre a mesma base tecnológica do VS Code, o Positron oferece:\n\nSuporte nativo para R e Python no mesmo ambiente\nA familiaridade do RStudio (console interativo, visualizador de dados, painéis organizados)\nA flexibilidade do VS Code (extensões, personalização, terminal integrado)\nIntegração nativa com Git e GitHub\n\nO Positron ainda está em desenvolvimento ativo, mas já é uma opção robusta para quem quer um ambiente moderno para ciência de dados.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Git e GitHub no Positron</span>"
+    ]
+  },
+  {
+    "objectID": "08-github-positron.html#instalando-o-positron",
+    "href": "08-github-positron.html#instalando-o-positron",
+    "title": "9  Git e GitHub no Positron",
+    "section": "9.4 Instalando o Positron",
+    "text": "9.4 Instalando o Positron\nO Positron é gratuito e está disponível para Mac, Windows e Linux.\n\n9.4.1 No Mac\n\nAcesse positron.posit.co\nClique em Download Positron e selecione a versão para macOS\nAbra o arquivo .dmg baixado e arraste o Positron para a pasta Aplicativos\nNa primeira execução, o macOS pode pedir confirmação de segurança — clique em Abrir\n\nVocê também pode instalar via Homebrew:\nbrew install --cask positron\n\n\n9.4.2 No Windows\n\nAcesse positron.posit.co\nClique em Download Positron e selecione a versão para Windows\nExecute o instalador e siga as instruções\nO Positron aparecerá no menu Iniciar após a instalação\n\nVocê também pode instalar via winget:\nwinget install Posit.Positron\n\n\n\n\n\n\nNotaPositron em desenvolvimento\n\n\n\nO Positron ainda está em fase de desenvolvimento ativo. A interface e os recursos podem mudar entre versões. Verifique o site oficial para obter a versão mais recente.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Git e GitHub no Positron</span>"
+    ]
+  },
+  {
+    "objectID": "08-github-positron.html#pré-requisitos-git-instalado-e-configurado",
+    "href": "08-github-positron.html#pré-requisitos-git-instalado-e-configurado",
+    "title": "9  Git e GitHub no Positron",
+    "section": "9.5 Pré-requisitos: Git instalado e configurado",
+    "text": "9.5 Pré-requisitos: Git instalado e configurado\nO Positron usa o Git que está instalado no seu sistema. Antes de continuar, verifique se o Git está instalado e configurado corretamente.\nVerificar instalação:\ngit --version\nSe não estiver instalado, use os gerenciadores de pacotes que você aprendeu nos capítulos anteriores:\n\nMac: brew install git\nWindows: winget install Git.Git\n\nVerificar configuração:\ngit config --global user.name\ngit config --global user.email\nSe não retornar seu nome e e-mail, configure:\ngit config --global user.name \"Seu Nome\"\ngit config --global user.email \"seu.email@exemplo.com\"\nUse o mesmo e-mail da sua conta GitHub.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Git e GitHub no Positron</span>"
+    ]
+  },
+  {
+    "objectID": "08-github-positron.html#a-interface-do-positron",
+    "href": "08-github-positron.html#a-interface-do-positron",
+    "title": "9  Git e GitHub no Positron",
+    "section": "9.6 A interface do Positron",
+    "text": "9.6 A interface do Positron\nAo abrir o Positron pela primeira vez, você verá uma interface dividida em várias áreas:\n\nBarra lateral esquerda (Activity Bar): ícones para acessar diferentes funcionalidades — explorador de arquivos, busca, controle de versão, extensões\nPainel principal: onde você edita seus arquivos de código\nPainel inferior: terminal integrado e console do R/Python\nPainel direito (opcional): visualizador de gráficos, help, ambiente de variáveis\n\n\n\n\nPositron\n\n\nO Git é acessado através da aba Source Control, representada por um ícone de ramificação (parece um “Y” de cabeça para baixo) na barra lateral esquerda.\n\n\n\nAba Source Control",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Git e GitHub no Positron</span>"
+    ]
+  },
+  {
+    "objectID": "08-github-positron.html#iniciando-um-repositório-git",
+    "href": "08-github-positron.html#iniciando-um-repositório-git",
+    "title": "9  Git e GitHub no Positron",
+    "section": "9.7 Iniciando um repositório Git",
+    "text": "9.7 Iniciando um repositório Git\n\n9.7.1 Opção 1: Inicializar Git em uma pasta existente\nSe você já tem uma pasta com arquivos e quer começar a usar Git:\n\nAbra a pasta no Positron: File → Open Folder (Mac: Cmd+O / Windows: Ctrl+O)\nClique na aba Source Control na barra lateral (ícone de ramificação)\nClique no botão Initialize Repository\n\nIsso cria a pasta oculta .git e começa a rastrear seus arquivos.\n\nPositronTerminal\n\n\n\nFile → Open Folder\nSource Control → Initialize Repository\n\n\n\ncd ~/caminho/para/sua/pasta\ngit init\n\n\n\n\n\n9.7.2 Opção 2: Criar um novo projeto já com Git\nNo menu, vá em File → New Folder from Template. Dependendo do template escolhido, você pode marcar a opção para inicializar como repositório Git durante a criação.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Git e GitHub no Positron</span>"
+    ]
+  },
+  {
+    "objectID": "08-github-positron.html#clonando-um-repositório-do-github",
+    "href": "08-github-positron.html#clonando-um-repositório-do-github",
+    "title": "9  Git e GitHub no Positron",
+    "section": "9.8 Clonando um repositório do GitHub",
+    "text": "9.8 Clonando um repositório do GitHub\nPara baixar um repositório existente do GitHub:\n\nVá em File → New Folder from Git\nCole a URL do repositório (ex: https://github.com/usuario/repositorio.git)\nEscolha onde salvar localmente\nO Positron clonará o repositório e abrirá a pasta\n\nVocê também pode usar a Command Palette: pressione Cmd+Shift+P (Mac) ou Ctrl+Shift+P (Windows) e busque “Workspaces: New Folder from Git”.\n\nPositronTerminal\n\n\nFile → New Folder from Git → Colar URL → Escolher local\n\n\ngit clone https://github.com/usuario/repositorio.git",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Git e GitHub no Positron</span>"
+    ]
+  },
+  {
+    "objectID": "08-github-positron.html#fluxo-básico-de-trabalho",
+    "href": "08-github-positron.html#fluxo-básico-de-trabalho",
+    "title": "9  Git e GitHub no Positron",
+    "section": "9.9 Fluxo básico de trabalho",
+    "text": "9.9 Fluxo básico de trabalho\n\n9.9.1 1. Ver alterações\nAo modificar arquivos, eles aparecem automaticamente na aba Source Control com indicadores visuais:\n\n\n\nIndicador\nSignificado\n\n\n\n\nM\nModified — arquivo modificado\n\n\nU\nUntracked — arquivo novo, ainda não rastreado pelo Git\n\n\nD\nDeleted — arquivo removido\n\n\nA\nAdded — arquivo adicionado à área de preparação\n\n\n\nClicando em qualquer arquivo, você vê o diff — uma comparação visual mostrando as linhas removidas em vermelho e as adicionadas em verde.\n\nPositronTerminal\n\n\nAba Source Control mostra alterações automaticamente. Clique em um arquivo para ver o diff.\n\n\ngit status\ngit diff\n\n\n\n\n\n9.9.2 2. Preparar arquivos (staging)\nPara adicionar arquivos à área de preparação:\n\nClique no ícone + ao lado de cada arquivo individual, ou\nClique no ícone + no cabeçalho “Changes” para adicionar todos de uma vez\n\nOs arquivos movem-se para a seção “Staged Changes”.\n\nPositronTerminal\n\n\nClicar no + ao lado do arquivo ou “Stage All Changes”\n\n\ngit add arquivo.R\n# ou para todos:\ngit add .\n\n\n\n\n\n9.9.3 3. Fazer commit\nCom arquivos preparados:\n\nDigite uma mensagem descritiva na caixa de texto acima da lista de arquivos\nClique no botão Commit (ícone de check) ou pressione Cmd+Enter (Mac) / Ctrl+Enter (Windows)\n\n\nPositronTerminal\n\n\nEscrever mensagem → Botão Commit (ou Cmd+Enter / Ctrl+Enter)\n\n\ngit commit -m \"Sua mensagem de commit\"\n\n\n\n\n\n9.9.4 4. Enviar para o GitHub (push)\nApós o commit, clique no botão Sync Changes na aba Source Control, ou use os botões específicos:\n\nPush: envia seus commits locais para o GitHub\nPull: baixa alterações do GitHub para seu computador\nSync: faz pull e push em sequência\n\nVocê também pode usar o ícone de sincronização na barra de status inferior.\n\nPositronTerminal\n\n\nBotão Sync Changes ou Push na barra de status\n\n\ngit push\ngit pull",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Git e GitHub no Positron</span>"
+    ]
+  },
+  {
+    "objectID": "08-github-positron.html#trabalhando-com-branches",
+    "href": "08-github-positron.html#trabalhando-com-branches",
+    "title": "9  Git e GitHub no Positron",
+    "section": "9.10 Trabalhando com branches",
+    "text": "9.10 Trabalhando com branches\n\n9.10.1 Ver e trocar de branch\nA branch atual aparece no canto inferior esquerdo da janela do Positron. Clique nela para ver a lista de branches disponíveis e trocar entre elas.\n\n\n9.10.2 Criar nova branch\n\nClique no nome da branch atual (canto inferior esquerdo)\nSelecione Create new branch\nDigite o nome da nova branch e pressione Enter\n\n\nPositronTerminal\n\n\nClicar na branch → Create new branch → Nome → Enter\n\n\ngit checkout -b nova-branch\n\n\n\n\n\n9.10.3 Fazer merge\nPara incorporar alterações de uma branch em outra:\n\nTroque para a branch de destino (ex: main)\nAbra a Command Palette (Cmd+Shift+P / Ctrl+Shift+P)\nBusque “Git: Merge Branch”\nSelecione a branch que deseja incorporar\n\n\nPositronTerminal\n\n\nCommand Palette → Git: Merge Branch → Selecionar branch\n\n\ngit checkout main\ngit merge nova-branch",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Git e GitHub no Positron</span>"
+    ]
+  },
+  {
+    "objectID": "08-github-positron.html#resolvendo-conflitos",
+    "href": "08-github-positron.html#resolvendo-conflitos",
+    "title": "9  Git e GitHub no Positron",
+    "section": "9.11 Resolvendo conflitos",
+    "text": "9.11 Resolvendo conflitos\nQuando há conflitos de merge, o Positron exibe os arquivos problemáticos com um ícone de aviso na aba Source Control.\nAo abrir um arquivo conflitante, você verá o editor de merge de 3 vias, que mostra:\n\nAs alterações da sua branch (Current Changes)\nAs alterações da outra branch (Incoming Changes)\nBotões para aceitar uma versão, a outra, ou ambas\n\nEssa visualização é muito mais clara do que resolver conflitos manualmente no Terminal, onde você veria marcadores como:\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD\nseu código\n=======\ncódigo da outra branch\n&gt;&gt;&gt;&gt;&gt;&gt;&gt; outra-branch\nApós resolver o conflito, salve o arquivo e faça um novo commit.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Git e GitHub no Positron</span>"
+    ]
+  },
+  {
+    "objectID": "08-github-positron.html#integração-com-github",
+    "href": "08-github-positron.html#integração-com-github",
+    "title": "9  Git e GitHub no Positron",
+    "section": "9.12 Integração com GitHub",
+    "text": "9.12 Integração com GitHub\nO Positron facilita a autenticação e integração com o GitHub.\n\n9.12.1 Autenticação\nNa primeira vez que você tentar fazer push ou acessar um repositório privado, o Positron pedirá para autenticar com o GitHub. Siga as instruções na tela — geralmente envolve autorizar o Positron via navegador. Após autorizar, você não precisará se autenticar novamente.\n\n\n9.12.2 Extensões para GitHub\nO Positron suporta extensões do ecossistema VS Code. Para uma integração mais completa com GitHub, você pode instalar:\n\nGitHub Pull Requests and Issues\n\nPermite criar, revisar e gerenciar Pull Requests e Issues diretamente no Positron\n\nGitLens\n\nVisualização avançada do histórico, blame em linha (quem alterou cada linha e quando), comparações entre commits\n\nGit Graph\n\nVisualização gráfica do histórico de branches e commits, útil para entender a estrutura do projeto\n\n\nPara instalar extensões, clique na aba Extensions (ícone de quadrados na barra lateral), busque pelo nome e clique em Install.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Git e GitHub no Positron</span>"
+    ]
+  },
+  {
+    "objectID": "08-github-positron.html#comparação-positron-vs-terminal",
+    "href": "08-github-positron.html#comparação-positron-vs-terminal",
+    "title": "9  Git e GitHub no Positron",
+    "section": "9.13 Comparação: Positron vs Terminal",
+    "text": "9.13 Comparação: Positron vs Terminal\n\n\n\n\n\n\n\n\nOperação\nPositron\nTerminal\n\n\n\n\nInicializar repositório\nSource Control → Initialize Repository\ngit init\n\n\nClonar repositório\nFile → New Folder from Git\ngit clone URL\n\n\nVer alterações\nAba Source Control (automático)\ngit status / git diff\n\n\nPreparar arquivos\nClicar no +\ngit add .\n\n\nCommit\nEscrever mensagem + botão Commit\ngit commit -m \"msg\"\n\n\nPush\nBotão Sync ou Push\ngit push\n\n\nPull\nBotão Sync ou Pull\ngit pull\n\n\nVer histórico\nExtensão GitLens (opcional)\ngit log\n\n\nCriar branch\nClicar na branch → Create new branch\ngit checkout -b nome\n\n\nTrocar branch\nClicar na branch desejada\ngit checkout nome\n\n\nMerge\nCommand Palette → Git: Merge Branch\ngit merge nome\n\n\nResolver conflitos\nEditor de merge de 3 vias\nEditar manualmente + git add",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Git e GitHub no Positron</span>"
+    ]
+  },
+  {
+    "objectID": "08-github-positron.html#atalhos-de-teclado-úteis",
+    "href": "08-github-positron.html#atalhos-de-teclado-úteis",
+    "title": "9  Git e GitHub no Positron",
+    "section": "9.14 Atalhos de teclado úteis",
+    "text": "9.14 Atalhos de teclado úteis\n\n\n\nAção\nMac\nWindows\n\n\n\n\nAbrir Source Control\nCtrl+Shift+G\nCtrl+Shift+G\n\n\nAbrir Command Palette\nCmd+Shift+P\nCtrl+Shift+P\n\n\nCommit (após escrever mensagem)\nCmd+Enter\nCtrl+Enter\n\n\nAbrir terminal integrado\nCtrl+`\nCtrl+`\n\n\nAbrir pasta\nCmd+O\nCtrl+O\n\n\nSalvar arquivo\nCmd+S\nCtrl+S",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Git e GitHub no Positron</span>"
+    ]
+  },
+  {
+    "objectID": "08-github-positron.html#quando-usar-a-interface-vs-terminal",
+    "href": "08-github-positron.html#quando-usar-a-interface-vs-terminal",
+    "title": "9  Git e GitHub no Positron",
+    "section": "9.15 Quando usar a interface vs Terminal?",
+    "text": "9.15 Quando usar a interface vs Terminal?\n\n9.15.1 A interface do Positron é ideal quando você:\n\nQuer visualizar alterações lado a lado antes de commitar\nPrefere clicar a digitar comandos\nEstá aprendendo Git e quer entender o fluxo visualmente\nTrabalha com Pull Requests e Issues do GitHub\nPrecisa resolver conflitos e quer ver as diferenças claramente\nQuer fazer tudo em um só lugar: código, análise e versionamento\n\n\n\n9.15.2 O Terminal integrado é preferível quando você:\n\nPrecisa de comandos avançados (rebase, cherry-pick, bisect)\nQuer executar scripts ou automações\nEstá confortável com a linha de comando\nPrecisa de operações não disponíveis na interface\n\n\n\n\n\n\n\nDicaUse os dois!\n\n\n\nO Positron tem um terminal integrado que abre diretamente na pasta do projeto. Pressione Ctrl+` para abri-lo. Use a interface gráfica para o dia a dia e recorra ao terminal quando precisar de algo mais específico. Os dois funcionam sobre o mesmo repositório.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Git e GitHub no Positron</span>"
+    ]
+  },
+  {
+    "objectID": "08-github-positron.html#para-quem-vem-do-rstudio",
+    "href": "08-github-positron.html#para-quem-vem-do-rstudio",
+    "title": "9  Git e GitHub no Positron",
+    "section": "9.16 Para quem vem do RStudio",
+    "text": "9.16 Para quem vem do RStudio\nSe você já usa RStudio, a transição para o Positron será natural, mas há algumas diferenças importantes:\n\nProjetos vs Workspaces\n\nO RStudio usa arquivos .Rproj para definir projetos. O Positron usa o conceito de “workspaces” — basicamente, você abre uma pasta diretamente com File → Open Folder. Não há arquivo de projeto específico.\n\nLocalização da aba Git\n\nNo RStudio, a aba Git fica no painel superior direito. No Positron, é a aba Source Control na barra lateral esquerda.\n\nAtalhos de teclado\n\nMuitos atalhos são diferentes. Você pode personalizar os atalhos em File → Preferences → Keyboard Shortcuts se quiser recriar os atalhos do RStudio.\n\nVisualização de diff\n\nNo Positron, o diff é mais visual e interativo, semelhante ao GitHub Desktop. Você pode aceitar ou rejeitar alterações individualmente.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Git e GitHub no Positron</span>"
+    ]
+  },
+  {
+    "objectID": "08-github-positron.html#fluxo-completo-do-zero-ao-github",
+    "href": "08-github-positron.html#fluxo-completo-do-zero-ao-github",
+    "title": "9  Git e GitHub no Positron",
+    "section": "9.17 Fluxo completo: do zero ao GitHub",
+    "text": "9.17 Fluxo completo: do zero ao GitHub\nAqui está um exemplo prático completo, do início ao fim:\n\nCrie uma pasta para seu projeto no Finder (Mac) ou Explorador de Arquivos (Windows)\nAbra no Positron: File → Open Folder → selecione a pasta\nInicialize o Git: Na aba Source Control, clique em “Initialize Repository”\nCrie alguns arquivos (ex: analise.R, README.md)\nPrepare os arquivos: Na aba Source Control, clique no + para adicionar todos\nFaça o primeiro commit: Digite “Primeiro commit” e clique no botão Commit\nCrie um repositório no GitHub: Acesse github.com, crie um repositório vazio (sem README)\nConecte ao remoto: Abra o terminal integrado (Ctrl+`) e digite:\ngit remote add origin https://github.com/seu-usuario/seu-repositorio.git\nFaça push: Clique em “Publish Branch” na aba Source Control, ou use o terminal:\ngit push -u origin main\nPronto! Seu projeto está no GitHub. A partir de agora, basta fazer commits e clicar em Sync para manter tudo sincronizado.\n\n\n\n\n\n\n\nDicaDica final\n\n\n\nO Positron combina o melhor de três mundos: a praticidade do RStudio para ciência de dados, a flexibilidade do VS Code para programação geral, e a integração visual com Git que você já conhece do GitHub Desktop. Se você trabalha com R ou Python e quer simplificar seu fluxo de trabalho, vale a pena experimentar.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Git e GitHub no Positron</span>"
+    ]
+  },
+  {
+    "objectID": "09-github-pages.html",
+    "href": "09-github-pages.html",
+    "title": "10  GitHub Pages",
+    "section": "",
+    "text": "10.1 O que é GitHub Pages?\nVocê chegou ao último capítulo deste manual. Ao longo da jornada, aprendeu a usar o Terminal, instalar ferramentas com gerenciadores de pacotes, entendeu os conceitos do Git, configurou seu ambiente, e descobriu diferentes formas de trabalhar com controle de versão — pelo Terminal, pelo GitHub Desktop ou pelo Positron.\nAgora vem a recompensa: colocar seu trabalho no ar. Neste capítulo, você vai aprender a usar o GitHub Pages, um serviço gratuito do GitHub que transforma repositórios em sites na internet. Sem servidor para configurar, sem hospedagem para pagar, sem complicação.\nO GitHub Pages é um serviço de hospedagem de sites estáticos oferecido gratuitamente pelo GitHub. Ele pega os arquivos do seu repositório — HTML, CSS, JavaScript, imagens — e publica em uma URL pública, acessível por qualquer pessoa no mundo.\n“Site estático” significa que as páginas são arquivos prontos, sem processamento no servidor. Diferente de um site dinâmico (como WordPress ou um sistema de e-commerce), onde cada página é gerada no momento do acesso, um site estático é simplesmente um conjunto de arquivos que o navegador baixa e exibe.\nIsso pode parecer limitado, mas é perfeito para:\nFerramentas como Quarto, Jekyll, Hugo e MkDocs geram sites estáticos sofisticados a partir de arquivos simples em Markdown. Você escreve em texto puro, executa um comando, e tem um site completo pronto para publicar.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+    ]
+  },
+  {
+    "objectID": "09-github-pages.html#o-que-é-github-pages",
+    "href": "09-github-pages.html#o-que-é-github-pages",
+    "title": "10  GitHub Pages",
+    "section": "",
+    "text": "Documentação de projetos\nPortfólios pessoais\nBlogs\nMateriais didáticos\nLivros e manuais (como este que você está lendo!)\nCurrículos online\nLanding pages",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+    ]
+  },
+  {
+    "objectID": "09-github-pages.html#como-funciona",
+    "href": "09-github-pages.html#como-funciona",
+    "title": "10  GitHub Pages",
+    "section": "10.2 Como funciona?",
+    "text": "10.2 Como funciona?\nO fluxo é simples:\n\nVocê cria um repositório no GitHub com os arquivos do seu site\nVocê ativa o GitHub Pages nas configurações do repositório\nO GitHub publica os arquivos em uma URL como seu-usuario.github.io/nome-do-repositorio\nToda vez que você faz push de alterações, o site é atualizado automaticamente\n\nNão há etapa de “deploy” manual, não há servidor para gerenciar. O GitHub cuida de tudo.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+    ]
+  },
+  {
+    "objectID": "09-github-pages.html#opções-de-publicação",
+    "href": "09-github-pages.html#opções-de-publicação",
+    "title": "10  GitHub Pages",
+    "section": "10.3 Opções de publicação",
+    "text": "10.3 Opções de publicação\nO GitHub Pages oferece três formas de definir de onde vêm os arquivos do site:\n\n10.3.1 Opção 1: Raiz do repositório (branch main)\nOs arquivos do site ficam na raiz do repositório, na branch principal. Simples e direto — o que está no repositório é o que aparece no site.\nQuando usar: projetos simples onde o repositório contém apenas o site.\n\n\n10.3.2 Opção 2: Pasta /docs (branch main)\nOs arquivos do site ficam dentro de uma pasta chamada docs/ na branch principal. O restante do repositório pode conter código-fonte, dados ou outros arquivos que não fazem parte do site.\nQuando usar: projetos onde você quer separar o código-fonte do site publicado. É a opção ideal para livros Quarto, onde os arquivos .qmd ficam na raiz e o site gerado vai para docs/.\n\n\n10.3.3 Opção 3: Branch gh-pages\nOs arquivos do site ficam em uma branch separada chamada gh-pages. A branch principal contém o código-fonte, e a branch gh-pages contém apenas os arquivos gerados.\nQuando usar: fluxos de trabalho mais avançados, geralmente com automação (GitHub Actions).\nPara este manual e para a maioria dos projetos com Quarto, a Opção 2 (pasta /docs) é a mais prática.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+    ]
+  },
+  {
+    "objectID": "09-github-pages.html#publicando-um-site-quarto-passo-a-passo",
+    "href": "09-github-pages.html#publicando-um-site-quarto-passo-a-passo",
+    "title": "10  GitHub Pages",
+    "section": "10.4 Publicando um site Quarto: passo a passo",
+    "text": "10.4 Publicando um site Quarto: passo a passo\nVamos ao processo completo para publicar um livro ou site feito com Quarto.\n\n10.4.1 Passo 1: Configure o Quarto para gerar na pasta docs\nNo arquivo _quarto.yml do seu projeto, defina o diretório de saída:\nproject:\n  type: book\n  output-dir: docs\nIsso faz com que o comando quarto render gere todos os arquivos HTML dentro da pasta docs/.\n\n\n10.4.2 Passo 2: Renderize o projeto\nNo Terminal (ou no terminal integrado do Positron), execute:\nquarto render\nO Quarto processará todos os arquivos .qmd e gerará o site na pasta docs/.\n\n\n10.4.3 Passo 3: Crie o repositório no GitHub\nSe ainda não tiver um repositório para o projeto:\n\nAcesse github.com e faça login\nClique em + → New repository\nDê um nome ao repositório (ex: manual-git)\nDeixe as opções de inicialização desmarcadas\nClique em Create repository\n\n\n\n10.4.4 Passo 4: Envie o projeto para o GitHub\nSe o projeto ainda não está conectado ao GitHub:\ngit init\ngit add .\ngit commit -m \"Primeiro commit\"\ngit remote add origin https://github.com/seu-usuario/nome-do-repositorio.git\ngit branch -M main\ngit push -u origin main\nSe já está conectado, basta:\ngit add .\ngit commit -m \"Atualiza site\"\ngit push\n\n\n10.4.5 Passo 5: Ative o GitHub Pages\n\nNo repositório do GitHub, clique em Settings (ícone de engrenagem)\nNo menu lateral esquerdo, clique em Pages\nEm Source, selecione Deploy from a branch\nEm Branch, selecione main e a pasta /docs\nClique em Save\n\n\n\n10.4.6 Passo 6: Aguarde e acesse\nO GitHub levará alguns minutos para publicar o site. Você pode acompanhar o progresso na seção Actions do repositório.\nQuando estiver pronto, o site estará disponível em:\nhttps://seu-usuario.github.io/nome-do-repositorio/\n\n\n\n\n\n\nDicaEncontrando a URL\n\n\n\nApós ativar o GitHub Pages, a URL do site aparece na própria página de configurações (Settings → Pages), no topo da seção.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+    ]
+  },
+  {
+    "objectID": "09-github-pages.html#atualizando-o-site",
+    "href": "09-github-pages.html#atualizando-o-site",
+    "title": "10  GitHub Pages",
+    "section": "10.5 Atualizando o site",
+    "text": "10.5 Atualizando o site\nDepois da configuração inicial, atualizar o site é simples:\n\nEdite seus arquivos .qmd\nExecute quarto render para regenerar o site\nFaça commit e push:\n\ngit add .\ngit commit -m \"Atualiza conteúdo\"\ngit push\nO GitHub Pages detecta automaticamente as alterações na pasta docs/ e republica o site. Em poucos minutos, as mudanças estarão no ar.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+    ]
+  },
+  {
+    "objectID": "09-github-pages.html#domínio-personalizado",
+    "href": "09-github-pages.html#domínio-personalizado",
+    "title": "10  GitHub Pages",
+    "section": "10.6 Domínio personalizado",
+    "text": "10.6 Domínio personalizado\nPor padrão, seu site terá uma URL como seu-usuario.github.io/repositorio. Mas você pode configurar um domínio próprio, como www.seusite.com.br.\n\n10.6.1 Como configurar\n\nCompre um domínio em um registrador (Registro.br, GoDaddy, Namecheap, etc.)\nNo GitHub, vá em Settings → Pages e digite seu domínio em Custom domain\nNo seu registrador de domínio, configure os registros DNS:\n\nPara domínio raiz (exemplo.com): crie registros A apontando para os IPs do GitHub:\n185.199.108.153\n185.199.109.153\n185.199.110.153\n185.199.111.153\nPara subdomínio (www.exemplo.com): crie um registro CNAME apontando para seu-usuario.github.io\n\nAguarde a propagação DNS (pode levar até 24 horas)\nMarque a opção Enforce HTTPS para ter conexão segura\n\n\n\n\n\n\n\nNotaHTTPS gratuito\n\n\n\nO GitHub Pages oferece certificado HTTPS gratuito, mesmo para domínios personalizados. Isso significa que seu site terá o cadeado de segurança no navegador sem custo adicional.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+    ]
+  },
+  {
+    "objectID": "09-github-pages.html#arquivo-.nojekyll",
+    "href": "09-github-pages.html#arquivo-.nojekyll",
+    "title": "10  GitHub Pages",
+    "section": "10.7 Arquivo .nojekyll",
+    "text": "10.7 Arquivo .nojekyll\nPor padrão, o GitHub Pages processa os arquivos com Jekyll (um gerador de sites estáticos). Se você usa Quarto ou outro gerador, pode haver conflitos — especialmente com pastas que começam com underscore (_), que o Jekyll ignora.\nPara desativar o processamento Jekyll, crie um arquivo vazio chamado .nojekyll na pasta docs/:\ntouch docs/.nojekyll\nO Quarto geralmente cria esse arquivo automaticamente, mas é bom verificar se ele existe.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+    ]
+  },
+  {
+    "objectID": "09-github-pages.html#solucionando-problemas-comuns",
+    "href": "09-github-pages.html#solucionando-problemas-comuns",
+    "title": "10  GitHub Pages",
+    "section": "10.8 Solucionando problemas comuns",
+    "text": "10.8 Solucionando problemas comuns\n\n10.8.1 O site não aparece\n\nVerifique se a pasta docs/ existe e contém um arquivo index.html\nConfirme que você fez push após o quarto render\nAguarde alguns minutos — a primeira publicação pode demorar\nVerifique a aba Actions no GitHub para ver se há erros\n\n\n\n10.8.2 Erro 404 (página não encontrada)\n\nVerifique se a configuração do GitHub Pages está apontando para a pasta correta (/docs)\nConfirme que o arquivo index.html está na raiz da pasta docs/\nSe estiver usando caminhos relativos, verifique se estão corretos\n\n\n\n10.8.3 Estilos ou imagens não carregam\n\nVerifique se o _quarto.yml tem a configuração correta de output-dir\nConfirme que a pasta docs/ contém as subpastas de estilos e imagens\nLimpe o cache do navegador e tente novamente\n\n\n\n10.8.4 Alterações não aparecem no site\n\nConfirme que você executou quarto render após editar os arquivos\nVerifique se fez commit e push\nAguarde alguns minutos para o GitHub processar\nVerifique a aba Actions para confirmar que o deploy foi concluído",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+    ]
+  },
+  {
+    "objectID": "09-github-pages.html#alternativas-ao-github-pages",
+    "href": "09-github-pages.html#alternativas-ao-github-pages",
+    "title": "10  GitHub Pages",
+    "section": "10.9 Alternativas ao GitHub Pages",
+    "text": "10.9 Alternativas ao GitHub Pages\nEmbora o GitHub Pages seja excelente para a maioria dos casos, existem alternativas:\n\nNetlify\n\nOferece mais recursos, como formulários, funções serverless e deploy automático de branches. Também é gratuito para projetos pessoais.\n\nVercel\n\nFocado em frameworks JavaScript modernos, mas funciona bem com sites estáticos. Gratuito para uso pessoal.\n\nCloudflare Pages\n\nBoa performance global e generoso plano gratuito.\n\nQuarto Pub\n\nServiço da própria Posit para publicar documentos Quarto. Simples de usar com o comando quarto publish.\n\n\nPara a maioria dos usuários acadêmicos e projetos pessoais, o GitHub Pages é mais que suficiente — e tem a vantagem de manter tudo no mesmo lugar que seu código.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+    ]
+  },
+  {
+    "objectID": "09-github-pages.html#exemplos-de-sites-no-github-pages",
+    "href": "09-github-pages.html#exemplos-de-sites-no-github-pages",
+    "title": "10  GitHub Pages",
+    "section": "10.10 Exemplos de sites no GitHub Pages",
+    "text": "10.10 Exemplos de sites no GitHub Pages\nPara inspiração, alguns exemplos de sites hospedados no GitHub Pages:\n\nR for Data Science (r4ds.hadley.nz) — livro completo sobre R\nHappy Git with R (happygitwithr.com) — guia de Git para usuários de R\nQuarto documentation (quarto.org) — documentação oficial do Quarto\nEste manual — sim, este manual que você está lendo!\n\nTodos são projetos de código aberto. Você pode visitar os repositórios, ver como são organizados e aprender com eles.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+    ]
+  },
+  {
+    "objectID": "09-github-pages.html#conclusão",
+    "href": "09-github-pages.html#conclusão",
+    "title": "10  GitHub Pages",
+    "section": "10.11 Conclusão",
+    "text": "10.11 Conclusão\nO GitHub Pages fecha o ciclo completo: você escreve, versiona com Git, colabora pelo GitHub, e publica para o mundo — tudo de graça, tudo integrado.\nPara acadêmicos, é uma ferramenta transformadora. Materiais didáticos que antes ficavam trancados em pastas ou sistemas fechados agora podem estar acessíveis a qualquer pessoa com um navegador. Pesquisas, tutoriais, livros, portfólios — tudo pode ser compartilhado de forma aberta e profissional.\nVocê começou este manual aprendendo a navegar pelo Terminal. Agora termina sabendo publicar um site na internet. Esse é o poder de dominar suas ferramentas.\n\n\n\n\n\n\nDicaPróximos passos\n\n\n\nAgora que você conhece Git, GitHub e GitHub Pages, que tal:\n\nCriar um site pessoal com seu portfólio ou currículo?\nPublicar os documentos de estudo de uma disciplina que você ensina ou estuda?\nTransformar sua dissertação ou tese em um livro online?\nContribuir para um projeto open source que você admira?",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+    ]
+  },
+  {
+    "objectID": "10-referencias.html",
+    "href": "10-referencias.html",
+    "title": "Referências",
+    "section": "",
+    "text": "Documentação Oficial",
+    "crumbs": [
+      "Referências"
+    ]
+  },
+  {
+    "objectID": "10-referencias.html#documentação-oficial",
+    "href": "10-referencias.html#documentação-oficial",
+    "title": "Referências",
+    "section": "",
+    "text": "Git\n\nDocumentação oficial do Git — referência completa de todos os comandos\nPro Git Book — livro gratuito disponível em português\nGit Cheat Sheet — folha de referência rápida em português\n\n\n\nGitHub\n\nGitHub Docs — documentação oficial do GitHub em português\nGitHub Skills — cursos interativos gratuitos\nGitHub Desktop Documentation — guia do GitHub Desktop\n\n\n\nPositron\n\nPositron Documentation — documentação oficial do Positron\nGit Version Control no Positron — guia específico de Git no Positron",
+    "crumbs": [
+      "Referências"
+    ]
+  },
+  {
+    "objectID": "10-referencias.html#tutoriais-interativos",
+    "href": "10-referencias.html#tutoriais-interativos",
+    "title": "Referências",
+    "section": "Tutoriais Interativos",
+    "text": "Tutoriais Interativos\n\nLearn Git Branching\n\nTutorial visual e interativo para aprender Git, disponível em português. Excelente para entender branches e merge.\n\nOh My Git!\n\nJogo para aprender Git de forma divertida.\n\nGit Immersion\n\nTutorial guiado com exercícios práticos.",
+    "crumbs": [
+      "Referências"
+    ]
+  },
+  {
+    "objectID": "10-referencias.html#para-usuários-de-r",
+    "href": "10-referencias.html#para-usuários-de-r",
+    "title": "Referências",
+    "section": "Para Usuários de R",
+    "text": "Para Usuários de R\n\nHappy Git and GitHub for the useR\n\nGuia completo de Jenny Bryan para usuários de R. Cobre desde a instalação até fluxos avançados de trabalho.\n\nR Packages: Git and GitHub\n\nCapítulo do livro R Packages sobre uso de Git em desenvolvimento de pacotes.",
+    "crumbs": [
+      "Referências"
+    ]
+  },
+  {
+    "objectID": "10-referencias.html#vídeos",
+    "href": "10-referencias.html#vídeos",
+    "title": "Referências",
+    "section": "Vídeos",
+    "text": "Vídeos\n\nGit e GitHub para Iniciantes — diversos tutoriais em português no YouTube\nCurso de Git e GitHub - Curso em Vídeo — curso gratuito completo",
+    "crumbs": [
+      "Referências"
+    ]
+  },
+  {
+    "objectID": "10-referencias.html#glossário",
+    "href": "10-referencias.html#glossário",
+    "title": "Referências",
+    "section": "Glossário",
+    "text": "Glossário\n\nRepositório (repository)\n\nPasta que contém seu projeto e todo o histórico de versões. Pode ser local (no seu computador) ou remoto (no GitHub).\n\nCommit\n\nUm “snapshot” do seu projeto em um momento específico. Cada commit tem uma mensagem descritiva e um identificador único (hash).\n\nBranch\n\nUma linha independente de desenvolvimento. Permite trabalhar em funcionalidades separadas sem afetar o código principal.\n\nMerge\n\nCombinar alterações de uma branch em outra.\n\nPush\n\nEnviar commits locais para o repositório remoto (GitHub).\n\nPull\n\nBaixar alterações do repositório remoto para o local.\n\nClone\n\nCriar uma cópia local de um repositório remoto.\n\nFork\n\nCriar uma cópia de um repositório de outra pessoa na sua conta GitHub.\n\nPull Request (PR)\n\nSolicitação para incorporar suas alterações em um repositório. Usado para revisão de código e colaboração.\n\nStaging Area\n\nÁrea intermediária onde você seleciona quais alterações incluir no próximo commit.\n\nHEAD\n\nReferência ao commit atual em que você está trabalhando.\n\nOrigin\n\nNome padrão dado ao repositório remoto principal.\n\nMain/Master\n\nNome da branch principal do repositório.",
+    "crumbs": [
+      "Referências"
+    ]
+  },
+  {
+    "objectID": "10-referencias.html#comandos-rápidos",
+    "href": "10-referencias.html#comandos-rápidos",
+    "title": "Referências",
+    "section": "Comandos Rápidos",
+    "text": "Comandos Rápidos\n\nConfiguração\ngit config --global user.name \"Seu Nome\"\ngit config --global user.email \"seu@email.com\"\ngit config --list\n\n\nBásicos\ngit init                    # Inicializar repositório\ngit clone URL               # Clonar repositório\ngit status                  # Ver status\ngit add .                   # Adicionar todos os arquivos\ngit commit -m \"mensagem\"    # Fazer commit\ngit push                    # Enviar para remoto\ngit pull                    # Baixar do remoto\n\n\nBranches\ngit branch                  # Listar branches\ngit branch nome             # Criar branch\ngit checkout nome           # Trocar de branch\ngit checkout -b nome        # Criar e trocar\ngit merge nome              # Mesclar branch\ngit branch -d nome          # Deletar branch\n\n\nHistórico\ngit log                     # Ver histórico\ngit log --oneline           # Histórico resumido\ngit diff                    # Ver alterações\ngit show HASH               # Ver commit específico\n\n\nDesfazer\ngit checkout -- arquivo     # Descartar alterações\ngit reset arquivo           # Remover do staging\ngit reset --soft HEAD~1     # Desfazer último commit\ngit revert HASH             # Reverter commit",
+    "crumbs": [
+      "Referências"
+    ]
+  },
+  {
+    "objectID": "10-referencias.html#arquivos-importantes",
+    "href": "10-referencias.html#arquivos-importantes",
+    "title": "Referências",
+    "section": "Arquivos Importantes",
+    "text": "Arquivos Importantes\n\n.gitignore\nArquivo que lista padrões de arquivos a serem ignorados pelo Git:\n# Sistema operacional\n.DS_Store\nThumbs.db\n\n# R\n.Rproj.user/\n.Rhistory\n.RData\n\n# Python\n__pycache__/\n*.pyc\n.venv/\n\n# Dados sensíveis\n*.csv\n*.xlsx\nsenhas.txt\n\n# IDEs\n.vscode/\n.idea/\n\n\nREADME.md\nArquivo de apresentação do projeto. Deve conter:\n\nNome e descrição do projeto\nComo instalar/configurar\nComo usar\nComo contribuir\nLicença",
+    "crumbs": [
+      "Referências"
+    ]
+  },
+  {
+    "objectID": "10-referencias.html#fluxo-de-trabalho-recomendado",
+    "href": "10-referencias.html#fluxo-de-trabalho-recomendado",
+    "title": "Referências",
+    "section": "Fluxo de Trabalho Recomendado",
+    "text": "Fluxo de Trabalho Recomendado\n\n\n\n\n\nflowchart TD\n    A[Criar branch] --&gt; B[Fazer alterações]\n    B --&gt; C[git add .]\n    C --&gt; D[git commit]\n    D --&gt; E{Mais alterações?}\n    E --&gt;|Sim| B\n    E --&gt;|Não| F[git push]\n    F --&gt; G[Criar Pull Request]\n    G --&gt; H[Revisão]\n    H --&gt; I[Merge]\n    I --&gt; J[Deletar branch]",
+    "crumbs": [
+      "Referências"
+    ]
+  },
+  {
+    "objectID": "10-referencias.html#problemas-comuns",
+    "href": "10-referencias.html#problemas-comuns",
+    "title": "Referências",
+    "section": "Problemas Comuns",
+    "text": "Problemas Comuns\n\n“Permission denied” ao fazer push\nVerifique se você está autenticado. Use token de acesso pessoal ou configure chave SSH.\n\n\n“Your branch is behind”\nExecute git pull para baixar as alterações do remoto antes de fazer push.\n\n\nConflitos de merge\nAbra os arquivos conflitantes, resolva manualmente, depois:\ngit add arquivo-resolvido\ngit commit -m \"Resolve conflitos\"\n\n\nCommit na branch errada\ngit reset --soft HEAD~1     # Desfaz commit, mantém alterações\ngit checkout branch-correta\ngit add .\ngit commit -m \"mensagem\"\n\n\n\n\n\n\n\nDicaContinue aprendendo!\n\n\n\nGit é uma ferramenta poderosa e há sempre mais para aprender. Comece com o básico, pratique regularmente, e vá explorando recursos avançados conforme a necessidade surgir.",
+    "crumbs": [
+      "Referências"
+    ]
+  }
+]

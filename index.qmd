@@ -1,0 +1,120 @@
+# Introdução 
+
+![](images/capa.png){width=80% fig-align="center"}
+
+Bem-vindo ao **Manual de Git e GitHub**!
+
+Este material foi criado para quem está começando a usar controle de versão e quer aprender de forma prática e objetiva. Não é necessário nenhum conhecimento prévio — partimos do zero e avançamos gradualmente.
+
+## Para quem é este manual?
+
+- Estudantes e pesquisadores que querem organizar seus projetos
+- Professores que desejam versionar e publicar materiais didáticos
+- Cientistas de dados iniciando com boas práticas de código
+- Qualquer pessoa curiosa sobre Git e GitHub
+
+## O que você vai aprender?
+
+Este manual está organizado em uma sequência progressiva:
+
+**Preparação do ambiente**
+
+Começamos pelo básico: como usar o **Terminal** (linha de comando) e como instalar programas de forma eficiente usando gerenciadores de pacotes — **Homebrew** no Mac e **winget** no Windows. Essas ferramentas facilitarão todo o resto.
+
+**Fundamentos do Git**
+
+Você vai conhecer a história do Git e do GitHub, entender o que é controle de versão e aprender os **conceitos fundamentais**: repositório, commit, branch, merge, push, pull e outros termos que fazem parte do vocabulário diário de quem usa Git.
+
+**Prática com Git**
+
+Com os conceitos claros, partimos para a prática: instalar e configurar o Git, criar repositórios, fazer commits e sincronizar com o GitHub.
+
+**Três formas de usar Git**
+
+Este manual cobre três abordagens complementares:
+
+1. **Terminal (linha de comando)**: a forma mais fundamental e poderosa de interagir com Git
+2. **GitHub Desktop**: interface gráfica oficial do GitHub, ideal para quem prefere clicar a digitar
+3. **Positron IDE**: integração nativa para cientistas de dados que trabalham com R e Python
+
+Você não precisa dominar as três — escolha a que melhor se adapta ao seu fluxo de trabalho. O importante é entender os conceitos, que são os mesmos independentemente da ferramenta.
+
+**Publicação com GitHub Pages**
+
+Por fim, você aprenderá a transformar seu repositório em um site na internet usando o **GitHub Pages**. É a cereja do bolo: compartilhar seu trabalho com o mundo, de graça, sem complicação.
+
+## Estrutura do manual
+
+| Capítulo | Conteúdo |
+|----------|----------|
+| 1. Terminal | Introdução à linha de comando |
+| 2. Homebrew | Gerenciador de pacotes para Mac |
+| 3. Winget | Gerenciador de pacotes para Windows |
+| 4. Git e GitHub | História e contexto |
+| 5. Conceitos do Git | Vocabulário e fundamentos |
+| 6. Configuração | Instalação e primeiros passos |
+| 7. GitHub Desktop | Interface gráfica |
+| 8. Positron | Git integrado ao IDE |
+| 9. GitHub Pages | Publicando seu site |
+
+## Como usar este manual
+
+Cada capítulo foi pensado para ser lido em sequência, especialmente se você está começando do zero. Os capítulos iniciais preparam o terreno para os seguintes.
+
+Se você já conhece o Terminal e já tem o Git instalado, pode ir direto para os capítulos 4 e 5 (conceitos) e depois escolher entre Terminal, GitHub Desktop ou Positron para a prática.
+
+::: {.callout-note}
+## Usuários Mac e Windows
+
+Este manual foi escrito para ambos os sistemas. Quando houver diferenças entre Mac e Windows, elas serão indicadas claramente. Os conceitos são os mesmos — apenas alguns comandos e atalhos mudam.
+:::
+
+## Convenções
+
+Ao longo do texto, você encontrará:
+
+- `código em linha` para comandos e nomes de arquivos
+- **Negrito** para elementos de interface (botões, menus) e nomes de ferramentas
+- *Itálico* para ênfase e termos em inglês
+
+Os comandos de terminal são apresentados em blocos de código:
+
+```bash
+git status
+```
+
+Quando um comando for diferente no Mac e no Windows, ambas as versões serão mostradas.
+
+::: {.callout-tip}
+Caixas verdes trazem dicas e boas práticas.
+:::
+
+::: {.callout-warning}
+Caixas amarelas alertam sobre erros comuns ou situações que exigem atenção.
+:::
+
+::: {.callout-note}
+Caixas azuis trazem informações complementares.
+:::
+
+
+## Sobre o autor
+
+:::: {.columns}
+
+::: {.column width="30%"}
+![](images/Henrique-UFSJ.jpg){width=150px style="border-radius: 50%;"}
+:::
+
+::: {.column width="70%"}
+Este manual foi escrito por **Henrique Alvarenga**, professor na Universidade Federal de São João del-Rei (UFSJ), como material de apoio para estudantes e pesquisadores que desejam adotar boas práticas de versionamento e publicação de materiais acadêmicos.
+
+- Site pessoal: [henriquealvarenga.com](https://henriquealvarenga.com)
+- Currículo Lattes: [lattes.cnpq.br/6147640440978297](https://lattes.cnpq.br/6147640440978297)
+:::
+
+::::
+
+---
+
+Bons estudos — e bons commits!

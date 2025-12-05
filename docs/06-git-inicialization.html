@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>7&nbsp; Configurando o Git e o GitHub – Manual de Git e GitHub</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./07-github-desktop.html" rel="next">
+<link href="./05-git-conceitos.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-235dd20329987a67a70d4d8bf38af671.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-15d7b0bfd515104d1333b31a8b43e7b4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-235dd20329987a67a70d4d8bf38af671.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-git-inicialization.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Configurando o Git e o GitHub</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Manual de Git e GitHub</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo escuro"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Procurar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-terminal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Terminal</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-homebrew.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Homebrew</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-winget.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Winget</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-git-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Git e GitHub</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-git-conceitos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conceitos do Git</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-git-inicialization.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Configurando o Git e o GitHub</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-github-desktop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">GitHub Desktop</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-github-positron.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Git e GitHub no Positron</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-github-pages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">GitHub Pages</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-referencias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referências</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#criando-a-conta-no-github" id="toc-criando-a-conta-no-github" class="nav-link active" data-scroll-target="#criando-a-conta-no-github"><span class="header-section-number">7.1</span> Criando a conta no GitHub</a></li>
+  <li><a href="#verificando-se-o-git-já-está-instalado" id="toc-verificando-se-o-git-já-está-instalado" class="nav-link" data-scroll-target="#verificando-se-o-git-já-está-instalado"><span class="header-section-number">7.2</span> Verificando se o Git já está instalado</a></li>
+  <li><a href="#instalando-o-git" id="toc-instalando-o-git" class="nav-link" data-scroll-target="#instalando-o-git"><span class="header-section-number">7.3</span> Instalando o Git</a></li>
+  <li><a href="#configuração-inicial" id="toc-configuração-inicial" class="nav-link" data-scroll-target="#configuração-inicial"><span class="header-section-number">7.4</span> Configuração inicial</a></li>
+  <li><a href="#conceitos-fundamentais" id="toc-conceitos-fundamentais" class="nav-link" data-scroll-target="#conceitos-fundamentais"><span class="header-section-number">7.5</span> Conceitos fundamentais</a></li>
+  <li><a href="#subindo-uma-pasta-para-o-github-passo-a-passo" id="toc-subindo-uma-pasta-para-o-github-passo-a-passo" class="nav-link" data-scroll-target="#subindo-uma-pasta-para-o-github-passo-a-passo"><span class="header-section-number">7.6</span> Subindo uma pasta para o GitHub: passo a passo</a>
+  <ul class="collapse">
+  <li><a href="#passo-1-crie-um-repositório-no-github" id="toc-passo-1-crie-um-repositório-no-github" class="nav-link" data-scroll-target="#passo-1-crie-um-repositório-no-github"><span class="header-section-number">7.6.1</span> Passo 1: Crie um repositório no GitHub</a></li>
+  <li><a href="#passo-2-navegue-até-sua-pasta-no-terminal" id="toc-passo-2-navegue-até-sua-pasta-no-terminal" class="nav-link" data-scroll-target="#passo-2-navegue-até-sua-pasta-no-terminal"><span class="header-section-number">7.6.2</span> Passo 2: Navegue até sua pasta no Terminal</a></li>
+  <li><a href="#passo-3-inicialize-o-git-na-pasta" id="toc-passo-3-inicialize-o-git-na-pasta" class="nav-link" data-scroll-target="#passo-3-inicialize-o-git-na-pasta"><span class="header-section-number">7.6.3</span> Passo 3: Inicialize o Git na pasta</a></li>
+  <li><a href="#passo-4-adicione-os-arquivos-à-área-de-preparação" id="toc-passo-4-adicione-os-arquivos-à-área-de-preparação" class="nav-link" data-scroll-target="#passo-4-adicione-os-arquivos-à-área-de-preparação"><span class="header-section-number">7.6.4</span> Passo 4: Adicione os arquivos à área de preparação</a></li>
+  <li><a href="#passo-5-faça-o-primeiro-commit" id="toc-passo-5-faça-o-primeiro-commit" class="nav-link" data-scroll-target="#passo-5-faça-o-primeiro-commit"><span class="header-section-number">7.6.5</span> Passo 5: Faça o primeiro commit</a></li>
+  <li><a href="#passo-6-conecte-ao-repositório-remoto" id="toc-passo-6-conecte-ao-repositório-remoto" class="nav-link" data-scroll-target="#passo-6-conecte-ao-repositório-remoto"><span class="header-section-number">7.6.6</span> Passo 6: Conecte ao repositório remoto</a></li>
+  <li><a href="#passo-7-envie-para-o-github" id="toc-passo-7-envie-para-o-github" class="nav-link" data-scroll-target="#passo-7-envie-para-o-github"><span class="header-section-number">7.6.7</span> Passo 7: Envie para o GitHub</a></li>
+  </ul></li>
+  <li><a href="#comandos-do-dia-a-dia" id="toc-comandos-do-dia-a-dia" class="nav-link" data-scroll-target="#comandos-do-dia-a-dia"><span class="header-section-number">7.7</span> Comandos do dia a dia</a></li>
+  <li><a href="#outros-comandos-úteis" id="toc-outros-comandos-úteis" class="nav-link" data-scroll-target="#outros-comandos-úteis"><span class="header-section-number">7.8</span> Outros comandos úteis</a>
+  <ul class="collapse">
+  <li><a href="#histórico" id="toc-histórico" class="nav-link" data-scroll-target="#histórico"><span class="header-section-number">7.8.1</span> Histórico</a></li>
+  <li><a href="#sincronização" id="toc-sincronização" class="nav-link" data-scroll-target="#sincronização"><span class="header-section-number">7.8.2</span> Sincronização</a></li>
+  <li><a href="#desfazendo-alterações" id="toc-desfazendo-alterações" class="nav-link" data-scroll-target="#desfazendo-alterações"><span class="header-section-number">7.8.3</span> Desfazendo alterações</a></li>
+  </ul></li>
+  <li><a href="#autenticação-no-github" id="toc-autenticação-no-github" class="nav-link" data-scroll-target="#autenticação-no-github"><span class="header-section-number">7.9</span> Autenticação no GitHub</a>
+  <ul class="collapse">
+  <li><a href="#opção-1-token-de-acesso-pessoal-https" id="toc-opção-1-token-de-acesso-pessoal-https" class="nav-link" data-scroll-target="#opção-1-token-de-acesso-pessoal-https"><span class="header-section-number">7.9.1</span> Opção 1: Token de acesso pessoal (HTTPS)</a></li>
+  <li><a href="#opção-2-chave-ssh-recomendada-para-uso-frequente" id="toc-opção-2-chave-ssh-recomendada-para-uso-frequente" class="nav-link" data-scroll-target="#opção-2-chave-ssh-recomendada-para-uso-frequente"><span class="header-section-number">7.9.2</span> Opção 2: Chave SSH (recomendada para uso frequente)</a></li>
+  </ul></li>
+  <li><a href="#arquivos-ocultos" id="toc-arquivos-ocultos" class="nav-link" data-scroll-target="#arquivos-ocultos"><span class="header-section-number">7.10</span> Arquivos ocultos</a>
+  <ul class="collapse">
+  <li><a href="#por-que-existem-arquivos-ocultos" id="toc-por-que-existem-arquivos-ocultos" class="nav-link" data-scroll-target="#por-que-existem-arquivos-ocultos"><span class="header-section-number">7.10.1</span> Por que existem arquivos ocultos?</a></li>
+  <li><a href="#por-que-isso-importa-para-o-git" id="toc-por-que-isso-importa-para-o-git" class="nav-link" data-scroll-target="#por-que-isso-importa-para-o-git"><span class="header-section-number">7.10.2</span> Por que isso importa para o Git?</a></li>
+  <li><a href="#como-visualizar-arquivos-ocultos" id="toc-como-visualizar-arquivos-ocultos" class="nav-link" data-scroll-target="#como-visualizar-arquivos-ocultos"><span class="header-section-number">7.10.3</span> Como visualizar arquivos ocultos</a></li>
+  </ul></li>
+  <li><a href="#o-arquivo-.gitignore" id="toc-o-arquivo-.gitignore" class="nav-link" data-scroll-target="#o-arquivo-.gitignore"><span class="header-section-number">7.11</span> O arquivo .gitignore</a>
+  <ul class="collapse">
+  <li><a href="#o-problema-nem-tudo-deve-ir-para-o-repositório" id="toc-o-problema-nem-tudo-deve-ir-para-o-repositório" class="nav-link" data-scroll-target="#o-problema-nem-tudo-deve-ir-para-o-repositório"><span class="header-section-number">7.11.1</span> O problema: nem tudo deve ir para o repositório</a></li>
+  <li><a href="#criando-o-arquivo-.gitignore" id="toc-criando-o-arquivo-.gitignore" class="nav-link" data-scroll-target="#criando-o-arquivo-.gitignore"><span class="header-section-number">7.11.2</span> Criando o arquivo .gitignore</a></li>
+  <li><a href="#sintaxe-do-.gitignore" id="toc-sintaxe-do-.gitignore" class="nav-link" data-scroll-target="#sintaxe-do-.gitignore"><span class="header-section-number">7.11.3</span> Sintaxe do .gitignore</a></li>
+  <li><a href="#exemplo-completo-de-.gitignore" id="toc-exemplo-completo-de-.gitignore" class="nav-link" data-scroll-target="#exemplo-completo-de-.gitignore"><span class="header-section-number">7.11.4</span> Exemplo completo de .gitignore</a></li>
+  <li><a href="#quando-criar-o-.gitignore" id="toc-quando-criar-o-.gitignore" class="nav-link" data-scroll-target="#quando-criar-o-.gitignore"><span class="header-section-number">7.11.5</span> Quando criar o .gitignore</a></li>
+  </ul></li>
+  <li><a href="#dicas-finais" id="toc-dicas-finais" class="nav-link" data-scroll-target="#dicas-finais"><span class="header-section-number">7.12</span> Dicas finais</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Configurando o Git e o GitHub</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>No capítulo anterior, você conheceu a história do Git e do GitHub, entendeu o que é controle de versão e por que essas ferramentas se tornaram essenciais. Agora é hora de colocar a mão na massa: vamos configurar tudo no seu computador para que você possa começar a versionar seus projetos.</p>
+<p>Neste capítulo, você vai criar uma conta no GitHub, instalar o Git (se ainda não tiver), configurar sua identidade e aprender o fluxo básico de trabalho — da criação de um repositório local até o envio para o GitHub.</p>
+<section id="criando-a-conta-no-github" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="criando-a-conta-no-github"><span class="header-section-number">7.1</span> Criando a conta no GitHub</h2>
+<p>Antes de configurar o Git no seu computador, crie uma conta gratuita no GitHub. Acesse <a href="https://github.com">github.com</a> e clique em <strong>Sign up</strong>.</p>
+<p>Durante o cadastro, você precisará informar:</p>
+<ul>
+<li><strong>Username</strong>: seu nome de usuário, que fará parte do endereço dos seus repositórios (ex: github.com/seu-username). Escolha algo profissional e fácil de lembrar.</li>
+<li><strong>Email</strong>: use um e-mail que você acessa regularmente. Este será o mesmo e-mail que configuraremos no Git.</li>
+<li><strong>Password</strong>: uma senha segura para sua conta.</li>
+</ul>
+<p>Após confirmar seu e-mail, sua conta estará pronta. Você pode voltar ao GitHub depois para completar seu perfil, adicionar uma foto e explorar a plataforma. Por enquanto, o importante é ter o username e o e-mail definidos.</p>
+</section>
+<section id="verificando-se-o-git-já-está-instalado" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="verificando-se-o-git-já-está-instalado"><span class="header-section-number">7.2</span> Verificando se o Git já está instalado</h2>
+<p>Antes de instalar o Git, verifique se ele já está no seu computador. Abra o Terminal e digite:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Se o Git estiver instalado, você verá uma mensagem indicando a versão:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> version 2.50.1</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Se aparecer uma versão, ótimo — você pode pular para a seção de configuração. Se não estiver instalado, siga as instruções da próxima seção.</p>
+</section>
+<section id="instalando-o-git" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="instalando-o-git"><span class="header-section-number">7.3</span> Instalando o Git</h2>
+<p>A forma mais prática de instalar o Git é usando os gerenciadores de pacotes que você aprendeu nos capítulos anteriores.</p>
+<p><strong>No Mac (com Homebrew):</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install git</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>No Windows (com winget):</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>winget install Git<span class="op">.</span><span class="fu">Git</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Após a instalação, feche e reabra o Terminal, então confirme que funcionou:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> <span class="at">--version</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Alternativas de instalação
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Mac</strong>: se você não usa Homebrew, ao digitar <code>git --version</code> o sistema oferecerá automaticamente a instalação das Command Line Tools da Apple, que incluem o Git.</li>
+<li><strong>Windows</strong>: se preferir não usar o winget, baixe o instalador em <a href="https://git-scm.com">git-scm.com</a>. Durante a instalação, mantenha as opções padrão. O instalador incluirá o <strong>Git Bash</strong>, que permite usar comandos no estilo Unix.</li>
+<li><strong>Linux</strong>: use o gerenciador de pacotes da sua distribuição. No Ubuntu/Debian: <code>sudo apt install git</code></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="configuração-inicial" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="configuração-inicial"><span class="header-section-number">7.4</span> Configuração inicial</h2>
+<p>Com o Git instalado, configure sua identidade. Essas informações aparecerão em cada commit que você fizer:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Seu Nome"</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"seu.email@exemplo.com"</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Use o mesmo e-mail da sua conta GitHub. Isso permite que o GitHub associe seus commits ao seu perfil.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Dica</span>Verificando a configuração
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Para verificar se está tudo configurado corretamente:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Se retornar seu nome e e-mail, está tudo certo!</p>
+<p>Você também pode ver todas as configurações do Git com:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--list</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+<section id="conceitos-fundamentais" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="conceitos-fundamentais"><span class="header-section-number">7.5</span> Conceitos fundamentais</h2>
+<p>Antes de partir para os comandos, é importante entender três “lugares” onde seus arquivos podem estar:</p>
+<ol type="1">
+<li><strong>Diretório de trabalho (working directory)</strong>: sua pasta normal, onde você edita arquivos</li>
+<li><strong>Área de preparação (staging area)</strong>: uma área intermediária onde você seleciona quais alterações quer registrar</li>
+<li><strong>Repositório (repository)</strong>: o histórico completo de todas as versões salvas</li>
+</ol>
+<p>O fluxo básico é: você edita arquivos → adiciona à área de preparação → confirma (commit) no repositório → envia (push) para o GitHub.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    A[Diretório de Trabalho] --&gt;|git add| B[Área de Preparação]
+    B --&gt;|git commit| C[Repositório Local]
+    C --&gt;|git push| D[GitHub]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="subindo-uma-pasta-para-o-github-passo-a-passo" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="subindo-uma-pasta-para-o-github-passo-a-passo"><span class="header-section-number">7.6</span> Subindo uma pasta para o GitHub: passo a passo</h2>
+<p>Vamos ao processo completo de versionar uma pasta local e enviá-la para o GitHub.</p>
+<section id="passo-1-crie-um-repositório-no-github" class="level3" data-number="7.6.1">
+<h3 data-number="7.6.1" class="anchored" data-anchor-id="passo-1-crie-um-repositório-no-github"><span class="header-section-number">7.6.1</span> Passo 1: Crie um repositório no GitHub</h3>
+<p>Acesse <a href="https://github.com">github.com</a>, faça login e clique no botão <strong>+</strong> no canto superior direito, depois em <strong>New repository</strong>. Dê um nome ao repositório (por exemplo, <code>meu-projeto</code>), escolha se será público ou privado, e clique em <strong>Create repository</strong>.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Aviso</span>Repositório vazio
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Não marque nenhuma opção de inicialização (README, .gitignore, etc.) — queremos um repositório vazio para este exemplo.</p>
+</div>
+</div>
+</section>
+<section id="passo-2-navegue-até-sua-pasta-no-terminal" class="level3" data-number="7.6.2">
+<h3 data-number="7.6.2" class="anchored" data-anchor-id="passo-2-navegue-até-sua-pasta-no-terminal"><span class="header-section-number">7.6.2</span> Passo 2: Navegue até sua pasta no Terminal</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/caminho/para/sua/pasta</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Por exemplo, se sua pasta está na área de trabalho:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop/minha-pasta</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="passo-3-inicialize-o-git-na-pasta" class="level3" data-number="7.6.3">
+<h3 data-number="7.6.3" class="anchored" data-anchor-id="passo-3-inicialize-o-git-na-pasta"><span class="header-section-number">7.6.3</span> Passo 3: Inicialize o Git na pasta</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Isso cria uma pasta oculta <code>.git</code> que armazenará todo o histórico. Sua pasta agora é um repositório Git local.</p>
+</section>
+<section id="passo-4-adicione-os-arquivos-à-área-de-preparação" class="level3" data-number="7.6.4">
+<h3 data-number="7.6.4" class="anchored" data-anchor-id="passo-4-adicione-os-arquivos-à-área-de-preparação"><span class="header-section-number">7.6.4</span> Passo 4: Adicione os arquivos à área de preparação</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>O ponto (<code>.</code>) significa “todos os arquivos”. Se quiser adicionar apenas um arquivo específico:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add nome-do-arquivo.txt</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="passo-5-faça-o-primeiro-commit" class="level3" data-number="7.6.5">
+<h3 data-number="7.6.5" class="anchored" data-anchor-id="passo-5-faça-o-primeiro-commit"><span class="header-section-number">7.6.5</span> Passo 5: Faça o primeiro commit</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Primeiro commit"</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A flag <code>-m</code> permite adicionar uma mensagem descritiva. Sempre escreva mensagens claras sobre o que você alterou.</p>
+</section>
+<section id="passo-6-conecte-ao-repositório-remoto" class="level3" data-number="7.6.6">
+<h3 data-number="7.6.6" class="anchored" data-anchor-id="passo-6-conecte-ao-repositório-remoto"><span class="header-section-number">7.6.6</span> Passo 6: Conecte ao repositório remoto</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/seu-usuario/meu-projeto.git</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Substitua <code>seu-usuario</code> pelo seu nome de usuário do GitHub e <code>meu-projeto</code> pelo nome do repositório que você criou.</p>
+</section>
+<section id="passo-7-envie-para-o-github" class="level3" data-number="7.6.7">
+<h3 data-number="7.6.7" class="anchored" data-anchor-id="passo-7-envie-para-o-github"><span class="header-section-number">7.6.7</span> Passo 7: Envie para o GitHub</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A flag <code>-u</code> (ou <code>--set-upstream</code>) cria uma conexão permanente entre sua branch local e a remota. Nas próximas vezes, bastará digitar <code>git push</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Branch main vs master
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Se o Git reclamar que a branch se chama <code>master</code> em vez de <code>main</code>, use:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-M</span> main</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</section>
+</section>
+<section id="comandos-do-dia-a-dia" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="comandos-do-dia-a-dia"><span class="header-section-number">7.7</span> Comandos do dia a dia</h2>
+<p>Depois que tudo estiver configurado, seu fluxo de trabalho será:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver o status dos arquivos</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Adicionar alterações</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Confirmar alterações com uma mensagem</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Descrição do que você fez"</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Enviar para o GitHub</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="outros-comandos-úteis" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="outros-comandos-úteis"><span class="header-section-number">7.8</span> Outros comandos úteis</h2>
+<section id="histórico" class="level3" data-number="7.8.1">
+<h3 data-number="7.8.1" class="anchored" data-anchor-id="histórico"><span class="header-section-number">7.8.1</span> Histórico</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver o histórico de commits</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver histórico resumido (uma linha por commit)</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="sincronização" class="level3" data-number="7.8.2">
+<h3 data-number="7.8.2" class="anchored" data-anchor-id="sincronização"><span class="header-section-number">7.8.2</span> Sincronização</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Baixar alterações do GitHub para seu computador</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Clonar um repositório existente do GitHub</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/usuario/repositorio.git</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver quais repositórios remotos estão conectados</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="desfazendo-alterações" class="level3" data-number="7.8.3">
+<h3 data-number="7.8.3" class="anchored" data-anchor-id="desfazendo-alterações"><span class="header-section-number">7.8.3</span> Desfazendo alterações</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Desfazer alterações em um arquivo (voltar à última versão commitada)</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">--</span> nome-do-arquivo.txt</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Remover um arquivo da área de preparação (mas manter as alterações)</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset nome-do-arquivo.txt</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="autenticação-no-github" class="level2" data-number="7.9">
+<h2 data-number="7.9" class="anchored" data-anchor-id="autenticação-no-github"><span class="header-section-number">7.9</span> Autenticação no GitHub</h2>
+<p>Na primeira vez que você tentar fazer <code>push</code>, o GitHub pedirá autenticação. Há duas formas principais:</p>
+<section id="opção-1-token-de-acesso-pessoal-https" class="level3" data-number="7.9.1">
+<h3 data-number="7.9.1" class="anchored" data-anchor-id="opção-1-token-de-acesso-pessoal-https"><span class="header-section-number">7.9.1</span> Opção 1: Token de acesso pessoal (HTTPS)</h3>
+<ol type="1">
+<li>Acesse GitHub → <strong>Settings</strong> → <strong>Developer settings</strong> → <strong>Personal access tokens</strong> → <strong>Tokens (classic)</strong> → <strong>Generate new token</strong></li>
+<li>Selecione os escopos necessários (pelo menos <code>repo</code>)</li>
+<li>Copie o token gerado</li>
+<li>Use-o como senha quando o Terminal pedir</li>
+</ol>
+</section>
+<section id="opção-2-chave-ssh-recomendada-para-uso-frequente" class="level3" data-number="7.9.2">
+<h3 data-number="7.9.2" class="anchored" data-anchor-id="opção-2-chave-ssh-recomendada-para-uso-frequente"><span class="header-section-number">7.9.2</span> Opção 2: Chave SSH (recomendada para uso frequente)</h3>
+<p>Essa opção é mais segura e prática para quem usa Git diariamente, mas a configuração é mais complexa. Ela será tratada em um capítulo à parte.</p>
+</section>
+</section>
+<section id="arquivos-ocultos" class="level2" data-number="7.10">
+<h2 data-number="7.10" class="anchored" data-anchor-id="arquivos-ocultos"><span class="header-section-number">7.10</span> Arquivos ocultos</h2>
+<p>Antes de falarmos sobre o próximo tópicos, sobre o arquivo <code>.gitignore</code>, precisamos entender um conceito importante: <strong>arquivos ocultos</strong>.</p>
+<p>Você já deve ter notado que alguns arquivos e pastas no seu computador parecem “invisíveis” — eles existem, mas não aparecem quando você abre uma pasta no Finder (Mac) ou no Explorador de Arquivos (Windows). Esses são os <strong>arquivos ocultos</strong>.</p>
+<section id="por-que-existem-arquivos-ocultos" class="level3" data-number="7.10.1">
+<h3 data-number="7.10.1" class="anchored" data-anchor-id="por-que-existem-arquivos-ocultos"><span class="header-section-number">7.10.1</span> Por que existem arquivos ocultos?</h3>
+<p>Sistemas operacionais e programas criam arquivos de configuração, caches e dados internos que o usuário comum não precisa ver no dia a dia. Para evitar confusão e impedir que esses arquivos sejam deletados acidentalmente, eles ficam escondidos por padrão.</p>
+<p>No Mac e no Linux, a convenção é simples: qualquer arquivo ou pasta cujo nome começa com um ponto (<code>.</code>) é considerado oculto. Por exemplo:</p>
+<ul>
+<li><code>.gitignore</code> — arquivo de configuração do Git</li>
+<li><code>.git/</code> — pasta onde o Git armazena todo o histórico do repositório</li>
+<li><code>.DS_Store</code> — arquivo que o macOS cria automaticamente em cada pasta</li>
+<li><code>.Rhistory</code> — histórico de comandos do R</li>
+</ul>
+<p>No Windows, arquivos ocultos são marcados através de um atributo especial do sistema, não necessariamente pelo nome.</p>
+</section>
+<section id="por-que-isso-importa-para-o-git" class="level3" data-number="7.10.2">
+<h3 data-number="7.10.2" class="anchored" data-anchor-id="por-que-isso-importa-para-o-git"><span class="header-section-number">7.10.2</span> Por que isso importa para o Git?</h3>
+<p>O Git usa arquivos ocultos extensivamente. Quando você executa <code>git init</code> em uma pasta, ele cria uma pasta oculta chamada <code>.git</code> que contém todo o histórico, configurações e metadados do repositório. Se você não souber visualizar arquivos ocultos, vai parecer que nada aconteceu.</p>
+<p>Além disso, o arquivo <code>.gitignore</code> — que ensinaremos a criar na próxima seção — também é oculto. Se você criá-lo mas não conseguir vê-lo, pode ficar confuso achando que algo deu errado.</p>
+<p>Por isso, saber visualizar arquivos ocultos é uma habilidade fundamental para trabalhar com Git.</p>
+</section>
+<section id="como-visualizar-arquivos-ocultos" class="level3" data-number="7.10.3">
+<h3 data-number="7.10.3" class="anchored" data-anchor-id="como-visualizar-arquivos-ocultos"><span class="header-section-number">7.10.3</span> Como visualizar arquivos ocultos</h3>
+<p><strong>No Mac (Finder):</strong></p>
+<p>Pressione <code>Cmd + Shift + .</code> (ponto). Os arquivos ocultos aparecerão com um tom mais claro, indicando que normalmente são invisíveis. Pressione a mesma combinação novamente para escondê-los.</p>
+<p><strong>No Windows (Explorador de Arquivos):</strong></p>
+<ol type="1">
+<li>Abra o Explorador de Arquivos</li>
+<li>Clique na aba <strong>Exibir</strong></li>
+<li>Marque a caixa <strong>Itens ocultos</strong></li>
+</ol>
+<p><strong>No Terminal (Mac, Linux e Git Bash no Windows):</strong></p>
+<p>O comando <code>ls</code> lista arquivos, mas por padrão não mostra os ocultos. Para ver todos os arquivos, incluindo os ocultos, use a flag <code>-a</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-a</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Para uma listagem detalhada com arquivos ocultos:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Você verá arquivos como <code>.git</code>, <code>.gitignore</code> e <code>.DS_Store</code> que normalmente não aparecem.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Dica</span>Experimente agora
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Navegue até uma pasta onde você já executou <code>git init</code> e use <code>ls -la</code> no Terminal. Você verá a pasta <code>.git</code> que antes parecia não existir. Ou ative a visualização de arquivos ocultos no Finder/Explorador e observe quantos arquivos “secretos” existem nas suas pastas.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="o-arquivo-.gitignore" class="level2" data-number="7.11">
+<h2 data-number="7.11" class="anchored" data-anchor-id="o-arquivo-.gitignore"><span class="header-section-number">7.11</span> O arquivo .gitignore</h2>
+<p>Agora que você sabe o que são arquivos ocultos e como visualizá-los, podemos falar sobre um dos arquivos ocultos mais importantes para o Git: o <code>.gitignore</code>.</p>
+<section id="o-problema-nem-tudo-deve-ir-para-o-repositório" class="level3" data-number="7.11.1">
+<h3 data-number="7.11.1" class="anchored" data-anchor-id="o-problema-nem-tudo-deve-ir-para-o-repositório"><span class="header-section-number">7.11.1</span> O problema: nem tudo deve ir para o repositório</h3>
+<p>Quando você executa <code>git add .</code> para adicionar arquivos ao repositório, o Git inclui tudo o que encontrar na pasta — e nem sempre isso é desejável. Alguns arquivos são grandes demais e tornariam o repositório pesado e lento de clonar. Outros contêm informações sensíveis, como senhas ou dados pessoais, que jamais deveriam ser compartilhados. Há ainda arquivos temporários que o sistema operacional ou programas criam automaticamente e que não têm utilidade para outras pessoas.</p>
+<p>Imagine que você está trabalhando em um projeto de análise de dados. Sua pasta contém:</p>
+<ul>
+<li>Seus scripts em R ou Python — devem ir para o GitHub</li>
+<li>Um arquivo CSV com 500MB de dados brutos — não deveria ir, é grande demais e pode conter dados sensíveis</li>
+<li>Um arquivo com senhas de banco de dados — definitivamente não deveria ir!</li>
+<li>Arquivos <code>.DS_Store</code> que o macOS cria automaticamente — não têm utilidade para outras pessoas</li>
+</ul>
+<p>Sem o <code>.gitignore</code>, toda vez que você executar <code>git add .</code>, todos esses arquivos seriam incluídos. O <code>.gitignore</code> resolve isso: ele diz ao Git quais arquivos e pastas devem ser completamente ignorados.</p>
+</section>
+<section id="criando-o-arquivo-.gitignore" class="level3" data-number="7.11.2">
+<h3 data-number="7.11.2" class="anchored" data-anchor-id="criando-o-arquivo-.gitignore"><span class="header-section-number">7.11.2</span> Criando o arquivo .gitignore</h3>
+<p>O <code>.gitignore</code> deve ficar na raiz do seu projeto (na mesma pasta onde está a pasta <code>.git</code>). Para criá-lo, você pode usar o Terminal:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> .gitignore</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Ou criar diretamente no seu editor de código. Como o nome começa com ponto, o arquivo será oculto — lembre-se de ativar a visualização de arquivos ocultos se quiser vê-lo no Finder ou Explorador.</p>
+<p>O <code>.gitignore</code> é um arquivo de texto simples. Cada linha representa um padrão de arquivos ou pastas que o Git deve ignorar.</p>
+</section>
+<section id="sintaxe-do-.gitignore" class="level3" data-number="7.11.3">
+<h3 data-number="7.11.3" class="anchored" data-anchor-id="sintaxe-do-.gitignore"><span class="header-section-number">7.11.3</span> Sintaxe do .gitignore</h3>
+<p>A sintaxe é simples, mas poderosa:</p>
+<p><strong>Ignorar um arquivo específico:</strong></p>
+<pre><code>senhas.txt
+dados_secretos.csv</code></pre>
+<p><strong>Ignorar todos os arquivos com determinada extensão:</strong></p>
+<pre><code>*.csv
+*.xlsx
+*.log</code></pre>
+<p>O asterisco (<code>*</code>) funciona como curinga, significando “qualquer coisa”.</p>
+<p><strong>Ignorar uma pasta inteira:</strong></p>
+<pre><code>node_modules/
+dados/
+.Rproj.user/</code></pre>
+<p>A barra (<code>/</code>) no final indica que é uma pasta. Tudo dentro dela será ignorado.</p>
+<p><strong>Ignorar arquivos em qualquer subpasta:</strong></p>
+<pre><code>**/*.log</code></pre>
+<p>O duplo asterisco (<code>**</code>) significa “em qualquer nível de subpastas”.</p>
+<p><strong>Adicionar comentários:</strong></p>
+<pre><code># Arquivos temporários do macOS
+.DS_Store
+
+# Dados que não devem ser compartilhados
+*.csv</code></pre>
+<p>Linhas que começam com <code>#</code> são comentários e ajudam a organizar o arquivo.</p>
+<p><strong>Fazer exceções (não ignorar algo específico):</strong></p>
+<pre><code># Ignora todos os CSVs
+*.csv
+
+# Mas não ignora este arquivo específico
+!exemplo_dados.csv</code></pre>
+<p>O ponto de exclamação (<code>!</code>) no início nega a regra anterior.</p>
+</section>
+<section id="exemplo-completo-de-.gitignore" class="level3" data-number="7.11.4">
+<h3 data-number="7.11.4" class="anchored" data-anchor-id="exemplo-completo-de-.gitignore"><span class="header-section-number">7.11.4</span> Exemplo completo de .gitignore</h3>
+<p>Aqui está um exemplo típico para projetos em R ou análise de dados:</p>
+<pre><code># === Sistema Operacional ===
+
+# Arquivos temporários do macOS
+.DS_Store
+
+# Arquivos temporários do Windows
+Thumbs.db
+desktop.ini
+
+# === R e RStudio ===
+
+# Arquivos de sessão do R
+.Rhistory
+.RData
+.Rproj.user/
+
+# === Dados ===
+
+# Arquivos de dados (geralmente grandes ou sensíveis)
+*.csv
+*.xlsx
+*.sav
+*.dta
+dados/
+
+# === Credenciais e segredos ===
+
+# Nunca suba senhas ou tokens!
+.env
+senhas.txt
+*_secret*
+
+# === Arquivos temporários e de build ===
+
+# Pastas geradas automaticamente
+_site/
+docs/
+node_modules/
+
+# Arquivos de cache
+*.cache
+__pycache__/</code></pre>
+</section>
+<section id="quando-criar-o-.gitignore" class="level3" data-number="7.11.5">
+<h3 data-number="7.11.5" class="anchored" data-anchor-id="quando-criar-o-.gitignore"><span class="header-section-number">7.11.5</span> Quando criar o .gitignore</h3>
+<p>O ideal é criar o <code>.gitignore</code> logo no início do projeto, antes do primeiro commit. Assim, os arquivos indesejados nunca chegam a entrar no histórico do Git.</p>
+<p>Se você já fez commit de arquivos que deveriam ser ignorados, adicioná-los ao <code>.gitignore</code> depois não os remove do histórico — apenas impede que futuras alterações sejam rastreadas. Para remover um arquivo que já está no repositório mas deveria ser ignorado:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rm <span class="at">--cached</span> nome-do-arquivo.csv</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Remove arquivo que deveria ser ignorado"</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A flag <code>--cached</code> remove o arquivo do Git mas mantém ele na sua pasta local.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Dica</span>Modelos prontos de .gitignore
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Não precisa criar tudo do zero. O GitHub mantém uma coleção de modelos de <code>.gitignore</code> para diversas linguagens e ambientes em <a href="https://github.com/github/gitignore">github.com/github/gitignore</a>.</p>
+<p>Lá você encontra modelos para R, Python, Node.js e dezenas de outras tecnologias. É só copiar o conteúdo relevante para o seu projeto.</p>
+<p>Outra opção é o site <a href="https://www.toptal.com/developers/gitignore">gitignore.io</a>, onde você digita as tecnologias que usa (ex: “R, macOS, Windows”) e ele gera um <code>.gitignore</code> personalizado.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Aviso</span>Arquivos sensíveis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Nunca suba senhas, tokens de API, chaves de acesso ou dados pessoais para o GitHub — mesmo em repositórios privados. Uma vez que algo entra no histórico do Git, é difícil remover completamente. Sempre use <code>.gitignore</code> para proteger esses arquivos desde o início.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Dica</span>Modelos de .gitignore
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>O GitHub mantém uma coleção de modelos de <code>.gitignore</code> para diversas linguagens e ambientes em <a href="https://github.com/github/gitignore">github.com/github/gitignore</a>. Vale consultar o modelo para R, Python ou a linguagem que você usa.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="dicas-finais" class="level2" data-number="7.12">
+<h2 data-number="7.12" class="anchored" data-anchor-id="dicas-finais"><span class="header-section-number">7.12</span> Dicas finais</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Dica</span>Boas práticas
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p><strong>Faça commits pequenos e frequentes.</strong> É mais fácil entender o histórico e reverter problemas.</p></li>
+<li><p><strong>Escreva mensagens de commit descritivas.</strong> “Corrige bug no cálculo de médias” é melhor que “Alterações”.</p></li>
+<li><p><strong>Use <code>.gitignore</code> desde o início.</strong> Evite subir arquivos desnecessários ou sensíveis.</p></li>
+<li><p><strong>Não tenha medo de errar.</strong> O Git foi feito justamente para permitir que você experimente e volte atrás se necessário.</p></li>
+</ol>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./05-git-conceitos.html" class="pagination-link" aria-label="Conceitos do Git">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conceitos do Git</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./07-github-desktop.html" class="pagination-link" aria-label="GitHub Desktop">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">GitHub Desktop</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Manual de Git e GitHub</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Criado com <a href="https://quarto.org/">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

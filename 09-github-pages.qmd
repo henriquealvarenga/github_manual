@@ -1,0 +1,274 @@
+# GitHub Pages
+
+Você chegou ao último capítulo deste manual. Ao longo da jornada, aprendeu a usar o Terminal, instalar ferramentas com gerenciadores de pacotes, entendeu os conceitos do Git, configurou seu ambiente, e descobriu diferentes formas de trabalhar com controle de versão — pelo Terminal, pelo GitHub Desktop ou pelo Positron.
+
+Agora vem a recompensa: colocar seu trabalho no ar. Neste capítulo, você vai aprender a usar o **GitHub Pages**, um serviço gratuito do GitHub que transforma repositórios em sites na internet. Sem servidor para configurar, sem hospedagem para pagar, sem complicação.
+
+## O que é GitHub Pages?
+
+O GitHub Pages é um serviço de hospedagem de sites estáticos oferecido gratuitamente pelo GitHub. Ele pega os arquivos do seu repositório — HTML, CSS, JavaScript, imagens — e publica em uma URL pública, acessível por qualquer pessoa no mundo.
+
+"Site estático" significa que as páginas são arquivos prontos, sem processamento no servidor. Diferente de um site dinâmico (como WordPress ou um sistema de e-commerce), onde cada página é gerada no momento do acesso, um site estático é simplesmente um conjunto de arquivos que o navegador baixa e exibe.
+
+Isso pode parecer limitado, mas é perfeito para:
+
+- Documentação de projetos
+- Portfólios pessoais
+- Blogs
+- Materiais didáticos
+- Livros e manuais (como este que você está lendo!)
+- Currículos online
+- Landing pages
+
+Ferramentas como **Quarto**, **Jekyll**, **Hugo** e **MkDocs** geram sites estáticos sofisticados a partir de arquivos simples em Markdown. Você escreve em texto puro, executa um comando, e tem um site completo pronto para publicar.
+
+## Como funciona?
+
+O fluxo é simples:
+
+1. Você cria um repositório no GitHub com os arquivos do seu site
+2. Você ativa o GitHub Pages nas configurações do repositório
+3. O GitHub publica os arquivos em uma URL como `seu-usuario.github.io/nome-do-repositorio`
+4. Toda vez que você faz push de alterações, o site é atualizado automaticamente
+
+Não há etapa de "deploy" manual, não há servidor para gerenciar. O GitHub cuida de tudo.
+
+## Opções de publicação
+
+O GitHub Pages oferece três formas de definir de onde vêm os arquivos do site:
+
+### Opção 1: Raiz do repositório (branch main)
+
+Os arquivos do site ficam na raiz do repositório, na branch principal. Simples e direto — o que está no repositório é o que aparece no site.
+
+**Quando usar**: projetos simples onde o repositório contém apenas o site.
+
+### Opção 2: Pasta /docs (branch main)
+
+Os arquivos do site ficam dentro de uma pasta chamada `docs/` na branch principal. O restante do repositório pode conter código-fonte, dados ou outros arquivos que não fazem parte do site.
+
+**Quando usar**: projetos onde você quer separar o código-fonte do site publicado. É a opção ideal para livros Quarto, onde os arquivos `.qmd` ficam na raiz e o site gerado vai para `docs/`.
+
+### Opção 3: Branch gh-pages
+
+Os arquivos do site ficam em uma branch separada chamada `gh-pages`. A branch principal contém o código-fonte, e a branch `gh-pages` contém apenas os arquivos gerados.
+
+**Quando usar**: fluxos de trabalho mais avançados, geralmente com automação (GitHub Actions).
+
+Para este manual e para a maioria dos projetos com Quarto, a **Opção 2 (pasta /docs)** é a mais prática.
+
+## Publicando um site Quarto: passo a passo
+
+Vamos ao processo completo para publicar um livro ou site feito com Quarto.
+
+### Passo 1: Configure o Quarto para gerar na pasta docs
+
+No arquivo `_quarto.yml` do seu projeto, defina o diretório de saída:
+
+```yaml
+project:
+  type: book
+  output-dir: docs
+```
+
+Isso faz com que o comando `quarto render` gere todos os arquivos HTML dentro da pasta `docs/`.
+
+### Passo 2: Renderize o projeto
+
+No Terminal (ou no terminal integrado do Positron), execute:
+
+```bash
+quarto render
+```
+
+O Quarto processará todos os arquivos `.qmd` e gerará o site na pasta `docs/`.
+
+### Passo 3: Crie o repositório no GitHub
+
+Se ainda não tiver um repositório para o projeto:
+
+1. Acesse [github.com](https://github.com) e faça login
+2. Clique em **+** → **New repository**
+3. Dê um nome ao repositório (ex: `manual-git`)
+4. Deixe as opções de inicialização desmarcadas
+5. Clique em **Create repository**
+
+### Passo 4: Envie o projeto para o GitHub
+
+Se o projeto ainda não está conectado ao GitHub:
+
+```bash
+git init
+git add .
+git commit -m "Primeiro commit"
+git remote add origin https://github.com/seu-usuario/nome-do-repositorio.git
+git branch -M main
+git push -u origin main
+```
+
+Se já está conectado, basta:
+
+```bash
+git add .
+git commit -m "Atualiza site"
+git push
+```
+
+### Passo 5: Ative o GitHub Pages
+
+1. No repositório do GitHub, clique em **Settings** (ícone de engrenagem)
+2. No menu lateral esquerdo, clique em **Pages**
+3. Em **Source**, selecione **Deploy from a branch**
+4. Em **Branch**, selecione `main` e a pasta `/docs`
+5. Clique em **Save**
+
+### Passo 6: Aguarde e acesse
+
+O GitHub levará alguns minutos para publicar o site. Você pode acompanhar o progresso na seção **Actions** do repositório.
+
+Quando estiver pronto, o site estará disponível em:
+
+```
+https://seu-usuario.github.io/nome-do-repositorio/
+```
+
+::: {.callout-tip}
+## Encontrando a URL
+
+Após ativar o GitHub Pages, a URL do site aparece na própria página de configurações (Settings → Pages), no topo da seção.
+:::
+
+## Atualizando o site
+
+Depois da configuração inicial, atualizar o site é simples:
+
+1. Edite seus arquivos `.qmd`
+2. Execute `quarto render` para regenerar o site
+3. Faça commit e push:
+
+```bash
+git add .
+git commit -m "Atualiza conteúdo"
+git push
+```
+
+O GitHub Pages detecta automaticamente as alterações na pasta `docs/` e republica o site. Em poucos minutos, as mudanças estarão no ar.
+
+## Domínio personalizado
+
+Por padrão, seu site terá uma URL como `seu-usuario.github.io/repositorio`. Mas você pode configurar um domínio próprio, como `www.seusite.com.br`.
+
+### Como configurar
+
+1. Compre um domínio em um registrador (Registro.br, GoDaddy, Namecheap, etc.)
+
+2. No GitHub, vá em **Settings → Pages** e digite seu domínio em **Custom domain**
+
+3. No seu registrador de domínio, configure os registros DNS:
+   - Para domínio raiz (exemplo.com): crie registros A apontando para os IPs do GitHub:
+     ```
+     185.199.108.153
+     185.199.109.153
+     185.199.110.153
+     185.199.111.153
+     ```
+   - Para subdomínio (www.exemplo.com): crie um registro CNAME apontando para `seu-usuario.github.io`
+
+4. Aguarde a propagação DNS (pode levar até 24 horas)
+
+5. Marque a opção **Enforce HTTPS** para ter conexão segura
+
+::: {.callout-note}
+## HTTPS gratuito
+
+O GitHub Pages oferece certificado HTTPS gratuito, mesmo para domínios personalizados. Isso significa que seu site terá o cadeado de segurança no navegador sem custo adicional.
+:::
+
+## Arquivo .nojekyll
+
+Por padrão, o GitHub Pages processa os arquivos com Jekyll (um gerador de sites estáticos). Se você usa Quarto ou outro gerador, pode haver conflitos — especialmente com pastas que começam com underscore (`_`), que o Jekyll ignora.
+
+Para desativar o processamento Jekyll, crie um arquivo vazio chamado `.nojekyll` na pasta `docs/`:
+
+```bash
+touch docs/.nojekyll
+```
+
+O Quarto geralmente cria esse arquivo automaticamente, mas é bom verificar se ele existe.
+
+## Solucionando problemas comuns
+
+### O site não aparece
+
+- Verifique se a pasta `docs/` existe e contém um arquivo `index.html`
+- Confirme que você fez push após o `quarto render`
+- Aguarde alguns minutos — a primeira publicação pode demorar
+- Verifique a aba **Actions** no GitHub para ver se há erros
+
+### Erro 404 (página não encontrada)
+
+- Verifique se a configuração do GitHub Pages está apontando para a pasta correta (`/docs`)
+- Confirme que o arquivo `index.html` está na raiz da pasta `docs/`
+- Se estiver usando caminhos relativos, verifique se estão corretos
+
+### Estilos ou imagens não carregam
+
+- Verifique se o `_quarto.yml` tem a configuração correta de `output-dir`
+- Confirme que a pasta `docs/` contém as subpastas de estilos e imagens
+- Limpe o cache do navegador e tente novamente
+
+### Alterações não aparecem no site
+
+- Confirme que você executou `quarto render` após editar os arquivos
+- Verifique se fez commit e push
+- Aguarde alguns minutos para o GitHub processar
+- Verifique a aba **Actions** para confirmar que o deploy foi concluído
+
+## Alternativas ao GitHub Pages
+
+Embora o GitHub Pages seja excelente para a maioria dos casos, existem alternativas:
+
+**Netlify**
+: Oferece mais recursos, como formulários, funções serverless e deploy automático de branches. Também é gratuito para projetos pessoais.
+
+**Vercel**
+: Focado em frameworks JavaScript modernos, mas funciona bem com sites estáticos. Gratuito para uso pessoal.
+
+**Cloudflare Pages**
+: Boa performance global e generoso plano gratuito.
+
+**Quarto Pub**
+: Serviço da própria Posit para publicar documentos Quarto. Simples de usar com o comando `quarto publish`.
+
+Para a maioria dos usuários acadêmicos e projetos pessoais, o GitHub Pages é mais que suficiente — e tem a vantagem de manter tudo no mesmo lugar que seu código.
+
+## Exemplos de sites no GitHub Pages
+
+Para inspiração, alguns exemplos de sites hospedados no GitHub Pages:
+
+- **R for Data Science** (r4ds.hadley.nz) — livro completo sobre R
+- **Happy Git with R** (happygitwithr.com) — guia de Git para usuários de R
+- **Quarto documentation** (quarto.org) — documentação oficial do Quarto
+- **Este manual** — sim, este manual que você está lendo!
+
+Todos são projetos de código aberto. Você pode visitar os repositórios, ver como são organizados e aprender com eles.
+
+## Conclusão
+
+O GitHub Pages fecha o ciclo completo: você escreve, versiona com Git, colabora pelo GitHub, e publica para o mundo — tudo de graça, tudo integrado.
+
+Para acadêmicos, é uma ferramenta transformadora. Materiais didáticos que antes ficavam trancados em pastas ou sistemas fechados agora podem estar acessíveis a qualquer pessoa com um navegador. Pesquisas, tutoriais, livros, portfólios — tudo pode ser compartilhado de forma aberta e profissional.
+
+Você começou este manual aprendendo a navegar pelo Terminal. Agora termina sabendo publicar um site na internet. Esse é o poder de dominar suas ferramentas.
+
+::: {.callout-tip}
+## Próximos passos
+
+Agora que você conhece Git, GitHub e GitHub Pages, que tal:
+
+1. Criar um site pessoal com seu portfólio ou currículo?
+2. Publicar os documentos de estudo de uma disciplina que você ensina ou estuda?
+3. Transformar sua dissertação ou tese em um livro online?
+4. Contribuir para um projeto open source que você admira?
+
+:::

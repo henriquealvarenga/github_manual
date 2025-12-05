@@ -1,0 +1,353 @@
+# GitHub Desktop
+
+No capítulo anterior, você aprendeu a usar o Git pela linha de comando: `git init`, `git add`, `git commit`, `git push`. Digitou comandos, configurou credenciais, navegou pelo Terminal. Foi o caminho mais "difícil" — mas também o mais importante. Entender o que acontece por baixo dos panos é fundamental para não ficar perdido quando algo der errado.
+
+Agora, a boa notícia: existe uma forma muito mais visual e amigável de fazer tudo isso. O **GitHub Desktop** é um aplicativo gratuito que transforma cliques em comandos Git. Em vez de memorizar sintaxes, você vê seus arquivos, suas alterações e seu histórico em uma interface clara. O fluxo é o mesmo — a diferença é que agora você enxerga o que está fazendo.
+
+Este capítulo apresenta o GitHub Desktop como uma alternativa prática ao Terminal. Você aprenderá a realizar as mesmas operações que já conhece, mas de forma visual. E o melhor: o GitHub Desktop funciona tanto no **Mac** quanto no **Windows**, com uma interface praticamente idêntica nos dois sistemas.
+
+## O que é GitHub Desktop?
+
+GitHub Desktop é um aplicativo gratuito criado pelo próprio GitHub que oferece uma interface gráfica para realizar operações Git. Em vez de digitar comandos no Terminal, você clica em botões, visualiza alterações lado a lado e gerencia repositórios de forma visual.
+
+É especialmente útil para quem está começando, prefere interfaces visuais, ou simplesmente quer agilizar tarefas rotineiras sem memorizar comandos.
+
+## Instalação
+
+### No Mac
+
+1. Acesse [desktop.github.com](https://desktop.github.com) e clique em **Download for macOS**
+2. Abra o arquivo `.dmg` baixado e arraste o aplicativo para a pasta **Aplicativos**
+3. Na primeira execução, faça login com sua conta GitHub
+4. O aplicativo pedirá permissão para acessar sua conta e configurará automaticamente seu nome e e-mail para commits
+
+Você também pode instalar via **Homebrew**:
+
+```bash
+brew install --cask github
+```
+
+### No Windows
+
+1. Acesse [desktop.github.com](https://desktop.github.com) e clique em **Download for Windows**
+2. Execute o instalador baixado e siga as instruções
+3. Na primeira execução, faça login com sua conta GitHub
+4. O aplicativo configurará automaticamente seu nome e e-mail para commits
+
+Você também pode instalar via **winget**:
+
+```powershell
+winget install GitHub.GitHubDesktop
+```
+
+::: {.callout-tip}
+## Configuração automática
+
+Uma das vantagens do GitHub Desktop é que ele configura o Git automaticamente. Se você ainda não tinha configurado `user.name` e `user.email` no Terminal, o aplicativo faz isso por você ao conectar sua conta GitHub.
+:::
+
+## A interface principal
+
+Ao abrir o GitHub Desktop, você verá três áreas principais:
+
+1. **Barra lateral esquerda**: lista de repositórios locais e histórico de commits
+2. **Painel central**: arquivos modificados e suas alterações (diff)
+3. **Barra inferior**: área para escrever mensagens de commit
+
+
+
+No topo, há botões para as ações principais: fetch/pull, push e a branch atual.
+
+A interface é praticamente idêntica no Mac e no Windows. As únicas diferenças são os atalhos de teclado: onde o Mac usa `Cmd`, o Windows usa `Ctrl`.
+
+## Operações básicas: Terminal vs GitHub Desktop
+
+Nas seções a seguir, você verá lado a lado como realizar cada operação no Terminal e no GitHub Desktop. Isso ajuda a entender que são apenas formas diferentes de fazer a mesma coisa.
+
+### Criar um novo repositório
+
+::: {.panel-tabset}
+## Terminal
+
+```bash
+cd ~/Desktop/meu-projeto
+git init
+git add .
+git commit -m "Primeiro commit"
+git remote add origin https://github.com/usuario/meu-projeto.git
+git push -u origin main
+```
+
+## GitHub Desktop
+
+1. Clique em **File → New Repository** (Mac: `Cmd+N` / Windows: `Ctrl+N`)
+2. Preencha o nome, escolha a pasta local
+3. Marque "Initialize this repository with a README" se desejar
+4. Clique em **Create Repository**
+5. Para publicar no GitHub, clique no botão **Publish repository** na barra superior
+6. Escolha se será público ou privado e confirme
+:::
+
+### Clonar um repositório existente
+
+::: {.panel-tabset}
+## Terminal
+
+```bash
+cd ~/Desktop
+git clone https://github.com/usuario/repositorio.git
+```
+
+## GitHub Desktop
+
+1. Clique em **File → Clone Repository** (Mac: `Cmd+Shift+O` / Windows: `Ctrl+Shift+O`)
+2. Você verá três abas: GitHub.com (seus repositórios), GitHub Enterprise, e URL
+3. Selecione o repositório desejado ou cole a URL
+4. Escolha onde salvar localmente
+5. Clique em **Clone**
+:::
+
+### Ver status e alterações
+
+::: {.panel-tabset}
+## Terminal
+
+```bash
+git status
+git diff
+```
+
+## GitHub Desktop
+
+As alterações aparecem automaticamente no painel central. Arquivos modificados são listados à esquerda com ícones coloridos:
+
+- 🟡 Amarelo: arquivo modificado
+- 🟢 Verde: arquivo novo
+- 🔴 Vermelho: arquivo removido
+
+Clicando em qualquer arquivo, você vê exatamente o que mudou: linhas removidas em vermelho, adicionadas em verde.
+:::
+
+### Adicionar arquivos e fazer commit
+
+::: {.panel-tabset}
+## Terminal
+
+```bash
+git add .
+git commit -m "Adiciona função de cálculo"
+```
+
+## GitHub Desktop
+
+1. Os arquivos modificados aparecem com caixas de seleção
+2. Marque os que deseja incluir no commit (ou deixe todos marcados)
+3. Na parte inferior, escreva um título para o commit (obrigatório) e uma descrição opcional
+4. Clique no botão **Commit to main**
+:::
+
+### Enviar para o GitHub (push)
+
+::: {.panel-tabset}
+## Terminal
+
+```bash
+git push
+```
+
+## GitHub Desktop
+
+Após fazer um commit, o botão na barra superior muda para **Push origin** com um número indicando quantos commits locais ainda não foram enviados. Clique nele.
+:::
+
+### Baixar alterações do GitHub (pull)
+
+::: {.panel-tabset}
+## Terminal
+
+```bash
+git pull
+```
+
+## GitHub Desktop
+
+1. Clique em **Fetch origin** na barra superior para verificar se há novidades no repositório remoto
+2. Se houver, o botão muda para **Pull origin**
+3. Clique para baixar as alterações
+:::
+
+### Ver histórico de commits
+
+::: {.panel-tabset}
+## Terminal
+
+```bash
+git log
+git log --oneline --graph
+```
+
+## GitHub Desktop
+
+1. Clique na aba **History** na barra lateral esquerda
+2. Você verá uma lista visual de todos os commits, com autor, data e mensagem
+3. Clicando em qualquer commit, o painel central mostra exatamente quais arquivos foram alterados
+:::
+
+### Criar e trocar de branch
+
+::: {.panel-tabset}
+## Terminal
+
+```bash
+git branch nova-funcionalidade
+git checkout nova-funcionalidade
+# ou, em um só comando:
+git checkout -b nova-funcionalidade
+```
+
+## GitHub Desktop
+
+1. Clique no botão **Current Branch** na barra superior
+2. Você verá a lista de branches existentes
+3. Para criar uma nova, clique em **New Branch**, dê um nome e confirme
+4. Para trocar, basta clicar na branch desejada na lista
+:::
+
+### Fazer merge de branches
+
+::: {.panel-tabset}
+## Terminal
+
+```bash
+git checkout main
+git merge nova-funcionalidade
+```
+
+## GitHub Desktop
+
+1. Estando na branch de destino (ex: main), clique em **Branch → Merge into Current Branch** no menu
+2. Selecione a branch que deseja incorporar
+3. Confirme
+:::
+
+### Resolver conflitos
+
+::: {.panel-tabset}
+## Terminal
+
+Você precisa abrir cada arquivo conflitante, encontrar os marcadores `<<<<<<<`, `=======`, `>>>>>>>`, editar manualmente, salvar, e depois:
+
+```bash
+git add arquivo-resolvido.txt
+git commit -m "Resolve conflitos"
+```
+
+## GitHub Desktop
+
+1. Quando há conflitos, o aplicativo exibe um aviso claro
+2. Ele lista os arquivos conflitantes e oferece duas opções: abrir no editor de código padrão ou usar uma ferramenta de merge externa
+3. Após resolver manualmente, volte ao GitHub Desktop e clique em **Continue Merge** ou faça o commit normalmente
+:::
+
+### Desfazer o último commit
+
+::: {.panel-tabset}
+## Terminal
+
+```bash
+git reset --soft HEAD~1
+```
+
+## GitHub Desktop
+
+1. Clique com o botão direito no commit mais recente na aba **History**
+2. Selecione **Undo Commit**
+3. Os arquivos voltam para a área de preparação, prontos para serem editados ou commitados novamente
+:::
+
+## Tabela comparativa resumida
+
+| Operação | Terminal | GitHub Desktop |
+|----------|----------|----------------|
+| Inicializar repositório | `git init` | File → New Repository |
+| Clonar | `git clone URL` | File → Clone Repository |
+| Ver alterações | `git status` / `git diff` | Painel central (automático) |
+| Preparar arquivos | `git add .` | Marcar checkboxes |
+| Commit | `git commit -m "msg"` | Escrever mensagem + botão Commit |
+| Push | `git push` | Botão Push origin |
+| Pull | `git pull` | Botão Pull origin |
+| Histórico | `git log` | Aba History |
+| Criar branch | `git checkout -b nome` | Current Branch → New Branch |
+| Trocar branch | `git checkout nome` | Clicar na branch |
+| Merge | `git merge nome` | Branch → Merge into Current Branch |
+| Desfazer commit | `git reset --soft HEAD~1` | Botão direito → Undo Commit |
+
+## Quando usar cada um?
+
+### GitHub Desktop é ideal quando você:
+
+- Está aprendendo Git e quer visualizar o que está acontecendo
+- Prefere interfaces gráficas a linhas de comando
+- Quer revisar alterações visualmente antes de commitar
+- Trabalha em projetos simples com fluxo básico (commit, push, pull)
+- Precisa resolver conflitos e quer ver claramente as diferenças
+
+### O Terminal é preferível quando você:
+
+- Precisa de operações avançadas (rebase interativo, cherry-pick, bisect)
+- Trabalha com scripts ou automação
+- Está em um servidor remoto sem interface gráfica
+- Quer maior controle e flexibilidade
+- Precisa executar comandos específicos não disponíveis na interface
+
+::: {.callout-tip}
+## Use os dois!
+
+A boa notícia: você não precisa escolher. Muitos desenvolvedores usam GitHub Desktop para o dia a dia e recorrem ao Terminal quando precisam de algo mais específico. O repositório é o mesmo; as ferramentas são apenas formas diferentes de interagir com ele.
+:::
+
+## Configurações úteis
+
+Acesse as preferências do aplicativo para configurar:
+
+- **No Mac**: GitHub Desktop → Preferences (ou `Cmd+,`)
+- **No Windows**: File → Options (ou `Ctrl+,`)
+
+As opções incluem:
+
+- **Accounts**: gerenciar contas GitHub conectadas
+- **Git**: alterar nome e e-mail padrão para commits
+- **Appearance**: escolher tema claro ou escuro
+- **Integrations**: definir editor de código externo (VS Code, Positron, etc.) e shell padrão
+- **Advanced**: configurar comportamento de merge e outras opções
+
+## Atalhos de teclado úteis
+
+| Ação | Mac | Windows |
+|------|-----|---------|
+| Novo repositório | `Cmd+N` | `Ctrl+N` |
+| Clonar repositório | `Cmd+Shift+O` | `Ctrl+Shift+O` |
+| Adicionar repositório local | `Cmd+O` | `Ctrl+O` |
+| Commit | `Cmd+Enter` | `Ctrl+Enter` |
+| Push | `Cmd+P` | `Ctrl+P` |
+| Pull | `Cmd+Shift+P` | `Ctrl+Shift+P` |
+| Nova branch | `Cmd+Shift+N` | `Ctrl+Shift+N` |
+| Alternar entre Changes e History | `Cmd+1` / `Cmd+2` | `Ctrl+1` / `Ctrl+2` |
+| Abrir no editor externo | `Cmd+Shift+A` | `Ctrl+Shift+A` |
+| Abrir no Terminal | `` Ctrl+` `` | `` Ctrl+` `` |
+
+## Dicas práticas
+
+::: {.callout-tip}
+## Boas práticas no GitHub Desktop
+
+1. **Use "Open in Terminal" quando precisar.** No menu Repository, você pode abrir o Terminal diretamente na pasta do repositório — útil quando precisa de um comando específico.
+
+2. **Configure seu editor favorito.** Em Preferences/Options → Integrations, defina o VS Code, Positron ou outro editor de sua preferência.
+
+3. **Aproveite a visualização de diff.** Antes de commitar, revise cada alteração clicando nos arquivos. É muito mais fácil identificar erros visualmente do que com `git diff` no Terminal.
+
+4. **Use descrições nos commits.** Além do título curto, o campo de descrição permite explicar o contexto da alteração. Seu eu do futuro agradece.
+
+5. **Não tenha medo de explorar.** O GitHub Desktop é bastante seguro: a maioria das ações destrutivas pede confirmação antes de executar.
+:::

@@ -1,0 +1,223 @@
+# Homebrew {#sec-homebrew}
+
+::: {.callout-tip}
+## Capítulo para usuários macOS
+
+Este capítulo é destinado a usuários de **Mac**. Se você utiliza **Windows**, siga para o @sec-winget.
+:::
+
+Agora que você já conhece o Terminal e compreende seu papel como uma forma direta de se comunicar com o computador, é natural perguntar-se como instalar programas apenas digitando comandos. Em sistemas baseados em Unix, como o macOS, existe uma ferramenta poderosa que simplifica completamente essa tarefa: o **Homebrew**.  
+
+Ele se tornou, ao longo da última década, o principal gerenciador de pacotes do macOS e um dos primeiros passos para qualquer pessoa que pretenda trabalhar com programação, ciência de dados ou desenvolvimento em geral.
+
+Este capítulo apresenta o Homebrew de forma narrativa e progressiva, explicando o que ele é, para que serve, como instalá-lo, como utilizá-lo e, por fim, como lidar com erros comuns. Depois, abordaremos o que usuários Windows devem usar como alternativa, dado que o sistema da Microsoft não dispõe de Homebrew.
+
+---
+
+## O que é o Homebrew?
+
+Instalar programas no macOS pode ser um processo trabalhoso: baixar arquivos `.dmg`, arrastar aplicativos para a pasta de Aplicativos, aguardar permissões, procurar atualizações, e assim por diante. Com o Homebrew, tudo isso é substituído por uma experiência fluida.
+
+Homebrew é um **gerenciador de pacotes**, ou seja, uma ferramenta que localiza, instala, atualiza e remove softwares diretamente pelo Terminal. Ele centraliza essas operações, organiza as dependências e evita que o sistema fique cheio de arquivos espalhados em múltiplas pastas.
+
+A filosofia do projeto é simples e direta: _“The missing package manager for macOS.”_
+
+O Homebrew permite instalar linguagens de programação (como Python, R e Node), ferramentas como Git, editores como VS Code, conversores como Pandoc, e até bancos de dados complexos, tudo com um único comando.
+
+---
+
+## Instalando o Homebrew
+
+Para instalar o Homebrew, abra o aplicativo **Terminal** no macOS e digite:
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Esse comando baixa o instalador oficial e inicia o processo de instalação. O sistema pode pedir sua senha de administrador — embora nada apareça ao digitar, isso é normal.
+
+Ao final, o Terminal exibirá algumas instruções adicionais, incluindo comandos para ativar o Homebrew automaticamente. Em computadores com chip Apple Silicon (M1, M2, M3), essas linhas costumam ser:
+
+```bash
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+```
+
+Depois disso, basta confirmar que tudo funcionou digitanto `brew --version` no Terminal:
+
+```bash
+brew --version
+```
+
+Se uma versão aparecer, o Homebrew está ativo.
+
+---
+
+## Instalando Programas com o Homebrew
+
+Uma vez instalado, o Homebrew transforma o Terminal em uma central de controle. Por exemplo, para instalar o Git:
+
+```bash
+brew install git
+```
+
+O Homebrew realiza todas as etapas em silêncio: baixa o pacote, confere a integridade, instala as dependências e registra internamente. 
+
+Para instalar um aplicativo gráfico, utilize a opção `--cask`:
+
+```bash
+brew install --cask visual-studio-code
+```
+
+O aplicativo surgirá automaticamente na sua pasta de Aplicativos.
+
+O Homebrew disponibiliza uma vasta coleção de ferramentas científicas, aplicativos de desenvolvimento, bancos de dados e utilitários de linha de comando.
+
+---
+
+## Atualizando e Organizando o Sistema
+
+Com o tempo, seus programas precisarão de atualizações. Com o Homebrew, esse processo é simples e unificado. Primeiro, atualize a lista interna de “receitas”:
+
+```bash
+brew update
+```
+
+Em seguida, atualize os programas instalados:
+
+```bash
+brew upgrade
+```
+
+Ao final, limpe versões antigas:
+
+```bash
+brew cleanup
+```
+
+Esse ciclo mantém o ambiente organizado, previsível e atualizado.
+
+---
+
+## Onde o Homebrew Guarda os Programas?
+
+Todos os arquivos instalados pelo Homebrew ficam, por padrão, armazenados dentro de:
+
+```
+/opt/homebrew/
+```
+
+Essa estrutura evita interferências nos arquivos internos do macOS e centraliza todas as instalações em um único local. O diretório `bin/` guarda programas executáveis, `lib/` contém bibliotecas, e assim por diante.
+
+---
+
+## Exemplos Ilustrados
+
+### Instalar o Python
+
+```bash
+brew install python
+```
+
+Saída típica:
+
+```
+==> Downloading python...
+==> Installing python...
+==> Summary
+🍺  /opt/homebrew/Cellar/python/3.12.1: 5,234 files, 60MB
+```
+
+### Procurar um pacote
+
+```bash
+brew search quarto
+```
+
+Resposta:
+
+```
+==> Formulae
+quarto-cli
+```
+
+### Remover um programa
+
+```bash
+brew uninstall git
+```
+
+---
+
+## Alternativas para Usuários Windows
+
+Embora o Windows não tenha Homebrew, ele possui alternativas modernas. A principal é o **Windows Package Manager**, conhecido como **winget**, integrado ao Windows 10 e 11.
+
+Instalar o Git no Windows com winget é tão simples quanto:
+
+```powershell
+winget install Git.Git
+```
+
+Para atualizar tudo:
+
+```powershell
+winget upgrade --all
+```
+
+Outra alternativa é o **Chocolatey**, uma ferramenta veterana e amplamente utilizada em ambientes corporativos.
+
+---
+
+## Problemas e Erros Comuns
+
+### 1. *Command not found: brew*
+
+Execute:
+
+```bash
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+```
+
+---
+
+### 2. Permissão negada na instalação
+
+```bash
+sudo chown -R $(whoami) /opt/homebrew
+```
+
+---
+
+### 3. Erros de rede ao baixar pacotes
+
+```bash
+brew update
+brew upgrade
+brew reinstall nome-do-pacote
+```
+
+---
+
+### 4. Conflito entre versões do Python (sistema vs Homebrew)
+
+```bash
+which python3
+```
+
+---
+
+## Exercícios Práticos
+
+1. Instale o Homebrew e confirme com `brew --version`.  
+2. Instale o Git e confirme com `git --version`.  
+3. Busque o pacote `quarto` com o comando `brew search quarto`.  
+4. Atualize seu Homebrew com `brew update`, `brew upgrade` e `brew cleanup`.  
+5. (Windows) Instale o Git usando o winget e compare com o processo no macOS.
+
+---
+
+## Conclusão
+
+O Homebrew representa um marco para quem começa a usar o Terminal. Ele substitui processos manuais por uma solução transparente, elegante e extremamente eficiente. Dominar o Homebrew é dominar a sua própria máquina.

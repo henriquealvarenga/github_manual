@@ -1,0 +1,446 @@
+# Terminal
+
+## Uma Breve História
+
+Antes das interfaces gráficas com janelas, ícones e mouse, a única forma de interagir com um computador era através de texto. O usuário digitava comandos e o computador respondia — também em texto. Essa interação acontecia através de terminais físicos: máquinas compostas por um teclado e uma tela (ou impressora) conectadas a um computador central.
+
+Nos anos 1960 e 1970, os terminais eram a porta de entrada para os grandes mainframes das universidades e empresas. Programadores, cientistas e engenheiros passavam horas diante dessas telas escuras com letras verdes ou âmbar, digitando comandos para executar cálculos, processar dados e desenvolver software.
+
+Com a chegada dos computadores pessoais nos anos 1980, as interfaces gráficas (GUI) começaram a se popularizar. O Macintosh da Apple (1984) e posteriormente o Windows da Microsoft tornaram os computadores acessíveis a pessoas sem conhecimento técnico. Bastava apontar e clicar.
+
+Mas o terminal não desapareceu. Ele permaneceu como uma ferramenta essencial para desenvolvedores, administradores de sistemas e usuários avançados. Por quê? Porque a linha de comando oferece algo que a interface gráfica nem sempre consegue: precisão, automação e poder.
+
+## O que é o Terminal hoje?
+
+Quando falamos em "terminal" hoje, nos referimos a um **emulador de terminal** — um programa que simula aqueles antigos terminais físicos dentro do seu sistema operacional moderno. É uma janela onde você digita comandos de texto e recebe respostas do computador.
+
+Por trás do terminal existe um programa que interpreta seus comandos e os executa, chamado de **shell**. Pense no terminal como a janela (a interface visual) e no shell como o cérebro que entende o que você digita.
+
+No Mac, o aplicativo se chama **Terminal** e vem instalado por padrão. No Windows, temos o **Prompt de Comando** (cmd), o **PowerShell**, e mais recentemente o **Windows Terminal**, que unifica diferentes shells em uma única interface moderna.
+
+
+### Shells no Mac e Linux
+
+Até 2019, o shell padrão do macOS era o **bash** (Bourne Again Shell), criado em 1989 e extremamente popular no mundo Unix e Linux. A partir do macOS Catalina (10.15), a Apple mudou o padrão para o **zsh** (Z Shell).
+
+O zsh é compatível com o bash na maioria dos comandos básicos, mas oferece recursos adicionais como melhor autocompletar, correção de erros de digitação e temas visuais. Para o uso cotidiano e para tudo que faremos neste manual, os dois funcionam de forma idêntica.
+
+Uma forma simples de identificar qual shell você está usando é olhar o prompt:
+
+- **zsh**: termina com `%`
+  ```
+  seu-usuario@seu-mac ~ %
+  ```
+- **bash**: termina com `$`
+  ```
+  seu-usuario@seu-mac ~ $
+  ```
+
+Se você encontrar tutoriais antigos que mencionam bash, não se preocupe — os comandos que aprenderemos aqui funcionam em ambos.
+
+### Shells no Windows
+
+No Windows, a situação é um pouco diferente:
+
+- **Prompt de Comando (cmd)**: o interpretador clássico do Windows, existe desde o MS-DOS. Simples, mas limitado.  
+- **PowerShell**: shell moderno da Microsoft, muito mais poderoso, com uma linguagem própria orientada a objetos. É o padrão em versões recentes do Windows.  
+- **Git Bash**: quando você instala o Git no Windows, ele inclui um emulador que permite usar comandos no estilo Unix (os mesmos do Mac e Linux). Muito útil para seguir tutoriais padronizados.  
+
+## Por que aprender a usar o Terminal?
+
+Você pode estar se perguntando: se temos interfaces gráficas tão bonitas e intuitivas, por que alguém usaria o terminal?
+
+**Eficiência.** Muitas tarefas que exigem vários cliques podem ser feitas com um único comando. Renomear 500 arquivos de uma vez? Uma linha de comando resolve.
+
+**Automação.** Você pode criar scripts — sequências de comandos salvos em um arquivo — que executam tarefas repetitivas automaticamente.
+
+**Acesso a ferramentas poderosas.** Muitos programas de desenvolvimento, incluindo o Git, foram criados para a linha de comando. As versões gráficas são apenas "capas" sobre esses programas.
+
+**Controle preciso.** O terminal permite especificar exatamente o que você quer fazer, com todas as opções disponíveis. Interfaces gráficas frequentemente escondem funcionalidades avançadas.
+
+**Universalidade.** Os comandos básicos funcionam de forma similar em Mac, Linux e (com algumas diferenças) no Windows. Aprender uma vez serve para sempre.
+
+**Servidores e nuvem.** Se você trabalhar com servidores remotos ou serviços em nuvem, a interface será quase sempre via terminal.
+
+## Abrindo o Terminal
+
+### No Mac
+
+Existem várias formas de abrir o Terminal:
+
+1. **Spotlight**: Pressione `Cmd + Espaço`, digite "Terminal" e pressione Enter
+2. **Finder**: Vá em Aplicativos → Utilitários → Terminal
+3. **Launchpad**: Abra o Launchpad e procure por Terminal na pasta "Outros"
+
+Ao abrir, você verá uma janela com um prompt parecido com:
+
+```
+seu-usuario@seu-mac ~ %
+```
+
+Esse prompt indica que o terminal está pronto para receber comandos.
+
+### No Windows
+
+O Windows oferece diferentes opções:
+
+**Prompt de Comando (cmd)**
+
+1. Pressione `Win + R`, digite `cmd` e pressione Enter
+2. Ou pesquise "Prompt de Comando" no menu Iniciar
+
+**PowerShell**
+
+1. Clique com botão direito no menu Iniciar e selecione "Windows PowerShell"
+2. Ou pesquise "PowerShell" no menu Iniciar
+
+**Windows Terminal (recomendado)**
+
+O Windows Terminal é um aplicativo moderno que unifica cmd, PowerShell e outros shells. Você pode instalá-lo gratuitamente pela Microsoft Store. Ele oferece abas, personalização visual e melhor suporte a caracteres especiais.
+
+**Git Bash**
+
+Se você instalar o Git para Windows, ele inclui o **Git Bash** — um emulador que permite usar comandos no estilo Unix/Mac dentro do Windows. Isso é especialmente útil porque os comandos serão idênticos aos do Mac e Linux.
+
+## Anatomia de um Comando
+
+Um comando de terminal geralmente segue esta estrutura:
+
+```
+comando [opções] [argumentos]
+```
+
+Por exemplo:
+
+```bash
+ls -la Documents
+```
+
+Neste comando:
+
+- `ls` é o comando (listar arquivos)
+- `-la` são opções (formato longo + arquivos ocultos)
+- `Documents` é o argumento (a pasta a ser listada)
+
+As opções geralmente começam com um hífen (`-`) para opções curtas ou dois hífens (`--`) para opções longas:
+
+```bash
+ls -a           # opção curta
+ls --all        # opção longa (equivalente)
+```
+
+## Comandos Essenciais
+
+Vamos aprender os comandos básicos que você usará no dia a dia. Apresento as versões para Mac/Linux e, quando diferentes, para Windows.
+
+### Navegação
+
+**Onde estou?**
+
+```bash
+pwd                 # Mac/Linux: Print Working Directory
+cd                  # Windows: sem argumentos, mostra o diretório atual
+```
+
+Este comando mostra o caminho completo da pasta onde você está.
+
+**Listar arquivos**
+
+```bash
+ls                  # Mac/Linux
+dir                 # Windows
+```
+
+Para ver mais detalhes:
+
+```bash
+ls -la              # Mac/Linux: lista detalhada com arquivos ocultos
+dir /a              # Windows: mostra arquivos ocultos
+```
+
+**Mudar de pasta**
+
+```bash
+cd Documents        # Entrar na pasta Documents
+cd ..               # Voltar uma pasta (diretório pai)
+cd ~                # Ir para a pasta do usuário (Mac/Linux)
+cd %USERPROFILE%    # Ir para a pasta do usuário (Windows cmd)
+cd /                # Ir para a raiz do sistema
+```
+
+Exemplos práticos:
+
+```bash
+cd ~/Desktop        # Mac: vai para a Área de Trabalho
+cd Desktop          # Entra na pasta Desktop (se existir no diretório atual)
+cd ../..            # Volta duas pastas
+```
+
+### Manipulação de Arquivos e Pastas
+
+**Criar pasta**
+
+```bash
+mkdir nova-pasta                # Cria uma pasta
+mkdir -p pasta/subpasta         # Mac/Linux: cria pasta e subpastas
+mkdir pasta\subpasta            # Windows: cria estrutura de pastas
+```
+
+**Criar arquivo vazio**
+
+```bash
+touch arquivo.txt               # Mac/Linux
+type nul > arquivo.txt          # Windows cmd
+New-Item arquivo.txt            # Windows PowerShell
+```
+
+**Copiar**
+
+```bash
+cp arquivo.txt copia.txt        # Mac/Linux
+copy arquivo.txt copia.txt      # Windows
+```
+
+Para copiar pastas:
+
+```bash
+cp -r pasta nova-pasta          # Mac/Linux: -r significa recursivo
+xcopy pasta nova-pasta /E       # Windows
+```
+
+**Mover ou renomear**
+
+```bash
+mv arquivo.txt novo-nome.txt    # Mac/Linux: move ou renomeia
+move arquivo.txt novo-nome.txt  # Windows
+```
+
+**Remover arquivo**
+
+```bash
+rm arquivo.txt                  # Mac/Linux
+del arquivo.txt                 # Windows
+```
+
+**Remover pasta**
+
+```bash
+rm -r pasta                     # Mac/Linux: remove pasta e conteúdo
+rmdir /S pasta                  # Windows: remove pasta e conteúdo
+```
+
+::: {.callout-warning}
+## Cuidado com rm e del
+
+Os comandos de remoção são permanentes. Diferente da Lixeira, arquivos deletados pelo terminal não podem ser recuperados facilmente. Sempre confira o que está deletando antes de pressionar Enter.
+:::
+
+### Visualização de Conteúdo
+
+**Ver conteúdo de arquivo**
+
+```bash
+cat arquivo.txt                 # Mac/Linux: mostra todo o conteúdo
+type arquivo.txt                # Windows
+```
+
+**Ver arquivo página por página**
+
+```bash
+less arquivo.txt                # Mac/Linux: navegue com setas, saia com 'q'
+more arquivo.txt                # Windows e Mac/Linux
+```
+
+**Ver início ou fim de arquivo**
+
+```bash
+head arquivo.txt                # Mac/Linux: primeiras 10 linhas
+tail arquivo.txt                # Mac/Linux: últimas 10 linhas
+head -n 20 arquivo.txt          # Primeiras 20 linhas
+```
+
+### Busca e Filtros
+
+**Encontrar arquivos**
+
+```bash
+find . -name "*.txt"            # Mac/Linux: busca arquivos .txt
+dir /S *.txt                    # Windows: busca arquivos .txt
+```
+
+**Buscar texto dentro de arquivos**
+
+```bash
+grep "palavra" arquivo.txt      # Mac/Linux
+findstr "palavra" arquivo.txt   # Windows
+```
+
+### Informações do Sistema
+
+**Limpar a tela**
+
+```bash
+clear                           # Mac/Linux
+cls                             # Windows
+```
+
+**Ver histórico de comandos**
+
+```bash
+history                         # Mac/Linux
+doskey /history                 # Windows cmd
+Get-History                     # Windows PowerShell
+```
+
+**Manual de um comando**
+
+```bash
+man ls                          # Mac/Linux: manual completo
+ls --help                       # Ajuda resumida
+help dir                        # Windows: ajuda do comando
+```
+
+## Atalhos de Teclado Úteis
+
+Estes atalhos funcionam na maioria dos terminais e economizam muito tempo:
+
+| Atalho | Função |
+|--------|--------|
+| `Tab` | Autocompleta nomes de arquivos e pastas |
+| `↑` / `↓` | Navega pelo histórico de comandos |
+| `Ctrl + C` | Cancela o comando em execução |
+| `Ctrl + L` | Limpa a tela (equivalente a `clear`) |
+| `Ctrl + A` | Move cursor para o início da linha |
+| `Ctrl + E` | Move cursor para o fim da linha |
+| `Ctrl + U` | Apaga do cursor até o início da linha |
+| `Ctrl + K` | Apaga do cursor até o fim da linha |
+| `Ctrl + R` | Busca no histórico de comandos |
+
+O `Tab` é especialmente útil. Comece a digitar o nome de um arquivo ou pasta e pressione Tab — o terminal completará automaticamente. Se houver múltiplas opções, pressione Tab duas vezes para ver todas.
+
+## Caminhos Absolutos e Relativos
+
+Entender caminhos é fundamental para navegar no terminal.
+
+**Caminho absoluto** começa da raiz do sistema:
+
+```bash
+/Users/henrique/Documents/projeto    # Mac
+C:\Users\henrique\Documents\projeto  # Windows
+```
+
+**Caminho relativo** parte da sua localização atual:
+
+```bash
+Documents/projeto                    # Se você está em /Users/henrique
+../Downloads                         # Volta uma pasta e entra em Downloads
+./script.sh                          # Arquivo na pasta atual
+```
+
+Símbolos especiais:
+
+- `.` — pasta atual
+- `..` — pasta pai (um nível acima)
+- `~` — pasta home do usuário (Mac/Linux)
+- `/` — raiz do sistema (Mac/Linux)
+- `\` — separador de pastas (Windows)
+
+## Prática: Criando uma Estrutura de Projeto
+
+Vamos praticar criando a estrutura de um projeto do zero:
+
+```bash
+# Criar e entrar na pasta do projeto
+mkdir meu-projeto
+cd meu-projeto
+
+# Criar subpastas
+mkdir dados
+mkdir scripts
+mkdir resultados
+
+# Criar arquivos
+touch README.md
+touch scripts/analise.R
+touch dados/.gitkeep
+
+# Verificar a estrutura
+ls -la
+ls scripts
+```
+
+No Windows (cmd):
+
+```cmd
+mkdir meu-projeto
+cd meu-projeto
+mkdir dados
+mkdir scripts
+mkdir resultados
+type nul > README.md
+type nul > scripts\analise.R
+dir
+```
+
+## O Terminal e o Git
+
+Agora que você conhece o terminal, está pronto para entender por que o Git foi feito para ele.
+
+O Git nasceu em 2005, criado por Linus Torvalds para gerenciar o código do Linux. Como Linus e outros desenvolvedores do Linux trabalham exclusivamente no terminal, o Git foi projetado como uma ferramenta de linha de comando.
+
+Todos os comandos Git seguem a estrutura que você aprendeu:
+
+```bash
+git comando [opções] [argumentos]
+```
+
+Por exemplo:
+
+```bash
+git status              # Sem opções nem argumentos
+git add .               # Com argumento (o ponto)
+git commit -m "msg"     # Com opção (-m) e argumento ("msg")
+git log --oneline       # Com opção longa
+```
+
+Nos próximos capítulos, você usará esses comandos. Mas antes de continuar, pratique um pouco no terminal. Crie pastas, navegue entre elas, crie arquivos, liste conteúdos. Quanto mais confortável você estiver com o terminal, mais natural será usar o Git.
+
+## Resumo dos Comandos
+
+### Mac/Linux
+
+| Comando | Função |
+|---------|--------|
+| `pwd` | Mostra pasta atual |
+| `ls` | Lista arquivos |
+| `cd pasta` | Muda de pasta |
+| `mkdir pasta` | Cria pasta |
+| `touch arquivo` | Cria arquivo vazio |
+| `cp origem destino` | Copia |
+| `mv origem destino` | Move/renomeia |
+| `rm arquivo` | Remove arquivo |
+| `rm -r pasta` | Remove pasta |
+| `cat arquivo` | Mostra conteúdo |
+| `clear` | Limpa tela |
+
+### Windows (cmd)
+
+| Comando | Função |
+|---------|--------|
+| `cd` | Mostra pasta atual |
+| `dir` | Lista arquivos |
+| `cd pasta` | Muda de pasta |
+| `mkdir pasta` | Cria pasta |
+| `type nul > arq` | Cria arquivo vazio |
+| `copy origem destino` | Copia |
+| `move origem destino` | Move/renomeia |
+| `del arquivo` | Remove arquivo |
+| `rmdir /S pasta` | Remove pasta |
+| `type arquivo` | Mostra conteúdo |
+| `cls` | Limpa tela |
+
+::: {.callout-tip}
+## Dica para usuários Windows
+
+Se você pretende usar Git regularmente, considere instalar o **Git Bash**. Ele vem junto com o Git para Windows e permite usar os mesmos comandos do Mac/Linux. Isso facilita seguir tutoriais e documentações, que geralmente usam comandos Unix.
+:::

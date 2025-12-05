@@ -1,0 +1,502 @@
+# Configurando o Git e o GitHub
+
+No capítulo anterior, você conheceu a história do Git e do GitHub, entendeu o que é controle de versão e por que essas ferramentas se tornaram essenciais. Agora é hora de colocar a mão na massa: vamos configurar tudo no seu computador para que você possa começar a versionar seus projetos.
+
+Neste capítulo, você vai criar uma conta no GitHub, instalar o Git (se ainda não tiver), configurar sua identidade e aprender o fluxo básico de trabalho — da criação de um repositório local até o envio para o GitHub.
+
+## Criando a conta no GitHub
+
+Antes de configurar o Git no seu computador, crie uma conta gratuita no GitHub. Acesse [github.com](https://github.com) e clique em **Sign up**.
+
+Durante o cadastro, você precisará informar:
+
+- **Username**: seu nome de usuário, que fará parte do endereço dos seus repositórios (ex: github.com/seu-username). Escolha algo profissional e fácil de lembrar.
+- **Email**: use um e-mail que você acessa regularmente. Este será o mesmo e-mail que configuraremos no Git.
+- **Password**: uma senha segura para sua conta.
+
+Após confirmar seu e-mail, sua conta estará pronta. Você pode voltar ao GitHub depois para completar seu perfil, adicionar uma foto e explorar a plataforma. Por enquanto, o importante é ter o username e o e-mail definidos.
+
+## Verificando se o Git já está instalado
+
+Antes de instalar o Git, verifique se ele já está no seu computador. Abra o Terminal e digite:
+
+```bash
+git --version
+```
+
+Se o Git estiver instalado, você verá uma mensagem indicando a versão:
+
+```bash
+git version 2.50.1
+```
+
+Se aparecer uma versão, ótimo — você pode pular para a seção de configuração. Se não estiver instalado, siga as instruções da próxima seção.
+
+## Instalando o Git
+
+A forma mais prática de instalar o Git é usando os gerenciadores de pacotes que você aprendeu nos capítulos anteriores.
+
+**No Mac (com Homebrew):**
+
+```bash
+brew install git
+```
+
+**No Windows (com winget):**
+
+```powershell
+winget install Git.Git
+```
+
+Após a instalação, feche e reabra o Terminal, então confirme que funcionou:
+
+```bash
+git --version
+```
+
+::: {.callout-note}
+## Alternativas de instalação
+
+- **Mac**: se você não usa Homebrew, ao digitar `git --version` o sistema oferecerá automaticamente a instalação das Command Line Tools da Apple, que incluem o Git.
+- **Windows**: se preferir não usar o winget, baixe o instalador em [git-scm.com](https://git-scm.com). Durante a instalação, mantenha as opções padrão. O instalador incluirá o **Git Bash**, que permite usar comandos no estilo Unix.
+- **Linux**: use o gerenciador de pacotes da sua distribuição. No Ubuntu/Debian: `sudo apt install git`
+:::
+
+## Configuração inicial
+
+Com o Git instalado, configure sua identidade. Essas informações aparecerão em cada commit que você fizer:
+
+```bash
+git config --global user.name "Seu Nome"
+git config --global user.email "seu.email@exemplo.com"
+```
+
+Use o mesmo e-mail da sua conta GitHub. Isso permite que o GitHub associe seus commits ao seu perfil.
+
+::: {.callout-tip}
+## Verificando a configuração
+
+Para verificar se está tudo configurado corretamente:
+
+```bash
+git config --global user.name
+git config --global user.email
+```
+
+Se retornar seu nome e e-mail, está tudo certo!
+
+Você também pode ver todas as configurações do Git com:
+
+```bash
+git config --list
+```
+:::
+
+## Conceitos fundamentais
+
+Antes de partir para os comandos, é importante entender três "lugares" onde seus arquivos podem estar:
+
+1. **Diretório de trabalho (working directory)**: sua pasta normal, onde você edita arquivos
+2. **Área de preparação (staging area)**: uma área intermediária onde você seleciona quais alterações quer registrar
+3. **Repositório (repository)**: o histórico completo de todas as versões salvas
+
+O fluxo básico é: você edita arquivos → adiciona à área de preparação → confirma (commit) no repositório → envia (push) para o GitHub.
+
+```{mermaid}
+flowchart LR
+    A[Diretório de Trabalho] -->|git add| B[Área de Preparação]
+    B -->|git commit| C[Repositório Local]
+    C -->|git push| D[GitHub]
+```
+
+## Subindo uma pasta para o GitHub: passo a passo
+
+Vamos ao processo completo de versionar uma pasta local e enviá-la para o GitHub.
+
+### Passo 1: Crie um repositório no GitHub
+
+Acesse [github.com](https://github.com), faça login e clique no botão **+** no canto superior direito, depois em **New repository**. Dê um nome ao repositório (por exemplo, `meu-projeto`), escolha se será público ou privado, e clique em **Create repository**.
+
+::: {.callout-warning}
+## Repositório vazio
+
+Não marque nenhuma opção de inicialização (README, .gitignore, etc.) — queremos um repositório vazio para este exemplo.
+:::
+
+### Passo 2: Navegue até sua pasta no Terminal
+
+```bash
+cd ~/caminho/para/sua/pasta
+```
+
+Por exemplo, se sua pasta está na área de trabalho:
+
+```bash
+cd ~/Desktop/minha-pasta
+```
+
+### Passo 3: Inicialize o Git na pasta
+
+```bash
+git init
+```
+
+Isso cria uma pasta oculta `.git` que armazenará todo o histórico. Sua pasta agora é um repositório Git local.
+
+### Passo 4: Adicione os arquivos à área de preparação
+
+```bash
+git add .
+```
+
+O ponto (`.`) significa "todos os arquivos". Se quiser adicionar apenas um arquivo específico:
+
+```bash
+git add nome-do-arquivo.txt
+```
+
+### Passo 5: Faça o primeiro commit
+
+```bash
+git commit -m "Primeiro commit"
+```
+
+A flag `-m` permite adicionar uma mensagem descritiva. Sempre escreva mensagens claras sobre o que você alterou.
+
+### Passo 6: Conecte ao repositório remoto
+
+```bash
+git remote add origin https://github.com/seu-usuario/meu-projeto.git
+```
+
+Substitua `seu-usuario` pelo seu nome de usuário do GitHub e `meu-projeto` pelo nome do repositório que você criou.
+
+### Passo 7: Envie para o GitHub
+
+```bash
+git push -u origin main
+```
+
+A flag `-u` (ou `--set-upstream`) cria uma conexão permanente entre sua branch local e a remota. Nas próximas vezes, bastará digitar `git push`.
+
+::: {.callout-note}
+## Branch main vs master
+
+Se o Git reclamar que a branch se chama `master` em vez de `main`, use:
+
+```bash
+git branch -M main
+git push -u origin main
+```
+:::
+
+## Comandos do dia a dia
+
+Depois que tudo estiver configurado, seu fluxo de trabalho será:
+
+```bash
+# Ver o status dos arquivos
+git status
+
+# Adicionar alterações
+git add .
+
+# Confirmar alterações com uma mensagem
+git commit -m "Descrição do que você fez"
+
+# Enviar para o GitHub
+git push
+```
+
+## Outros comandos úteis
+
+### Histórico
+
+```bash
+# Ver o histórico de commits
+git log
+
+# Ver histórico resumido (uma linha por commit)
+git log --oneline
+```
+
+### Sincronização
+
+```bash
+# Baixar alterações do GitHub para seu computador
+git pull
+
+# Clonar um repositório existente do GitHub
+git clone https://github.com/usuario/repositorio.git
+
+# Ver quais repositórios remotos estão conectados
+git remote -v
+```
+
+### Desfazendo alterações
+
+```bash
+# Desfazer alterações em um arquivo (voltar à última versão commitada)
+git checkout -- nome-do-arquivo.txt
+
+# Remover um arquivo da área de preparação (mas manter as alterações)
+git reset nome-do-arquivo.txt
+```
+
+## Autenticação no GitHub
+
+Na primeira vez que você tentar fazer `push`, o GitHub pedirá autenticação. Há duas formas principais:
+
+### Opção 1: Token de acesso pessoal (HTTPS)
+
+1. Acesse GitHub → **Settings** → **Developer settings** → **Personal access tokens** → **Tokens (classic)** → **Generate new token**
+2. Selecione os escopos necessários (pelo menos `repo`)
+3. Copie o token gerado
+4. Use-o como senha quando o Terminal pedir
+
+### Opção 2: Chave SSH (recomendada para uso frequente)
+
+Essa opção é mais segura e prática para quem usa Git diariamente, mas a configuração é mais complexa. Ela será tratada em um capítulo à parte.
+
+## Arquivos ocultos
+
+Antes de falarmos sobre o próximo tópicos, sobre o arquivo `.gitignore`, precisamos entender um conceito importante: **arquivos ocultos**.
+
+Você já deve ter notado que alguns arquivos e pastas no seu computador parecem "invisíveis" — eles existem, mas não aparecem quando você abre uma pasta no Finder (Mac) ou no Explorador de Arquivos (Windows). Esses são os **arquivos ocultos**.
+
+### Por que existem arquivos ocultos?
+
+Sistemas operacionais e programas criam arquivos de configuração, caches e dados internos que o usuário comum não precisa ver no dia a dia. Para evitar confusão e impedir que esses arquivos sejam deletados acidentalmente, eles ficam escondidos por padrão.
+
+No Mac e no Linux, a convenção é simples: qualquer arquivo ou pasta cujo nome começa com um ponto (`.`) é considerado oculto. Por exemplo:
+
+- `.gitignore` — arquivo de configuração do Git
+- `.git/` — pasta onde o Git armazena todo o histórico do repositório
+- `.DS_Store` — arquivo que o macOS cria automaticamente em cada pasta
+- `.Rhistory` — histórico de comandos do R
+
+No Windows, arquivos ocultos são marcados através de um atributo especial do sistema, não necessariamente pelo nome.
+
+### Por que isso importa para o Git?
+
+O Git usa arquivos ocultos extensivamente. Quando você executa `git init` em uma pasta, ele cria uma pasta oculta chamada `.git` que contém todo o histórico, configurações e metadados do repositório. Se você não souber visualizar arquivos ocultos, vai parecer que nada aconteceu.
+
+Além disso, o arquivo `.gitignore` — que ensinaremos a criar na próxima seção — também é oculto. Se você criá-lo mas não conseguir vê-lo, pode ficar confuso achando que algo deu errado.
+
+Por isso, saber visualizar arquivos ocultos é uma habilidade fundamental para trabalhar com Git.
+
+### Como visualizar arquivos ocultos
+
+**No Mac (Finder):**
+
+Pressione `Cmd + Shift + .` (ponto). Os arquivos ocultos aparecerão com um tom mais claro, indicando que normalmente são invisíveis. Pressione a mesma combinação novamente para escondê-los.
+
+**No Windows (Explorador de Arquivos):**
+
+1. Abra o Explorador de Arquivos
+2. Clique na aba **Exibir**
+3. Marque a caixa **Itens ocultos**
+
+**No Terminal (Mac, Linux e Git Bash no Windows):**
+
+O comando `ls` lista arquivos, mas por padrão não mostra os ocultos. Para ver todos os arquivos, incluindo os ocultos, use a flag `-a`:
+```bash
+ls -a
+```
+
+Para uma listagem detalhada com arquivos ocultos:
+```bash
+ls -la
+```
+
+Você verá arquivos como `.git`, `.gitignore` e `.DS_Store` que normalmente não aparecem.
+
+::: {.callout-tip}
+## Experimente agora
+
+Navegue até uma pasta onde você já executou `git init` e use `ls -la` no Terminal. Você verá a pasta `.git` que antes parecia não existir. Ou ative a visualização de arquivos ocultos no Finder/Explorador e observe quantos arquivos "secretos" existem nas suas pastas.
+:::
+
+
+## O arquivo .gitignore
+
+Agora que você sabe o que são arquivos ocultos e como visualizá-los, podemos falar sobre um dos arquivos ocultos mais importantes para o Git: o `.gitignore`.
+
+### O problema: nem tudo deve ir para o repositório
+
+Quando você executa `git add .` para adicionar arquivos ao repositório, o Git inclui tudo o que encontrar na pasta — e nem sempre isso é desejável. Alguns arquivos são grandes demais e tornariam o repositório pesado e lento de clonar. Outros contêm informações sensíveis, como senhas ou dados pessoais, que jamais deveriam ser compartilhados. Há ainda arquivos temporários que o sistema operacional ou programas criam automaticamente e que não têm utilidade para outras pessoas.
+
+Imagine que você está trabalhando em um projeto de análise de dados. Sua pasta contém:
+
+- Seus scripts em R ou Python — devem ir para o GitHub
+- Um arquivo CSV com 500MB de dados brutos — não deveria ir, é grande demais e pode conter dados sensíveis
+- Um arquivo com senhas de banco de dados — definitivamente não deveria ir!
+- Arquivos `.DS_Store` que o macOS cria automaticamente — não têm utilidade para outras pessoas
+
+Sem o `.gitignore`, toda vez que você executar `git add .`, todos esses arquivos seriam incluídos. O `.gitignore` resolve isso: ele diz ao Git quais arquivos e pastas devem ser completamente ignorados.
+
+### Criando o arquivo .gitignore
+
+O `.gitignore` deve ficar na raiz do seu projeto (na mesma pasta onde está a pasta `.git`). Para criá-lo, você pode usar o Terminal:
+```bash
+touch .gitignore
+```
+
+Ou criar diretamente no seu editor de código. Como o nome começa com ponto, o arquivo será oculto — lembre-se de ativar a visualização de arquivos ocultos se quiser vê-lo no Finder ou Explorador.
+
+O `.gitignore` é um arquivo de texto simples. Cada linha representa um padrão de arquivos ou pastas que o Git deve ignorar.
+
+### Sintaxe do .gitignore
+
+A sintaxe é simples, mas poderosa:
+
+**Ignorar um arquivo específico:**
+```
+senhas.txt
+dados_secretos.csv
+```
+
+**Ignorar todos os arquivos com determinada extensão:**
+```
+*.csv
+*.xlsx
+*.log
+```
+
+O asterisco (`*`) funciona como curinga, significando "qualquer coisa".
+
+**Ignorar uma pasta inteira:**
+```
+node_modules/
+dados/
+.Rproj.user/
+```
+
+A barra (`/`) no final indica que é uma pasta. Tudo dentro dela será ignorado.
+
+**Ignorar arquivos em qualquer subpasta:**
+```
+**/*.log
+```
+
+O duplo asterisco (`**`) significa "em qualquer nível de subpastas".
+
+**Adicionar comentários:**
+```
+# Arquivos temporários do macOS
+.DS_Store
+
+# Dados que não devem ser compartilhados
+*.csv
+```
+
+Linhas que começam com `#` são comentários e ajudam a organizar o arquivo.
+
+**Fazer exceções (não ignorar algo específico):**
+```
+# Ignora todos os CSVs
+*.csv
+
+# Mas não ignora este arquivo específico
+!exemplo_dados.csv
+```
+
+O ponto de exclamação (`!`) no início nega a regra anterior.
+
+### Exemplo completo de .gitignore
+
+Aqui está um exemplo típico para projetos em R ou análise de dados:
+```
+# === Sistema Operacional ===
+
+# Arquivos temporários do macOS
+.DS_Store
+
+# Arquivos temporários do Windows
+Thumbs.db
+desktop.ini
+
+# === R e RStudio ===
+
+# Arquivos de sessão do R
+.Rhistory
+.RData
+.Rproj.user/
+
+# === Dados ===
+
+# Arquivos de dados (geralmente grandes ou sensíveis)
+*.csv
+*.xlsx
+*.sav
+*.dta
+dados/
+
+# === Credenciais e segredos ===
+
+# Nunca suba senhas ou tokens!
+.env
+senhas.txt
+*_secret*
+
+# === Arquivos temporários e de build ===
+
+# Pastas geradas automaticamente
+_site/
+docs/
+node_modules/
+
+# Arquivos de cache
+*.cache
+__pycache__/
+```
+
+### Quando criar o .gitignore
+
+O ideal é criar o `.gitignore` logo no início do projeto, antes do primeiro commit. Assim, os arquivos indesejados nunca chegam a entrar no histórico do Git.
+
+Se você já fez commit de arquivos que deveriam ser ignorados, adicioná-los ao `.gitignore` depois não os remove do histórico — apenas impede que futuras alterações sejam rastreadas. Para remover um arquivo que já está no repositório mas deveria ser ignorado:
+
+```bash
+git rm --cached nome-do-arquivo.csv
+git commit -m "Remove arquivo que deveria ser ignorado"
+```
+
+A flag `--cached` remove o arquivo do Git mas mantém ele na sua pasta local.
+
+::: {.callout-tip}
+## Modelos prontos de .gitignore
+
+Não precisa criar tudo do zero. O GitHub mantém uma coleção de modelos de `.gitignore` para diversas linguagens e ambientes em [github.com/github/gitignore](https://github.com/github/gitignore). 
+
+Lá você encontra modelos para R, Python, Node.js e dezenas de outras tecnologias. É só copiar o conteúdo relevante para o seu projeto.
+
+Outra opção é o site [gitignore.io](https://www.toptal.com/developers/gitignore), onde você digita as tecnologias que usa (ex: "R, macOS, Windows") e ele gera um `.gitignore` personalizado.
+:::
+
+::: {.callout-warning}
+## Arquivos sensíveis
+
+Nunca suba senhas, tokens de API, chaves de acesso ou dados pessoais para o GitHub — mesmo em repositórios privados. Uma vez que algo entra no histórico do Git, é difícil remover completamente. Sempre use `.gitignore` para proteger esses arquivos desde o início.
+:::
+
+
+::: {.callout-tip}
+## Modelos de .gitignore
+
+O GitHub mantém uma coleção de modelos de `.gitignore` para diversas linguagens e ambientes em [github.com/github/gitignore](https://github.com/github/gitignore). Vale consultar o modelo para R, Python ou a linguagem que você usa.
+:::
+
+## Dicas finais
+
+::: {.callout-tip}
+## Boas práticas
+
+1. **Faça commits pequenos e frequentes.** É mais fácil entender o histórico e reverter problemas.
+
+2. **Escreva mensagens de commit descritivas.** "Corrige bug no cálculo de médias" é melhor que "Alterações".
+
+3. **Use `.gitignore` desde o início.** Evite subir arquivos desnecessários ou sensíveis.
+
+4. **Não tenha medo de errar.** O Git foi feito justamente para permitir que você experimente e volte atrás se necessário.
+:::

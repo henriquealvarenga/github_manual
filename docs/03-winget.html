@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>4&nbsp; Winget – Manual de Git e GitHub</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./04-git-intro.html" rel="next">
+<link href="./02-homebrew.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-235dd20329987a67a70d4d8bf38af671.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-15d7b0bfd515104d1333b31a8b43e7b4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-235dd20329987a67a70d4d8bf38af671.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-winget.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Winget</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Manual de Git e GitHub</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo escuro"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Procurar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-terminal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Terminal</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-homebrew.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Homebrew</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-winget.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Winget</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-git-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Git e GitHub</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-git-conceitos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conceitos do Git</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-git-inicialization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Configurando o Git e o GitHub</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-github-desktop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">GitHub Desktop</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-github-positron.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Git e GitHub no Positron</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-github-pages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">GitHub Pages</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-referencias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referências</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#o-que-é-o-winget" id="toc-o-que-é-o-winget" class="nav-link active" data-scroll-target="#o-que-é-o-winget"><span class="header-section-number">4.1</span> O que é o winget?</a></li>
+  <li><a href="#verificando-se-o-winget-está-instalado" id="toc-verificando-se-o-winget-está-instalado" class="nav-link" data-scroll-target="#verificando-se-o-winget-está-instalado"><span class="header-section-number">4.2</span> Verificando se o winget está instalado</a></li>
+  <li><a href="#abrindo-o-terminal-no-windows" id="toc-abrindo-o-terminal-no-windows" class="nav-link" data-scroll-target="#abrindo-o-terminal-no-windows"><span class="header-section-number">4.3</span> Abrindo o Terminal no Windows</a></li>
+  <li><a href="#instalando-programas-com-o-winget" id="toc-instalando-programas-com-o-winget" class="nav-link" data-scroll-target="#instalando-programas-com-o-winget"><span class="header-section-number">4.4</span> Instalando Programas com o winget</a></li>
+  <li><a href="#procurando-pacotes" id="toc-procurando-pacotes" class="nav-link" data-scroll-target="#procurando-pacotes"><span class="header-section-number">4.5</span> Procurando Pacotes</a></li>
+  <li><a href="#atualizando-programas" id="toc-atualizando-programas" class="nav-link" data-scroll-target="#atualizando-programas"><span class="header-section-number">4.6</span> Atualizando Programas</a></li>
+  <li><a href="#removendo-programas" id="toc-removendo-programas" class="nav-link" data-scroll-target="#removendo-programas"><span class="header-section-number">4.7</span> Removendo Programas</a></li>
+  <li><a href="#listando-programas-instalados" id="toc-listando-programas-instalados" class="nav-link" data-scroll-target="#listando-programas-instalados"><span class="header-section-number">4.8</span> Listando Programas Instalados</a></li>
+  <li><a href="#obtendo-informações-sobre-um-pacote" id="toc-obtendo-informações-sobre-um-pacote" class="nav-link" data-scroll-target="#obtendo-informações-sobre-um-pacote"><span class="header-section-number">4.9</span> Obtendo Informações sobre um Pacote</a></li>
+  <li><a href="#onde-o-winget-guarda-os-programas" id="toc-onde-o-winget-guarda-os-programas" class="nav-link" data-scroll-target="#onde-o-winget-guarda-os-programas"><span class="header-section-number">4.10</span> Onde o winget Guarda os Programas?</a></li>
+  <li><a href="#exemplos-práticos" id="toc-exemplos-práticos" class="nav-link" data-scroll-target="#exemplos-práticos"><span class="header-section-number">4.11</span> Exemplos Práticos</a>
+  <ul class="collapse">
+  <li><a href="#configurando-um-ambiente-de-desenvolvimento" id="toc-configurando-um-ambiente-de-desenvolvimento" class="nav-link" data-scroll-target="#configurando-um-ambiente-de-desenvolvimento"><span class="header-section-number">4.11.1</span> Configurando um ambiente de desenvolvimento</a></li>
+  <li><a href="#instalando-o-quarto" id="toc-instalando-o-quarto" class="nav-link" data-scroll-target="#instalando-o-quarto"><span class="header-section-number">4.11.2</span> Instalando o Quarto</a></li>
+  <li><a href="#instalando-o-r" id="toc-instalando-o-r" class="nav-link" data-scroll-target="#instalando-o-r"><span class="header-section-number">4.11.3</span> Instalando o R</a></li>
+  <li><a href="#instalando-o-positron" id="toc-instalando-o-positron" class="nav-link" data-scroll-target="#instalando-o-positron"><span class="header-section-number">4.11.4</span> Instalando o Positron</a></li>
+  </ul></li>
+  <li><a href="#comparação-homebrew-vs-winget" id="toc-comparação-homebrew-vs-winget" class="nav-link" data-scroll-target="#comparação-homebrew-vs-winget"><span class="header-section-number">4.12</span> Comparação: Homebrew vs winget</a></li>
+  <li><a href="#problemas-e-erros-comuns" id="toc-problemas-e-erros-comuns" class="nav-link" data-scroll-target="#problemas-e-erros-comuns"><span class="header-section-number">4.13</span> Problemas e Erros Comuns</a>
+  <ul class="collapse">
+  <li><a href="#winget-não-é-reconhecido-como-comando" id="toc-winget-não-é-reconhecido-como-comando" class="nav-link" data-scroll-target="#winget-não-é-reconhecido-como-comando"><span class="header-section-number">4.13.1</span> 1. “winget não é reconhecido como comando”</a></li>
+  <li><a href="#nenhum-pacote-encontrado" id="toc-nenhum-pacote-encontrado" class="nav-link" data-scroll-target="#nenhum-pacote-encontrado"><span class="header-section-number">4.13.2</span> 2. “Nenhum pacote encontrado”</a></li>
+  <li><a href="#instalação-requer-privilégios-de-administrador" id="toc-instalação-requer-privilégios-de-administrador" class="nav-link" data-scroll-target="#instalação-requer-privilégios-de-administrador"><span class="header-section-number">4.13.3</span> 3. Instalação requer privilégios de administrador</a></li>
+  <li><a href="#conflito-com-versão-já-instalada" id="toc-conflito-com-versão-já-instalada" class="nav-link" data-scroll-target="#conflito-com-versão-já-instalada"><span class="header-section-number">4.13.4</span> 4. Conflito com versão já instalada</a></li>
+  <li><a href="#download-lento-ou-falha-de-rede" id="toc-download-lento-ou-falha-de-rede" class="nav-link" data-scroll-target="#download-lento-ou-falha-de-rede"><span class="header-section-number">4.13.5</span> 5. Download lento ou falha de rede</a></li>
+  </ul></li>
+  <li><a href="#exercícios-práticos" id="toc-exercícios-práticos" class="nav-link" data-scroll-target="#exercícios-práticos"><span class="header-section-number">4.14</span> Exercícios Práticos</a></li>
+  <li><a href="#conclusão" id="toc-conclusão" class="nav-link" data-scroll-target="#conclusão"><span class="header-section-number">4.15</span> Conclusão</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-winget" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Winget</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>No capítulo anterior, apresentamos o Homebrew como o gerenciador de pacotes padrão para macOS. Usuários de Windows, no entanto, possuem sua própria ferramenta nativa: o <strong>winget</strong>, também conhecido como Windows Package Manager.</p>
+<p>O winget surgiu em 2020 como resposta da Microsoft à demanda por uma forma mais simples e direta de instalar programas. Antes dele, usuários Windows dependiam de assistentes de instalação, sites de download e processos manuais. Com o winget, basta um comando no terminal para instalar praticamente qualquer programa.</p>
+<p>Este capítulo apresenta o winget de forma progressiva: o que é, como verificar se está instalado, como utilizá-lo e como resolver problemas comuns.</p>
+<hr>
+<section id="o-que-é-o-winget" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="o-que-é-o-winget"><span class="header-section-number">4.1</span> O que é o winget?</h2>
+<p>O winget é um <strong>gerenciador de pacotes</strong> de linha de comando desenvolvido pela Microsoft. Ele permite instalar, atualizar e remover programas diretamente pelo terminal, sem precisar navegar por sites, baixar instaladores ou clicar em assistentes de instalação.</p>
+<p>A ferramenta acessa um repositório central mantido pela Microsoft e pela comunidade, que contém milhares de aplicativos — desde ferramentas de desenvolvimento como Git, Python e VS Code até programas do dia a dia como Spotify, Zoom e VLC.</p>
+<p>A filosofia é semelhante à do Homebrew: centralizar a gestão de software em comandos simples e previsíveis.</p>
+<hr>
+</section>
+<section id="verificando-se-o-winget-está-instalado" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="verificando-se-o-winget-está-instalado"><span class="header-section-number">4.2</span> Verificando se o winget está instalado</h2>
+<p>O winget vem pré-instalado no Windows 10 (versão 1809 ou superior) e no Windows 11. Para verificar se ele está disponível no seu sistema, abra o <strong>Windows Terminal</strong>, <strong>PowerShell</strong> ou <strong>Prompt de Comando</strong> e digite:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>winget <span class="op">--</span>version</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Se aparecer um número de versão (por exemplo, <code>v1.7.10861</code>), o winget está pronto para uso.</p>
+<p>Caso o comando não seja reconhecido, você pode instalar o winget através da Microsoft Store, buscando por <strong>App Installer</strong> (Instalador de Aplicativo). Esse pacote inclui o winget.</p>
+<hr>
+</section>
+<section id="abrindo-o-terminal-no-windows" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="abrindo-o-terminal-no-windows"><span class="header-section-number">4.3</span> Abrindo o Terminal no Windows</h2>
+<p>Para usar o winget, você precisa de um terminal. Antes de apresentar as opções, vale esclarecer uma distinção importante: <strong>terminal</strong> e <strong>shell</strong> são coisas diferentes.</p>
+<p>O <strong>shell</strong> é o programa que interpreta seus comandos — o “cérebro” que entende o que você digita. O <strong>terminal</strong> (ou emulador de terminal) é a janela onde você digita — a interface visual, o “corpo”.</p>
+<p>No Windows, os principais shells são:</p>
+<ul>
+<li><strong>PowerShell</strong>: moderno e poderoso, é o padrão atual</li>
+<li><strong>Prompt de Comando (cmd)</strong>: o clássico do MS-DOS, mais limitado</li>
+</ul>
+<p>E o principal emulador de terminal é:</p>
+<ul>
+<li><strong>Windows Terminal</strong>: interface moderna que pode abrir qualquer shell em abas separadas</li>
+</ul>
+<p><strong>Windows Terminal (recomendado)</strong></p>
+<p>O Windows Terminal é a interface recomendada para trabalhar com linha de comando no Windows. Ele permite abrir PowerShell, Prompt de Comando, Git Bash e outros shells em abas dentro da mesma janela, com suporte a temas, atalhos de teclado e melhor visualização de fontes e cores. Quando você abre o Windows Terminal, ele inicia o PowerShell por padrão — ou seja, você tem o melhor dos dois mundos.</p>
+<p>O Windows Terminal já vem instalado no Windows 11. No Windows 10, você pode instalá-lo pela Microsoft Store buscando por “Windows Terminal”.</p>
+<p>Para abrir o Windows Terminal:</p>
+<ol type="1">
+<li>Pressione <code>Win + X</code> e selecione “Terminal”, ou</li>
+<li>Pesquise “Terminal” no menu Iniciar</li>
+</ol>
+<p>É possível abrir o PowerShell ou o Prompt de Comando diretamente, sem usar o Windows Terminal, mas não há vantagem em fazer isso. O Windows Terminal oferece uma experiência superior e já executa o PowerShell por padrão, então não há motivo para usar as interfaces antigas.</p>
+<hr>
+</section>
+<section id="instalando-programas-com-o-winget" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="instalando-programas-com-o-winget"><span class="header-section-number">4.4</span> Instalando Programas com o winget</h2>
+<p>A sintaxe básica para instalar um programa é:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>winget install nome-do-pacote</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Por exemplo, para instalar o Git:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>winget install Git<span class="op">.</span><span class="fu">Git</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>O winget baixa o instalador, executa a instalação silenciosamente e registra o programa no sistema. Você não precisa clicar em “Avançar” repetidamente nem desmarcar ofertas de software adicional.</p>
+<p>Para instalar o Visual Studio Code:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>winget install Microsoft<span class="op">.</span><span class="fu">VisualStudioCode</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Para instalar o Python:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>winget install Python<span class="op">.</span><span class="fu">Python</span><span class="op">.</span><span class="dv">3.12</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Alguns programas possuem múltiplas versões disponíveis. O winget permite especificar exatamente qual você deseja.</p>
+<hr>
+</section>
+<section id="procurando-pacotes" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="procurando-pacotes"><span class="header-section-number">4.5</span> Procurando Pacotes</h2>
+<p>Não tem certeza do nome exato de um pacote? Use o comando <code>search</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>winget search git</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>O winget retornará uma lista de pacotes relacionados:</p>
+<pre><code>Nome                    Id                  Versão
+--------------------------------------------------------
+Git                     Git.Git             2.44.0
+GitHub Desktop          GitHub.GitHubDesktop 3.3.8
+GitHub CLI              GitHub.cli          2.45.0
+Git LFS                 GitHub.GitLFS       3.4.1</code></pre>
+<p>A coluna <strong>Id</strong> mostra o identificador exato que você deve usar no comando <code>install</code>.</p>
+<p>Para buscar o Quarto:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>winget search quarto</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="atualizando-programas" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="atualizando-programas"><span class="header-section-number">4.6</span> Atualizando Programas</h2>
+<p>Uma das maiores vantagens de um gerenciador de pacotes é manter tudo atualizado com facilidade.</p>
+<p>Para ver quais programas têm atualizações disponíveis:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>winget upgrade</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Para atualizar um programa específico:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>winget upgrade Git<span class="op">.</span><span class="fu">Git</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Para atualizar todos os programas de uma vez:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>winget upgrade <span class="op">--</span>all</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Esse comando percorre todos os programas instalados via winget e aplica as atualizações disponíveis.</p>
+<hr>
+</section>
+<section id="removendo-programas" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="removendo-programas"><span class="header-section-number">4.7</span> Removendo Programas</h2>
+<p>Para desinstalar um programa:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>winget uninstall nome-do-pacote</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Por exemplo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>winget uninstall Git<span class="op">.</span><span class="fu">Git</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>O winget executa o desinstalador do programa de forma silenciosa.</p>
+<hr>
+</section>
+<section id="listando-programas-instalados" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="listando-programas-instalados"><span class="header-section-number">4.8</span> Listando Programas Instalados</h2>
+<p>Para ver todos os programas que o winget reconhece no seu sistema:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>winget list</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Essa lista inclui não apenas programas instalados via winget, mas também aqueles instalados manualmente. O winget consegue gerenciar atualizações para muitos deles.</p>
+<hr>
+</section>
+<section id="obtendo-informações-sobre-um-pacote" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="obtendo-informações-sobre-um-pacote"><span class="header-section-number">4.9</span> Obtendo Informações sobre um Pacote</h2>
+<p>Antes de instalar um programa, você pode querer saber mais sobre ele:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>winget show Git<span class="op">.</span><span class="fu">Git</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>O comando exibe informações como descrição, versão, autor, site oficial e URL do instalador.</p>
+<hr>
+</section>
+<section id="onde-o-winget-guarda-os-programas" class="level2" data-number="4.10">
+<h2 data-number="4.10" class="anchored" data-anchor-id="onde-o-winget-guarda-os-programas"><span class="header-section-number">4.10</span> Onde o winget Guarda os Programas?</h2>
+<p>Diferente do Homebrew, que centraliza tudo em <code>/opt/homebrew/</code>, o winget instala cada programa no local padrão definido pelo próprio instalador. Isso significa que:</p>
+<ul>
+<li>Programas de linha de comando geralmente vão para <code>C:\Program Files\</code> ou <code>C:\Users\SeuUsuario\AppData\</code></li>
+<li>Aplicativos gráficos aparecem normalmente no Menu Iniciar</li>
+</ul>
+<p>O winget não altera essa estrutura tradicional do Windows — ele apenas automatiza o processo de instalação.</p>
+<hr>
+</section>
+<section id="exemplos-práticos" class="level2" data-number="4.11">
+<h2 data-number="4.11" class="anchored" data-anchor-id="exemplos-práticos"><span class="header-section-number">4.11</span> Exemplos Práticos</h2>
+<section id="configurando-um-ambiente-de-desenvolvimento" class="level3" data-number="4.11.1">
+<h3 data-number="4.11.1" class="anchored" data-anchor-id="configurando-um-ambiente-de-desenvolvimento"><span class="header-section-number">4.11.1</span> Configurando um ambiente de desenvolvimento</h3>
+<p>Vamos instalar Git, Python, VS Code e o Windows Terminal em sequência:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>winget install Git<span class="op">.</span><span class="fu">Git</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>winget install Python<span class="op">.</span><span class="fu">Python</span><span class="op">.</span><span class="dv">3.12</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="dt">winget</span> install Microsoft<span class="op">.</span><span class="fu">VisualStudioCode</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>winget install Microsoft<span class="op">.</span><span class="fu">WindowsTerminal</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Após a instalação, confirme que tudo funcionou:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>git <span class="op">--</span>version</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>python <span class="op">--</span>version</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>code <span class="op">--</span>version</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="instalando-o-quarto" class="level3" data-number="4.11.2">
+<h3 data-number="4.11.2" class="anchored" data-anchor-id="instalando-o-quarto"><span class="header-section-number">4.11.2</span> Instalando o Quarto</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>winget install Posit<span class="op">.</span><span class="fu">Quarto</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="instalando-o-r" class="level3" data-number="4.11.3">
+<h3 data-number="4.11.3" class="anchored" data-anchor-id="instalando-o-r"><span class="header-section-number">4.11.3</span> Instalando o R</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>winget install RProject<span class="op">.</span><span class="fu">R</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="instalando-o-positron" class="level3" data-number="4.11.4">
+<h3 data-number="4.11.4" class="anchored" data-anchor-id="instalando-o-positron"><span class="header-section-number">4.11.4</span> Instalando o Positron</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>winget search positron</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Se disponível no repositório, o comando <code>install</code> seguirá o padrão habitual.</p>
+<hr>
+</section>
+</section>
+<section id="comparação-homebrew-vs-winget" class="level2" data-number="4.12">
+<h2 data-number="4.12" class="anchored" data-anchor-id="comparação-homebrew-vs-winget"><span class="header-section-number">4.12</span> Comparação: Homebrew vs winget</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 40%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Aspecto</th>
+<th>Homebrew (macOS)</th>
+<th>winget (Windows)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Instalação</td>
+<td>Script no Terminal</td>
+<td>Pré-instalado ou via Microsoft Store</td>
+</tr>
+<tr class="even">
+<td>Comando base</td>
+<td><code>brew</code></td>
+<td><code>winget</code></td>
+</tr>
+<tr class="odd">
+<td>Instalar</td>
+<td><code>brew install git</code></td>
+<td><code>winget install Git.Git</code></td>
+</tr>
+<tr class="even">
+<td>Atualizar tudo</td>
+<td><code>brew upgrade</code></td>
+<td><code>winget upgrade --all</code></td>
+</tr>
+<tr class="odd">
+<td>Buscar</td>
+<td><code>brew search nome</code></td>
+<td><code>winget search nome</code></td>
+</tr>
+<tr class="even">
+<td>Remover</td>
+<td><code>brew uninstall nome</code></td>
+<td><code>winget uninstall nome</code></td>
+</tr>
+<tr class="odd">
+<td>Local dos arquivos</td>
+<td><code>/opt/homebrew/</code></td>
+<td>Padrão de cada programa</td>
+</tr>
+</tbody>
+</table>
+<p>Os conceitos são os mesmos; apenas a sintaxe muda ligeiramente.</p>
+<hr>
+</section>
+<section id="problemas-e-erros-comuns" class="level2" data-number="4.13">
+<h2 data-number="4.13" class="anchored" data-anchor-id="problemas-e-erros-comuns"><span class="header-section-number">4.13</span> Problemas e Erros Comuns</h2>
+<section id="winget-não-é-reconhecido-como-comando" class="level3" data-number="4.13.1">
+<h3 data-number="4.13.1" class="anchored" data-anchor-id="winget-não-é-reconhecido-como-comando"><span class="header-section-number">4.13.1</span> 1. “winget não é reconhecido como comando”</h3>
+<p>O winget pode não estar instalado ou não estar no PATH do sistema. Soluções:</p>
+<ul>
+<li>Instale o <strong>App Installer</strong> pela Microsoft Store</li>
+<li>Reinicie o terminal após a instalação</li>
+<li>Verifique se o Windows está atualizado</li>
+</ul>
+</section>
+<section id="nenhum-pacote-encontrado" class="level3" data-number="4.13.2">
+<h3 data-number="4.13.2" class="anchored" data-anchor-id="nenhum-pacote-encontrado"><span class="header-section-number">4.13.2</span> 2. “Nenhum pacote encontrado”</h3>
+<p>O nome do pacote pode estar incorreto. Use <code>winget search</code> para encontrar o identificador correto:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>winget search visual studio</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="instalação-requer-privilégios-de-administrador" class="level3" data-number="4.13.3">
+<h3 data-number="4.13.3" class="anchored" data-anchor-id="instalação-requer-privilégios-de-administrador"><span class="header-section-number">4.13.3</span> 3. Instalação requer privilégios de administrador</h3>
+<p>Alguns programas precisam de permissões elevadas. Abra o terminal como administrador:</p>
+<ol type="1">
+<li>Clique com botão direito no Windows Terminal ou PowerShell</li>
+<li>Selecione “Executar como administrador”</li>
+<li>Execute o comando novamente</li>
+</ol>
+</section>
+<section id="conflito-com-versão-já-instalada" class="level3" data-number="4.13.4">
+<h3 data-number="4.13.4" class="anchored" data-anchor-id="conflito-com-versão-já-instalada"><span class="header-section-number">4.13.4</span> 4. Conflito com versão já instalada</h3>
+<p>Se você já tem uma versão do programa instalada manualmente, o winget pode reportar conflito. Desinstale a versão antiga primeiro:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>winget uninstall nome-do-pacote</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>winget install nome-do-pacote</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="download-lento-ou-falha-de-rede" class="level3" data-number="4.13.5">
+<h3 data-number="4.13.5" class="anchored" data-anchor-id="download-lento-ou-falha-de-rede"><span class="header-section-number">4.13.5</span> 5. Download lento ou falha de rede</h3>
+<p>Tente novamente após alguns minutos. Se o problema persistir, verifique sua conexão ou tente usar uma fonte alternativa:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>winget install Git<span class="op">.</span><span class="fu">Git</span> <span class="op">--</span>source winget</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="exercícios-práticos" class="level2" data-number="4.14">
+<h2 data-number="4.14" class="anchored" data-anchor-id="exercícios-práticos"><span class="header-section-number">4.14</span> Exercícios Práticos</h2>
+<ol type="1">
+<li>Verifique se o winget está instalado com <code>winget --version</code>.</li>
+<li>Busque o pacote do Git com <code>winget search git</code>.</li>
+<li>Instale o Git com <code>winget install Git.Git</code> e confirme com <code>git --version</code>.</li>
+<li>Liste os programas instalados com <code>winget list</code>.</li>
+<li>Verifique atualizações disponíveis com <code>winget upgrade</code>.</li>
+<li>Instale o Visual Studio Code e o Python usando winget.</li>
+<li>Compare a experiência com a instalação tradicional via site de download.</li>
+</ol>
+<hr>
+</section>
+<section id="conclusão" class="level2" data-number="4.15">
+<h2 data-number="4.15" class="anchored" data-anchor-id="conclusão"><span class="header-section-number">4.15</span> Conclusão</h2>
+<p>O winget representa uma mudança significativa na forma como usuários Windows gerenciam software. O que antes exigia navegação por sites, downloads manuais e assistentes de instalação agora se resume a um comando no terminal.</p>
+<p>Para quem está aprendendo Git e ferramentas de desenvolvimento, o winget simplifica a preparação do ambiente. Instalar Git, Python, VS Code e outras ferramentas leva minutos em vez de uma tarde inteira.</p>
+<p>Dominar o winget é dar o primeiro passo para um fluxo de trabalho mais eficiente no Windows.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./02-homebrew.html" class="pagination-link" aria-label="Homebrew">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Homebrew</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./04-git-intro.html" class="pagination-link" aria-label="Git e GitHub">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Git e GitHub</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Manual de Git e GitHub</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Criado com <a href="https://quarto.org/">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

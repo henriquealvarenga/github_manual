@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>8&nbsp; GitHub Desktop – Manual de Git e GitHub</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./08-github-positron.html" rel="next">
+<link href="./06-git-inicialization.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-235dd20329987a67a70d4d8bf38af671.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-15d7b0bfd515104d1333b31a8b43e7b4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-235dd20329987a67a70d4d8bf38af671.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07-github-desktop.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">GitHub Desktop</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Manual de Git e GitHub</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo escuro"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Procurar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-terminal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Terminal</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-homebrew.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Homebrew</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-winget.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Winget</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-git-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Git e GitHub</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-git-conceitos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conceitos do Git</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-git-inicialization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Configurando o Git e o GitHub</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-github-desktop.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">GitHub Desktop</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-github-positron.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Git e GitHub no Positron</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-github-pages.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">GitHub Pages</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-referencias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referências</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#o-que-é-github-desktop" id="toc-o-que-é-github-desktop" class="nav-link active" data-scroll-target="#o-que-é-github-desktop"><span class="header-section-number">8.1</span> O que é GitHub Desktop?</a></li>
+  <li><a href="#instalação" id="toc-instalação" class="nav-link" data-scroll-target="#instalação"><span class="header-section-number">8.2</span> Instalação</a>
+  <ul class="collapse">
+  <li><a href="#no-mac" id="toc-no-mac" class="nav-link" data-scroll-target="#no-mac"><span class="header-section-number">8.2.1</span> No Mac</a></li>
+  <li><a href="#no-windows" id="toc-no-windows" class="nav-link" data-scroll-target="#no-windows"><span class="header-section-number">8.2.2</span> No Windows</a></li>
+  </ul></li>
+  <li><a href="#a-interface-principal" id="toc-a-interface-principal" class="nav-link" data-scroll-target="#a-interface-principal"><span class="header-section-number">8.3</span> A interface principal</a></li>
+  <li><a href="#operações-básicas-terminal-vs-github-desktop" id="toc-operações-básicas-terminal-vs-github-desktop" class="nav-link" data-scroll-target="#operações-básicas-terminal-vs-github-desktop"><span class="header-section-number">8.4</span> Operações básicas: Terminal vs GitHub Desktop</a>
+  <ul class="collapse">
+  <li><a href="#criar-um-novo-repositório" id="toc-criar-um-novo-repositório" class="nav-link" data-scroll-target="#criar-um-novo-repositório"><span class="header-section-number">8.4.1</span> Criar um novo repositório</a></li>
+  <li><a href="#clonar-um-repositório-existente" id="toc-clonar-um-repositório-existente" class="nav-link" data-scroll-target="#clonar-um-repositório-existente"><span class="header-section-number">8.4.2</span> Clonar um repositório existente</a></li>
+  <li><a href="#ver-status-e-alterações" id="toc-ver-status-e-alterações" class="nav-link" data-scroll-target="#ver-status-e-alterações"><span class="header-section-number">8.4.3</span> Ver status e alterações</a></li>
+  <li><a href="#adicionar-arquivos-e-fazer-commit" id="toc-adicionar-arquivos-e-fazer-commit" class="nav-link" data-scroll-target="#adicionar-arquivos-e-fazer-commit"><span class="header-section-number">8.4.4</span> Adicionar arquivos e fazer commit</a></li>
+  <li><a href="#enviar-para-o-github-push" id="toc-enviar-para-o-github-push" class="nav-link" data-scroll-target="#enviar-para-o-github-push"><span class="header-section-number">8.4.5</span> Enviar para o GitHub (push)</a></li>
+  <li><a href="#baixar-alterações-do-github-pull" id="toc-baixar-alterações-do-github-pull" class="nav-link" data-scroll-target="#baixar-alterações-do-github-pull"><span class="header-section-number">8.4.6</span> Baixar alterações do GitHub (pull)</a></li>
+  <li><a href="#ver-histórico-de-commits" id="toc-ver-histórico-de-commits" class="nav-link" data-scroll-target="#ver-histórico-de-commits"><span class="header-section-number">8.4.7</span> Ver histórico de commits</a></li>
+  <li><a href="#criar-e-trocar-de-branch" id="toc-criar-e-trocar-de-branch" class="nav-link" data-scroll-target="#criar-e-trocar-de-branch"><span class="header-section-number">8.4.8</span> Criar e trocar de branch</a></li>
+  <li><a href="#fazer-merge-de-branches" id="toc-fazer-merge-de-branches" class="nav-link" data-scroll-target="#fazer-merge-de-branches"><span class="header-section-number">8.4.9</span> Fazer merge de branches</a></li>
+  <li><a href="#resolver-conflitos" id="toc-resolver-conflitos" class="nav-link" data-scroll-target="#resolver-conflitos"><span class="header-section-number">8.4.10</span> Resolver conflitos</a></li>
+  <li><a href="#desfazer-o-último-commit" id="toc-desfazer-o-último-commit" class="nav-link" data-scroll-target="#desfazer-o-último-commit"><span class="header-section-number">8.4.11</span> Desfazer o último commit</a></li>
+  </ul></li>
+  <li><a href="#tabela-comparativa-resumida" id="toc-tabela-comparativa-resumida" class="nav-link" data-scroll-target="#tabela-comparativa-resumida"><span class="header-section-number">8.5</span> Tabela comparativa resumida</a></li>
+  <li><a href="#quando-usar-cada-um" id="toc-quando-usar-cada-um" class="nav-link" data-scroll-target="#quando-usar-cada-um"><span class="header-section-number">8.6</span> Quando usar cada um?</a>
+  <ul class="collapse">
+  <li><a href="#github-desktop-é-ideal-quando-você" id="toc-github-desktop-é-ideal-quando-você" class="nav-link" data-scroll-target="#github-desktop-é-ideal-quando-você"><span class="header-section-number">8.6.1</span> GitHub Desktop é ideal quando você:</a></li>
+  <li><a href="#o-terminal-é-preferível-quando-você" id="toc-o-terminal-é-preferível-quando-você" class="nav-link" data-scroll-target="#o-terminal-é-preferível-quando-você"><span class="header-section-number">8.6.2</span> O Terminal é preferível quando você:</a></li>
+  </ul></li>
+  <li><a href="#configurações-úteis" id="toc-configurações-úteis" class="nav-link" data-scroll-target="#configurações-úteis"><span class="header-section-number">8.7</span> Configurações úteis</a></li>
+  <li><a href="#atalhos-de-teclado-úteis" id="toc-atalhos-de-teclado-úteis" class="nav-link" data-scroll-target="#atalhos-de-teclado-úteis"><span class="header-section-number">8.8</span> Atalhos de teclado úteis</a></li>
+  <li><a href="#dicas-práticas" id="toc-dicas-práticas" class="nav-link" data-scroll-target="#dicas-práticas"><span class="header-section-number">8.9</span> Dicas práticas</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">GitHub Desktop</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>No capítulo anterior, você aprendeu a usar o Git pela linha de comando: <code>git init</code>, <code>git add</code>, <code>git commit</code>, <code>git push</code>. Digitou comandos, configurou credenciais, navegou pelo Terminal. Foi o caminho mais “difícil” — mas também o mais importante. Entender o que acontece por baixo dos panos é fundamental para não ficar perdido quando algo der errado.</p>
+<p>Agora, a boa notícia: existe uma forma muito mais visual e amigável de fazer tudo isso. O <strong>GitHub Desktop</strong> é um aplicativo gratuito que transforma cliques em comandos Git. Em vez de memorizar sintaxes, você vê seus arquivos, suas alterações e seu histórico em uma interface clara. O fluxo é o mesmo — a diferença é que agora você enxerga o que está fazendo.</p>
+<p>Este capítulo apresenta o GitHub Desktop como uma alternativa prática ao Terminal. Você aprenderá a realizar as mesmas operações que já conhece, mas de forma visual. E o melhor: o GitHub Desktop funciona tanto no <strong>Mac</strong> quanto no <strong>Windows</strong>, com uma interface praticamente idêntica nos dois sistemas.</p>
+<section id="o-que-é-github-desktop" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="o-que-é-github-desktop"><span class="header-section-number">8.1</span> O que é GitHub Desktop?</h2>
+<p>GitHub Desktop é um aplicativo gratuito criado pelo próprio GitHub que oferece uma interface gráfica para realizar operações Git. Em vez de digitar comandos no Terminal, você clica em botões, visualiza alterações lado a lado e gerencia repositórios de forma visual.</p>
+<p>É especialmente útil para quem está começando, prefere interfaces visuais, ou simplesmente quer agilizar tarefas rotineiras sem memorizar comandos.</p>
+</section>
+<section id="instalação" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="instalação"><span class="header-section-number">8.2</span> Instalação</h2>
+<section id="no-mac" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="no-mac"><span class="header-section-number">8.2.1</span> No Mac</h3>
+<ol type="1">
+<li>Acesse <a href="https://desktop.github.com">desktop.github.com</a> e clique em <strong>Download for macOS</strong></li>
+<li>Abra o arquivo <code>.dmg</code> baixado e arraste o aplicativo para a pasta <strong>Aplicativos</strong></li>
+<li>Na primeira execução, faça login com sua conta GitHub</li>
+<li>O aplicativo pedirá permissão para acessar sua conta e configurará automaticamente seu nome e e-mail para commits</li>
+</ol>
+<p>Você também pode instalar via <strong>Homebrew</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install <span class="at">--cask</span> github</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="no-windows" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="no-windows"><span class="header-section-number">8.2.2</span> No Windows</h3>
+<ol type="1">
+<li>Acesse <a href="https://desktop.github.com">desktop.github.com</a> e clique em <strong>Download for Windows</strong></li>
+<li>Execute o instalador baixado e siga as instruções</li>
+<li>Na primeira execução, faça login com sua conta GitHub</li>
+<li>O aplicativo configurará automaticamente seu nome e e-mail para commits</li>
+</ol>
+<p>Você também pode instalar via <strong>winget</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>winget install GitHub<span class="op">.</span><span class="fu">GitHubDesktop</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Dica</span>Configuração automática
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Uma das vantagens do GitHub Desktop é que ele configura o Git automaticamente. Se você ainda não tinha configurado <code>user.name</code> e <code>user.email</code> no Terminal, o aplicativo faz isso por você ao conectar sua conta GitHub.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="a-interface-principal" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="a-interface-principal"><span class="header-section-number">8.3</span> A interface principal</h2>
+<p>Ao abrir o GitHub Desktop, você verá três áreas principais:</p>
+<ol type="1">
+<li><strong>Barra lateral esquerda</strong>: lista de repositórios locais e histórico de commits</li>
+<li><strong>Painel central</strong>: arquivos modificados e suas alterações (diff)</li>
+<li><strong>Barra inferior</strong>: área para escrever mensagens de commit</li>
+</ol>
+<p>No topo, há botões para as ações principais: fetch/pull, push e a branch atual.</p>
+<p>A interface é praticamente idêntica no Mac e no Windows. As únicas diferenças são os atalhos de teclado: onde o Mac usa <code>Cmd</code>, o Windows usa <code>Ctrl</code>.</p>
+</section>
+<section id="operações-básicas-terminal-vs-github-desktop" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="operações-básicas-terminal-vs-github-desktop"><span class="header-section-number">8.4</span> Operações básicas: Terminal vs GitHub Desktop</h2>
+<p>Nas seções a seguir, você verá lado a lado como realizar cada operação no Terminal e no GitHub Desktop. Isso ajuda a entender que são apenas formas diferentes de fazer a mesma coisa.</p>
+<section id="criar-um-novo-repositório" class="level3" data-number="8.4.1">
+<h3 data-number="8.4.1" class="anchored" data-anchor-id="criar-um-novo-repositório"><span class="header-section-number">8.4.1</span> Criar um novo repositório</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="" aria-current="page">Terminal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">GitHub Desktop</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop/meu-projeto</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Primeiro commit"</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/usuario/meu-projeto.git</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<ol type="1">
+<li>Clique em <strong>File → New Repository</strong> (Mac: <code>Cmd+N</code> / Windows: <code>Ctrl+N</code>)</li>
+<li>Preencha o nome, escolha a pasta local</li>
+<li>Marque “Initialize this repository with a README” se desejar</li>
+<li>Clique em <strong>Create Repository</strong></li>
+<li>Para publicar no GitHub, clique no botão <strong>Publish repository</strong> na barra superior</li>
+<li>Escolha se será público ou privado e confirme</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="clonar-um-repositório-existente" class="level3" data-number="8.4.2">
+<h3 data-number="8.4.2" class="anchored" data-anchor-id="clonar-um-repositório-existente"><span class="header-section-number">8.4.2</span> Clonar um repositório existente</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Terminal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">GitHub Desktop</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Desktop</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/usuario/repositorio.git</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<ol type="1">
+<li>Clique em <strong>File → Clone Repository</strong> (Mac: <code>Cmd+Shift+O</code> / Windows: <code>Ctrl+Shift+O</code>)</li>
+<li>Você verá três abas: GitHub.com (seus repositórios), GitHub Enterprise, e URL</li>
+<li>Selecione o repositório desejado ou cole a URL</li>
+<li>Escolha onde salvar localmente</li>
+<li>Clique em <strong>Clone</strong></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="ver-status-e-alterações" class="level3" data-number="8.4.3">
+<h3 data-number="8.4.3" class="anchored" data-anchor-id="ver-status-e-alterações"><span class="header-section-number">8.4.3</span> Ver status e alterações</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Terminal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">GitHub Desktop</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<p>As alterações aparecem automaticamente no painel central. Arquivos modificados são listados à esquerda com ícones coloridos:</p>
+<ul>
+<li>🟡 Amarelo: arquivo modificado</li>
+<li>🟢 Verde: arquivo novo</li>
+<li>🔴 Vermelho: arquivo removido</li>
+</ul>
+<p>Clicando em qualquer arquivo, você vê exatamente o que mudou: linhas removidas em vermelho, adicionadas em verde.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="adicionar-arquivos-e-fazer-commit" class="level3" data-number="8.4.4">
+<h3 data-number="8.4.4" class="anchored" data-anchor-id="adicionar-arquivos-e-fazer-commit"><span class="header-section-number">8.4.4</span> Adicionar arquivos e fazer commit</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Terminal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">GitHub Desktop</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Adiciona função de cálculo"</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<ol type="1">
+<li>Os arquivos modificados aparecem com caixas de seleção</li>
+<li>Marque os que deseja incluir no commit (ou deixe todos marcados)</li>
+<li>Na parte inferior, escreva um título para o commit (obrigatório) e uma descrição opcional</li>
+<li>Clique no botão <strong>Commit to main</strong></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="enviar-para-o-github-push" class="level3" data-number="8.4.5">
+<h3 data-number="8.4.5" class="anchored" data-anchor-id="enviar-para-o-github-push"><span class="header-section-number">8.4.5</span> Enviar para o GitHub (push)</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">Terminal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">GitHub Desktop</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<p>Após fazer um commit, o botão na barra superior muda para <strong>Push origin</strong> com um número indicando quantos commits locais ainda não foram enviados. Clique nele.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="baixar-alterações-do-github-pull" class="level3" data-number="8.4.6">
+<h3 data-number="8.4.6" class="anchored" data-anchor-id="baixar-alterações-do-github-pull"><span class="header-section-number">8.4.6</span> Baixar alterações do GitHub (pull)</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">Terminal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">GitHub Desktop</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<ol type="1">
+<li>Clique em <strong>Fetch origin</strong> na barra superior para verificar se há novidades no repositório remoto</li>
+<li>Se houver, o botão muda para <strong>Pull origin</strong></li>
+<li>Clique para baixar as alterações</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="ver-histórico-de-commits" class="level3" data-number="8.4.7">
+<h3 data-number="8.4.7" class="anchored" data-anchor-id="ver-histórico-de-commits"><span class="header-section-number">8.4.7</span> Ver histórico de commits</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" href="">Terminal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false" href="">GitHub Desktop</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--graph</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<ol type="1">
+<li>Clique na aba <strong>History</strong> na barra lateral esquerda</li>
+<li>Você verá uma lista visual de todos os commits, com autor, data e mensagem</li>
+<li>Clicando em qualquer commit, o painel central mostra exatamente quais arquivos foram alterados</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="criar-e-trocar-de-branch" class="level3" data-number="8.4.8">
+<h3 data-number="8.4.8" class="anchored" data-anchor-id="criar-e-trocar-de-branch"><span class="header-section-number">8.4.8</span> Criar e trocar de branch</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true" href="">Terminal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false" href="">GitHub Desktop</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch nova-funcionalidade</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout nova-funcionalidade</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ou, em um só comando:</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> nova-funcionalidade</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<ol type="1">
+<li>Clique no botão <strong>Current Branch</strong> na barra superior</li>
+<li>Você verá a lista de branches existentes</li>
+<li>Para criar uma nova, clique em <strong>New Branch</strong>, dê um nome e confirme</li>
+<li>Para trocar, basta clicar na branch desejada na lista</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="fazer-merge-de-branches" class="level3" data-number="8.4.9">
+<h3 data-number="8.4.9" class="anchored" data-anchor-id="fazer-merge-de-branches"><span class="header-section-number">8.4.9</span> Fazer merge de branches</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true" href="">Terminal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false" href="">GitHub Desktop</a></li></ul>
+<div class="tab-content">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge nova-funcionalidade</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+<ol type="1">
+<li>Estando na branch de destino (ex: main), clique em <strong>Branch → Merge into Current Branch</strong> no menu</li>
+<li>Selecione a branch que deseja incorporar</li>
+<li>Confirme</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="resolver-conflitos" class="level3" data-number="8.4.10">
+<h3 data-number="8.4.10" class="anchored" data-anchor-id="resolver-conflitos"><span class="header-section-number">8.4.10</span> Resolver conflitos</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true" href="">Terminal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false" href="">GitHub Desktop</a></li></ul>
+<div class="tab-content">
+<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
+<p>Você precisa abrir cada arquivo conflitante, encontrar os marcadores <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>, editar manualmente, salvar, e depois:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add arquivo-resolvido.txt</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Resolve conflitos"</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
+<ol type="1">
+<li>Quando há conflitos, o aplicativo exibe um aviso claro</li>
+<li>Ele lista os arquivos conflitantes e oferece duas opções: abrir no editor de código padrão ou usar uma ferramenta de merge externa</li>
+<li>Após resolver manualmente, volte ao GitHub Desktop e clique em <strong>Continue Merge</strong> ou faça o commit normalmente</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="desfazer-o-último-commit" class="level3" data-number="8.4.11">
+<h3 data-number="8.4.11" class="anchored" data-anchor-id="desfazer-o-último-commit"><span class="header-section-number">8.4.11</span> Desfazer o último commit</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true" href="">Terminal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false" href="">GitHub Desktop</a></li></ul>
+<div class="tab-content">
+<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reset <span class="at">--soft</span> HEAD~1</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
+<ol type="1">
+<li>Clique com o botão direito no commit mais recente na aba <strong>History</strong></li>
+<li>Selecione <strong>Undo Commit</strong></li>
+<li>Os arquivos voltam para a área de preparação, prontos para serem editados ou commitados novamente</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="tabela-comparativa-resumida" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="tabela-comparativa-resumida"><span class="header-section-number">8.5</span> Tabela comparativa resumida</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 27%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operação</th>
+<th>Terminal</th>
+<th>GitHub Desktop</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Inicializar repositório</td>
+<td><code>git init</code></td>
+<td>File → New Repository</td>
+</tr>
+<tr class="even">
+<td>Clonar</td>
+<td><code>git clone URL</code></td>
+<td>File → Clone Repository</td>
+</tr>
+<tr class="odd">
+<td>Ver alterações</td>
+<td><code>git status</code> / <code>git diff</code></td>
+<td>Painel central (automático)</td>
+</tr>
+<tr class="even">
+<td>Preparar arquivos</td>
+<td><code>git add .</code></td>
+<td>Marcar checkboxes</td>
+</tr>
+<tr class="odd">
+<td>Commit</td>
+<td><code>git commit -m "msg"</code></td>
+<td>Escrever mensagem + botão Commit</td>
+</tr>
+<tr class="even">
+<td>Push</td>
+<td><code>git push</code></td>
+<td>Botão Push origin</td>
+</tr>
+<tr class="odd">
+<td>Pull</td>
+<td><code>git pull</code></td>
+<td>Botão Pull origin</td>
+</tr>
+<tr class="even">
+<td>Histórico</td>
+<td><code>git log</code></td>
+<td>Aba History</td>
+</tr>
+<tr class="odd">
+<td>Criar branch</td>
+<td><code>git checkout -b nome</code></td>
+<td>Current Branch → New Branch</td>
+</tr>
+<tr class="even">
+<td>Trocar branch</td>
+<td><code>git checkout nome</code></td>
+<td>Clicar na branch</td>
+</tr>
+<tr class="odd">
+<td>Merge</td>
+<td><code>git merge nome</code></td>
+<td>Branch → Merge into Current Branch</td>
+</tr>
+<tr class="even">
+<td>Desfazer commit</td>
+<td><code>git reset --soft HEAD~1</code></td>
+<td>Botão direito → Undo Commit</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="quando-usar-cada-um" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="quando-usar-cada-um"><span class="header-section-number">8.6</span> Quando usar cada um?</h2>
+<section id="github-desktop-é-ideal-quando-você" class="level3" data-number="8.6.1">
+<h3 data-number="8.6.1" class="anchored" data-anchor-id="github-desktop-é-ideal-quando-você"><span class="header-section-number">8.6.1</span> GitHub Desktop é ideal quando você:</h3>
+<ul>
+<li>Está aprendendo Git e quer visualizar o que está acontecendo</li>
+<li>Prefere interfaces gráficas a linhas de comando</li>
+<li>Quer revisar alterações visualmente antes de commitar</li>
+<li>Trabalha em projetos simples com fluxo básico (commit, push, pull)</li>
+<li>Precisa resolver conflitos e quer ver claramente as diferenças</li>
+</ul>
+</section>
+<section id="o-terminal-é-preferível-quando-você" class="level3" data-number="8.6.2">
+<h3 data-number="8.6.2" class="anchored" data-anchor-id="o-terminal-é-preferível-quando-você"><span class="header-section-number">8.6.2</span> O Terminal é preferível quando você:</h3>
+<ul>
+<li>Precisa de operações avançadas (rebase interativo, cherry-pick, bisect)</li>
+<li>Trabalha com scripts ou automação</li>
+<li>Está em um servidor remoto sem interface gráfica</li>
+<li>Quer maior controle e flexibilidade</li>
+<li>Precisa executar comandos específicos não disponíveis na interface</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Dica</span>Use os dois!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A boa notícia: você não precisa escolher. Muitos desenvolvedores usam GitHub Desktop para o dia a dia e recorrem ao Terminal quando precisam de algo mais específico. O repositório é o mesmo; as ferramentas são apenas formas diferentes de interagir com ele.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="configurações-úteis" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="configurações-úteis"><span class="header-section-number">8.7</span> Configurações úteis</h2>
+<p>Acesse as preferências do aplicativo para configurar:</p>
+<ul>
+<li><strong>No Mac</strong>: GitHub Desktop → Preferences (ou <code>Cmd+,</code>)</li>
+<li><strong>No Windows</strong>: File → Options (ou <code>Ctrl+,</code>)</li>
+</ul>
+<p>As opções incluem:</p>
+<ul>
+<li><strong>Accounts</strong>: gerenciar contas GitHub conectadas</li>
+<li><strong>Git</strong>: alterar nome e e-mail padrão para commits</li>
+<li><strong>Appearance</strong>: escolher tema claro ou escuro</li>
+<li><strong>Integrations</strong>: definir editor de código externo (VS Code, Positron, etc.) e shell padrão</li>
+<li><strong>Advanced</strong>: configurar comportamento de merge e outras opções</li>
+</ul>
+</section>
+<section id="atalhos-de-teclado-úteis" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="atalhos-de-teclado-úteis"><span class="header-section-number">8.8</span> Atalhos de teclado úteis</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 25%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Ação</th>
+<th>Mac</th>
+<th>Windows</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Novo repositório</td>
+<td><code>Cmd+N</code></td>
+<td><code>Ctrl+N</code></td>
+</tr>
+<tr class="even">
+<td>Clonar repositório</td>
+<td><code>Cmd+Shift+O</code></td>
+<td><code>Ctrl+Shift+O</code></td>
+</tr>
+<tr class="odd">
+<td>Adicionar repositório local</td>
+<td><code>Cmd+O</code></td>
+<td><code>Ctrl+O</code></td>
+</tr>
+<tr class="even">
+<td>Commit</td>
+<td><code>Cmd+Enter</code></td>
+<td><code>Ctrl+Enter</code></td>
+</tr>
+<tr class="odd">
+<td>Push</td>
+<td><code>Cmd+P</code></td>
+<td><code>Ctrl+P</code></td>
+</tr>
+<tr class="even">
+<td>Pull</td>
+<td><code>Cmd+Shift+P</code></td>
+<td><code>Ctrl+Shift+P</code></td>
+</tr>
+<tr class="odd">
+<td>Nova branch</td>
+<td><code>Cmd+Shift+N</code></td>
+<td><code>Ctrl+Shift+N</code></td>
+</tr>
+<tr class="even">
+<td>Alternar entre Changes e History</td>
+<td><code>Cmd+1</code> / <code>Cmd+2</code></td>
+<td><code>Ctrl+1</code> / <code>Ctrl+2</code></td>
+</tr>
+<tr class="odd">
+<td>Abrir no editor externo</td>
+<td><code>Cmd+Shift+A</code></td>
+<td><code>Ctrl+Shift+A</code></td>
+</tr>
+<tr class="even">
+<td>Abrir no Terminal</td>
+<td><code>Ctrl+`</code></td>
+<td><code>Ctrl+`</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="dicas-práticas" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="dicas-práticas"><span class="header-section-number">8.9</span> Dicas práticas</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Dica</span>Boas práticas no GitHub Desktop
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p><strong>Use “Open in Terminal” quando precisar.</strong> No menu Repository, você pode abrir o Terminal diretamente na pasta do repositório — útil quando precisa de um comando específico.</p></li>
+<li><p><strong>Configure seu editor favorito.</strong> Em Preferences/Options → Integrations, defina o VS Code, Positron ou outro editor de sua preferência.</p></li>
+<li><p><strong>Aproveite a visualização de diff.</strong> Antes de commitar, revise cada alteração clicando nos arquivos. É muito mais fácil identificar erros visualmente do que com <code>git diff</code> no Terminal.</p></li>
+<li><p><strong>Use descrições nos commits.</strong> Além do título curto, o campo de descrição permite explicar o contexto da alteração. Seu eu do futuro agradece.</p></li>
+<li><p><strong>Não tenha medo de explorar.</strong> O GitHub Desktop é bastante seguro: a maioria das ações destrutivas pede confirmação antes de executar.</p></li>
+</ol>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./06-git-inicialization.html" class="pagination-link" aria-label="Configurando o Git e o GitHub">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Configurando o Git e o GitHub</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./08-github-positron.html" class="pagination-link" aria-label="Git e GitHub no Positron">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Git e GitHub no Positron</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Manual de Git e GitHub</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Criado com <a href="https://quarto.org/">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

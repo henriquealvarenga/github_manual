@@ -1,0 +1,327 @@
+# Winget {#sec-winget}
+
+No capítulo anterior, apresentamos o Homebrew como o gerenciador de pacotes padrão para macOS. Usuários de Windows, no entanto, possuem sua própria ferramenta nativa: o **winget**, também conhecido como Windows Package Manager.
+
+O winget surgiu em 2020 como resposta da Microsoft à demanda por uma forma mais simples e direta de instalar programas. Antes dele, usuários Windows dependiam de assistentes de instalação, sites de download e processos manuais. Com o winget, basta um comando no terminal para instalar praticamente qualquer programa.
+
+Este capítulo apresenta o winget de forma progressiva: o que é, como verificar se está instalado, como utilizá-lo e como resolver problemas comuns.
+
+---
+
+## O que é o winget?
+
+O winget é um **gerenciador de pacotes** de linha de comando desenvolvido pela Microsoft. Ele permite instalar, atualizar e remover programas diretamente pelo terminal, sem precisar navegar por sites, baixar instaladores ou clicar em assistentes de instalação.
+
+A ferramenta acessa um repositório central mantido pela Microsoft e pela comunidade, que contém milhares de aplicativos — desde ferramentas de desenvolvimento como Git, Python e VS Code até programas do dia a dia como Spotify, Zoom e VLC.
+
+A filosofia é semelhante à do Homebrew: centralizar a gestão de software em comandos simples e previsíveis.
+
+---
+
+## Verificando se o winget está instalado
+
+O winget vem pré-instalado no Windows 10 (versão 1809 ou superior) e no Windows 11. Para verificar se ele está disponível no seu sistema, abra o **Windows Terminal**, **PowerShell** ou **Prompt de Comando** e digite:
+
+```powershell
+winget --version
+```
+
+Se aparecer um número de versão (por exemplo, `v1.7.10861`), o winget está pronto para uso.
+
+Caso o comando não seja reconhecido, você pode instalar o winget através da Microsoft Store, buscando por **App Installer** (Instalador de Aplicativo). Esse pacote inclui o winget.
+
+---
+
+## Abrindo o Terminal no Windows
+
+Para usar o winget, você precisa de um terminal. Antes de apresentar as opções, vale esclarecer uma distinção importante: **terminal** e **shell** são coisas diferentes.
+
+O **shell** é o programa que interpreta seus comandos — o "cérebro" que entende o que você digita. O **terminal** (ou emulador de terminal) é a janela onde você digita — a interface visual, o "corpo".
+
+No Windows, os principais shells são:
+
+- **PowerShell**: moderno e poderoso, é o padrão atual
+- **Prompt de Comando (cmd)**: o clássico do MS-DOS, mais limitado
+
+E o principal emulador de terminal é:
+
+- **Windows Terminal**: interface moderna que pode abrir qualquer shell em abas separadas
+
+**Windows Terminal (recomendado)**
+
+O Windows Terminal é a interface recomendada para trabalhar com linha de comando no Windows. Ele permite abrir PowerShell, Prompt de Comando, Git Bash e outros shells em abas dentro da mesma janela, com suporte a temas, atalhos de teclado e melhor visualização de fontes e cores. Quando você abre o Windows Terminal, ele inicia o PowerShell por padrão — ou seja, você tem o melhor dos dois mundos.
+
+O Windows Terminal já vem instalado no Windows 11. No Windows 10, você pode instalá-lo pela Microsoft Store buscando por "Windows Terminal".
+
+Para abrir o Windows Terminal:
+
+1. Pressione `Win + X` e selecione "Terminal", ou
+2. Pesquise "Terminal" no menu Iniciar
+
+É possível abrir o PowerShell ou o Prompt de Comando diretamente, sem usar o Windows Terminal, mas não há vantagem em fazer isso. O Windows Terminal oferece uma experiência superior e já executa o PowerShell por padrão, então não há motivo para usar as interfaces antigas.
+
+---
+
+## Instalando Programas com o winget
+
+A sintaxe básica para instalar um programa é:
+
+```powershell
+winget install nome-do-pacote
+```
+
+Por exemplo, para instalar o Git:
+
+```powershell
+winget install Git.Git
+```
+
+O winget baixa o instalador, executa a instalação silenciosamente e registra o programa no sistema. Você não precisa clicar em "Avançar" repetidamente nem desmarcar ofertas de software adicional.
+
+Para instalar o Visual Studio Code:
+
+```powershell
+winget install Microsoft.VisualStudioCode
+```
+
+Para instalar o Python:
+
+```powershell
+winget install Python.Python.3.12
+```
+
+Alguns programas possuem múltiplas versões disponíveis. O winget permite especificar exatamente qual você deseja.
+
+---
+
+## Procurando Pacotes
+
+Não tem certeza do nome exato de um pacote? Use o comando `search`:
+
+```powershell
+winget search git
+```
+
+O winget retornará uma lista de pacotes relacionados:
+
+```
+Nome                    Id                  Versão
+--------------------------------------------------------
+Git                     Git.Git             2.44.0
+GitHub Desktop          GitHub.GitHubDesktop 3.3.8
+GitHub CLI              GitHub.cli          2.45.0
+Git LFS                 GitHub.GitLFS       3.4.1
+```
+
+A coluna **Id** mostra o identificador exato que você deve usar no comando `install`.
+
+Para buscar o Quarto:
+
+```powershell
+winget search quarto
+```
+
+---
+
+## Atualizando Programas
+
+Uma das maiores vantagens de um gerenciador de pacotes é manter tudo atualizado com facilidade.
+
+Para ver quais programas têm atualizações disponíveis:
+
+```powershell
+winget upgrade
+```
+
+Para atualizar um programa específico:
+
+```powershell
+winget upgrade Git.Git
+```
+
+Para atualizar todos os programas de uma vez:
+
+```powershell
+winget upgrade --all
+```
+
+Esse comando percorre todos os programas instalados via winget e aplica as atualizações disponíveis.
+
+---
+
+## Removendo Programas
+
+Para desinstalar um programa:
+
+```powershell
+winget uninstall nome-do-pacote
+```
+
+Por exemplo:
+
+```powershell
+winget uninstall Git.Git
+```
+
+O winget executa o desinstalador do programa de forma silenciosa.
+
+---
+
+## Listando Programas Instalados
+
+Para ver todos os programas que o winget reconhece no seu sistema:
+
+```powershell
+winget list
+```
+
+Essa lista inclui não apenas programas instalados via winget, mas também aqueles instalados manualmente. O winget consegue gerenciar atualizações para muitos deles.
+
+---
+
+## Obtendo Informações sobre um Pacote
+
+Antes de instalar um programa, você pode querer saber mais sobre ele:
+
+```powershell
+winget show Git.Git
+```
+
+O comando exibe informações como descrição, versão, autor, site oficial e URL do instalador.
+
+---
+
+## Onde o winget Guarda os Programas?
+
+Diferente do Homebrew, que centraliza tudo em `/opt/homebrew/`, o winget instala cada programa no local padrão definido pelo próprio instalador. Isso significa que:
+
+- Programas de linha de comando geralmente vão para `C:\Program Files\` ou `C:\Users\SeuUsuario\AppData\`
+- Aplicativos gráficos aparecem normalmente no Menu Iniciar
+
+O winget não altera essa estrutura tradicional do Windows — ele apenas automatiza o processo de instalação.
+
+---
+
+## Exemplos Práticos
+
+### Configurando um ambiente de desenvolvimento
+
+Vamos instalar Git, Python, VS Code e o Windows Terminal em sequência:
+
+```powershell
+winget install Git.Git
+winget install Python.Python.3.12
+winget install Microsoft.VisualStudioCode
+winget install Microsoft.WindowsTerminal
+```
+
+Após a instalação, confirme que tudo funcionou:
+
+```powershell
+git --version
+python --version
+code --version
+```
+
+### Instalando o Quarto
+
+```powershell
+winget install Posit.Quarto
+```
+
+### Instalando o R
+
+```powershell
+winget install RProject.R
+```
+
+### Instalando o Positron
+
+```powershell
+winget search positron
+```
+
+Se disponível no repositório, o comando `install` seguirá o padrão habitual.
+
+---
+
+## Comparação: Homebrew vs winget
+
+| Aspecto | Homebrew (macOS) | winget (Windows) |
+|---------|------------------|------------------|
+| Instalação | Script no Terminal | Pré-instalado ou via Microsoft Store |
+| Comando base | `brew` | `winget` |
+| Instalar | `brew install git` | `winget install Git.Git` |
+| Atualizar tudo | `brew upgrade` | `winget upgrade --all` |
+| Buscar | `brew search nome` | `winget search nome` |
+| Remover | `brew uninstall nome` | `winget uninstall nome` |
+| Local dos arquivos | `/opt/homebrew/` | Padrão de cada programa |
+
+Os conceitos são os mesmos; apenas a sintaxe muda ligeiramente.
+
+---
+
+## Problemas e Erros Comuns
+
+### 1. "winget não é reconhecido como comando"
+
+O winget pode não estar instalado ou não estar no PATH do sistema. Soluções:
+
+- Instale o **App Installer** pela Microsoft Store
+- Reinicie o terminal após a instalação
+- Verifique se o Windows está atualizado
+
+### 2. "Nenhum pacote encontrado"
+
+O nome do pacote pode estar incorreto. Use `winget search` para encontrar o identificador correto:
+
+```powershell
+winget search visual studio
+```
+
+### 3. Instalação requer privilégios de administrador
+
+Alguns programas precisam de permissões elevadas. Abra o terminal como administrador:
+
+1. Clique com botão direito no Windows Terminal ou PowerShell
+2. Selecione "Executar como administrador"
+3. Execute o comando novamente
+
+### 4. Conflito com versão já instalada
+
+Se você já tem uma versão do programa instalada manualmente, o winget pode reportar conflito. Desinstale a versão antiga primeiro:
+
+```powershell
+winget uninstall nome-do-pacote
+winget install nome-do-pacote
+```
+
+### 5. Download lento ou falha de rede
+
+Tente novamente após alguns minutos. Se o problema persistir, verifique sua conexão ou tente usar uma fonte alternativa:
+
+```powershell
+winget install Git.Git --source winget
+```
+
+---
+
+## Exercícios Práticos
+
+1. Verifique se o winget está instalado com `winget --version`.
+2. Busque o pacote do Git com `winget search git`.
+3. Instale o Git com `winget install Git.Git` e confirme com `git --version`.
+4. Liste os programas instalados com `winget list`.
+5. Verifique atualizações disponíveis com `winget upgrade`.
+6. Instale o Visual Studio Code e o Python usando winget.
+7. Compare a experiência com a instalação tradicional via site de download.
+
+---
+
+## Conclusão
+
+O winget representa uma mudança significativa na forma como usuários Windows gerenciam software. O que antes exigia navegação por sites, downloads manuais e assistentes de instalação agora se resume a um comando no terminal.
+
+Para quem está aprendendo Git e ferramentas de desenvolvimento, o winget simplifica a preparação do ambiente. Instalar Git, Python, VS Code e outras ferramentas leva minutos em vez de uma tarde inteira.
+
+Dominar o winget é dar o primeiro passo para um fluxo de trabalho mais eficiente no Windows.
