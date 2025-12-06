@@ -517,35 +517,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="passo-3-crie-o-repositório-no-github" class="level3" data-number="10.6.3">
 <h3 data-number="10.6.3" class="anchored" data-anchor-id="passo-3-crie-o-repositório-no-github"><span class="header-section-number">10.6.3</span> Passo 3: Crie o repositório no GitHub</h3>
-<p>Se ainda não tiver um repositório para o projeto:</p>
+<p>Antes de enviar seu projeto, é necessário criar um repositório vazio no GitHub. Você pode fazer isso de duas formas: pelo site do GitHub ou pelo Terminal com GitHub CLI.</p>
+<p>Para iniciantes, criar pelo site é mais simples e visual. Já o Terminal com GitHub CLI é mais rápido porque cria e conecta o repositório automaticamente em um único comando.</p>
+<p><strong>Opção A: Pelo site do GitHub (recomendado para iniciantes)</strong></p>
 <ol type="1">
 <li>Acesse <a href="https://github.com">github.com</a> e faça login</li>
-<li>Clique em <strong>+</strong> → <strong>New repository</strong></li>
-<li>Dê um nome ao repositório (ex: <code>manual-git</code>)</li>
-<li>Deixe as opções de inicialização desmarcadas</li>
+<li>Clique no botão <strong>+</strong> no canto superior direito e selecione <strong>New repository</strong></li>
+<li>Preencha o nome do repositório (ex: <code>manual-git-github</code>)</li>
+<li>Adicione uma descrição (opcional)</li>
+<li>Escolha se será <strong>Public</strong> (visível para todos) ou <strong>Private</strong> (apenas você)</li>
+<li><strong>Não</strong> marque as opções de adicionar README, .gitignore ou licença — queremos um repositório vazio</li>
 <li>Clique em <strong>Create repository</strong></li>
+<li>Copie a URL do repositório (algo como <code>https://github.com/seu-usuario/manual-git-github.git</code>)</li>
 </ol>
+<blockquote class="blockquote">
+<p><strong>Importante:</strong> Ao criar pelo site, o repositório fica apenas no GitHub, sem conexão com seu projeto local. Você precisará dessa URL para conectar manualmente no Passo 4, seja pelo comando <code>git remote add origin URL</code> (Terminal) ou pela opção “Git: Add Remote” (Positron).</p>
+</blockquote>
+<p><strong>Opção B: Pelo Terminal com GitHub CLI (cria e conecta automaticamente)</strong></p>
+<p>Se você tem o GitHub CLI instalado, pode criar o repositório diretamente pelo Terminal:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gh</span> repo create nome-do-repositorio <span class="at">--public</span> <span class="at">--source</span><span class="op">=</span>. <span class="at">--remote</span><span class="op">=</span>origin</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Esse comando faz três coisas de uma vez: cria o repositório no GitHub, define como público e já conecta ao seu projeto local. Você <strong>não precisa copiar nenhuma URL</strong> — a conexão é feita automaticamente.</p>
+<blockquote class="blockquote">
+<p><strong>Nota:</strong> Se você usou essa opção, pode pular a etapa de conectar ao repositório remoto no Passo 4. Basta fazer o commit e o push.</p>
+</blockquote>
+<hr>
 </section>
 <section id="passo-4-envie-o-projeto-para-o-github" class="level3" data-number="10.6.4">
 <h3 data-number="10.6.4" class="anchored" data-anchor-id="passo-4-envie-o-projeto-para-o-github"><span class="header-section-number">10.6.4</span> Passo 4: Envie o projeto para o GitHub</h3>
-<p>Se o projeto ainda não está conectado ao GitHub, você precisará inicializar o repositório Git, fazer o primeiro commit e enviar para o GitHub. A seguir, mostramos como fazer isso de duas formas: pelo Terminal e pela interface gráfica do Positron. Escolha a que preferir.</p>
+<p>Agora que o repositório existe no GitHub, você precisará inicializar o Git no seu projeto local, fazer o primeiro commit e enviar os arquivos. A seguir, mostramos como fazer isso de duas formas: pelo Terminal e pela interface gráfica do Positron. Escolha a que preferir.</p>
 <section id="passo-4.1-pelo-terminal" class="level4" data-number="10.6.4.1">
 <h4 data-number="10.6.4.1" class="anchored" data-anchor-id="passo-4.1-pelo-terminal"><span class="header-section-number">10.6.4.1</span> Passo 4.1: Pelo Terminal</h4>
 <p><strong>Inicialize o repositório Git:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Adicione todos os arquivos ao controle de versão:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Faça o primeiro commit:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Primeiro commit"</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Primeiro commit"</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Conecte ao repositório remoto no GitHub:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/seu-usuario/nome-do-repositorio.git</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/seu-usuario/nome-do-repositorio.git</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Renomeie a branch principal para <code>main</code>:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-M</span> main</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-M</span> main</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Envie os arquivos para o GitHub:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="passo-4.2-pelo-positron" class="level4" data-number="10.6.4.2">
 <h4 data-number="10.6.4.2" class="anchored" data-anchor-id="passo-4.2-pelo-positron"><span class="header-section-number">10.6.4.2</span> Passo 4.2: Pelo Positron</h4>
+<p><strong>Autentique-se no GitHub (apenas na primeira vez):</strong></p>
+<ol type="1">
+<li>Abra a paleta de comandos com <code>Ctrl + Shift + P</code> (Windows/Linux) ou <code>Cmd + Shift + P</code> (Mac)</li>
+<li>Digite “GitHub: Sign In” e pressione Enter</li>
+<li>O Positron abrirá uma janela do navegador para autenticação</li>
+<li>Faça login na sua conta do GitHub e autorize o acesso</li>
+<li>Após autorizar, volte ao Positron — você verá uma confirmação de que está conectado</li>
+</ol>
 <p><strong>Inicialize o repositório Git:</strong></p>
 <ol type="1">
 <li>Abra a paleta de comandos com <code>Ctrl + Shift + P</code> (Windows/Linux) ou <code>Cmd + Shift + P</code> (Mac)</li>
@@ -570,6 +594,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Digite “Git: Push” e pressione Enter</li>
 <li>Se solicitado, selecione <code>origin</code> e <code>main</code> como destino</li>
 </ol>
+<p><strong>Verifique se está conectado ao repositório correto:</strong></p>
+<p>Após configurar o remote, é importante confirmar que o Positron está conectado ao repositório certo, especialmente se você trabalha com vários projetos. Para verificar:</p>
+<ol type="1">
+<li>Olhe na <strong>barra de status</strong> (parte inferior da tela) — ela mostra a branch atual (ex: <code>main</code>) e o nome do remote</li>
+<li>No painel <strong>Source Control</strong>, clique nos três pontos (<strong>…</strong>) e selecione “Remote” &gt; “Show Remotes” para ver a URL configurada</li>
+<li>Ou abra o Terminal integrado (<code>Ctrl + ``</code>) e digite:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Isso mostrará a URL do repositório conectado. Confirme que corresponde ao seu repositório no GitHub.</p>
 </section>
 </section>
 <section id="passo-5-ative-o-github-pages" class="level3" data-number="10.6.5">
@@ -610,9 +643,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Execute <code>quarto render</code> para regenerar o site</li>
 <li>Faça commit e push:</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Atualiza conteúdo"</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Atualiza conteúdo"</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <p>O GitHub Pages detecta automaticamente as alterações na pasta <code>docs/</code> e republica o site. Em poucos minutos, as mudanças estarão no ar.</p>
 </section>
 <section id="domínio-personalizado" class="level2" data-number="10.8">
@@ -654,7 +687,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="10.9" class="anchored" data-anchor-id="arquivo-.nojekyll"><span class="header-section-number">10.9</span> Arquivo .nojekyll</h2>
 <p>Por padrão, o GitHub Pages processa os arquivos com Jekyll (um gerador de sites estáticos). Se você usa Quarto ou outro gerador, pode haver conflitos — especialmente com pastas que começam com underscore (<code>_</code>), que o Jekyll ignora.</p>
 <p>Para desativar o processamento Jekyll, crie um arquivo vazio chamado <code>.nojekyll</code> na pasta <code>docs/</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> docs/.nojekyll</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> docs/.nojekyll</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <p>O Quarto geralmente cria esse arquivo automaticamente, mas é bom verificar se ele existe.</p>
 </section>
 <section id="solucionando-problemas-comuns" class="level2" data-number="10.10">

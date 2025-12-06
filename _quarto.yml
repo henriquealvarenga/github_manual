@@ -49,9 +49,6 @@ format:
     code-overflow: wrap
     highlight-style: github
 
-  pdf:
-    documentclass: book
-    lang: pt-BR  
     
 lang: pt-BR
 
