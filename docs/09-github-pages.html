@@ -379,6 +379,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Referências</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-creditos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Créditos</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -391,37 +397,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#o-que-é-github-pages" id="toc-o-que-é-github-pages" class="nav-link active" data-scroll-target="#o-que-é-github-pages"><span class="header-section-number">10.1</span> O que é GitHub Pages?</a></li>
   <li><a href="#como-funciona" id="toc-como-funciona" class="nav-link" data-scroll-target="#como-funciona"><span class="header-section-number">10.2</span> Como funciona?</a></li>
-  <li><a href="#opções-de-publicação" id="toc-opções-de-publicação" class="nav-link" data-scroll-target="#opções-de-publicação"><span class="header-section-number">10.3</span> Opções de publicação</a>
+  <li><a href="#opções-de-publicação" id="toc-opções-de-publicação" class="nav-link" data-scroll-target="#opções-de-publicação"><span class="header-section-number">10.3</span> Opções de publicação</a></li>
+  <li><a href="#a-pasta-docs" id="toc-a-pasta-docs" class="nav-link" data-scroll-target="#a-pasta-docs"><span class="header-section-number">10.4</span> A pasta <code>/docs</code></a></li>
+  <li><a href="#outras-opções" id="toc-outras-opções" class="nav-link" data-scroll-target="#outras-opções"><span class="header-section-number">10.5</span> Outras opções</a></li>
+  <li><a href="#publicando-um-site-quarto-passo-a-passo" id="toc-publicando-um-site-quarto-passo-a-passo" class="nav-link" data-scroll-target="#publicando-um-site-quarto-passo-a-passo"><span class="header-section-number">10.6</span> Publicando um site Quarto: passo a passo</a>
   <ul class="collapse">
-  <li><a href="#opção-1-raiz-do-repositório-branch-main" id="toc-opção-1-raiz-do-repositório-branch-main" class="nav-link" data-scroll-target="#opção-1-raiz-do-repositório-branch-main"><span class="header-section-number">10.3.1</span> Opção 1: Raiz do repositório (branch main)</a></li>
-  <li><a href="#opção-2-pasta-docs-branch-main" id="toc-opção-2-pasta-docs-branch-main" class="nav-link" data-scroll-target="#opção-2-pasta-docs-branch-main"><span class="header-section-number">10.3.2</span> Opção 2: Pasta /docs (branch main)</a></li>
-  <li><a href="#opção-3-branch-gh-pages" id="toc-opção-3-branch-gh-pages" class="nav-link" data-scroll-target="#opção-3-branch-gh-pages"><span class="header-section-number">10.3.3</span> Opção 3: Branch gh-pages</a></li>
+  <li><a href="#passo-1-configure-o-quarto-para-gerar-na-pasta-docs" id="toc-passo-1-configure-o-quarto-para-gerar-na-pasta-docs" class="nav-link" data-scroll-target="#passo-1-configure-o-quarto-para-gerar-na-pasta-docs"><span class="header-section-number">10.6.1</span> Passo 1: Configure o Quarto para gerar na pasta docs</a></li>
+  <li><a href="#passo-2-renderize-o-projeto" id="toc-passo-2-renderize-o-projeto" class="nav-link" data-scroll-target="#passo-2-renderize-o-projeto"><span class="header-section-number">10.6.2</span> Passo 2: Renderize o projeto</a></li>
+  <li><a href="#passo-3-crie-o-repositório-no-github" id="toc-passo-3-crie-o-repositório-no-github" class="nav-link" data-scroll-target="#passo-3-crie-o-repositório-no-github"><span class="header-section-number">10.6.3</span> Passo 3: Crie o repositório no GitHub</a></li>
+  <li><a href="#passo-4-envie-o-projeto-para-o-github" id="toc-passo-4-envie-o-projeto-para-o-github" class="nav-link" data-scroll-target="#passo-4-envie-o-projeto-para-o-github"><span class="header-section-number">10.6.4</span> Passo 4: Envie o projeto para o GitHub</a></li>
+  <li><a href="#passo-5-ative-o-github-pages" id="toc-passo-5-ative-o-github-pages" class="nav-link" data-scroll-target="#passo-5-ative-o-github-pages"><span class="header-section-number">10.6.5</span> Passo 5: Ative o GitHub Pages</a></li>
+  <li><a href="#passo-6-aguarde-e-acesse" id="toc-passo-6-aguarde-e-acesse" class="nav-link" data-scroll-target="#passo-6-aguarde-e-acesse"><span class="header-section-number">10.6.6</span> Passo 6: Aguarde e acesse</a></li>
   </ul></li>
-  <li><a href="#publicando-um-site-quarto-passo-a-passo" id="toc-publicando-um-site-quarto-passo-a-passo" class="nav-link" data-scroll-target="#publicando-um-site-quarto-passo-a-passo"><span class="header-section-number">10.4</span> Publicando um site Quarto: passo a passo</a>
+  <li><a href="#atualizando-o-site" id="toc-atualizando-o-site" class="nav-link" data-scroll-target="#atualizando-o-site"><span class="header-section-number">10.7</span> Atualizando o site</a></li>
+  <li><a href="#domínio-personalizado" id="toc-domínio-personalizado" class="nav-link" data-scroll-target="#domínio-personalizado"><span class="header-section-number">10.8</span> Domínio personalizado</a>
   <ul class="collapse">
-  <li><a href="#passo-1-configure-o-quarto-para-gerar-na-pasta-docs" id="toc-passo-1-configure-o-quarto-para-gerar-na-pasta-docs" class="nav-link" data-scroll-target="#passo-1-configure-o-quarto-para-gerar-na-pasta-docs"><span class="header-section-number">10.4.1</span> Passo 1: Configure o Quarto para gerar na pasta docs</a></li>
-  <li><a href="#passo-2-renderize-o-projeto" id="toc-passo-2-renderize-o-projeto" class="nav-link" data-scroll-target="#passo-2-renderize-o-projeto"><span class="header-section-number">10.4.2</span> Passo 2: Renderize o projeto</a></li>
-  <li><a href="#passo-3-crie-o-repositório-no-github" id="toc-passo-3-crie-o-repositório-no-github" class="nav-link" data-scroll-target="#passo-3-crie-o-repositório-no-github"><span class="header-section-number">10.4.3</span> Passo 3: Crie o repositório no GitHub</a></li>
-  <li><a href="#passo-4-envie-o-projeto-para-o-github" id="toc-passo-4-envie-o-projeto-para-o-github" class="nav-link" data-scroll-target="#passo-4-envie-o-projeto-para-o-github"><span class="header-section-number">10.4.4</span> Passo 4: Envie o projeto para o GitHub</a></li>
-  <li><a href="#passo-5-ative-o-github-pages" id="toc-passo-5-ative-o-github-pages" class="nav-link" data-scroll-target="#passo-5-ative-o-github-pages"><span class="header-section-number">10.4.5</span> Passo 5: Ative o GitHub Pages</a></li>
-  <li><a href="#passo-6-aguarde-e-acesse" id="toc-passo-6-aguarde-e-acesse" class="nav-link" data-scroll-target="#passo-6-aguarde-e-acesse"><span class="header-section-number">10.4.6</span> Passo 6: Aguarde e acesse</a></li>
+  <li><a href="#como-configurar" id="toc-como-configurar" class="nav-link" data-scroll-target="#como-configurar"><span class="header-section-number">10.8.1</span> Como configurar</a></li>
   </ul></li>
-  <li><a href="#atualizando-o-site" id="toc-atualizando-o-site" class="nav-link" data-scroll-target="#atualizando-o-site"><span class="header-section-number">10.5</span> Atualizando o site</a></li>
-  <li><a href="#domínio-personalizado" id="toc-domínio-personalizado" class="nav-link" data-scroll-target="#domínio-personalizado"><span class="header-section-number">10.6</span> Domínio personalizado</a>
+  <li><a href="#arquivo-.nojekyll" id="toc-arquivo-.nojekyll" class="nav-link" data-scroll-target="#arquivo-.nojekyll"><span class="header-section-number">10.9</span> Arquivo .nojekyll</a></li>
+  <li><a href="#solucionando-problemas-comuns" id="toc-solucionando-problemas-comuns" class="nav-link" data-scroll-target="#solucionando-problemas-comuns"><span class="header-section-number">10.10</span> Solucionando problemas comuns</a>
   <ul class="collapse">
-  <li><a href="#como-configurar" id="toc-como-configurar" class="nav-link" data-scroll-target="#como-configurar"><span class="header-section-number">10.6.1</span> Como configurar</a></li>
+  <li><a href="#o-site-não-aparece" id="toc-o-site-não-aparece" class="nav-link" data-scroll-target="#o-site-não-aparece"><span class="header-section-number">10.10.1</span> O site não aparece</a></li>
+  <li><a href="#erro-404-página-não-encontrada" id="toc-erro-404-página-não-encontrada" class="nav-link" data-scroll-target="#erro-404-página-não-encontrada"><span class="header-section-number">10.10.2</span> Erro 404 (página não encontrada)</a></li>
+  <li><a href="#estilos-ou-imagens-não-carregam" id="toc-estilos-ou-imagens-não-carregam" class="nav-link" data-scroll-target="#estilos-ou-imagens-não-carregam"><span class="header-section-number">10.10.3</span> Estilos ou imagens não carregam</a></li>
+  <li><a href="#alterações-não-aparecem-no-site" id="toc-alterações-não-aparecem-no-site" class="nav-link" data-scroll-target="#alterações-não-aparecem-no-site"><span class="header-section-number">10.10.4</span> Alterações não aparecem no site</a></li>
   </ul></li>
-  <li><a href="#arquivo-.nojekyll" id="toc-arquivo-.nojekyll" class="nav-link" data-scroll-target="#arquivo-.nojekyll"><span class="header-section-number">10.7</span> Arquivo .nojekyll</a></li>
-  <li><a href="#solucionando-problemas-comuns" id="toc-solucionando-problemas-comuns" class="nav-link" data-scroll-target="#solucionando-problemas-comuns"><span class="header-section-number">10.8</span> Solucionando problemas comuns</a>
-  <ul class="collapse">
-  <li><a href="#o-site-não-aparece" id="toc-o-site-não-aparece" class="nav-link" data-scroll-target="#o-site-não-aparece"><span class="header-section-number">10.8.1</span> O site não aparece</a></li>
-  <li><a href="#erro-404-página-não-encontrada" id="toc-erro-404-página-não-encontrada" class="nav-link" data-scroll-target="#erro-404-página-não-encontrada"><span class="header-section-number">10.8.2</span> Erro 404 (página não encontrada)</a></li>
-  <li><a href="#estilos-ou-imagens-não-carregam" id="toc-estilos-ou-imagens-não-carregam" class="nav-link" data-scroll-target="#estilos-ou-imagens-não-carregam"><span class="header-section-number">10.8.3</span> Estilos ou imagens não carregam</a></li>
-  <li><a href="#alterações-não-aparecem-no-site" id="toc-alterações-não-aparecem-no-site" class="nav-link" data-scroll-target="#alterações-não-aparecem-no-site"><span class="header-section-number">10.8.4</span> Alterações não aparecem no site</a></li>
-  </ul></li>
-  <li><a href="#alternativas-ao-github-pages" id="toc-alternativas-ao-github-pages" class="nav-link" data-scroll-target="#alternativas-ao-github-pages"><span class="header-section-number">10.9</span> Alternativas ao GitHub Pages</a></li>
-  <li><a href="#exemplos-de-sites-no-github-pages" id="toc-exemplos-de-sites-no-github-pages" class="nav-link" data-scroll-target="#exemplos-de-sites-no-github-pages"><span class="header-section-number">10.10</span> Exemplos de sites no GitHub Pages</a></li>
-  <li><a href="#conclusão" id="toc-conclusão" class="nav-link" data-scroll-target="#conclusão"><span class="header-section-number">10.11</span> Conclusão</a></li>
+  <li><a href="#alternativas-ao-github-pages" id="toc-alternativas-ao-github-pages" class="nav-link" data-scroll-target="#alternativas-ao-github-pages"><span class="header-section-number">10.11</span> Alternativas ao GitHub Pages</a></li>
+  <li><a href="#exemplos-de-sites-no-github-pages" id="toc-exemplos-de-sites-no-github-pages" class="nav-link" data-scroll-target="#exemplos-de-sites-no-github-pages"><span class="header-section-number">10.12</span> Exemplos de sites no GitHub Pages</a></li>
+  <li><a href="#conclusão" id="toc-conclusão" class="nav-link" data-scroll-target="#conclusão"><span class="header-section-number">10.13</span> Conclusão</a></li>
   </ul>
 </nav>
     </div>
@@ -479,43 +482,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="opções-de-publicação" class="level2" data-number="10.3">
 <h2 data-number="10.3" class="anchored" data-anchor-id="opções-de-publicação"><span class="header-section-number">10.3</span> Opções de publicação</h2>
-<p>O GitHub Pages oferece três formas de definir de onde vêm os arquivos do site:</p>
-<section id="opção-1-raiz-do-repositório-branch-main" class="level3" data-number="10.3.1">
-<h3 data-number="10.3.1" class="anchored" data-anchor-id="opção-1-raiz-do-repositório-branch-main"><span class="header-section-number">10.3.1</span> Opção 1: Raiz do repositório (branch main)</h3>
-<p>Os arquivos do site ficam na raiz do repositório, na branch principal. Simples e direto — o que está no repositório é o que aparece no site.</p>
-<p><strong>Quando usar</strong>: projetos simples onde o repositório contém apenas o site.</p>
+<p>O GitHub Pages permite definir de onde vêm os arquivos do site. A forma mais prática para livros Quarto é usar a <strong>pasta <code>/docs</code></strong> na branch principal.</p>
 </section>
-<section id="opção-2-pasta-docs-branch-main" class="level3" data-number="10.3.2">
-<h3 data-number="10.3.2" class="anchored" data-anchor-id="opção-2-pasta-docs-branch-main"><span class="header-section-number">10.3.2</span> Opção 2: Pasta /docs (branch main)</h3>
-<p>Os arquivos do site ficam dentro de uma pasta chamada <code>docs/</code> na branch principal. O restante do repositório pode conter código-fonte, dados ou outros arquivos que não fazem parte do site.</p>
-<p><strong>Quando usar</strong>: projetos onde você quer separar o código-fonte do site publicado. É a opção ideal para livros Quarto, onde os arquivos <code>.qmd</code> ficam na raiz e o site gerado vai para <code>docs/</code>.</p>
-</section>
-<section id="opção-3-branch-gh-pages" class="level3" data-number="10.3.3">
-<h3 data-number="10.3.3" class="anchored" data-anchor-id="opção-3-branch-gh-pages"><span class="header-section-number">10.3.3</span> Opção 3: Branch gh-pages</h3>
-<p>Os arquivos do site ficam em uma branch separada chamada <code>gh-pages</code>. A branch principal contém o código-fonte, e a branch <code>gh-pages</code> contém apenas os arquivos gerados.</p>
-<p><strong>Quando usar</strong>: fluxos de trabalho mais avançados, geralmente com automação (GitHub Actions).</p>
-<p>Para este manual e para a maioria dos projetos com Quarto, a <strong>Opção 2 (pasta /docs)</strong> é a mais prática.</p>
-</section>
-</section>
-<section id="publicando-um-site-quarto-passo-a-passo" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="publicando-um-site-quarto-passo-a-passo"><span class="header-section-number">10.4</span> Publicando um site Quarto: passo a passo</h2>
-<p>Vamos ao processo completo para publicar um livro ou site feito com Quarto.</p>
-<section id="passo-1-configure-o-quarto-para-gerar-na-pasta-docs" class="level3" data-number="10.4.1">
-<h3 data-number="10.4.1" class="anchored" data-anchor-id="passo-1-configure-o-quarto-para-gerar-na-pasta-docs"><span class="header-section-number">10.4.1</span> Passo 1: Configure o Quarto para gerar na pasta docs</h3>
-<p>No arquivo <code>_quarto.yml</code> do seu projeto, defina o diretório de saída:</p>
+<section id="a-pasta-docs" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="a-pasta-docs"><span class="header-section-number">10.4</span> A pasta <code>/docs</code></h2>
+<p>Nessa configuração, os arquivos do site ficam dentro de uma pasta chamada <code>docs/</code> na branch principal (<code>main</code>). O restante do repositório pode conter código-fonte, dados ou outros arquivos que não fazem parte do site publicado.</p>
+<p>Essa é a opção ideal para livros Quarto porque permite uma separação clara: os arquivos <code>.qmd</code> ficam na raiz do projeto, enquanto o site gerado (HTML, CSS, imagens) vai para a pasta <code>docs/</code>. Assim, você mantém organização sem precisar de configurações avançadas.</p>
+<p>Para usar essa opção, basta configurar no <code>_quarto.yml</code>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">project</span><span class="kw">:</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> book</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">output-dir</span><span class="kw">:</span><span class="at"> docs</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Depois, nas configurações do repositório no GitHub, selecione a pasta <code>/docs</code> como fonte do GitHub Pages.</p>
+</section>
+<section id="outras-opções" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="outras-opções"><span class="header-section-number">10.5</span> Outras opções</h2>
+<p>Existem outras formas de configurar o GitHub Pages, como usar a raiz do repositório ou uma branch separada chamada <code>gh-pages</code>. Essas alternativas envolvem fluxos de trabalho diferentes ou automação com GitHub Actions e não serão tratadas em detalhes neste manual.</p>
+</section>
+<section id="publicando-um-site-quarto-passo-a-passo" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="publicando-um-site-quarto-passo-a-passo"><span class="header-section-number">10.6</span> Publicando um site Quarto: passo a passo</h2>
+<p>Vamos ao processo completo para publicar um livro ou site feito com Quarto.</p>
+<section id="passo-1-configure-o-quarto-para-gerar-na-pasta-docs" class="level3" data-number="10.6.1">
+<h3 data-number="10.6.1" class="anchored" data-anchor-id="passo-1-configure-o-quarto-para-gerar-na-pasta-docs"><span class="header-section-number">10.6.1</span> Passo 1: Configure o Quarto para gerar na pasta docs</h3>
+<p>No arquivo <code>_quarto.yml</code> do seu projeto, defina o diretório de saída:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">project</span><span class="kw">:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> book</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">output-dir</span><span class="kw">:</span><span class="at"> docs</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Isso faz com que o comando <code>quarto render</code> gere todos os arquivos HTML dentro da pasta <code>docs/</code>.</p>
 </section>
-<section id="passo-2-renderize-o-projeto" class="level3" data-number="10.4.2">
-<h3 data-number="10.4.2" class="anchored" data-anchor-id="passo-2-renderize-o-projeto"><span class="header-section-number">10.4.2</span> Passo 2: Renderize o projeto</h3>
+<section id="passo-2-renderize-o-projeto" class="level3" data-number="10.6.2">
+<h3 data-number="10.6.2" class="anchored" data-anchor-id="passo-2-renderize-o-projeto"><span class="header-section-number">10.6.2</span> Passo 2: Renderize o projeto</h3>
 <p>No Terminal (ou no terminal integrado do Positron), execute:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <p>O Quarto processará todos os arquivos <code>.qmd</code> e gerará o site na pasta <code>docs/</code>.</p>
 </section>
-<section id="passo-3-crie-o-repositório-no-github" class="level3" data-number="10.4.3">
-<h3 data-number="10.4.3" class="anchored" data-anchor-id="passo-3-crie-o-repositório-no-github"><span class="header-section-number">10.4.3</span> Passo 3: Crie o repositório no GitHub</h3>
+<section id="passo-3-crie-o-repositório-no-github" class="level3" data-number="10.6.3">
+<h3 data-number="10.6.3" class="anchored" data-anchor-id="passo-3-crie-o-repositório-no-github"><span class="header-section-number">10.6.3</span> Passo 3: Crie o repositório no GitHub</h3>
 <p>Se ainda não tiver um repositório para o projeto:</p>
 <ol type="1">
 <li>Acesse <a href="https://github.com">github.com</a> e faça login</li>
@@ -525,22 +526,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Clique em <strong>Create repository</strong></li>
 </ol>
 </section>
-<section id="passo-4-envie-o-projeto-para-o-github" class="level3" data-number="10.4.4">
-<h3 data-number="10.4.4" class="anchored" data-anchor-id="passo-4-envie-o-projeto-para-o-github"><span class="header-section-number">10.4.4</span> Passo 4: Envie o projeto para o GitHub</h3>
-<p>Se o projeto ainda não está conectado ao GitHub:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Primeiro commit"</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/seu-usuario/nome-do-repositorio.git</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-M</span> main</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Se já está conectado, basta:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Atualiza site"</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="passo-4-envie-o-projeto-para-o-github" class="level3" data-number="10.6.4">
+<h3 data-number="10.6.4" class="anchored" data-anchor-id="passo-4-envie-o-projeto-para-o-github"><span class="header-section-number">10.6.4</span> Passo 4: Envie o projeto para o GitHub</h3>
+<p>Se o projeto ainda não está conectado ao GitHub, você precisará inicializar o repositório Git, fazer o primeiro commit e enviar para o GitHub. A seguir, mostramos como fazer isso de duas formas: pelo Terminal e pela interface gráfica do Positron. Escolha a que preferir.</p>
+<section id="passo-4.1-pelo-terminal" class="level4" data-number="10.6.4.1">
+<h4 data-number="10.6.4.1" class="anchored" data-anchor-id="passo-4.1-pelo-terminal"><span class="header-section-number">10.6.4.1</span> Passo 4.1: Pelo Terminal</h4>
+<p><strong>Inicialize o repositório Git:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Adicione todos os arquivos ao controle de versão:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Faça o primeiro commit:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Primeiro commit"</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Conecte ao repositório remoto no GitHub:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/seu-usuario/nome-do-repositorio.git</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Renomeie a branch principal para <code>main</code>:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-M</span> main</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Envie os arquivos para o GitHub:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="passo-5-ative-o-github-pages" class="level3" data-number="10.4.5">
-<h3 data-number="10.4.5" class="anchored" data-anchor-id="passo-5-ative-o-github-pages"><span class="header-section-number">10.4.5</span> Passo 5: Ative o GitHub Pages</h3>
+<section id="passo-4.2-pelo-positron" class="level4" data-number="10.6.4.2">
+<h4 data-number="10.6.4.2" class="anchored" data-anchor-id="passo-4.2-pelo-positron"><span class="header-section-number">10.6.4.2</span> Passo 4.2: Pelo Positron</h4>
+<p><strong>Inicialize o repositório Git:</strong></p>
+<ol type="1">
+<li>Abra a paleta de comandos com <code>Ctrl + Shift + P</code> (Windows/Linux) ou <code>Cmd + Shift + P</code> (Mac)</li>
+<li>Digite “Git: Initialize Repository” e pressione Enter</li>
+<li>Selecione a pasta do seu projeto</li>
+</ol>
+<p><strong>Adicione os arquivos e faça o primeiro commit:</strong></p>
+<ol type="1">
+<li>Clique no ícone de <strong>Source Control</strong> na barra lateral esquerda (ou pressione <code>Ctrl + Shift + G</code>)</li>
+<li>Você verá a lista de arquivos modificados</li>
+<li>Clique no botão <strong>+</strong> ao lado de “Changes” para adicionar todos os arquivos</li>
+<li>Digite a mensagem do commit no campo de texto (ex: “Primeiro commit”)</li>
+<li>Clique no botão <strong>✓ Commit</strong> para confirmar</li>
+</ol>
+<p><strong>Conecte ao repositório remoto e envie:</strong></p>
+<ol type="1">
+<li>Abra a paleta de comandos (<code>Ctrl + Shift + P</code>)</li>
+<li>Digite “Git: Add Remote” e pressione Enter</li>
+<li>Digite <code>origin</code> como nome do remote</li>
+<li>Cole a URL do seu repositório: <code>https://github.com/seu-usuario/nome-do-repositorio.git</code></li>
+<li>Abra novamente a paleta de comandos</li>
+<li>Digite “Git: Push” e pressione Enter</li>
+<li>Se solicitado, selecione <code>origin</code> e <code>main</code> como destino</li>
+</ol>
+</section>
+</section>
+<section id="passo-5-ative-o-github-pages" class="level3" data-number="10.6.5">
+<h3 data-number="10.6.5" class="anchored" data-anchor-id="passo-5-ative-o-github-pages"><span class="header-section-number">10.6.5</span> Passo 5: Ative o GitHub Pages</h3>
 <ol type="1">
 <li>No repositório do GitHub, clique em <strong>Settings</strong> (ícone de engrenagem)</li>
 <li>No menu lateral esquerdo, clique em <strong>Pages</strong></li>
@@ -549,8 +582,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Clique em <strong>Save</strong></li>
 </ol>
 </section>
-<section id="passo-6-aguarde-e-acesse" class="level3" data-number="10.4.6">
-<h3 data-number="10.4.6" class="anchored" data-anchor-id="passo-6-aguarde-e-acesse"><span class="header-section-number">10.4.6</span> Passo 6: Aguarde e acesse</h3>
+<section id="passo-6-aguarde-e-acesse" class="level3" data-number="10.6.6">
+<h3 data-number="10.6.6" class="anchored" data-anchor-id="passo-6-aguarde-e-acesse"><span class="header-section-number">10.6.6</span> Passo 6: Aguarde e acesse</h3>
 <p>O GitHub levará alguns minutos para publicar o site. Você pode acompanhar o progresso na seção <strong>Actions</strong> do repositório.</p>
 <p>Quando estiver pronto, o site estará disponível em:</p>
 <pre><code>https://seu-usuario.github.io/nome-do-repositorio/</code></pre>
@@ -569,24 +602,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="atualizando-o-site" class="level2" data-number="10.5">
-<h2 data-number="10.5" class="anchored" data-anchor-id="atualizando-o-site"><span class="header-section-number">10.5</span> Atualizando o site</h2>
+<section id="atualizando-o-site" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="atualizando-o-site"><span class="header-section-number">10.7</span> Atualizando o site</h2>
 <p>Depois da configuração inicial, atualizar o site é simples:</p>
 <ol type="1">
 <li>Edite seus arquivos <code>.qmd</code></li>
 <li>Execute <code>quarto render</code> para regenerar o site</li>
 <li>Faça commit e push:</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Atualiza conteúdo"</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Atualiza conteúdo"</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <p>O GitHub Pages detecta automaticamente as alterações na pasta <code>docs/</code> e republica o site. Em poucos minutos, as mudanças estarão no ar.</p>
 </section>
-<section id="domínio-personalizado" class="level2" data-number="10.6">
-<h2 data-number="10.6" class="anchored" data-anchor-id="domínio-personalizado"><span class="header-section-number">10.6</span> Domínio personalizado</h2>
+<section id="domínio-personalizado" class="level2" data-number="10.8">
+<h2 data-number="10.8" class="anchored" data-anchor-id="domínio-personalizado"><span class="header-section-number">10.8</span> Domínio personalizado</h2>
 <p>Por padrão, seu site terá uma URL como <code>seu-usuario.github.io/repositorio</code>. Mas você pode configurar um domínio próprio, como <code>www.seusite.com.br</code>.</p>
-<section id="como-configurar" class="level3" data-number="10.6.1">
-<h3 data-number="10.6.1" class="anchored" data-anchor-id="como-configurar"><span class="header-section-number">10.6.1</span> Como configurar</h3>
+<section id="como-configurar" class="level3" data-number="10.8.1">
+<h3 data-number="10.8.1" class="anchored" data-anchor-id="como-configurar"><span class="header-section-number">10.8.1</span> Como configurar</h3>
 <ol type="1">
 <li><p>Compre um domínio em um registrador (Registro.br, GoDaddy, Namecheap, etc.)</p></li>
 <li><p>No GitHub, vá em <strong>Settings → Pages</strong> e digite seu domínio em <strong>Custom domain</strong></p></li>
@@ -617,17 +650,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="arquivo-.nojekyll" class="level2" data-number="10.7">
-<h2 data-number="10.7" class="anchored" data-anchor-id="arquivo-.nojekyll"><span class="header-section-number">10.7</span> Arquivo .nojekyll</h2>
+<section id="arquivo-.nojekyll" class="level2" data-number="10.9">
+<h2 data-number="10.9" class="anchored" data-anchor-id="arquivo-.nojekyll"><span class="header-section-number">10.9</span> Arquivo .nojekyll</h2>
 <p>Por padrão, o GitHub Pages processa os arquivos com Jekyll (um gerador de sites estáticos). Se você usa Quarto ou outro gerador, pode haver conflitos — especialmente com pastas que começam com underscore (<code>_</code>), que o Jekyll ignora.</p>
 <p>Para desativar o processamento Jekyll, crie um arquivo vazio chamado <code>.nojekyll</code> na pasta <code>docs/</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> docs/.nojekyll</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> docs/.nojekyll</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <p>O Quarto geralmente cria esse arquivo automaticamente, mas é bom verificar se ele existe.</p>
 </section>
-<section id="solucionando-problemas-comuns" class="level2" data-number="10.8">
-<h2 data-number="10.8" class="anchored" data-anchor-id="solucionando-problemas-comuns"><span class="header-section-number">10.8</span> Solucionando problemas comuns</h2>
-<section id="o-site-não-aparece" class="level3" data-number="10.8.1">
-<h3 data-number="10.8.1" class="anchored" data-anchor-id="o-site-não-aparece"><span class="header-section-number">10.8.1</span> O site não aparece</h3>
+<section id="solucionando-problemas-comuns" class="level2" data-number="10.10">
+<h2 data-number="10.10" class="anchored" data-anchor-id="solucionando-problemas-comuns"><span class="header-section-number">10.10</span> Solucionando problemas comuns</h2>
+<section id="o-site-não-aparece" class="level3" data-number="10.10.1">
+<h3 data-number="10.10.1" class="anchored" data-anchor-id="o-site-não-aparece"><span class="header-section-number">10.10.1</span> O site não aparece</h3>
 <ul>
 <li>Verifique se a pasta <code>docs/</code> existe e contém um arquivo <code>index.html</code></li>
 <li>Confirme que você fez push após o <code>quarto render</code></li>
@@ -635,24 +668,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Verifique a aba <strong>Actions</strong> no GitHub para ver se há erros</li>
 </ul>
 </section>
-<section id="erro-404-página-não-encontrada" class="level3" data-number="10.8.2">
-<h3 data-number="10.8.2" class="anchored" data-anchor-id="erro-404-página-não-encontrada"><span class="header-section-number">10.8.2</span> Erro 404 (página não encontrada)</h3>
+<section id="erro-404-página-não-encontrada" class="level3" data-number="10.10.2">
+<h3 data-number="10.10.2" class="anchored" data-anchor-id="erro-404-página-não-encontrada"><span class="header-section-number">10.10.2</span> Erro 404 (página não encontrada)</h3>
 <ul>
 <li>Verifique se a configuração do GitHub Pages está apontando para a pasta correta (<code>/docs</code>)</li>
 <li>Confirme que o arquivo <code>index.html</code> está na raiz da pasta <code>docs/</code></li>
 <li>Se estiver usando caminhos relativos, verifique se estão corretos</li>
 </ul>
 </section>
-<section id="estilos-ou-imagens-não-carregam" class="level3" data-number="10.8.3">
-<h3 data-number="10.8.3" class="anchored" data-anchor-id="estilos-ou-imagens-não-carregam"><span class="header-section-number">10.8.3</span> Estilos ou imagens não carregam</h3>
+<section id="estilos-ou-imagens-não-carregam" class="level3" data-number="10.10.3">
+<h3 data-number="10.10.3" class="anchored" data-anchor-id="estilos-ou-imagens-não-carregam"><span class="header-section-number">10.10.3</span> Estilos ou imagens não carregam</h3>
 <ul>
 <li>Verifique se o <code>_quarto.yml</code> tem a configuração correta de <code>output-dir</code></li>
 <li>Confirme que a pasta <code>docs/</code> contém as subpastas de estilos e imagens</li>
 <li>Limpe o cache do navegador e tente novamente</li>
 </ul>
 </section>
-<section id="alterações-não-aparecem-no-site" class="level3" data-number="10.8.4">
-<h3 data-number="10.8.4" class="anchored" data-anchor-id="alterações-não-aparecem-no-site"><span class="header-section-number">10.8.4</span> Alterações não aparecem no site</h3>
+<section id="alterações-não-aparecem-no-site" class="level3" data-number="10.10.4">
+<h3 data-number="10.10.4" class="anchored" data-anchor-id="alterações-não-aparecem-no-site"><span class="header-section-number">10.10.4</span> Alterações não aparecem no site</h3>
 <ul>
 <li>Confirme que você executou <code>quarto render</code> após editar os arquivos</li>
 <li>Verifique se fez commit e push</li>
@@ -661,8 +694,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </section>
-<section id="alternativas-ao-github-pages" class="level2" data-number="10.9">
-<h2 data-number="10.9" class="anchored" data-anchor-id="alternativas-ao-github-pages"><span class="header-section-number">10.9</span> Alternativas ao GitHub Pages</h2>
+<section id="alternativas-ao-github-pages" class="level2" data-number="10.11">
+<h2 data-number="10.11" class="anchored" data-anchor-id="alternativas-ao-github-pages"><span class="header-section-number">10.11</span> Alternativas ao GitHub Pages</h2>
 <p>Embora o GitHub Pages seja excelente para a maioria dos casos, existem alternativas:</p>
 <dl>
 <dt><strong>Netlify</strong></dt>
@@ -684,8 +717,8 @@ Serviço da própria Posit para publicar documentos Quarto. Simples de usar com 
 </dl>
 <p>Para a maioria dos usuários acadêmicos e projetos pessoais, o GitHub Pages é mais que suficiente — e tem a vantagem de manter tudo no mesmo lugar que seu código.</p>
 </section>
-<section id="exemplos-de-sites-no-github-pages" class="level2" data-number="10.10">
-<h2 data-number="10.10" class="anchored" data-anchor-id="exemplos-de-sites-no-github-pages"><span class="header-section-number">10.10</span> Exemplos de sites no GitHub Pages</h2>
+<section id="exemplos-de-sites-no-github-pages" class="level2" data-number="10.12">
+<h2 data-number="10.12" class="anchored" data-anchor-id="exemplos-de-sites-no-github-pages"><span class="header-section-number">10.12</span> Exemplos de sites no GitHub Pages</h2>
 <p>Para inspiração, alguns exemplos de sites hospedados no GitHub Pages:</p>
 <ul>
 <li><strong>R for Data Science</strong> (r4ds.hadley.nz) — livro completo sobre R</li>
@@ -695,8 +728,8 @@ Serviço da própria Posit para publicar documentos Quarto. Simples de usar com 
 </ul>
 <p>Todos são projetos de código aberto. Você pode visitar os repositórios, ver como são organizados e aprender com eles.</p>
 </section>
-<section id="conclusão" class="level2" data-number="10.11">
-<h2 data-number="10.11" class="anchored" data-anchor-id="conclusão"><span class="header-section-number">10.11</span> Conclusão</h2>
+<section id="conclusão" class="level2" data-number="10.13">
+<h2 data-number="10.13" class="anchored" data-anchor-id="conclusão"><span class="header-section-number">10.13</span> Conclusão</h2>
 <p>O GitHub Pages fecha o ciclo completo: você escreve, versiona com Git, colabora pelo GitHub, e publica para o mundo — tudo de graça, tudo integrado.</p>
 <p>Para acadêmicos, é uma ferramenta transformadora. Materiais didáticos que antes ficavam trancados em pastas ou sistemas fechados agora podem estar acessíveis a qualquer pessoa com um navegador. Pesquisas, tutoriais, livros, portfólios — tudo pode ser compartilhado de forma aberta e profissional.</p>
 <p>Você começou este manual aprendendo a navegar pelo Terminal. Agora termina sabendo publicar um site na internet. Esse é o poder de dominar suas ferramentas.</p>
@@ -1153,7 +1186,7 @@ Serviço da própria Posit para publicar documentos Quarto. Simples de usar com 
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Manual de Git e GitHub</p>
+<p>Manual de Git e GitHub isbn: 978-65-01-83948-6</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;

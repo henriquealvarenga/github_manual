@@ -35,27 +35,28 @@ Não há etapa de "deploy" manual, não há servidor para gerenciar. O GitHub cu
 
 ## Opções de publicação
 
-O GitHub Pages oferece três formas de definir de onde vêm os arquivos do site:
+O GitHub Pages permite definir de onde vêm os arquivos do site. A forma mais prática para livros Quarto é usar a **pasta `/docs`** na branch principal.
 
-### Opção 1: Raiz do repositório (branch main)
+## A pasta `/docs`
 
-Os arquivos do site ficam na raiz do repositório, na branch principal. Simples e direto — o que está no repositório é o que aparece no site.
+Nessa configuração, os arquivos do site ficam dentro de uma pasta chamada `docs/` na branch principal (`main`). O restante do repositório pode conter código-fonte, dados ou outros arquivos que não fazem parte do site publicado.
 
-**Quando usar**: projetos simples onde o repositório contém apenas o site.
+Essa é a opção ideal para livros Quarto porque permite uma separação clara: os arquivos `.qmd` ficam na raiz do projeto, enquanto o site gerado (HTML, CSS, imagens) vai para a pasta `docs/`. Assim, você mantém organização sem precisar de configurações avançadas.
 
-### Opção 2: Pasta /docs (branch main)
+Para usar essa opção, basta configurar no `_quarto.yml`:
 
-Os arquivos do site ficam dentro de uma pasta chamada `docs/` na branch principal. O restante do repositório pode conter código-fonte, dados ou outros arquivos que não fazem parte do site.
+```yaml
+project:
+  type: book
+  output-dir: docs
+```
 
-**Quando usar**: projetos onde você quer separar o código-fonte do site publicado. É a opção ideal para livros Quarto, onde os arquivos `.qmd` ficam na raiz e o site gerado vai para `docs/`.
+Depois, nas configurações do repositório no GitHub, selecione a pasta `/docs` como fonte do GitHub Pages.
 
-### Opção 3: Branch gh-pages
+## Outras opções
 
-Os arquivos do site ficam em uma branch separada chamada `gh-pages`. A branch principal contém o código-fonte, e a branch `gh-pages` contém apenas os arquivos gerados.
+Existem outras formas de configurar o GitHub Pages, como usar a raiz do repositório ou uma branch separada chamada `gh-pages`. Essas alternativas envolvem fluxos de trabalho diferentes ou automação com GitHub Actions e não serão tratadas em detalhes neste manual.
 
-**Quando usar**: fluxos de trabalho mais avançados, geralmente com automação (GitHub Actions).
-
-Para este manual e para a maioria dos projetos com Quarto, a **Opção 2 (pasta /docs)** é a mais prática.
 
 ## Publicando um site Quarto: passo a passo
 
@@ -85,34 +86,126 @@ O Quarto processará todos os arquivos `.qmd` e gerará o site na pasta `docs/`.
 
 ### Passo 3: Crie o repositório no GitHub
 
-Se ainda não tiver um repositório para o projeto:
+Antes de enviar seu projeto, é necessário criar um repositório vazio no GitHub. Você pode fazer isso de duas formas: pelo site do GitHub ou pelo Terminal com GitHub CLI.
+
+Para iniciantes, criar pelo site é mais simples e visual. Já o Terminal com GitHub CLI é mais rápido porque cria e conecta o repositório automaticamente em um único comando.
+
+**Opção A: Pelo site do GitHub (recomendado para iniciantes)**
 
 1. Acesse [github.com](https://github.com) e faça login
-2. Clique em **+** → **New repository**
-3. Dê um nome ao repositório (ex: `manual-git`)
-4. Deixe as opções de inicialização desmarcadas
-5. Clique em **Create repository**
+2. Clique no botão **+** no canto superior direito e selecione **New repository**
+3. Preencha o nome do repositório (ex: `manual-git-github`)
+4. Adicione uma descrição (opcional)
+5. Escolha se será **Public** (visível para todos) ou **Private** (apenas você)
+6. **Não** marque as opções de adicionar README, .gitignore ou licença — queremos um repositório vazio
+7. Clique em **Create repository**
+8. Copie a URL do repositório (algo como `https://github.com/seu-usuario/manual-git-github.git`)
+
+> **Importante:** Ao criar pelo site, o repositório fica apenas no GitHub, sem conexão com seu projeto local. Você precisará dessa URL para conectar manualmente no Passo 4, seja pelo comando `git remote add origin URL` (Terminal) ou pela opção "Git: Add Remote" (Positron).
+
+**Opção B: Pelo Terminal com GitHub CLI (cria e conecta automaticamente)**
+
+Se você tem o GitHub CLI instalado, pode criar o repositório diretamente pelo Terminal:
+
+```bash
+gh repo create nome-do-repositorio --public --source=. --remote=origin
+```
+
+Esse comando faz três coisas de uma vez: cria o repositório no GitHub, define como público e já conecta ao seu projeto local. Você **não precisa copiar nenhuma URL** — a conexão é feita automaticamente.
+
+> **Nota:** Se você usou essa opção, pode pular a etapa de conectar ao repositório remoto no Passo 4. Basta fazer o commit e o push.
+
+---
 
 ### Passo 4: Envie o projeto para o GitHub
 
-Se o projeto ainda não está conectado ao GitHub:
+Agora que o repositório existe no GitHub, você precisará inicializar o Git no seu projeto local, fazer o primeiro commit e enviar os arquivos. A seguir, mostramos como fazer isso de duas formas: pelo Terminal e pela interface gráfica do Positron. Escolha a que preferir.
+
+#### Passo 4.1: Pelo Terminal
+
+**Inicialize o repositório Git:**
 
 ```bash
 git init
-git add .
-git commit -m "Primeiro commit"
-git remote add origin https://github.com/seu-usuario/nome-do-repositorio.git
-git branch -M main
-git push -u origin main
 ```
 
-Se já está conectado, basta:
+**Adicione todos os arquivos ao controle de versão:**
 
 ```bash
 git add .
-git commit -m "Atualiza site"
-git push
 ```
+
+**Faça o primeiro commit:**
+
+```bash
+git commit -m "Primeiro commit"
+```
+
+**Conecte ao repositório remoto no GitHub:**
+
+```bash
+git remote add origin https://github.com/seu-usuario/nome-do-repositorio.git
+```
+
+**Renomeie a branch principal para `main`:**
+
+```bash
+git branch -M main
+```
+
+**Envie os arquivos para o GitHub:**
+
+```bash
+git push -u origin main
+```
+
+#### Passo 4.2: Pelo Positron
+
+**Autentique-se no GitHub (apenas na primeira vez):**
+
+1. Abra a paleta de comandos com `Ctrl + Shift + P` (Windows/Linux) ou `Cmd + Shift + P` (Mac)
+2. Digite "GitHub: Sign In" e pressione Enter
+3. O Positron abrirá uma janela do navegador para autenticação
+4. Faça login na sua conta do GitHub e autorize o acesso
+5. Após autorizar, volte ao Positron — você verá uma confirmação de que está conectado
+
+**Inicialize o repositório Git:**
+
+1. Abra a paleta de comandos com `Ctrl + Shift + P` (Windows/Linux) ou `Cmd + Shift + P` (Mac)
+2. Digite "Git: Initialize Repository" e pressione Enter
+3. Selecione a pasta do seu projeto
+
+**Adicione os arquivos e faça o primeiro commit:**
+
+1. Clique no ícone de **Source Control** na barra lateral esquerda (ou pressione `Ctrl + Shift + G`)
+2. Você verá a lista de arquivos modificados
+3. Clique no botão **+** ao lado de "Changes" para adicionar todos os arquivos
+4. Digite a mensagem do commit no campo de texto (ex: "Primeiro commit")
+5. Clique no botão **✓ Commit** para confirmar
+
+**Conecte ao repositório remoto e envie:**
+
+1. Abra a paleta de comandos (`Ctrl + Shift + P`)
+2. Digite "Git: Add Remote" e pressione Enter
+3. Digite `origin` como nome do remote
+4. Cole a URL do seu repositório: `https://github.com/seu-usuario/nome-do-repositorio.git`
+5. Abra novamente a paleta de comandos
+6. Digite "Git: Push" e pressione Enter
+7. Se solicitado, selecione `origin` e `main` como destino
+
+**Verifique se está conectado ao repositório correto:**
+
+Após configurar o remote, é importante confirmar que o Positron está conectado ao repositório certo, especialmente se você trabalha com vários projetos. Para verificar:
+
+1. Olhe na **barra de status** (parte inferior da tela) — ela mostra a branch atual (ex: `main`) e o nome do remote
+2. No painel **Source Control**, clique nos três pontos (**...**) e selecione "Remote" > "Show Remotes" para ver a URL configurada
+3. Ou abra o Terminal integrado (`Ctrl + `` `) e digite:
+
+```bash
+git remote -v
+```
+
+Isso mostrará a URL do repositório conectado. Confirme que corresponde ao seu repositório no GitHub.
 
 ### Passo 5: Ative o GitHub Pages
 
