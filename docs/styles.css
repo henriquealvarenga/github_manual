@@ -177,3 +177,12 @@ dd {
 [data-bs-theme="dark"] dt {
   color: #c9d1d9;
 }
+
+/* Mermaid - fundo transparente */
+.mermaid svg {
+  background-color: transparent !important;
+}
+
+[data-bs-theme="dark"] .mermaid svg {
+  background-color: transparent !important;
+}

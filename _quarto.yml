@@ -48,6 +48,8 @@ format:
     code-copy: true
     code-overflow: wrap
     highlight-style: github
+    mermaid:
+      theme: default
 
     
 lang: pt-BR
