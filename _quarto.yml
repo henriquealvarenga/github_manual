@@ -31,6 +31,7 @@ book:
   page-footer:
     left: |
       Manual de Git e GitHub
+      isbn: 978-65-01-83948-6
     right: |
       Criado com [Quarto](https://quarto.org/)
 
