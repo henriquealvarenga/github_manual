@@ -8,6 +8,7 @@ book:
   author: "Henrique Alvarenga"
   date: today
   date-format: "DD/MM/YYYY"
+  isbn: "978-65-01-83948-6"
   
   chapters:
     - index.qmd
@@ -21,6 +22,7 @@ book:
     - 08-github-positron.qmd
     - 09-github-pages.qmd
     - 10-referencias.qmd
+    - 11-creditos.qmd
 
   sidebar:
     style: docked

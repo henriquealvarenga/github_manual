@@ -1,0 +1,69 @@
+
+
+::: {style="text-align: center;"}
+
+## Manual de Git e GitHub
+
+*Do Zero ao Repositório Remoto*
+
+
+
+**Autor**
+
+Henrique Alvarenga da Silva
+
+
+**1ª Edição**
+
+São João del-Rei – MG
+
+2025
+
+
+Publicação independente do autor
+
+Formato: E-book (html)
+
+
+**ISBN: 978-65-01-83948-6**
+
+![](images/isbn.jpeg){width="250" fig-align="center"}
+
+
+
+### Ficha Catalográfica
+
+:::: {.callout-note appearance="minimal"}
+**Dados Internacionais de Catalogação na Publicação (CIP)**
+
+```{=html}
+<!-- 
+SUBSTITUA O CONTEÚDO ABAIXO PELA FICHA 
+CATALOGRÁFICA OFICIAL QUANDO RECEBER
+-->
+```
+
+Silva, Henrique Alvarenga da.
+
+  Manual de Git e GitHub: do zero ao repositório remoto / Henrique Alvarenga da Silva. – 1. ed. – São João del-Rei, MG : Edição do Autor, 2025.
+
+  E-book (HTML).
+
+  ISBN 978-65-01-83948-6
+
+  1. Git (Software). 2. GitHub. 3. Controle de versão. 4. Desenvolvimento de software. 5. Ciência aberta. I. Título.
+
+::: {style="text-align: right;"}
+CDD 005.1
+:::
+::::
+
+------------------------------------------------------------------------
+
+© 2025 Henrique Alvarenga da Silva
+
+Todos os direitos reservados.
+
+:::
+
+*Esta obra pode ser reproduzida para fins educacionais, desde que citada a fonte.*
