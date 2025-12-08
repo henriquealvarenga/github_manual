@@ -1,0 +1,293 @@
+# Fluxo Completo e Referência Rápida
+
+Você chegou longe. Aprendeu a usar o Terminal, instalou o Git, entendeu os conceitos de controle de versão, e conheceu três formas diferentes de trabalhar: linha de comando, GitHub Desktop e Positron. Cada capítulo apresentou uma peça do quebra-cabeça.
+
+Este capítulo é diferente. Aqui não há conteúdo novo para aprender — é um momento de consolidação. Vamos reunir tudo o que você viu, comparar as ferramentas lado a lado, e preparar você para o último passo: publicar seu projeto na internet com o GitHub Pages.
+
+Pense neste capítulo como um mapa de referência. Algo para consultar quando você esquecer um comando, quando quiser comparar abordagens, ou quando algo der errado e você precisar de um diagnóstico rápido.
+
+## O ciclo completo do Git
+
+Todo trabalho com Git segue o mesmo ciclo, independentemente da ferramenta que você usa:
+
+```{mermaid}
+flowchart LR
+    A[Editar<br>arquivos] --> B[Preparar<br>git add]
+    B --> C[Confirmar<br>git commit]
+    C --> D[Enviar<br>git push]
+    D --> E[GitHub]
+    E -.->|git pull| A
+```
+
+1. **Editar**: você trabalha nos seus arquivos normalmente
+2. **Preparar** (staging): você seleciona quais alterações farão parte do próximo registro
+3. **Confirmar** (commit): você cria um ponto na história do projeto, com uma mensagem descritiva
+4. **Enviar** (push): você transfere seus commits para o GitHub
+5. **Sincronizar** (pull): você baixa alterações que existam no GitHub mas não no seu computador
+
+Esse ciclo se repete continuamente. A cada sessão de trabalho, você edita, prepara, confirma e envia. Com o tempo, isso se torna automático.
+
+## Comparação das três ferramentas
+
+A tabela abaixo mostra como realizar cada operação nas três ferramentas que você aprendeu. Use-a como referência rápida.
+
+| Operação | Terminal | GitHub Desktop | Positron |
+|----------|----------|----------------|----------|
+| **Configuração inicial** ||||
+| Verificar instalação do Git | `git --version` | — | — |
+| Configurar nome | `git config --global user.name "Nome"` | Automático ao fazer login | Automático ao fazer login |
+| Configurar e-mail | `git config --global user.email "email"` | Automático ao fazer login | Automático ao fazer login |
+| **Repositório local** ||||
+| Inicializar Git na pasta | `git init` | File → New Repository | Source Control → Initialize Repository |
+| Clonar repositório | `git clone URL` | File → Clone Repository | File → New Folder from Git |
+| **Fluxo diário** ||||
+| Ver status | `git status` | Painel central (automático) | Aba Source Control (automático) |
+| Ver alterações (diff) | `git diff` | Clicar no arquivo | Clicar no arquivo |
+| Preparar arquivos | `git add .` | Marcar checkboxes | Clicar no **+** |
+| Confirmar (commit) | `git commit -m "msg"` | Escrever mensagem + Commit | Escrever mensagem + Commit |
+| Enviar (push) | `git push` | Push origin | Sync Changes ou Push |
+| Baixar (pull) | `git pull` | Pull origin | Sync Changes ou Pull |
+| **Repositório remoto** ||||
+| Conectar ao GitHub | `git remote add origin URL` | Publish repository | Terminal: `git remote add origin URL` |
+| Ver conexões | `git remote -v` | Repository → Repository Settings | Terminal: `git remote -v` |
+| **Branches** ||||
+| Criar branch | `git checkout -b nome` | Current Branch → New Branch | Clicar na branch → Create new branch |
+| Trocar de branch | `git checkout nome` | Clicar na branch | Clicar na branch |
+| Fazer merge | `git merge nome` | Branch → Merge into Current Branch | Command Palette → Git: Merge Branch |
+| **Histórico** ||||
+| Ver commits | `git log` | Aba History | Extensão GitLens |
+| Ver commits (resumido) | `git log --oneline` | Aba History | Extensão GitLens |
+| **Desfazer** ||||
+| Desfazer último commit | `git reset --soft HEAD~1` | Botão direito → Undo Commit | Terminal |
+| Descartar alterações | `git checkout -- arquivo` | Botão direito → Discard Changes | Botão direito → Discard Changes |
+
+::: {.callout-tip}
+## Qual ferramenta usar?
+
+Não existe resposta certa. Muitos profissionais usam as três, dependendo da situação:
+
+- **Terminal**: para comandos avançados, automação, ou quando você está em um servidor remoto
+- **GitHub Desktop**: para visualizar alterações claramente e para quem prefere interfaces gráficas
+- **Positron**: para fazer tudo em um só lugar, sem alternar entre programas
+
+O importante é que todas trabalham sobre o mesmo repositório. Você pode fazer um commit no Terminal e visualizá-lo no GitHub Desktop, ou vice-versa.
+:::
+
+## Checklist: antes de ir para o GitHub Pages
+
+Antes de avançar para o próximo capítulo, onde você aprenderá a publicar seu projeto como um site, verifique se tudo está funcionando corretamente.
+
+### 1. O Git está instalado e configurado?
+
+```bash
+git --version
+git config --global user.name
+git config --global user.email
+```
+
+Os três comandos devem retornar informações (versão, seu nome, seu e-mail). Se algum estiver vazio, configure antes de continuar.
+
+### 2. Sua pasta é um repositório Git?
+
+Navegue até a pasta do seu projeto e execute:
+
+```bash
+git status
+```
+
+Se aparecer informações sobre arquivos e branches, ótimo. Se aparecer "fatal: not a git repository", você precisa inicializar o Git com `git init`.
+
+### 3. O repositório está conectado ao GitHub?
+
+```bash
+git remote -v
+```
+
+Deve aparecer algo como:
+
+```
+origin  https://github.com/seu-usuario/seu-repositorio.git (fetch)
+origin  https://github.com/seu-usuario/seu-repositorio.git (push)
+```
+
+Se não aparecer nada, você precisa conectar ao GitHub (veja a próxima seção).
+
+### 4. Todos os commits foram enviados?
+
+```bash
+git status
+```
+
+Se aparecer "Your branch is up to date with 'origin/main'", está tudo sincronizado. Se aparecer "Your branch is ahead of 'origin/main' by X commits", você tem commits locais que ainda não foram enviados — faça `git push`.
+
+### 5. O repositório existe no GitHub?
+
+Acesse `https://github.com/seu-usuario/seu-repositorio` no navegador. Seus arquivos devem estar lá.
+
+## Cenários comuns e soluções
+
+### "Esqueci de criar o repositório vazio no GitHub"
+
+Você fez todo o processo local (`git init`, `git add`, `git commit`), mas quando criou o repositório no GitHub, marcou a opção de adicionar README ou .gitignore. Agora, ao tentar fazer push, aparece um erro sobre históricos divergentes.
+
+**Solução mais simples**: delete o repositório no GitHub, crie novamente **sem marcar nenhuma opção de inicialização**, e faça o push normalmente.
+
+**Solução alternativa** (para quem quer manter o repositório):
+
+```bash
+git pull origin main --allow-unrelated-histories
+```
+
+Isso força o Git a mesclar os dois históricos. Pode haver conflitos para resolver. Depois, faça `git push`.
+
+### "O push foi rejeitado"
+
+Mensagem típica: "Updates were rejected because the remote contains work that you do not have locally."
+
+Isso acontece quando há commits no GitHub que você não tem localmente — talvez você tenha editado algo pelo site, ou trabalhou em outro computador.
+
+**Solução**:
+
+```bash
+git pull
+```
+
+Se houver conflitos, resolva-os, faça um novo commit, e então:
+
+```bash
+git push
+```
+
+### "Quero mudar de HTTPS para SSH"
+
+Se você configurou o repositório com HTTPS mas agora quer usar SSH (para não digitar credenciais):
+
+```bash
+git remote set-url origin git@github.com:seu-usuario/seu-repositorio.git
+```
+
+Verifique a mudança:
+
+```bash
+git remote -v
+```
+
+Agora deve aparecer o endereço começando com `git@` em vez de `https://`.
+
+### "Não sei se estou na pasta certa"
+
+No Terminal, use `pwd` (print working directory) para ver onde você está:
+
+```bash
+pwd
+```
+
+Use `ls` para listar os arquivos da pasta atual:
+
+```bash
+ls
+```
+
+Se os arquivos listados são os do seu projeto, você está no lugar certo.
+
+### "Fiz commit de arquivos que não deveria"
+
+Se você commitou arquivos sensíveis ou muito grandes que deveriam estar no `.gitignore`:
+
+```bash
+# Remove do Git mas mantém o arquivo local
+git rm --cached nome-do-arquivo
+
+# Adicione o arquivo ao .gitignore
+echo "nome-do-arquivo" >> .gitignore
+
+# Faça um novo commit
+git add .gitignore
+git commit -m "Remove arquivo que deveria ser ignorado"
+git push
+```
+
+::: {.callout-warning}
+## Atenção com dados sensíveis
+
+Se você commitou senhas, tokens ou dados pessoais, removê-los com `git rm` não é suficiente — eles continuam no histórico. Para casos graves, você precisará reescrever o histórico do Git, o que é um processo mais complexo. A melhor estratégia é sempre usar `.gitignore` desde o início.
+:::
+
+### "O Positron/GitHub Desktop não reconhece meu repositório"
+
+Isso pode acontecer se você inicializou o Git pelo Terminal. As interfaces gráficas devem reconhecer automaticamente, mas às vezes precisam ser "apontadas" para a pasta.
+
+**No GitHub Desktop**: File → Add Local Repository → selecione a pasta
+
+**No Positron**: File → Open Folder → selecione a pasta. A aba Source Control deve mostrar o repositório.
+
+### "Quero começar de novo"
+
+Se você fez muita confusão e quer recomeçar do zero:
+
+1. Feche o Positron/GitHub Desktop
+2. Delete a pasta `.git` dentro do seu projeto (isso remove todo o histórico Git, mas mantém seus arquivos)
+3. Delete o repositório no GitHub (Settings → Danger Zone → Delete this repository)
+4. Comece novamente: `git init`, crie o repositório no GitHub, conecte e faça push
+
+## Comandos de emergência
+
+Guarde estes comandos para situações de aperto:
+
+```bash
+# Ver o que está acontecendo
+git status
+
+# Ver histórico recente
+git log --oneline -10
+
+# Desfazer alterações não commitadas em um arquivo
+git checkout -- nome-do-arquivo
+
+# Desfazer o último commit (mantém os arquivos)
+git reset --soft HEAD~1
+
+# Desfazer todas as alterações não commitadas
+git checkout -- .
+
+# Forçar pull sobrescrevendo alterações locais (CUIDADO!)
+git fetch origin
+git reset --hard origin/main
+```
+
+::: {.callout-warning}
+## Sobre `git reset --hard`
+
+Este comando descarta todas as alterações locais não commitadas. Use apenas quando você tem certeza de que quer perder essas alterações. Não há como desfazer.
+:::
+
+## Resumo visual
+
+```{mermaid}
+flowchart TB
+    subgraph Local["Seu Computador"]
+        WD[Diretório de Trabalho<br>seus arquivos] 
+        SA[Área de Preparação<br>staging area]
+        RL[Repositório Local<br>.git]
+    end
+    
+    subgraph Remote["GitHub"]
+        RR[Repositório Remoto<br>origin]
+    end
+    
+    WD -->|git add| SA
+    SA -->|git commit| RL
+    RL -->|git push| RR
+    RR -->|git pull| WD
+    
+    style WD fill:#e1f5fe
+    style SA fill:#fff9c4
+    style RL fill:#c8e6c9
+    style RR fill:#f3e5f5
+```
+
+## Próximo passo
+
+Se você passou por todos os itens da checklist e está com tudo funcionando, parabéns — você domina o fluxo básico do Git e GitHub. 
+
+No próximo capítulo, você vai aprender a usar o **GitHub Pages** para transformar seu repositório em um site público na internet. É a etapa final: seu trabalho sairá do seu computador e estará acessível para qualquer pessoa no mundo.

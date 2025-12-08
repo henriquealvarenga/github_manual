@@ -20,9 +20,10 @@ book:
     - 06-git-inicialization.qmd
     - 07-github-desktop.qmd
     - 08-github-positron.qmd
-    - 09-github-pages.qmd
-    - 10-referencias.qmd
-    - 11-creditos.qmd
+    - 09-github-ciclo-completo.qmd
+    - 10-github-pages.qmd
+    - 11-referencias.qmd
+    - 12-creditos.qmd
 
   sidebar:
     style: docked

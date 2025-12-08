@@ -684,17 +684,7 @@
     "href": "06-git-inicialization.html",
     "title": "7  Configurando o Git e o GitHub",
     "section": "",
-    "text": "7.1 Criando a conta no GitHub\nNo capítulo anterior, você conheceu a história do Git e do GitHub, entendeu o que é controle de versão e por que essas ferramentas se tornaram essenciais. Agora é hora de colocar a mão na massa: vamos configurar tudo no seu computador para que você possa começar a versionar seus projetos.\nNeste capítulo, você vai criar uma conta no GitHub, instalar o Git (se ainda não tiver), configurar sua identidade e aprender o fluxo básico de trabalho — da criação de um repositório local até o envio para o GitHub.\nAntes de configurar o Git no seu computador, crie uma conta gratuita no GitHub. Acesse github.com e clique em Sign up.\nDurante o cadastro, você precisará informar:\nApós confirmar seu e-mail, sua conta estará pronta. Você pode voltar ao GitHub depois para completar seu perfil, adicionar uma foto e explorar a plataforma. Por enquanto, o importante é ter o username e o e-mail definidos.",
-    "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
-    ]
-  },
-  {
-    "objectID": "06-git-inicialization.html#criando-a-conta-no-github",
-    "href": "06-git-inicialization.html#criando-a-conta-no-github",
-    "title": "7  Configurando o Git e o GitHub",
-    "section": "",
-    "text": "Username: seu nome de usuário, que fará parte do endereço dos seus repositórios (ex: github.com/seu-username). Escolha algo profissional e fácil de lembrar.\nEmail: use um e-mail que você acessa regularmente. Este será o mesmo e-mail que configuraremos no Git.\nPassword: uma senha segura para sua conta.",
+    "text": "7.1 Verificando se o Git já está instalado\nNo capítulo anterior, você conheceu a história do Git e do GitHub, entendeu o que é controle de versão e por que essas ferramentas se tornaram essenciais. Agora é hora de colocar a mão na massa: vamos configurar tudo no seu computador para que você possa começar a versionar seus projetos.\nMas antes de começar, é importante ter algo para versionar. Não faz sentido enviar uma pasta vazia para o GitHub — o controle de versão existe justamente para acompanhar a evolução de arquivos reais. Portanto, certifique-se de ter um projeto com pelo menos alguns arquivos antes de seguir os passos deste capítulo. Pode ser um trabalho acadêmico, uma análise de dados, anotações de estudo, ou qualquer outro material que você queira manter organizado e seguro.\nSe você pretende publicar seu projeto como uma página na internet usando o GitHub Pages (que veremos em um capítulo adiante), vale a pena considerar o uso de arquivos no formato Quarto (extensão .qmd). O Quarto é um sistema de publicação científica que permite escrever texto, código e resultados em um único documento. Ferramentas como o Positron e o RStudio conseguem renderizar esses arquivos — ou seja, transformá-los em documentos finais como HTML, PDF ou Word.\nO processo de renderização é especialmente interessante para quem quer criar sites: quando você renderiza um projeto Quarto configurado como site ou livro, ele gera uma pasta (geralmente chamada docs ou _site) contendo arquivos HTML prontos para a web. É essa pasta que o GitHub Pages consegue ler e transformar em um site público acessível por qualquer pessoa. Assim, o fluxo completo seria: você escreve em Quarto, renderiza para HTML, envia para o GitHub, e ativa o GitHub Pages — pronto, seu material está online.\nPor enquanto, não se preocupe com os detalhes do Quarto ou do GitHub Pages. Neste capítulo, vamos focar no essencial: criar sua conta no GitHub, instalar e configurar o Git, e aprender o fluxo básico de trabalho — da criação de um repositório local até o envio para a nuvem.\nAntes de instalar o Git, verifique se ele já está no seu computador. Abra o Terminal e digite:\nSe o Git estiver instalado, você verá uma mensagem indicando a versão:\nSe aparecer uma versão, ótimo — você pode pular para a seção de configuração. Se não estiver instalado, siga as instruções da próxima seção.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
     ]
@@ -703,8 +693,8 @@
     "objectID": "06-git-inicialization.html#verificando-se-o-git-já-está-instalado",
     "href": "06-git-inicialization.html#verificando-se-o-git-já-está-instalado",
     "title": "7  Configurando o Git e o GitHub",
-    "section": "7.2 Verificando se o Git já está instalado",
-    "text": "7.2 Verificando se o Git já está instalado\nAntes de instalar o Git, verifique se ele já está no seu computador. Abra o Terminal e digite:\ngit --version\nSe o Git estiver instalado, você verá uma mensagem indicando a versão:\ngit version 2.50.1\nSe aparecer uma versão, ótimo — você pode pular para a seção de configuração. Se não estiver instalado, siga as instruções da próxima seção.",
+    "section": "",
+    "text": "git --version\n\ngit version 2.50.1",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
     ]
@@ -713,8 +703,8 @@
     "objectID": "06-git-inicialization.html#instalando-o-git",
     "href": "06-git-inicialization.html#instalando-o-git",
     "title": "7  Configurando o Git e o GitHub",
-    "section": "7.3 Instalando o Git",
-    "text": "7.3 Instalando o Git\nA forma mais prática de instalar o Git é usando os gerenciadores de pacotes que você aprendeu nos capítulos anteriores.\nNo Mac (com Homebrew):\nbrew install git\nNo Windows (com winget):\nwinget install Git.Git\nApós a instalação, feche e reabra o Terminal, então confirme que funcionou:\ngit --version\n\n\n\n\n\n\nNotaAlternativas de instalação\n\n\n\n\nMac: se você não usa Homebrew, ao digitar git --version o sistema oferecerá automaticamente a instalação das Command Line Tools da Apple, que incluem o Git.\nWindows: se preferir não usar o winget, baixe o instalador em git-scm.com. Durante a instalação, mantenha as opções padrão. O instalador incluirá o Git Bash, que permite usar comandos no estilo Unix.\nLinux: use o gerenciador de pacotes da sua distribuição. No Ubuntu/Debian: sudo apt install git",
+    "section": "7.2 Instalando o Git",
+    "text": "7.2 Instalando o Git\nA forma mais prática de instalar o Git é usando os gerenciadores de pacotes que você aprendeu nos capítulos anteriores.\nNo Mac (com Homebrew):\nbrew install git\nNo Windows (com winget):\nwinget install Git.Git\nApós a instalação, feche e reabra o Terminal, então confirme que funcionou:\ngit --version\n\n\n\n\n\n\nNotaAlternativas de instalação\n\n\n\n\nMac: se você não usa Homebrew, ao digitar git --version o sistema oferecerá automaticamente a instalação das Command Line Tools da Apple, que incluem o Git.\nWindows: se preferir não usar o winget, baixe o instalador em git-scm.com. Durante a instalação, mantenha as opções padrão. O instalador incluirá o Git Bash, que permite usar comandos no estilo Unix.\nLinux: use o gerenciador de pacotes da sua distribuição. No Ubuntu/Debian: sudo apt install git",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
     ]
@@ -723,8 +713,8 @@
     "objectID": "06-git-inicialization.html#configuração-inicial",
     "href": "06-git-inicialization.html#configuração-inicial",
     "title": "7  Configurando o Git e o GitHub",
-    "section": "7.4 Configuração inicial",
-    "text": "7.4 Configuração inicial\nCom o Git instalado, configure sua identidade. Essas informações aparecerão em cada commit que você fizer:\ngit config --global user.name \"Seu Nome\"\ngit config --global user.email \"seu.email@exemplo.com\"\nUse o mesmo e-mail da sua conta GitHub. Isso permite que o GitHub associe seus commits ao seu perfil.\n\n\n\n\n\n\nDicaVerificando a configuração\n\n\n\nPara verificar se está tudo configurado corretamente:\ngit config --global user.name\ngit config --global user.email\nSe retornar seu nome e e-mail, está tudo certo!\nVocê também pode ver todas as configurações do Git com:\ngit config --list",
+    "section": "7.3 Configuração inicial",
+    "text": "7.3 Configuração inicial\nCom o Git instalado, configure sua identidade. Essas informações aparecerão em cada commit que você fizer:\ngit config --global user.name \"Seu Nome\"\ngit config --global user.email \"seu.email@exemplo.com\"\nUse o mesmo e-mail da sua conta GitHub. Isso permite que o GitHub associe seus commits ao seu perfil.\n\n\n\n\n\n\nDicaVerificando a configuração\n\n\n\nPara verificar se está tudo configurado corretamente:\ngit config --global user.name\ngit config --global user.email\nSe retornar seu nome e e-mail, está tudo certo!\nVocê também pode ver todas as configurações do Git com:\ngit config --list",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
     ]
@@ -733,8 +723,8 @@
     "objectID": "06-git-inicialization.html#conceitos-fundamentais",
     "href": "06-git-inicialization.html#conceitos-fundamentais",
     "title": "7  Configurando o Git e o GitHub",
-    "section": "7.5 Conceitos fundamentais",
-    "text": "7.5 Conceitos fundamentais\nAntes de partir para os comandos, é importante entender três “lugares” onde seus arquivos podem estar:\n\nDiretório de trabalho (working directory): sua pasta normal, onde você edita arquivos\nÁrea de preparação (staging area): uma área intermediária onde você seleciona quais alterações quer registrar\nRepositório (repository): o histórico completo de todas as versões salvas\n\nO fluxo básico é: você edita arquivos → adiciona à área de preparação → confirma (commit) no repositório → envia (push) para o GitHub.\n\n\n\n\n\nflowchart LR\n    A[Diretório de Trabalho] --&gt;|git add| B[Área de Preparação]\n    B --&gt;|git commit| C[Repositório Local]\n    C --&gt;|git push| D[GitHub]",
+    "section": "7.4 Conceitos fundamentais",
+    "text": "7.4 Conceitos fundamentais\nAntes de partir para os comandos, é importante entender três “lugares” onde seus arquivos podem estar:\n\nDiretório de trabalho (working directory): sua pasta normal, onde você edita arquivos\nÁrea de preparação (staging area): uma área intermediária onde você seleciona quais alterações quer registrar\nRepositório (repository): o histórico completo de todas as versões salvas\n\nO fluxo básico é: você edita arquivos → adiciona à área de preparação → confirma (commit) no repositório → envia (push) para o GitHub.\n\n\n\n\n\nflowchart LR\n    A[Diretório de Trabalho] --&gt;|git add| B[Área de Preparação]\n    B --&gt;|git commit| C[Repositório Local]\n    C --&gt;|git push| D[GitHub]",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
     ]
@@ -743,8 +733,8 @@
     "objectID": "06-git-inicialization.html#subindo-uma-pasta-para-o-github-passo-a-passo",
     "href": "06-git-inicialization.html#subindo-uma-pasta-para-o-github-passo-a-passo",
     "title": "7  Configurando o Git e o GitHub",
-    "section": "7.6 Subindo uma pasta para o GitHub: passo a passo",
-    "text": "7.6 Subindo uma pasta para o GitHub: passo a passo\nVamos ao processo completo de versionar uma pasta local e enviá-la para o GitHub.\n\n7.6.1 Passo 1: Crie um repositório no GitHub\nAcesse github.com, faça login e clique no botão + no canto superior direito, depois em New repository. Dê um nome ao repositório (por exemplo, meu-projeto), escolha se será público ou privado, e clique em Create repository.\n\n\n\n\n\n\nAvisoRepositório vazio\n\n\n\nNão marque nenhuma opção de inicialização (README, .gitignore, etc.) — queremos um repositório vazio para este exemplo.\n\n\n\n\n7.6.2 Passo 2: Navegue até sua pasta no Terminal\ncd ~/caminho/para/sua/pasta\nPor exemplo, se sua pasta está na área de trabalho:\ncd ~/Desktop/minha-pasta\n\n\n7.6.3 Passo 3: Inicialize o Git na pasta\ngit init\nIsso cria uma pasta oculta .git que armazenará todo o histórico. Sua pasta agora é um repositório Git local.\n\n\n7.6.4 Passo 4: Adicione os arquivos à área de preparação\ngit add .\nO ponto (.) significa “todos os arquivos”. Se quiser adicionar apenas um arquivo específico:\ngit add nome-do-arquivo.txt\n\n\n7.6.5 Passo 5: Faça o primeiro commit\ngit commit -m \"Primeiro commit\"\nA flag -m permite adicionar uma mensagem descritiva. Sempre escreva mensagens claras sobre o que você alterou.\n\n\n7.6.6 Passo 6: Conecte ao repositório remoto\ngit remote add origin https://github.com/seu-usuario/meu-projeto.git\nSubstitua seu-usuario pelo seu nome de usuário do GitHub e meu-projeto pelo nome do repositório que você criou.\n\n\n7.6.7 Passo 7: Envie para o GitHub\ngit push -u origin main\nA flag -u (ou --set-upstream) cria uma conexão permanente entre sua branch local e a remota. Nas próximas vezes, bastará digitar git push.\n\n\n\n\n\n\nNotaBranch main vs master\n\n\n\nSe o Git reclamar que a branch se chama master em vez de main, use:\ngit branch -M main\ngit push -u origin main",
+    "section": "7.5 Subindo uma pasta para o GitHub: passo a passo",
+    "text": "7.5 Subindo uma pasta para o GitHub: passo a passo\nVamos ao processo completo de versionar uma pasta local e enviá-la para o GitHub. Primeiro, claro, escolha uma pasta no seu computador para usar nesse passo. É importante ter algum arquivo nessa pasta, pois vamos subir os arquivos dessa pasta para o github. Crie ou escolha uma pasta e vamos começar.\n\n7.5.1 Passo 1: Crie um repositório no GitHub\nAcesse github.com, faça login e clique no botão + no canto superior direito, depois em New repository. Dê um nome ao repositório (por exemplo, meu-projeto), escolha se será público ou privado, e clique em Create repository.\n\n\n\n\n\n\nAvisoRepositório vazio\n\n\n\nNão marque nenhuma opção de inicialização (README, .gitignore, etc.) — queremos um repositório vazio para este exemplo.\n\n\n\n\n7.5.2 Passo 2: Navegue até sua pasta no Terminal\nUsando o terminal, vá para a pasta em seu computador que pretende subir para o GitHub. Todas as açoes do git devem acontecer com você dentro da pasta que pretende subir, usando o Terminal.\ncd ~/caminho/para/sua/pasta\nPor exemplo, se sua pasta se chama teste e está na área de trabalho:\ncd ~/Desktop/teste\n\n\n7.5.3 Passo 3: Inicialize o Git na pasta\ngit init\nIsso cria uma pasta oculta .git que armazenará todo o histórico. Sua pasta agora é um repositório Git local.\n\n\n7.5.4 Passo 4: Adicione os arquivos à área de preparação\nAntes de continuar, é importante entender que essa etapa e os próximos passos ainda acontecem apenas no seu computador. Nada será enviado para o GitHub até o Passo 7. O Git trabalha com três áreas locais:\nDiretório de trabalho — sua pasta normal, onde você edita arquivos Área de preparação (staging area) — onde você seleciona quais alterações farão parte do próximo commit Repositório local — onde o Git armazena o histórico de commits\nNesse passo 4 estamos apenas movendo os arquivos para área de preparação, no seu diretório local, em sua pasta em seu computador.\nO comando git add move arquivos do diretório de trabalho para a área de preparação. É como colocar itens em uma caixa antes de lacrar — você está dizendo ao Git: “esses arquivos devem ser incluídos no próximo registro”.\ngit add .\nO ponto (.) significa “todos os arquivos”. Se quiser adicionar apenas um arquivo específico:\ngit add nome-do-arquivo.txt\nNeste momento, seus arquivos não foram registrados no histórico e continuam apenas no seu computador, estão na área de preparação, aguardando o commit.\n\n\n7.5.5 Passo 5: Faça o primeiro commit\nO comando git commit pega tudo que está na área de preparação e cria um registro permanente no histórico do repositório local. Pense no commit como lacrar a caixa e colocar uma etiqueta descrevendo o conteúdo.\ngit commit -m \"Primeiro commit\"\nA flag -m permite adicionar uma mensagem de commit — um texto curto que descreve o que foi alterado. Essa mensagem é obrigatória: o Git não permite criar um commit sem ela. O motivo é simples: quando você olhar o histórico do projeto semanas ou meses depois, essas mensagens serão seu guia para entender o que aconteceu em cada momento. Uma mensagem como “Adiciona análise exploratória dos dados” ou “Corrige erro no cálculo de médias” é muito mais útil do que “Alterações” ou “Atualização”. Pense na mensagem de commit como uma anotação para o seu eu do futuro — seja gentil com ele e escreva algo que faça sentido.\nApós o commit, seus arquivos estão registrados no repositório Git local. Eles ainda estão apenas no seu computador — seguros no histórico do Git, mas não na nuvem. Se seu computador tiver um problema agora, você ainda perderia tudo. O envio para o GitHub acontece apenas nos próximos passos.\n\n\n7.5.6 Passo 6: Conecte ao repositório remoto\nAté agora, tudo aconteceu apenas no seu computador. Você tem um repositório Git local com um commit registrado, mas ele não tem nenhuma relação com o repositório que você criou no GitHub lá no Passo 1. São dois repositórios independentes que ainda não se conhecem.\nPara que eles possam se comunicar, precisamos criar uma conexão chamada remote. Um remote é um apelido que aponta para a URL de um repositório remoto. Em vez de digitar a URL completa toda vez que quiser enviar ou baixar alterações, você usa esse apelido.\nNeste passo, você vai precisar de duas informações que definiu anteriormente: o nome de usuário que escolheu ao criar sua conta no GitHub e o nome do repositório que criou no Passo 1. Essas duas informações formam a URL do seu repositório, que segue sempre o mesmo padrão: https://github.com/nome-de-usuario/nome-do-repositorio.git. Se você não lembra o nome exato, basta acessar o GitHub no navegador — o nome de usuário aparece no canto superior direito, e o nome do repositório está na lista de repositórios da sua conta.\nO comando para fazer essa integração é esse:\ngit remote add origin https://github.com/seu-usuario/meu-projeto.git\nSubstitua seu-usuario pelo seu nome de usuário do GitHub e meu-projeto pelo nome do repositório que você criou.\nVamos entender cada parte desse comando:\ngit remote add — instrução para adicionar um novo remote origin — o apelido que estamos dando ao repositório remoto. Esse nome é uma convenção universalmente adotada para o remote principal, mas você poderia usar qualquer nome https://github.com/...— a URL do repositório no GitHub\nPara confirmar que a conexão foi estabelecida, use:\ngit remote -v\nVocê verá algo como:\norigin  https://github.com/seu-usuario/meu-projeto.git (fetch)\norigin  https://github.com/seu-usuario/meu-projeto.git (push)\nEssas duas linhas indicam que o remote origin está configurado tanto para baixar alterações (fetch) quanto para enviar (push). Agora seu repositório local sabe para onde enviar os commits. Nada foi enviado ainda — falta apenas dar o comando de envio.\n\n\n7.5.7 Passo 7: Envie para o GitHub\nFinalmente chegou o momento em que seus arquivos vão sair do seu computador e viajar para a nuvem. Até agora, você inicializou o Git na pasta, adicionou os arquivos à área de preparação, criou um commit com uma mensagem descritiva e estabeleceu a conexão com o repositório remoto. Tudo isso aconteceu localmente, sem nenhuma comunicação com a internet. O comando push é o que efetivamente transfere seus commits para o GitHub, tornando-os acessíveis de qualquer lugar e protegidos contra problemas no seu computador.\ngit push -u origin main\nVamos entender cada parte desse comando:\ngit push — instrução para enviar commits para o repositório remoto.\n-u (ou –set-upstream) — cria uma conexão permanente entre sua branch local e a branch remota. Isso permite que, nas próximas vezes, você use apenas git push sem precisar especificar o destino.\norigin — o apelido do remote que criamos no passo anterior.\nmain — o nome da branch que estamos enviando.\nNa primeira vez que você executa esse comando, o Git pode pedir suas credenciais do GitHub. Dependendo do seu sistema, pode abrir uma janela de autenticação no navegador ou pedir usuário e senha diretamente no Terminal. Após autenticar, o envio será realizado.\nSe tudo der certo, você verá uma mensagem indicando que os arquivos foram enviados. Agora abra o navegador, acesse seu repositório no GitHub e atualize a página — seus arquivos estarão lá, junto com a mensagem do commit que você escreveu. Parabéns! Você acabou de completar o ciclo básico do Git: inicializar, preparar, commitar, conectar e enviar. A partir de agora, sempre que fizer alterações no projeto, o fluxo será mais simples:\ngit add .\ngit commit -m \"Descrição das alterações\"\ngit push\n\n\n\n\n\n\nNotaBranch main vs master\n\n\n\nSe o Git reclamar que a branch se chama master em vez de main, use:\ngit branch -M main\ngit push -u origin main",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
     ]
@@ -753,8 +743,8 @@
     "objectID": "06-git-inicialization.html#comandos-do-dia-a-dia",
     "href": "06-git-inicialization.html#comandos-do-dia-a-dia",
     "title": "7  Configurando o Git e o GitHub",
-    "section": "7.7 Comandos do dia a dia",
-    "text": "7.7 Comandos do dia a dia\nDepois que tudo estiver configurado, seu fluxo de trabalho será:\n# Ver o status dos arquivos\ngit status\n\n# Adicionar alterações\ngit add .\n\n# Confirmar alterações com uma mensagem\ngit commit -m \"Descrição do que você fez\"\n\n# Enviar para o GitHub\ngit push",
+    "section": "7.6 Comandos do dia a dia",
+    "text": "7.6 Comandos do dia a dia\nDepois que tudo estiver configurado, seu fluxo de trabalho será:\n# Ver o status dos arquivos\ngit status\n\n# Adicionar alterações\ngit add .\n\n# Confirmar alterações com uma mensagem\ngit commit -m \"Descrição do que você fez\"\n\n# Enviar para o GitHub\ngit push",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
     ]
@@ -763,8 +753,8 @@
     "objectID": "06-git-inicialization.html#outros-comandos-úteis",
     "href": "06-git-inicialization.html#outros-comandos-úteis",
     "title": "7  Configurando o Git e o GitHub",
-    "section": "7.8 Outros comandos úteis",
-    "text": "7.8 Outros comandos úteis\n\n7.8.1 Histórico\n# Ver o histórico de commits\ngit log\n\n# Ver histórico resumido (uma linha por commit)\ngit log --oneline\n\n\n7.8.2 Sincronização\n# Baixar alterações do GitHub para seu computador\ngit pull\n\n# Clonar um repositório existente do GitHub\ngit clone https://github.com/usuario/repositorio.git\n\n# Ver quais repositórios remotos estão conectados\ngit remote -v\n\n\n7.8.3 Desfazendo alterações\n# Desfazer alterações em um arquivo (voltar à última versão commitada)\ngit checkout -- nome-do-arquivo.txt\n\n# Remover um arquivo da área de preparação (mas manter as alterações)\ngit reset nome-do-arquivo.txt",
+    "section": "7.7 Outros comandos úteis",
+    "text": "7.7 Outros comandos úteis\n\n7.7.1 Histórico\n# Ver o histórico de commits\ngit log\n\n# Ver histórico resumido (uma linha por commit)\ngit log --oneline\n\n\n7.7.2 Sincronização\n# Baixar alterações do GitHub para seu computador\ngit pull\n\n# Clonar um repositório existente do GitHub\ngit clone https://github.com/usuario/repositorio.git\n\n# Ver quais repositórios remotos estão conectados\ngit remote -v\n\n\n7.7.3 Desfazendo alterações\n# Desfazer alterações em um arquivo (voltar à última versão commitada)\ngit checkout -- nome-do-arquivo.txt\n\n# Remover um arquivo da área de preparação (mas manter as alterações)\ngit reset nome-do-arquivo.txt",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
     ]
@@ -773,8 +763,8 @@
     "objectID": "06-git-inicialization.html#autenticação-no-github",
     "href": "06-git-inicialization.html#autenticação-no-github",
     "title": "7  Configurando o Git e o GitHub",
-    "section": "7.9 Autenticação no GitHub",
-    "text": "7.9 Autenticação no GitHub\nNa primeira vez que você tentar fazer push, o GitHub pedirá autenticação. Há duas formas principais:\n\n7.9.1 Opção 1: Token de acesso pessoal (HTTPS)\n\nAcesse GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token\nSelecione os escopos necessários (pelo menos repo)\nCopie o token gerado\nUse-o como senha quando o Terminal pedir\n\n\n\n7.9.2 Opção 2: Chave SSH (recomendada para uso frequente)\nEssa opção é mais segura e prática para quem usa Git diariamente, mas a configuração é mais complexa. Ela será tratada em um capítulo à parte.",
+    "section": "7.8 Autenticação no GitHub",
+    "text": "7.8 Autenticação no GitHub\nNa primeira vez que você tentar fazer push, o GitHub pedirá autenticação. Há duas formas principais:\n\n7.8.1 Opção 1: Token de acesso pessoal (HTTPS)\n\nAcesse GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token\nSelecione os escopos necessários (pelo menos repo)\nCopie o token gerado\nUse-o como senha quando o Terminal pedir\n\n\n\n7.8.2 Opção 2: Chave SSH (recomendada para uso frequente)\nEssa opção é mais segura e prática para quem usa Git diariamente, mas a configuração é mais complexa. Ela será tratada em um capítulo à parte.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
     ]
@@ -783,8 +773,8 @@
     "objectID": "06-git-inicialization.html#arquivos-ocultos",
     "href": "06-git-inicialization.html#arquivos-ocultos",
     "title": "7  Configurando o Git e o GitHub",
-    "section": "7.10 Arquivos ocultos",
-    "text": "7.10 Arquivos ocultos\nAntes de falarmos sobre o próximo tópicos, sobre o arquivo .gitignore, precisamos entender um conceito importante: arquivos ocultos.\nVocê já deve ter notado que alguns arquivos e pastas no seu computador parecem “invisíveis” — eles existem, mas não aparecem quando você abre uma pasta no Finder (Mac) ou no Explorador de Arquivos (Windows). Esses são os arquivos ocultos.\n\n7.10.1 Por que existem arquivos ocultos?\nSistemas operacionais e programas criam arquivos de configuração, caches e dados internos que o usuário comum não precisa ver no dia a dia. Para evitar confusão e impedir que esses arquivos sejam deletados acidentalmente, eles ficam escondidos por padrão.\nNo Mac e no Linux, a convenção é simples: qualquer arquivo ou pasta cujo nome começa com um ponto (.) é considerado oculto. Por exemplo:\n\n.gitignore — arquivo de configuração do Git\n.git/ — pasta onde o Git armazena todo o histórico do repositório\n.DS_Store — arquivo que o macOS cria automaticamente em cada pasta\n.Rhistory — histórico de comandos do R\n\nNo Windows, arquivos ocultos são marcados através de um atributo especial do sistema, não necessariamente pelo nome.\n\n\n7.10.2 Por que isso importa para o Git?\nO Git usa arquivos ocultos extensivamente. Quando você executa git init em uma pasta, ele cria uma pasta oculta chamada .git que contém todo o histórico, configurações e metadados do repositório. Se você não souber visualizar arquivos ocultos, vai parecer que nada aconteceu.\nAlém disso, o arquivo .gitignore — que ensinaremos a criar na próxima seção — também é oculto. Se você criá-lo mas não conseguir vê-lo, pode ficar confuso achando que algo deu errado.\nPor isso, saber visualizar arquivos ocultos é uma habilidade fundamental para trabalhar com Git.\n\n\n7.10.3 Como visualizar arquivos ocultos\nNo Mac (Finder):\nPressione Cmd + Shift + . (ponto). Os arquivos ocultos aparecerão com um tom mais claro, indicando que normalmente são invisíveis. Pressione a mesma combinação novamente para escondê-los.\nNo Windows (Explorador de Arquivos):\n\nAbra o Explorador de Arquivos\nClique na aba Exibir\nMarque a caixa Itens ocultos\n\nNo Terminal (Mac, Linux e Git Bash no Windows):\nO comando ls lista arquivos, mas por padrão não mostra os ocultos. Para ver todos os arquivos, incluindo os ocultos, use a flag -a:\nls -a\nPara uma listagem detalhada com arquivos ocultos:\nls -la\nVocê verá arquivos como .git, .gitignore e .DS_Store que normalmente não aparecem.\n\n\n\n\n\n\nDicaExperimente agora\n\n\n\nNavegue até uma pasta onde você já executou git init e use ls -la no Terminal. Você verá a pasta .git que antes parecia não existir. Ou ative a visualização de arquivos ocultos no Finder/Explorador e observe quantos arquivos “secretos” existem nas suas pastas.",
+    "section": "7.9 Arquivos ocultos",
+    "text": "7.9 Arquivos ocultos\nAntes de falarmos sobre o próximo tópicos, sobre o arquivo .gitignore, precisamos entender um conceito importante: arquivos ocultos.\nVocê já deve ter notado que alguns arquivos e pastas no seu computador parecem “invisíveis” — eles existem, mas não aparecem quando você abre uma pasta no Finder (Mac) ou no Explorador de Arquivos (Windows). Esses são os arquivos ocultos.\n\n7.9.1 Por que existem arquivos ocultos?\nSistemas operacionais e programas criam arquivos de configuração, caches e dados internos que o usuário comum não precisa ver no dia a dia. Para evitar confusão e impedir que esses arquivos sejam deletados acidentalmente, eles ficam escondidos por padrão.\nNo Mac e no Linux, a convenção é simples: qualquer arquivo ou pasta cujo nome começa com um ponto (.) é considerado oculto. Por exemplo:\n\n.gitignore — arquivo de configuração do Git\n.git/ — pasta onde o Git armazena todo o histórico do repositório\n.DS_Store — arquivo que o macOS cria automaticamente em cada pasta\n.Rhistory — histórico de comandos do R\n\nNo Windows, arquivos ocultos são marcados através de um atributo especial do sistema, não necessariamente pelo nome.\n\n\n7.9.2 Por que isso importa para o Git?\nO Git usa arquivos ocultos extensivamente. Quando você executa git init em uma pasta, ele cria uma pasta oculta chamada .git que contém todo o histórico, configurações e metadados do repositório. Se você não souber visualizar arquivos ocultos, vai parecer que nada aconteceu.\nAlém disso, o arquivo .gitignore — que ensinaremos a criar na próxima seção — também é oculto. Se você criá-lo mas não conseguir vê-lo, pode ficar confuso achando que algo deu errado.\nPor isso, saber visualizar arquivos ocultos é uma habilidade fundamental para trabalhar com Git.\n\n\n7.9.3 Como visualizar arquivos ocultos\nNo Mac (Finder):\nPressione Cmd + Shift + . (ponto). Os arquivos ocultos aparecerão com um tom mais claro, indicando que normalmente são invisíveis. Pressione a mesma combinação novamente para escondê-los.\nNo Windows (Explorador de Arquivos):\n\nAbra o Explorador de Arquivos\nClique na aba Exibir\nMarque a caixa Itens ocultos\n\nNo Terminal (Mac, Linux e Git Bash no Windows):\nO comando ls lista arquivos, mas por padrão não mostra os ocultos. Para ver todos os arquivos, incluindo os ocultos, use a flag -a:\nls -a\nPara uma listagem detalhada com arquivos ocultos:\nls -la\nVocê verá arquivos como .git, .gitignore e .DS_Store que normalmente não aparecem.\n\n\n\n\n\n\nDicaExperimente agora\n\n\n\nNavegue até uma pasta onde você já executou git init e use ls -la no Terminal. Você verá a pasta .git que antes parecia não existir. Ou ative a visualização de arquivos ocultos no Finder/Explorador e observe quantos arquivos “secretos” existem nas suas pastas.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
     ]
@@ -793,8 +783,8 @@
     "objectID": "06-git-inicialization.html#o-arquivo-.gitignore",
     "href": "06-git-inicialization.html#o-arquivo-.gitignore",
     "title": "7  Configurando o Git e o GitHub",
-    "section": "7.11 O arquivo .gitignore",
-    "text": "7.11 O arquivo .gitignore\nAgora que você sabe o que são arquivos ocultos e como visualizá-los, podemos falar sobre um dos arquivos ocultos mais importantes para o Git: o .gitignore.\n\n7.11.1 O problema: nem tudo deve ir para o repositório\nQuando você executa git add . para adicionar arquivos ao repositório, o Git inclui tudo o que encontrar na pasta — e nem sempre isso é desejável. Alguns arquivos são grandes demais e tornariam o repositório pesado e lento de clonar. Outros contêm informações sensíveis, como senhas ou dados pessoais, que jamais deveriam ser compartilhados. Há ainda arquivos temporários que o sistema operacional ou programas criam automaticamente e que não têm utilidade para outras pessoas.\nImagine que você está trabalhando em um projeto de análise de dados. Sua pasta contém:\n\nSeus scripts em R ou Python — devem ir para o GitHub\nUm arquivo CSV com 500MB de dados brutos — não deveria ir, é grande demais e pode conter dados sensíveis\nUm arquivo com senhas de banco de dados — definitivamente não deveria ir!\nArquivos .DS_Store que o macOS cria automaticamente — não têm utilidade para outras pessoas\n\nSem o .gitignore, toda vez que você executar git add ., todos esses arquivos seriam incluídos. O .gitignore resolve isso: ele diz ao Git quais arquivos e pastas devem ser completamente ignorados.\n\n\n7.11.2 Criando o arquivo .gitignore\nO .gitignore deve ficar na raiz do seu projeto (na mesma pasta onde está a pasta .git). Para criá-lo, você pode usar o Terminal:\ntouch .gitignore\nOu criar diretamente no seu editor de código. Como o nome começa com ponto, o arquivo será oculto — lembre-se de ativar a visualização de arquivos ocultos se quiser vê-lo no Finder ou Explorador.\nO .gitignore é um arquivo de texto simples. Cada linha representa um padrão de arquivos ou pastas que o Git deve ignorar.\n\n\n7.11.3 Sintaxe do .gitignore\nA sintaxe é simples, mas poderosa:\nIgnorar um arquivo específico:\nsenhas.txt\ndados_secretos.csv\nIgnorar todos os arquivos com determinada extensão:\n*.csv\n*.xlsx\n*.log\nO asterisco (*) funciona como curinga, significando “qualquer coisa”.\nIgnorar uma pasta inteira:\nnode_modules/\ndados/\n.Rproj.user/\nA barra (/) no final indica que é uma pasta. Tudo dentro dela será ignorado.\nIgnorar arquivos em qualquer subpasta:\n**/*.log\nO duplo asterisco (**) significa “em qualquer nível de subpastas”.\nAdicionar comentários:\n# Arquivos temporários do macOS\n.DS_Store\n\n# Dados que não devem ser compartilhados\n*.csv\nLinhas que começam com # são comentários e ajudam a organizar o arquivo.\nFazer exceções (não ignorar algo específico):\n# Ignora todos os CSVs\n*.csv\n\n# Mas não ignora este arquivo específico\n!exemplo_dados.csv\nO ponto de exclamação (!) no início nega a regra anterior.\n\n\n7.11.4 Exemplo completo de .gitignore\nAqui está um exemplo típico para projetos em R ou análise de dados:\n# === Sistema Operacional ===\n\n# Arquivos temporários do macOS\n.DS_Store\n\n# Arquivos temporários do Windows\nThumbs.db\ndesktop.ini\n\n# === R e RStudio ===\n\n# Arquivos de sessão do R\n.Rhistory\n.RData\n.Rproj.user/\n\n# === Dados ===\n\n# Arquivos de dados (geralmente grandes ou sensíveis)\n*.csv\n*.xlsx\n*.sav\n*.dta\ndados/\n\n# === Credenciais e segredos ===\n\n# Nunca suba senhas ou tokens!\n.env\nsenhas.txt\n*_secret*\n\n# === Arquivos temporários e de build ===\n\n# Pastas geradas automaticamente\n_site/\ndocs/\nnode_modules/\n\n# Arquivos de cache\n*.cache\n__pycache__/\n\n\n7.11.5 Quando criar o .gitignore\nO ideal é criar o .gitignore logo no início do projeto, antes do primeiro commit. Assim, os arquivos indesejados nunca chegam a entrar no histórico do Git.\nSe você já fez commit de arquivos que deveriam ser ignorados, adicioná-los ao .gitignore depois não os remove do histórico — apenas impede que futuras alterações sejam rastreadas. Para remover um arquivo que já está no repositório mas deveria ser ignorado:\ngit rm --cached nome-do-arquivo.csv\ngit commit -m \"Remove arquivo que deveria ser ignorado\"\nA flag --cached remove o arquivo do Git mas mantém ele na sua pasta local.\n\n\n\n\n\n\nDicaModelos prontos de .gitignore\n\n\n\nNão precisa criar tudo do zero. O GitHub mantém uma coleção de modelos de .gitignore para diversas linguagens e ambientes em github.com/github/gitignore.\nLá você encontra modelos para R, Python, Node.js e dezenas de outras tecnologias. É só copiar o conteúdo relevante para o seu projeto.\nOutra opção é o site gitignore.io, onde você digita as tecnologias que usa (ex: “R, macOS, Windows”) e ele gera um .gitignore personalizado.\n\n\n\n\n\n\n\n\nAvisoArquivos sensíveis\n\n\n\nNunca suba senhas, tokens de API, chaves de acesso ou dados pessoais para o GitHub — mesmo em repositórios privados. Uma vez que algo entra no histórico do Git, é difícil remover completamente. Sempre use .gitignore para proteger esses arquivos desde o início.\n\n\n\n\n\n\n\n\nDicaModelos de .gitignore\n\n\n\nO GitHub mantém uma coleção de modelos de .gitignore para diversas linguagens e ambientes em github.com/github/gitignore. Vale consultar o modelo para R, Python ou a linguagem que você usa.",
+    "section": "7.10 O arquivo .gitignore",
+    "text": "7.10 O arquivo .gitignore\nAgora que você sabe o que são arquivos ocultos e como visualizá-los, podemos falar sobre um dos arquivos ocultos mais importantes para o Git: o .gitignore.\n\n7.10.1 O problema: nem tudo deve ir para o repositório\nQuando você executa git add . para adicionar arquivos ao repositório, o Git inclui tudo o que encontrar na pasta — e nem sempre isso é desejável. Alguns arquivos são grandes demais e tornariam o repositório pesado e lento de clonar. Outros contêm informações sensíveis, como senhas ou dados pessoais, que jamais deveriam ser compartilhados. Há ainda arquivos temporários que o sistema operacional ou programas criam automaticamente e que não têm utilidade para outras pessoas.\nImagine que você está trabalhando em um projeto de análise de dados. Sua pasta contém:\n\nSeus scripts em R ou Python — devem ir para o GitHub\nUm arquivo CSV com 500MB de dados brutos — não deveria ir, é grande demais e pode conter dados sensíveis\nUm arquivo com senhas de banco de dados — definitivamente não deveria ir!\nArquivos .DS_Store que o macOS cria automaticamente — não têm utilidade para outras pessoas\n\nSem o .gitignore, toda vez que você executar git add ., todos esses arquivos seriam incluídos. O .gitignore resolve isso: ele diz ao Git quais arquivos e pastas devem ser completamente ignorados.\n\n\n7.10.2 Criando o arquivo .gitignore\nO .gitignore deve ficar na raiz do seu projeto (na mesma pasta onde está a pasta .git). Para criá-lo, você pode usar o Terminal:\ntouch .gitignore\nOu criar diretamente no seu editor de código. Como o nome começa com ponto, o arquivo será oculto — lembre-se de ativar a visualização de arquivos ocultos se quiser vê-lo no Finder ou Explorador.\nO .gitignore é um arquivo de texto simples. Cada linha representa um padrão de arquivos ou pastas que o Git deve ignorar.\n\n\n7.10.3 Sintaxe do .gitignore\nA sintaxe é simples, mas poderosa:\nIgnorar um arquivo específico:\nsenhas.txt\ndados_secretos.csv\nIgnorar todos os arquivos com determinada extensão:\n*.csv\n*.xlsx\n*.log\nO asterisco (*) funciona como curinga, significando “qualquer coisa”.\nIgnorar uma pasta inteira:\nnode_modules/\ndados/\n.Rproj.user/\nA barra (/) no final indica que é uma pasta. Tudo dentro dela será ignorado.\nIgnorar arquivos em qualquer subpasta:\n**/*.log\nO duplo asterisco (**) significa “em qualquer nível de subpastas”.\nAdicionar comentários:\n# Arquivos temporários do macOS\n.DS_Store\n\n# Dados que não devem ser compartilhados\n*.csv\nLinhas que começam com # são comentários e ajudam a organizar o arquivo.\nFazer exceções (não ignorar algo específico):\n# Ignora todos os CSVs\n*.csv\n\n# Mas não ignora este arquivo específico\n!exemplo_dados.csv\nO ponto de exclamação (!) no início nega a regra anterior.\n\n\n7.10.4 Exemplo completo de .gitignore\nAqui está um exemplo típico para projetos em R ou análise de dados:\n# === Sistema Operacional ===\n\n# Arquivos temporários do macOS\n.DS_Store\n\n# Arquivos temporários do Windows\nThumbs.db\ndesktop.ini\n\n# === R e RStudio ===\n\n# Arquivos de sessão do R\n.Rhistory\n.RData\n.Rproj.user/\n\n# === Dados ===\n\n# Arquivos de dados (geralmente grandes ou sensíveis)\n*.csv\n*.xlsx\n*.sav\n*.dta\ndados/\n\n# === Credenciais e segredos ===\n\n# Nunca suba senhas ou tokens!\n.env\nsenhas.txt\n*_secret*\n\n# === Arquivos temporários e de build ===\n\n# Pastas geradas automaticamente\n_site/\ndocs/\nnode_modules/\n\n# Arquivos de cache\n*.cache\n__pycache__/\n\n\n7.10.5 Quando criar o .gitignore\nO ideal é criar o .gitignore logo no início do projeto, antes do primeiro commit. Assim, os arquivos indesejados nunca chegam a entrar no histórico do Git.\nSe você já fez commit de arquivos que deveriam ser ignorados, adicioná-los ao .gitignore depois não os remove do histórico — apenas impede que futuras alterações sejam rastreadas. Para remover um arquivo que já está no repositório mas deveria ser ignorado:\ngit rm --cached nome-do-arquivo.csv\ngit commit -m \"Remove arquivo que deveria ser ignorado\"\nA flag --cached remove o arquivo do Git mas mantém ele na sua pasta local.\n\n\n\n\n\n\nDicaModelos prontos de .gitignore\n\n\n\nNão precisa criar tudo do zero. O GitHub mantém uma coleção de modelos de .gitignore para diversas linguagens e ambientes em github.com/github/gitignore.\nLá você encontra modelos para R, Python, Node.js e dezenas de outras tecnologias. É só copiar o conteúdo relevante para o seu projeto.\nOutra opção é o site gitignore.io, onde você digita as tecnologias que usa (ex: “R, macOS, Windows”) e ele gera um .gitignore personalizado.\n\n\n\n\n\n\n\n\nAvisoArquivos sensíveis\n\n\n\nNunca suba senhas, tokens de API, chaves de acesso ou dados pessoais para o GitHub — mesmo em repositórios privados. Uma vez que algo entra no histórico do Git, é difícil remover completamente. Sempre use .gitignore para proteger esses arquivos desde o início.\n\n\n\n\n\n\n\n\nDicaModelos de .gitignore\n\n\n\nO GitHub mantém uma coleção de modelos de .gitignore para diversas linguagens e ambientes em github.com/github/gitignore. Vale consultar o modelo para R, Python ou a linguagem que você usa.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
     ]
@@ -803,8 +793,8 @@
     "objectID": "06-git-inicialization.html#dicas-finais",
     "href": "06-git-inicialization.html#dicas-finais",
     "title": "7  Configurando o Git e o GitHub",
-    "section": "7.12 Dicas finais",
-    "text": "7.12 Dicas finais\n\n\n\n\n\n\nDicaBoas práticas\n\n\n\n\nFaça commits pequenos e frequentes. É mais fácil entender o histórico e reverter problemas.\nEscreva mensagens de commit descritivas. “Corrige bug no cálculo de médias” é melhor que “Alterações”.\nUse .gitignore desde o início. Evite subir arquivos desnecessários ou sensíveis.\nNão tenha medo de errar. O Git foi feito justamente para permitir que você experimente e volte atrás se necessário.",
+    "section": "7.11 Dicas finais",
+    "text": "7.11 Dicas finais\n\n\n\n\n\n\nDicaBoas práticas\n\n\n\n\nFaça commits pequenos e frequentes. É mais fácil entender o histórico e reverter problemas.\nEscreva mensagens de commit descritivas. “Corrige bug no cálculo de médias” é melhor que “Alterações”.\nUse .gitignore desde o início. Evite subir arquivos desnecessários ou sensíveis.\nNão tenha medo de errar. O Git foi feito justamente para permitir que você experimente e volte atrás se necessário.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Configurando o Git e o GitHub</span>"
     ]
@@ -1070,148 +1060,228 @@
     ]
   },
   {
-    "objectID": "09-github-pages.html",
-    "href": "09-github-pages.html",
-    "title": "10  GitHub Pages",
+    "objectID": "09-github-ciclo-completo.html",
+    "href": "09-github-ciclo-completo.html",
+    "title": "10  Fluxo Completo e Referência Rápida",
     "section": "",
-    "text": "10.1 O que é GitHub Pages?\nVocê chegou ao último capítulo deste manual. Ao longo da jornada, aprendeu a usar o Terminal, instalar ferramentas com gerenciadores de pacotes, entendeu os conceitos do Git, configurou seu ambiente, e descobriu diferentes formas de trabalhar com controle de versão — pelo Terminal, pelo GitHub Desktop ou pelo Positron.\nAgora vem a recompensa: colocar seu trabalho no ar. Neste capítulo, você vai aprender a usar o GitHub Pages, um serviço gratuito do GitHub que transforma repositórios em sites na internet. Sem servidor para configurar, sem hospedagem para pagar, sem complicação.\nO GitHub Pages é um serviço de hospedagem de sites estáticos oferecido gratuitamente pelo GitHub. Ele pega os arquivos do seu repositório — HTML, CSS, JavaScript, imagens — e publica em uma URL pública, acessível por qualquer pessoa no mundo.\n“Site estático” significa que as páginas são arquivos prontos, sem processamento no servidor. Diferente de um site dinâmico (como WordPress ou um sistema de e-commerce), onde cada página é gerada no momento do acesso, um site estático é simplesmente um conjunto de arquivos que o navegador baixa e exibe.\nIsso pode parecer limitado, mas é perfeito para:\nFerramentas como Quarto, Jekyll, Hugo e MkDocs geram sites estáticos sofisticados a partir de arquivos simples em Markdown. Você escreve em texto puro, executa um comando, e tem um site completo pronto para publicar.",
+    "text": "10.1 O ciclo completo do Git\nVocê chegou longe. Aprendeu a usar o Terminal, instalou o Git, entendeu os conceitos de controle de versão, e conheceu três formas diferentes de trabalhar: linha de comando, GitHub Desktop e Positron. Cada capítulo apresentou uma peça do quebra-cabeça.\nEste capítulo é diferente. Aqui não há conteúdo novo para aprender — é um momento de consolidação. Vamos reunir tudo o que você viu, comparar as ferramentas lado a lado, e preparar você para o último passo: publicar seu projeto na internet com o GitHub Pages.\nPense neste capítulo como um mapa de referência. Algo para consultar quando você esquecer um comando, quando quiser comparar abordagens, ou quando algo der errado e você precisar de um diagnóstico rápido.\nTodo trabalho com Git segue o mesmo ciclo, independentemente da ferramenta que você usa:\nflowchart LR\n    A[Editar&lt;br&gt;arquivos] --&gt; B[Preparar&lt;br&gt;git add]\n    B --&gt; C[Confirmar&lt;br&gt;git commit]\n    C --&gt; D[Enviar&lt;br&gt;git push]\n    D --&gt; E[GitHub]\n    E -.-&gt;|git pull| A\nEsse ciclo se repete continuamente. A cada sessão de trabalho, você edita, prepara, confirma e envia. Com o tempo, isso se torna automático.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Fluxo Completo e Referência Rápida</span>"
     ]
   },
   {
-    "objectID": "09-github-pages.html#o-que-é-github-pages",
-    "href": "09-github-pages.html#o-que-é-github-pages",
-    "title": "10  GitHub Pages",
+    "objectID": "09-github-ciclo-completo.html#o-ciclo-completo-do-git",
+    "href": "09-github-ciclo-completo.html#o-ciclo-completo-do-git",
+    "title": "10  Fluxo Completo e Referência Rápida",
+    "section": "",
+    "text": "Editar: você trabalha nos seus arquivos normalmente\nPreparar (staging): você seleciona quais alterações farão parte do próximo registro\nConfirmar (commit): você cria um ponto na história do projeto, com uma mensagem descritiva\nEnviar (push): você transfere seus commits para o GitHub\nSincronizar (pull): você baixa alterações que existam no GitHub mas não no seu computador",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Fluxo Completo e Referência Rápida</span>"
+    ]
+  },
+  {
+    "objectID": "09-github-ciclo-completo.html#comparação-das-três-ferramentas",
+    "href": "09-github-ciclo-completo.html#comparação-das-três-ferramentas",
+    "title": "10  Fluxo Completo e Referência Rápida",
+    "section": "10.2 Comparação das três ferramentas",
+    "text": "10.2 Comparação das três ferramentas\nA tabela abaixo mostra como realizar cada operação nas três ferramentas que você aprendeu. Use-a como referência rápida.\n\n\n\n\n\n\n\n\n\nOperação\nTerminal\nGitHub Desktop\nPositron\n\n\n\n\nConfiguração inicial\n\n\n\n\n\nVerificar instalação do Git\ngit --version\n—\n—\n\n\nConfigurar nome\ngit config --global user.name \"Nome\"\nAutomático ao fazer login\nAutomático ao fazer login\n\n\nConfigurar e-mail\ngit config --global user.email \"email\"\nAutomático ao fazer login\nAutomático ao fazer login\n\n\nRepositório local\n\n\n\n\n\nInicializar Git na pasta\ngit init\nFile → New Repository\nSource Control → Initialize Repository\n\n\nClonar repositório\ngit clone URL\nFile → Clone Repository\nFile → New Folder from Git\n\n\nFluxo diário\n\n\n\n\n\nVer status\ngit status\nPainel central (automático)\nAba Source Control (automático)\n\n\nVer alterações (diff)\ngit diff\nClicar no arquivo\nClicar no arquivo\n\n\nPreparar arquivos\ngit add .\nMarcar checkboxes\nClicar no +\n\n\nConfirmar (commit)\ngit commit -m \"msg\"\nEscrever mensagem + Commit\nEscrever mensagem + Commit\n\n\nEnviar (push)\ngit push\nPush origin\nSync Changes ou Push\n\n\nBaixar (pull)\ngit pull\nPull origin\nSync Changes ou Pull\n\n\nRepositório remoto\n\n\n\n\n\nConectar ao GitHub\ngit remote add origin URL\nPublish repository\nTerminal: git remote add origin URL\n\n\nVer conexões\ngit remote -v\nRepository → Repository Settings\nTerminal: git remote -v\n\n\nBranches\n\n\n\n\n\nCriar branch\ngit checkout -b nome\nCurrent Branch → New Branch\nClicar na branch → Create new branch\n\n\nTrocar de branch\ngit checkout nome\nClicar na branch\nClicar na branch\n\n\nFazer merge\ngit merge nome\nBranch → Merge into Current Branch\nCommand Palette → Git: Merge Branch\n\n\nHistórico\n\n\n\n\n\nVer commits\ngit log\nAba History\nExtensão GitLens\n\n\nVer commits (resumido)\ngit log --oneline\nAba History\nExtensão GitLens\n\n\nDesfazer\n\n\n\n\n\nDesfazer último commit\ngit reset --soft HEAD~1\nBotão direito → Undo Commit\nTerminal\n\n\nDescartar alterações\ngit checkout -- arquivo\nBotão direito → Discard Changes\nBotão direito → Discard Changes\n\n\n\n\n\n\n\n\n\nDicaQual ferramenta usar?\n\n\n\nNão existe resposta certa. Muitos profissionais usam as três, dependendo da situação:\n\nTerminal: para comandos avançados, automação, ou quando você está em um servidor remoto\nGitHub Desktop: para visualizar alterações claramente e para quem prefere interfaces gráficas\nPositron: para fazer tudo em um só lugar, sem alternar entre programas\n\nO importante é que todas trabalham sobre o mesmo repositório. Você pode fazer um commit no Terminal e visualizá-lo no GitHub Desktop, ou vice-versa.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Fluxo Completo e Referência Rápida</span>"
+    ]
+  },
+  {
+    "objectID": "09-github-ciclo-completo.html#checklist-antes-de-ir-para-o-github-pages",
+    "href": "09-github-ciclo-completo.html#checklist-antes-de-ir-para-o-github-pages",
+    "title": "10  Fluxo Completo e Referência Rápida",
+    "section": "10.3 Checklist: antes de ir para o GitHub Pages",
+    "text": "10.3 Checklist: antes de ir para o GitHub Pages\nAntes de avançar para o próximo capítulo, onde você aprenderá a publicar seu projeto como um site, verifique se tudo está funcionando corretamente.\n\n10.3.1 1. O Git está instalado e configurado?\ngit --version\ngit config --global user.name\ngit config --global user.email\nOs três comandos devem retornar informações (versão, seu nome, seu e-mail). Se algum estiver vazio, configure antes de continuar.\n\n\n10.3.2 2. Sua pasta é um repositório Git?\nNavegue até a pasta do seu projeto e execute:\ngit status\nSe aparecer informações sobre arquivos e branches, ótimo. Se aparecer “fatal: not a git repository”, você precisa inicializar o Git com git init.\n\n\n10.3.3 3. O repositório está conectado ao GitHub?\ngit remote -v\nDeve aparecer algo como:\norigin  https://github.com/seu-usuario/seu-repositorio.git (fetch)\norigin  https://github.com/seu-usuario/seu-repositorio.git (push)\nSe não aparecer nada, você precisa conectar ao GitHub (veja a próxima seção).\n\n\n10.3.4 4. Todos os commits foram enviados?\ngit status\nSe aparecer “Your branch is up to date with ‘origin/main’”, está tudo sincronizado. Se aparecer “Your branch is ahead of ‘origin/main’ by X commits”, você tem commits locais que ainda não foram enviados — faça git push.\n\n\n10.3.5 5. O repositório existe no GitHub?\nAcesse https://github.com/seu-usuario/seu-repositorio no navegador. Seus arquivos devem estar lá.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Fluxo Completo e Referência Rápida</span>"
+    ]
+  },
+  {
+    "objectID": "09-github-ciclo-completo.html#cenários-comuns-e-soluções",
+    "href": "09-github-ciclo-completo.html#cenários-comuns-e-soluções",
+    "title": "10  Fluxo Completo e Referência Rápida",
+    "section": "10.4 Cenários comuns e soluções",
+    "text": "10.4 Cenários comuns e soluções\n\n10.4.1 “Esqueci de criar o repositório vazio no GitHub”\nVocê fez todo o processo local (git init, git add, git commit), mas quando criou o repositório no GitHub, marcou a opção de adicionar README ou .gitignore. Agora, ao tentar fazer push, aparece um erro sobre históricos divergentes.\nSolução mais simples: delete o repositório no GitHub, crie novamente sem marcar nenhuma opção de inicialização, e faça o push normalmente.\nSolução alternativa (para quem quer manter o repositório):\ngit pull origin main --allow-unrelated-histories\nIsso força o Git a mesclar os dois históricos. Pode haver conflitos para resolver. Depois, faça git push.\n\n\n10.4.2 “O push foi rejeitado”\nMensagem típica: “Updates were rejected because the remote contains work that you do not have locally.”\nIsso acontece quando há commits no GitHub que você não tem localmente — talvez você tenha editado algo pelo site, ou trabalhou em outro computador.\nSolução:\ngit pull\nSe houver conflitos, resolva-os, faça um novo commit, e então:\ngit push\n\n\n10.4.3 “Quero mudar de HTTPS para SSH”\nSe você configurou o repositório com HTTPS mas agora quer usar SSH (para não digitar credenciais):\ngit remote set-url origin git@github.com:seu-usuario/seu-repositorio.git\nVerifique a mudança:\ngit remote -v\nAgora deve aparecer o endereço começando com git@ em vez de https://.\n\n\n10.4.4 “Não sei se estou na pasta certa”\nNo Terminal, use pwd (print working directory) para ver onde você está:\npwd\nUse ls para listar os arquivos da pasta atual:\nls\nSe os arquivos listados são os do seu projeto, você está no lugar certo.\n\n\n10.4.5 “Fiz commit de arquivos que não deveria”\nSe você commitou arquivos sensíveis ou muito grandes que deveriam estar no .gitignore:\n# Remove do Git mas mantém o arquivo local\ngit rm --cached nome-do-arquivo\n\n# Adicione o arquivo ao .gitignore\necho \"nome-do-arquivo\" &gt;&gt; .gitignore\n\n# Faça um novo commit\ngit add .gitignore\ngit commit -m \"Remove arquivo que deveria ser ignorado\"\ngit push\n\n\n\n\n\n\nAvisoAtenção com dados sensíveis\n\n\n\nSe você commitou senhas, tokens ou dados pessoais, removê-los com git rm não é suficiente — eles continuam no histórico. Para casos graves, você precisará reescrever o histórico do Git, o que é um processo mais complexo. A melhor estratégia é sempre usar .gitignore desde o início.\n\n\n\n\n10.4.6 “O Positron/GitHub Desktop não reconhece meu repositório”\nIsso pode acontecer se você inicializou o Git pelo Terminal. As interfaces gráficas devem reconhecer automaticamente, mas às vezes precisam ser “apontadas” para a pasta.\nNo GitHub Desktop: File → Add Local Repository → selecione a pasta\nNo Positron: File → Open Folder → selecione a pasta. A aba Source Control deve mostrar o repositório.\n\n\n10.4.7 “Quero começar de novo”\nSe você fez muita confusão e quer recomeçar do zero:\n\nFeche o Positron/GitHub Desktop\nDelete a pasta .git dentro do seu projeto (isso remove todo o histórico Git, mas mantém seus arquivos)\nDelete o repositório no GitHub (Settings → Danger Zone → Delete this repository)\nComece novamente: git init, crie o repositório no GitHub, conecte e faça push",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Fluxo Completo e Referência Rápida</span>"
+    ]
+  },
+  {
+    "objectID": "09-github-ciclo-completo.html#comandos-de-emergência",
+    "href": "09-github-ciclo-completo.html#comandos-de-emergência",
+    "title": "10  Fluxo Completo e Referência Rápida",
+    "section": "10.5 Comandos de emergência",
+    "text": "10.5 Comandos de emergência\nGuarde estes comandos para situações de aperto:\n# Ver o que está acontecendo\ngit status\n\n# Ver histórico recente\ngit log --oneline -10\n\n# Desfazer alterações não commitadas em um arquivo\ngit checkout -- nome-do-arquivo\n\n# Desfazer o último commit (mantém os arquivos)\ngit reset --soft HEAD~1\n\n# Desfazer todas as alterações não commitadas\ngit checkout -- .\n\n# Forçar pull sobrescrevendo alterações locais (CUIDADO!)\ngit fetch origin\ngit reset --hard origin/main\n\n\n\n\n\n\nAvisoSobre git reset --hard\n\n\n\nEste comando descarta todas as alterações locais não commitadas. Use apenas quando você tem certeza de que quer perder essas alterações. Não há como desfazer.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Fluxo Completo e Referência Rápida</span>"
+    ]
+  },
+  {
+    "objectID": "09-github-ciclo-completo.html#resumo-visual",
+    "href": "09-github-ciclo-completo.html#resumo-visual",
+    "title": "10  Fluxo Completo e Referência Rápida",
+    "section": "10.6 Resumo visual",
+    "text": "10.6 Resumo visual\n\n\n\n\n\nflowchart TB\n    subgraph Local[\"Seu Computador\"]\n        WD[Diretório de Trabalho&lt;br&gt;seus arquivos] \n        SA[Área de Preparação&lt;br&gt;staging area]\n        RL[Repositório Local&lt;br&gt;.git]\n    end\n    \n    subgraph Remote[\"GitHub\"]\n        RR[Repositório Remoto&lt;br&gt;origin]\n    end\n    \n    WD --&gt;|git add| SA\n    SA --&gt;|git commit| RL\n    RL --&gt;|git push| RR\n    RR --&gt;|git pull| WD\n    \n    style WD fill:#e1f5fe\n    style SA fill:#fff9c4\n    style RL fill:#c8e6c9\n    style RR fill:#f3e5f5",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Fluxo Completo e Referência Rápida</span>"
+    ]
+  },
+  {
+    "objectID": "09-github-ciclo-completo.html#próximo-passo",
+    "href": "09-github-ciclo-completo.html#próximo-passo",
+    "title": "10  Fluxo Completo e Referência Rápida",
+    "section": "10.7 Próximo passo",
+    "text": "10.7 Próximo passo\nSe você passou por todos os itens da checklist e está com tudo funcionando, parabéns — você domina o fluxo básico do Git e GitHub.\nNo próximo capítulo, você vai aprender a usar o GitHub Pages para transformar seu repositório em um site público na internet. É a etapa final: seu trabalho sairá do seu computador e estará acessível para qualquer pessoa no mundo.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Fluxo Completo e Referência Rápida</span>"
+    ]
+  },
+  {
+    "objectID": "10-github-pages.html",
+    "href": "10-github-pages.html",
+    "title": "11  GitHub Pages",
+    "section": "",
+    "text": "11.1 O que é GitHub Pages?\nVocê chegou ao último capítulo deste manual. Ao longo da jornada, aprendeu a usar o Terminal, instalar ferramentas com gerenciadores de pacotes, entendeu os conceitos do Git, configurou seu ambiente, e descobriu diferentes formas de trabalhar com controle de versão — pelo Terminal, pelo GitHub Desktop ou pelo Positron.\nAgora vem a recompensa: colocar seu trabalho no ar. Neste capítulo, você vai aprender a usar o GitHub Pages, um serviço gratuito do GitHub que transforma repositórios em sites na internet. Sem servidor para configurar, sem hospedagem para pagar, sem complicação.\nO GitHub Pages é um serviço de hospedagem de sites estáticos oferecido gratuitamente pelo GitHub. Ele pega os arquivos do seu repositório — HTML, CSS, JavaScript, imagens — e publica em uma URL pública, acessível por qualquer pessoa no mundo.\n“Site estático” significa que as páginas são arquivos prontos, sem processamento no servidor. Diferente de um site dinâmico (como WordPress ou um sistema de e-commerce), onde cada página é gerada no momento do acesso, um site estático é simplesmente um conjunto de arquivos que o navegador baixa e exibe.\nIsso pode parecer limitado, mas é perfeito para:\nFerramentas como Quarto, Jekyll, Hugo e MkDocs geram sites estáticos sofisticados a partir de arquivos simples em Markdown. Você escreve em texto puro, executa um comando, e tem um site completo pronto para publicar.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>GitHub Pages</span>"
+    ]
+  },
+  {
+    "objectID": "10-github-pages.html#o-que-é-github-pages",
+    "href": "10-github-pages.html#o-que-é-github-pages",
+    "title": "11  GitHub Pages",
     "section": "",
     "text": "Documentação de projetos\nPortfólios pessoais\nBlogs\nMateriais didáticos\nLivros e manuais (como este que você está lendo!)\nCurrículos online\nLanding pages",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>GitHub Pages</span>"
     ]
   },
   {
-    "objectID": "09-github-pages.html#como-funciona",
-    "href": "09-github-pages.html#como-funciona",
-    "title": "10  GitHub Pages",
-    "section": "10.2 Como funciona?",
-    "text": "10.2 Como funciona?\nO fluxo é simples:\n\nVocê cria um repositório no GitHub com os arquivos do seu site\nVocê ativa o GitHub Pages nas configurações do repositório\nO GitHub publica os arquivos em uma URL como seu-usuario.github.io/nome-do-repositorio\nToda vez que você faz push de alterações, o site é atualizado automaticamente\n\nNão há etapa de “deploy” manual, não há servidor para gerenciar. O GitHub cuida de tudo.",
+    "objectID": "10-github-pages.html#como-funciona",
+    "href": "10-github-pages.html#como-funciona",
+    "title": "11  GitHub Pages",
+    "section": "11.2 Como funciona?",
+    "text": "11.2 Como funciona?\nO fluxo é simples:\n\nVocê cria um repositório no GitHub com os arquivos do seu site\nVocê ativa o GitHub Pages nas configurações do repositório\nO GitHub publica os arquivos em uma URL como seu-usuario.github.io/nome-do-repositorio\nToda vez que você faz push de alterações, o site é atualizado automaticamente\n\nNão há etapa de “deploy” manual, não há servidor para gerenciar. O GitHub cuida de tudo.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>GitHub Pages</span>"
     ]
   },
   {
-    "objectID": "09-github-pages.html#opções-de-publicação",
-    "href": "09-github-pages.html#opções-de-publicação",
-    "title": "10  GitHub Pages",
-    "section": "10.3 Opções de publicação",
-    "text": "10.3 Opções de publicação\nO GitHub Pages permite definir de onde vêm os arquivos do site. A forma mais prática para livros Quarto é usar a pasta /docs na branch principal.",
+    "objectID": "10-github-pages.html#opções-de-publicação",
+    "href": "10-github-pages.html#opções-de-publicação",
+    "title": "11  GitHub Pages",
+    "section": "11.3 Opções de publicação",
+    "text": "11.3 Opções de publicação\nO GitHub Pages permite definir de onde vêm os arquivos do site. A forma mais prática para livros Quarto é usar a pasta /docs na branch principal.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>GitHub Pages</span>"
     ]
   },
   {
-    "objectID": "09-github-pages.html#a-pasta-docs",
-    "href": "09-github-pages.html#a-pasta-docs",
-    "title": "10  GitHub Pages",
-    "section": "10.4 A pasta /docs",
-    "text": "10.4 A pasta /docs\nNessa configuração, os arquivos do site ficam dentro de uma pasta chamada docs/ na branch principal (main). O restante do repositório pode conter código-fonte, dados ou outros arquivos que não fazem parte do site publicado.\nEssa é a opção ideal para livros Quarto porque permite uma separação clara: os arquivos .qmd ficam na raiz do projeto, enquanto o site gerado (HTML, CSS, imagens) vai para a pasta docs/. Assim, você mantém organização sem precisar de configurações avançadas.\nPara usar essa opção, basta configurar no _quarto.yml:\nproject:\n  type: book\n  output-dir: docs\nDepois, nas configurações do repositório no GitHub, selecione a pasta /docs como fonte do GitHub Pages.",
+    "objectID": "10-github-pages.html#a-pasta-docs",
+    "href": "10-github-pages.html#a-pasta-docs",
+    "title": "11  GitHub Pages",
+    "section": "11.4 A pasta /docs",
+    "text": "11.4 A pasta /docs\nNessa configuração, os arquivos do site ficam dentro de uma pasta chamada docs/ na branch principal (main). O restante do repositório pode conter código-fonte, dados ou outros arquivos que não fazem parte do site publicado.\nEssa é a opção ideal para livros Quarto porque permite uma separação clara: os arquivos .qmd ficam na raiz do projeto, enquanto o site gerado (HTML, CSS, imagens) vai para a pasta docs/. Assim, você mantém organização sem precisar de configurações avançadas.\nPara usar essa opção, basta configurar no _quarto.yml:\nproject:\n  type: book\n  output-dir: docs\nDepois, nas configurações do repositório no GitHub, selecione a pasta /docs como fonte do GitHub Pages.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>GitHub Pages</span>"
     ]
   },
   {
-    "objectID": "09-github-pages.html#outras-opções",
-    "href": "09-github-pages.html#outras-opções",
-    "title": "10  GitHub Pages",
-    "section": "10.5 Outras opções",
-    "text": "10.5 Outras opções\nExistem outras formas de configurar o GitHub Pages, como usar a raiz do repositório ou uma branch separada chamada gh-pages. Essas alternativas envolvem fluxos de trabalho diferentes ou automação com GitHub Actions e não serão tratadas em detalhes neste manual.",
+    "objectID": "10-github-pages.html#outras-opções",
+    "href": "10-github-pages.html#outras-opções",
+    "title": "11  GitHub Pages",
+    "section": "11.5 Outras opções",
+    "text": "11.5 Outras opções\nExistem outras formas de configurar o GitHub Pages, como usar a raiz do repositório ou uma branch separada chamada gh-pages. Essas alternativas envolvem fluxos de trabalho diferentes ou automação com GitHub Actions e não serão tratadas em detalhes neste manual.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>GitHub Pages</span>"
     ]
   },
   {
-    "objectID": "09-github-pages.html#publicando-um-site-quarto-passo-a-passo",
-    "href": "09-github-pages.html#publicando-um-site-quarto-passo-a-passo",
-    "title": "10  GitHub Pages",
-    "section": "10.6 Publicando um site Quarto: passo a passo",
-    "text": "10.6 Publicando um site Quarto: passo a passo\nVamos ao processo completo para publicar um livro ou site feito com Quarto.\n\n10.6.1 Passo 1: Configure o Quarto para gerar na pasta docs\nNo arquivo _quarto.yml do seu projeto, defina o diretório de saída:\nproject:\n  type: book\n  output-dir: docs\nIsso faz com que o comando quarto render gere todos os arquivos HTML dentro da pasta docs/.\n\n\n10.6.2 Passo 2: Renderize o projeto\nNo Terminal (ou no terminal integrado do Positron), execute:\nquarto render\nO Quarto processará todos os arquivos .qmd e gerará o site na pasta docs/.\n\n\n10.6.3 Passo 3: Crie o repositório no GitHub\nAntes de enviar seu projeto, é necessário criar um repositório vazio no GitHub. Você pode fazer isso de duas formas: pelo site do GitHub ou pelo Terminal com GitHub CLI.\nPara iniciantes, criar pelo site é mais simples e visual. Já o Terminal com GitHub CLI é mais rápido porque cria e conecta o repositório automaticamente em um único comando.\nOpção A: Pelo site do GitHub (recomendado para iniciantes)\n\nAcesse github.com e faça login\nClique no botão + no canto superior direito e selecione New repository\nPreencha o nome do repositório (ex: manual-git-github)\nAdicione uma descrição (opcional)\nEscolha se será Public (visível para todos) ou Private (apenas você)\nNão marque as opções de adicionar README, .gitignore ou licença — queremos um repositório vazio\nClique em Create repository\nCopie a URL do repositório (algo como https://github.com/seu-usuario/manual-git-github.git)\n\n\nImportante: Ao criar pelo site, o repositório fica apenas no GitHub, sem conexão com seu projeto local. Você precisará dessa URL para conectar manualmente no Passo 4, seja pelo comando git remote add origin URL (Terminal) ou pela opção “Git: Add Remote” (Positron).\n\nOpção B: Pelo Terminal com GitHub CLI (cria e conecta automaticamente)\nSe você tem o GitHub CLI instalado, pode criar o repositório diretamente pelo Terminal:\ngh repo create nome-do-repositorio --public --source=. --remote=origin\nEsse comando faz três coisas de uma vez: cria o repositório no GitHub, define como público e já conecta ao seu projeto local. Você não precisa copiar nenhuma URL — a conexão é feita automaticamente.\n\nNota: Se você usou essa opção, pode pular a etapa de conectar ao repositório remoto no Passo 4. Basta fazer o commit e o push.\n\n\n\n\n10.6.4 Passo 4: Envie o projeto para o GitHub\nAgora que o repositório existe no GitHub, você precisará inicializar o Git no seu projeto local, fazer o primeiro commit e enviar os arquivos. A seguir, mostramos como fazer isso de duas formas: pelo Terminal e pela interface gráfica do Positron. Escolha a que preferir.\n\n10.6.4.1 Passo 4.1: Pelo Terminal\nInicialize o repositório Git:\ngit init\nAdicione todos os arquivos ao controle de versão:\ngit add .\nFaça o primeiro commit:\ngit commit -m \"Primeiro commit\"\nConecte ao repositório remoto no GitHub:\ngit remote add origin https://github.com/seu-usuario/nome-do-repositorio.git\nRenomeie a branch principal para main:\ngit branch -M main\nEnvie os arquivos para o GitHub:\ngit push -u origin main\n\n\n10.6.4.2 Passo 4.2: Pelo Positron\nAutentique-se no GitHub (apenas na primeira vez):\n\nAbra a paleta de comandos com Ctrl + Shift + P (Windows/Linux) ou Cmd + Shift + P (Mac)\nDigite “GitHub: Sign In” e pressione Enter\nO Positron abrirá uma janela do navegador para autenticação\nFaça login na sua conta do GitHub e autorize o acesso\nApós autorizar, volte ao Positron — você verá uma confirmação de que está conectado\n\nInicialize o repositório Git:\n\nAbra a paleta de comandos com Ctrl + Shift + P (Windows/Linux) ou Cmd + Shift + P (Mac)\nDigite “Git: Initialize Repository” e pressione Enter\nSelecione a pasta do seu projeto\n\nAdicione os arquivos e faça o primeiro commit:\n\nClique no ícone de Source Control na barra lateral esquerda (ou pressione Ctrl + Shift + G)\nVocê verá a lista de arquivos modificados\nClique no botão + ao lado de “Changes” para adicionar todos os arquivos\nDigite a mensagem do commit no campo de texto (ex: “Primeiro commit”)\nClique no botão ✓ Commit para confirmar\n\nConecte ao repositório remoto e envie:\n\nAbra a paleta de comandos (Ctrl + Shift + P)\nDigite “Git: Add Remote” e pressione Enter\nDigite origin como nome do remote\nCole a URL do seu repositório: https://github.com/seu-usuario/nome-do-repositorio.git\nAbra novamente a paleta de comandos\nDigite “Git: Push” e pressione Enter\nSe solicitado, selecione origin e main como destino\n\nVerifique se está conectado ao repositório correto:\nApós configurar o remote, é importante confirmar que o Positron está conectado ao repositório certo, especialmente se você trabalha com vários projetos. Para verificar:\n\nOlhe na barra de status (parte inferior da tela) — ela mostra a branch atual (ex: main) e o nome do remote\nNo painel Source Control, clique nos três pontos (…) e selecione “Remote” &gt; “Show Remotes” para ver a URL configurada\nOu abra o Terminal integrado (Ctrl + ``) e digite:\n\ngit remote -v\nIsso mostrará a URL do repositório conectado. Confirme que corresponde ao seu repositório no GitHub.\n\n\n\n10.6.5 Passo 5: Ative o GitHub Pages\n\nNo repositório do GitHub, clique em Settings (ícone de engrenagem)\nNo menu lateral esquerdo, clique em Pages\nEm Source, selecione Deploy from a branch\nEm Branch, selecione main e a pasta /docs\nClique em Save\n\n\n\n10.6.6 Passo 6: Aguarde e acesse\nO GitHub levará alguns minutos para publicar o site. Você pode acompanhar o progresso na seção Actions do repositório.\nQuando estiver pronto, o site estará disponível em:\nhttps://seu-usuario.github.io/nome-do-repositorio/\n\n\n\n\n\n\nDicaEncontrando a URL\n\n\n\nApós ativar o GitHub Pages, a URL do site aparece na própria página de configurações (Settings → Pages), no topo da seção.",
+    "objectID": "10-github-pages.html#publicando-um-site-quarto-passo-a-passo",
+    "href": "10-github-pages.html#publicando-um-site-quarto-passo-a-passo",
+    "title": "11  GitHub Pages",
+    "section": "11.6 Publicando um site Quarto: passo a passo",
+    "text": "11.6 Publicando um site Quarto: passo a passo\nVamos ao processo completo para publicar um livro ou site feito com Quarto.\n\n11.6.1 Passo 1: Configure o Quarto para gerar na pasta docs\nNo arquivo _quarto.yml do seu projeto, defina o diretório de saída:\nproject:\n  type: book\n  output-dir: docs\nIsso faz com que o comando quarto render gere todos os arquivos HTML dentro da pasta docs/.\n\n\n11.6.2 Passo 2: Renderize o projeto\nNo Terminal (ou no terminal integrado do Positron), execute:\nquarto render\nO Quarto processará todos os arquivos .qmd e gerará o site na pasta docs/.\n\n\n11.6.3 Passo 3: Faça a sincronização do seu repositório local com o repositório remoto no github\n\n\n11.6.4 Passo 5: Ative o GitHub Pages\n\nNo repositório do GitHub, clique em Settings (ícone de engrenagem)\nNo menu lateral esquerdo, clique em Pages\nEm Source, selecione Deploy from a branch\nEm Branch, selecione main e a pasta /docs\nClique em Save\n\n\n\n11.6.5 Passo 6: Aguarde e acesse\nO GitHub levará alguns minutos para publicar o site. Você pode acompanhar o progresso na seção Actions do repositório.\nQuando estiver pronto, o site estará disponível em:\nhttps://seu-usuario.github.io/nome-do-repositorio/\n\n\n\n\n\n\nDicaEncontrando a URL\n\n\n\nApós ativar o GitHub Pages, a URL do site aparece na própria página de configurações (Settings → Pages), no topo da seção.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>GitHub Pages</span>"
     ]
   },
   {
-    "objectID": "09-github-pages.html#atualizando-o-site",
-    "href": "09-github-pages.html#atualizando-o-site",
-    "title": "10  GitHub Pages",
-    "section": "10.7 Atualizando o site",
-    "text": "10.7 Atualizando o site\nDepois da configuração inicial, atualizar o site é simples:\n\nEdite seus arquivos .qmd\nExecute quarto render para regenerar o site\nFaça commit e push:\n\ngit add .\ngit commit -m \"Atualiza conteúdo\"\ngit push\nO GitHub Pages detecta automaticamente as alterações na pasta docs/ e republica o site. Em poucos minutos, as mudanças estarão no ar.",
+    "objectID": "10-github-pages.html#atualizando-o-site",
+    "href": "10-github-pages.html#atualizando-o-site",
+    "title": "11  GitHub Pages",
+    "section": "11.7 Atualizando o site",
+    "text": "11.7 Atualizando o site\nDepois da configuração inicial, atualizar o site é simples:\n\nEdite seus arquivos .qmd\nExecute quarto render para regenerar o site\nFaça commit e push:\n\ngit add .\ngit commit -m \"Atualiza conteúdo\"\ngit push\nO GitHub Pages detecta automaticamente as alterações na pasta docs/ e republica o site. Em poucos minutos, as mudanças estarão no ar.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>GitHub Pages</span>"
     ]
   },
   {
-    "objectID": "09-github-pages.html#domínio-personalizado",
-    "href": "09-github-pages.html#domínio-personalizado",
-    "title": "10  GitHub Pages",
-    "section": "10.8 Domínio personalizado",
-    "text": "10.8 Domínio personalizado\nPor padrão, seu site terá uma URL como seu-usuario.github.io/repositorio. Mas você pode configurar um domínio próprio, como www.seusite.com.br.\n\n10.8.1 Como configurar\n\nCompre um domínio em um registrador (Registro.br, GoDaddy, Namecheap, etc.)\nNo GitHub, vá em Settings → Pages e digite seu domínio em Custom domain\nNo seu registrador de domínio, configure os registros DNS:\n\nPara domínio raiz (exemplo.com): crie registros A apontando para os IPs do GitHub:\n185.199.108.153\n185.199.109.153\n185.199.110.153\n185.199.111.153\nPara subdomínio (www.exemplo.com): crie um registro CNAME apontando para seu-usuario.github.io\n\nAguarde a propagação DNS (pode levar até 24 horas)\nMarque a opção Enforce HTTPS para ter conexão segura\n\n\n\n\n\n\n\nNotaHTTPS gratuito\n\n\n\nO GitHub Pages oferece certificado HTTPS gratuito, mesmo para domínios personalizados. Isso significa que seu site terá o cadeado de segurança no navegador sem custo adicional.",
+    "objectID": "10-github-pages.html#domínio-personalizado",
+    "href": "10-github-pages.html#domínio-personalizado",
+    "title": "11  GitHub Pages",
+    "section": "11.8 Domínio personalizado",
+    "text": "11.8 Domínio personalizado\nPor padrão, seu site terá uma URL como seu-usuario.github.io/repositorio. Mas você pode configurar um domínio próprio, como www.seusite.com.br.\n\n11.8.1 Como configurar\n\nCompre um domínio em um registrador (Registro.br, GoDaddy, Namecheap, etc.)\nNo GitHub, vá em Settings → Pages e digite seu domínio em Custom domain\nNo seu registrador de domínio, configure os registros DNS:\n\nPara domínio raiz (exemplo.com): crie registros A apontando para os IPs do GitHub:\n185.199.108.153\n185.199.109.153\n185.199.110.153\n185.199.111.153\nPara subdomínio (www.exemplo.com): crie um registro CNAME apontando para seu-usuario.github.io\n\nAguarde a propagação DNS (pode levar até 24 horas)\nMarque a opção Enforce HTTPS para ter conexão segura\n\n\n\n\n\n\n\nNotaHTTPS gratuito\n\n\n\nO GitHub Pages oferece certificado HTTPS gratuito, mesmo para domínios personalizados. Isso significa que seu site terá o cadeado de segurança no navegador sem custo adicional.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>GitHub Pages</span>"
     ]
   },
   {
-    "objectID": "09-github-pages.html#arquivo-.nojekyll",
-    "href": "09-github-pages.html#arquivo-.nojekyll",
-    "title": "10  GitHub Pages",
-    "section": "10.9 Arquivo .nojekyll",
-    "text": "10.9 Arquivo .nojekyll\nPor padrão, o GitHub Pages processa os arquivos com Jekyll (um gerador de sites estáticos). Se você usa Quarto ou outro gerador, pode haver conflitos — especialmente com pastas que começam com underscore (_), que o Jekyll ignora.\nPara desativar o processamento Jekyll, crie um arquivo vazio chamado .nojekyll na pasta docs/:\ntouch docs/.nojekyll\nO Quarto geralmente cria esse arquivo automaticamente, mas é bom verificar se ele existe.",
+    "objectID": "10-github-pages.html#arquivo-.nojekyll",
+    "href": "10-github-pages.html#arquivo-.nojekyll",
+    "title": "11  GitHub Pages",
+    "section": "11.9 Arquivo .nojekyll",
+    "text": "11.9 Arquivo .nojekyll\nPor padrão, o GitHub Pages processa os arquivos com Jekyll (um gerador de sites estáticos). Se você usa Quarto ou outro gerador, pode haver conflitos — especialmente com pastas que começam com underscore (_), que o Jekyll ignora.\nPara desativar o processamento Jekyll, crie um arquivo vazio chamado .nojekyll na pasta docs/:\ntouch docs/.nojekyll\nO Quarto geralmente cria esse arquivo automaticamente, mas é bom verificar se ele existe.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>GitHub Pages</span>"
     ]
   },
   {
-    "objectID": "09-github-pages.html#solucionando-problemas-comuns",
-    "href": "09-github-pages.html#solucionando-problemas-comuns",
-    "title": "10  GitHub Pages",
-    "section": "10.10 Solucionando problemas comuns",
-    "text": "10.10 Solucionando problemas comuns\n\n10.10.1 O site não aparece\n\nVerifique se a pasta docs/ existe e contém um arquivo index.html\nConfirme que você fez push após o quarto render\nAguarde alguns minutos — a primeira publicação pode demorar\nVerifique a aba Actions no GitHub para ver se há erros\n\n\n\n10.10.2 Erro 404 (página não encontrada)\n\nVerifique se a configuração do GitHub Pages está apontando para a pasta correta (/docs)\nConfirme que o arquivo index.html está na raiz da pasta docs/\nSe estiver usando caminhos relativos, verifique se estão corretos\n\n\n\n10.10.3 Estilos ou imagens não carregam\n\nVerifique se o _quarto.yml tem a configuração correta de output-dir\nConfirme que a pasta docs/ contém as subpastas de estilos e imagens\nLimpe o cache do navegador e tente novamente\n\n\n\n10.10.4 Alterações não aparecem no site\n\nConfirme que você executou quarto render após editar os arquivos\nVerifique se fez commit e push\nAguarde alguns minutos para o GitHub processar\nVerifique a aba Actions para confirmar que o deploy foi concluído",
+    "objectID": "10-github-pages.html#solucionando-problemas-comuns",
+    "href": "10-github-pages.html#solucionando-problemas-comuns",
+    "title": "11  GitHub Pages",
+    "section": "11.10 Solucionando problemas comuns",
+    "text": "11.10 Solucionando problemas comuns\n\n11.10.1 O site não aparece\n\nVerifique se a pasta docs/ existe e contém um arquivo index.html\nConfirme que você fez push após o quarto render\nAguarde alguns minutos — a primeira publicação pode demorar\nVerifique a aba Actions no GitHub para ver se há erros\n\n\n\n11.10.2 Erro 404 (página não encontrada)\n\nVerifique se a configuração do GitHub Pages está apontando para a pasta correta (/docs)\nConfirme que o arquivo index.html está na raiz da pasta docs/\nSe estiver usando caminhos relativos, verifique se estão corretos\n\n\n\n11.10.3 Estilos ou imagens não carregam\n\nVerifique se o _quarto.yml tem a configuração correta de output-dir\nConfirme que a pasta docs/ contém as subpastas de estilos e imagens\nLimpe o cache do navegador e tente novamente\n\n\n\n11.10.4 Alterações não aparecem no site\n\nConfirme que você executou quarto render após editar os arquivos\nVerifique se fez commit e push\nAguarde alguns minutos para o GitHub processar\nVerifique a aba Actions para confirmar que o deploy foi concluído",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>GitHub Pages</span>"
     ]
   },
   {
-    "objectID": "09-github-pages.html#alternativas-ao-github-pages",
-    "href": "09-github-pages.html#alternativas-ao-github-pages",
-    "title": "10  GitHub Pages",
-    "section": "10.11 Alternativas ao GitHub Pages",
-    "text": "10.11 Alternativas ao GitHub Pages\nEmbora o GitHub Pages seja excelente para a maioria dos casos, existem alternativas:\n\nNetlify\n\nOferece mais recursos, como formulários, funções serverless e deploy automático de branches. Também é gratuito para projetos pessoais.\n\nVercel\n\nFocado em frameworks JavaScript modernos, mas funciona bem com sites estáticos. Gratuito para uso pessoal.\n\nCloudflare Pages\n\nBoa performance global e generoso plano gratuito.\n\nQuarto Pub\n\nServiço da própria Posit para publicar documentos Quarto. Simples de usar com o comando quarto publish.\n\n\nPara a maioria dos usuários acadêmicos e projetos pessoais, o GitHub Pages é mais que suficiente — e tem a vantagem de manter tudo no mesmo lugar que seu código.",
+    "objectID": "10-github-pages.html#alternativas-ao-github-pages",
+    "href": "10-github-pages.html#alternativas-ao-github-pages",
+    "title": "11  GitHub Pages",
+    "section": "11.11 Alternativas ao GitHub Pages",
+    "text": "11.11 Alternativas ao GitHub Pages\nEmbora o GitHub Pages seja excelente para a maioria dos casos, existem alternativas:\n\nNetlify\n\nOferece mais recursos, como formulários, funções serverless e deploy automático de branches. Também é gratuito para projetos pessoais.\n\nVercel\n\nFocado em frameworks JavaScript modernos, mas funciona bem com sites estáticos. Gratuito para uso pessoal.\n\nCloudflare Pages\n\nBoa performance global e generoso plano gratuito.\n\nQuarto Pub\n\nServiço da própria Posit para publicar documentos Quarto. Simples de usar com o comando quarto publish.\n\n\nPara a maioria dos usuários acadêmicos e projetos pessoais, o GitHub Pages é mais que suficiente — e tem a vantagem de manter tudo no mesmo lugar que seu código.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>GitHub Pages</span>"
     ]
   },
   {
-    "objectID": "09-github-pages.html#exemplos-de-sites-no-github-pages",
-    "href": "09-github-pages.html#exemplos-de-sites-no-github-pages",
-    "title": "10  GitHub Pages",
-    "section": "10.12 Exemplos de sites no GitHub Pages",
-    "text": "10.12 Exemplos de sites no GitHub Pages\nPara inspiração, alguns exemplos de sites hospedados no GitHub Pages:\n\nR for Data Science (r4ds.hadley.nz) — livro completo sobre R\nHappy Git with R (happygitwithr.com) — guia de Git para usuários de R\nQuarto documentation (quarto.org) — documentação oficial do Quarto\nEste manual — sim, este manual que você está lendo!\n\nTodos são projetos de código aberto. Você pode visitar os repositórios, ver como são organizados e aprender com eles.",
+    "objectID": "10-github-pages.html#exemplos-de-sites-no-github-pages",
+    "href": "10-github-pages.html#exemplos-de-sites-no-github-pages",
+    "title": "11  GitHub Pages",
+    "section": "11.12 Exemplos de sites no GitHub Pages",
+    "text": "11.12 Exemplos de sites no GitHub Pages\nPara inspiração, alguns exemplos de sites hospedados no GitHub Pages:\n\nR for Data Science (r4ds.hadley.nz) — livro completo sobre R\nHappy Git with R (happygitwithr.com) — guia de Git para usuários de R\nQuarto documentation (quarto.org) — documentação oficial do Quarto\nEste manual — sim, este manual que você está lendo!\n\nTodos são projetos de código aberto. Você pode visitar os repositórios, ver como são organizados e aprender com eles.",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>GitHub Pages</span>"
     ]
   },
   {
-    "objectID": "09-github-pages.html#conclusão",
-    "href": "09-github-pages.html#conclusão",
-    "title": "10  GitHub Pages",
-    "section": "10.13 Conclusão",
-    "text": "10.13 Conclusão\nO GitHub Pages fecha o ciclo completo: você escreve, versiona com Git, colabora pelo GitHub, e publica para o mundo — tudo de graça, tudo integrado.\nPara acadêmicos, é uma ferramenta transformadora. Materiais didáticos que antes ficavam trancados em pastas ou sistemas fechados agora podem estar acessíveis a qualquer pessoa com um navegador. Pesquisas, tutoriais, livros, portfólios — tudo pode ser compartilhado de forma aberta e profissional.\nVocê começou este manual aprendendo a navegar pelo Terminal. Agora termina sabendo publicar um site na internet. Esse é o poder de dominar suas ferramentas.\n\n\n\n\n\n\nDicaPróximos passos\n\n\n\nAgora que você conhece Git, GitHub e GitHub Pages, que tal:\n\nCriar um site pessoal com seu portfólio ou currículo?\nPublicar os documentos de estudo de uma disciplina que você ensina ou estuda?\nTransformar sua dissertação ou tese em um livro online?\nContribuir para um projeto open source que você admira?",
+    "objectID": "10-github-pages.html#conclusão",
+    "href": "10-github-pages.html#conclusão",
+    "title": "11  GitHub Pages",
+    "section": "11.13 Conclusão",
+    "text": "11.13 Conclusão\nO GitHub Pages fecha o ciclo completo: você escreve, versiona com Git, colabora pelo GitHub, e publica para o mundo — tudo de graça, tudo integrado.\nPara acadêmicos, é uma ferramenta transformadora. Materiais didáticos que antes ficavam trancados em pastas ou sistemas fechados agora podem estar acessíveis a qualquer pessoa com um navegador. Pesquisas, tutoriais, livros, portfólios — tudo pode ser compartilhado de forma aberta e profissional.\nVocê começou este manual aprendendo a navegar pelo Terminal. Agora termina sabendo publicar um site na internet. Esse é o poder de dominar suas ferramentas.\n\n\n\n\n\n\nDicaPróximos passos\n\n\n\nAgora que você conhece Git, GitHub e GitHub Pages, que tal:\n\nCriar um site pessoal com seu portfólio ou currículo?\nPublicar os documentos de estudo de uma disciplina que você ensina ou estuda?\nTransformar sua dissertação ou tese em um livro online?\nContribuir para um projeto open source que você admira?",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>GitHub Pages</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>GitHub Pages</span>"
     ]
   },
   {
-    "objectID": "10-referencias.html",
-    "href": "10-referencias.html",
+    "objectID": "11-referencias.html",
+    "href": "11-referencias.html",
     "title": "Referências",
     "section": "",
     "text": "Documentação Oficial",
@@ -1220,8 +1290,8 @@
     ]
   },
   {
-    "objectID": "10-referencias.html#documentação-oficial",
-    "href": "10-referencias.html#documentação-oficial",
+    "objectID": "11-referencias.html#documentação-oficial",
+    "href": "11-referencias.html#documentação-oficial",
     "title": "Referências",
     "section": "",
     "text": "Git\n\nDocumentação oficial do Git — referência completa de todos os comandos\nPro Git Book — livro gratuito disponível em português\nGit Cheat Sheet — folha de referência rápida em português\n\n\n\nGitHub\n\nGitHub Docs — documentação oficial do GitHub em português\nGitHub Skills — cursos interativos gratuitos\nGitHub Desktop Documentation — guia do GitHub Desktop\n\n\n\nPositron\n\nPositron Documentation — documentação oficial do Positron\nGit Version Control no Positron — guia específico de Git no Positron",
@@ -1230,8 +1300,8 @@
     ]
   },
   {
-    "objectID": "10-referencias.html#tutoriais-interativos",
-    "href": "10-referencias.html#tutoriais-interativos",
+    "objectID": "11-referencias.html#tutoriais-interativos",
+    "href": "11-referencias.html#tutoriais-interativos",
     "title": "Referências",
     "section": "Tutoriais Interativos",
     "text": "Tutoriais Interativos\n\nLearn Git Branching\n\nTutorial visual e interativo para aprender Git, disponível em português. Excelente para entender branches e merge.\n\nOh My Git!\n\nJogo para aprender Git de forma divertida.\n\nGit Immersion\n\nTutorial guiado com exercícios práticos.",
@@ -1240,8 +1310,8 @@
     ]
   },
   {
-    "objectID": "10-referencias.html#para-usuários-de-r",
-    "href": "10-referencias.html#para-usuários-de-r",
+    "objectID": "11-referencias.html#para-usuários-de-r",
+    "href": "11-referencias.html#para-usuários-de-r",
     "title": "Referências",
     "section": "Para Usuários de R",
     "text": "Para Usuários de R\n\nHappy Git and GitHub for the useR\n\nGuia completo de Jenny Bryan para usuários de R. Cobre desde a instalação até fluxos avançados de trabalho.\n\nR Packages: Git and GitHub\n\nCapítulo do livro R Packages sobre uso de Git em desenvolvimento de pacotes.",
@@ -1250,8 +1320,8 @@
     ]
   },
   {
-    "objectID": "10-referencias.html#vídeos",
-    "href": "10-referencias.html#vídeos",
+    "objectID": "11-referencias.html#vídeos",
+    "href": "11-referencias.html#vídeos",
     "title": "Referências",
     "section": "Vídeos",
     "text": "Vídeos\n\nGit e GitHub para Iniciantes — diversos tutoriais em português no YouTube\nCurso de Git e GitHub - Curso em Vídeo — curso gratuito completo",
@@ -1260,8 +1330,8 @@
     ]
   },
   {
-    "objectID": "10-referencias.html#glossário",
-    "href": "10-referencias.html#glossário",
+    "objectID": "11-referencias.html#glossário",
+    "href": "11-referencias.html#glossário",
     "title": "Referências",
     "section": "Glossário",
     "text": "Glossário\n\nRepositório (repository)\n\nPasta que contém seu projeto e todo o histórico de versões. Pode ser local (no seu computador) ou remoto (no GitHub).\n\nCommit\n\nUm “snapshot” do seu projeto em um momento específico. Cada commit tem uma mensagem descritiva e um identificador único (hash).\n\nBranch\n\nUma linha independente de desenvolvimento. Permite trabalhar em funcionalidades separadas sem afetar o código principal.\n\nMerge\n\nCombinar alterações de uma branch em outra.\n\nPush\n\nEnviar commits locais para o repositório remoto (GitHub).\n\nPull\n\nBaixar alterações do repositório remoto para o local.\n\nClone\n\nCriar uma cópia local de um repositório remoto.\n\nFork\n\nCriar uma cópia de um repositório de outra pessoa na sua conta GitHub.\n\nPull Request (PR)\n\nSolicitação para incorporar suas alterações em um repositório. Usado para revisão de código e colaboração.\n\nStaging Area\n\nÁrea intermediária onde você seleciona quais alterações incluir no próximo commit.\n\nHEAD\n\nReferência ao commit atual em que você está trabalhando.\n\nOrigin\n\nNome padrão dado ao repositório remoto principal.\n\nMain/Master\n\nNome da branch principal do repositório.",
@@ -1270,8 +1340,8 @@
     ]
   },
   {
-    "objectID": "10-referencias.html#comandos-rápidos",
-    "href": "10-referencias.html#comandos-rápidos",
+    "objectID": "11-referencias.html#comandos-rápidos",
+    "href": "11-referencias.html#comandos-rápidos",
     "title": "Referências",
     "section": "Comandos Rápidos",
     "text": "Comandos Rápidos\n\nConfiguração\ngit config --global user.name \"Seu Nome\"\ngit config --global user.email \"seu@email.com\"\ngit config --list\n\n\nBásicos\ngit init                    # Inicializar repositório\ngit clone URL               # Clonar repositório\ngit status                  # Ver status\ngit add .                   # Adicionar todos os arquivos\ngit commit -m \"mensagem\"    # Fazer commit\ngit push                    # Enviar para remoto\ngit pull                    # Baixar do remoto\n\n\nBranches\ngit branch                  # Listar branches\ngit branch nome             # Criar branch\ngit checkout nome           # Trocar de branch\ngit checkout -b nome        # Criar e trocar\ngit merge nome              # Mesclar branch\ngit branch -d nome          # Deletar branch\n\n\nHistórico\ngit log                     # Ver histórico\ngit log --oneline           # Histórico resumido\ngit diff                    # Ver alterações\ngit show HASH               # Ver commit específico\n\n\nDesfazer\ngit checkout -- arquivo     # Descartar alterações\ngit reset arquivo           # Remover do staging\ngit reset --soft HEAD~1     # Desfazer último commit\ngit revert HASH             # Reverter commit",
@@ -1280,8 +1350,8 @@
     ]
   },
   {
-    "objectID": "10-referencias.html#arquivos-importantes",
-    "href": "10-referencias.html#arquivos-importantes",
+    "objectID": "11-referencias.html#arquivos-importantes",
+    "href": "11-referencias.html#arquivos-importantes",
     "title": "Referências",
     "section": "Arquivos Importantes",
     "text": "Arquivos Importantes\n\n.gitignore\nArquivo que lista padrões de arquivos a serem ignorados pelo Git:\n# Sistema operacional\n.DS_Store\nThumbs.db\n\n# R\n.Rproj.user/\n.Rhistory\n.RData\n\n# Python\n__pycache__/\n*.pyc\n.venv/\n\n# Dados sensíveis\n*.csv\n*.xlsx\nsenhas.txt\n\n# IDEs\n.vscode/\n.idea/\n\n\nREADME.md\nArquivo de apresentação do projeto. Deve conter:\n\nNome e descrição do projeto\nComo instalar/configurar\nComo usar\nComo contribuir\nLicença",
@@ -1290,8 +1360,8 @@
     ]
   },
   {
-    "objectID": "10-referencias.html#fluxo-de-trabalho-recomendado",
-    "href": "10-referencias.html#fluxo-de-trabalho-recomendado",
+    "objectID": "11-referencias.html#fluxo-de-trabalho-recomendado",
+    "href": "11-referencias.html#fluxo-de-trabalho-recomendado",
     "title": "Referências",
     "section": "Fluxo de Trabalho Recomendado",
     "text": "Fluxo de Trabalho Recomendado\n\n\n\n\n\nflowchart TD\n    A[Criar branch] --&gt; B[Fazer alterações]\n    B --&gt; C[git add .]\n    C --&gt; D[git commit]\n    D --&gt; E{Mais alterações?}\n    E --&gt;|Sim| B\n    E --&gt;|Não| F[git push]\n    F --&gt; G[Criar Pull Request]\n    G --&gt; H[Revisão]\n    H --&gt; I[Merge]\n    I --&gt; J[Deletar branch]",
@@ -1300,8 +1370,8 @@
     ]
   },
   {
-    "objectID": "10-referencias.html#problemas-comuns",
-    "href": "10-referencias.html#problemas-comuns",
+    "objectID": "11-referencias.html#problemas-comuns",
+    "href": "11-referencias.html#problemas-comuns",
     "title": "Referências",
     "section": "Problemas Comuns",
     "text": "Problemas Comuns\n\n“Permission denied” ao fazer push\nVerifique se você está autenticado. Use token de acesso pessoal ou configure chave SSH.\n\n\n“Your branch is behind”\nExecute git pull para baixar as alterações do remoto antes de fazer push.\n\n\nConflitos de merge\nAbra os arquivos conflitantes, resolva manualmente, depois:\ngit add arquivo-resolvido\ngit commit -m \"Resolve conflitos\"\n\n\nCommit na branch errada\ngit reset --soft HEAD~1     # Desfaz commit, mantém alterações\ngit checkout branch-correta\ngit add .\ngit commit -m \"mensagem\"\n\n\n\n\n\n\n\nDicaContinue aprendendo!\n\n\n\nGit é uma ferramenta poderosa e há sempre mais para aprender. Comece com o básico, pratique regularmente, e vá explorando recursos avançados conforme a necessidade surgir.",
@@ -1310,8 +1380,8 @@
     ]
   },
   {
-    "objectID": "11-creditos.html",
-    "href": "11-creditos.html",
+    "objectID": "12-creditos.html",
+    "href": "12-creditos.html",
     "title": "Créditos",
     "section": "",
     "text": "Manual de Git e GitHub\nDo Zero ao Repositório Remoto\nAutor\nHenrique Alvarenga da Silva\n1ª Edição\nSão João del-Rei – MG\n2025\nPublicação independente do autor\nFormato: E-book (html)\nISBN: 978-65-01-83948-6\nEsta obra pode ser reproduzida para fins educacionais, desde que citada a fonte.",
@@ -1320,8 +1390,8 @@
     ]
   },
   {
-    "objectID": "11-creditos.html#manual-de-git-e-github",
-    "href": "11-creditos.html#manual-de-git-e-github",
+    "objectID": "12-creditos.html#manual-de-git-e-github",
+    "href": "12-creditos.html#manual-de-git-e-github",
     "title": "Créditos",
     "section": "",
     "text": "Ficha Catalográfica\n\n\n\n\n\n\nDados Internacionais de Catalogação na Publicação (CIP)\n\nSilva, Henrique Alvarenga da.\n  Manual de Git e GitHub: do zero ao repositório remoto / Henrique Alvarenga da Silva. – 1. ed. – São João del-Rei, MG : Edição do Autor, 2025.\n  E-book (HTML).\n  ISBN 978-65-01-83948-6\n  1. Git (Software). 2. GitHub. 3. Controle de versão. 4. Desenvolvimento de software. 5. Ciência aberta. I. Título.\n\nCDD 005.1\n\n\n\n\n\n© 2025 Henrique Alvarenga da Silva\nTodos os direitos reservados.",
