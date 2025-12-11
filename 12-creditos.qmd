@@ -23,10 +23,9 @@ Formato: E-book (html)
 
 ![](images/isbn.jpeg){width="250" fig-align="center"}
 
-### Ficha Catalográfica
 
 ::: {.callout-note appearance="minimal"}
-![](images/ficha-catalogragica.png)**Dados Internacionais de Catalogação na Publicação (CIP)**
+![](images/ficha-catalogragica.png)
 :::
 
 ------------------------------------------------------------------------
@@ -35,5 +34,3 @@ Formato: E-book (html)
 
 Todos os direitos reservados.
 ::::
-
-*Esta obra pode ser reproduzida para fins educacionais, desde que citada a fonte.*
