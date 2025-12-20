@@ -25,7 +25,6 @@ IDE é a sigla para *Integrated Development Environment*, ou Ambiente de Desenvo
 -   **Terminal** integrado para comandos do sistema
 -   **Controle de versão** integrado para Git
 
-
 A ideia é simples: em vez de alternar entre vários programas (um editor de texto, um terminal, um visualizador de Git), você tem tudo reunido em um só lugar. Isso torna o fluxo de trabalho mais fluido e produtivo.
 
 ## O contexto: RStudio, VS Code e o nascimento do Positron
@@ -127,7 +126,6 @@ O Git é acessado através da aba **Source Control**, representada por um ícone
 
 ![Aba Source Control](images/source-control.png)
 
-
 ## Iniciando um repositório Git
 
 ### Opção 1: Inicializar Git em uma pasta existente
@@ -147,16 +145,99 @@ Isso cria a pasta oculta `.git` e começa a rastrear seus arquivos.
 2.  Source Control → Initialize Repository
 
 ## Terminal
-
 ``` bash
 cd ~/caminho/para/sua/pasta
 git init
 ```
 :::
 
-### Opção 2: Criar um novo projeto já com Git
+### Conectando ao GitHub
 
-No menu, vá em **File → New Folder from Template**. Dependendo do template escolhido, você pode marcar a opção para inicializar como repositório Git durante a criação.
+Após inicializar o repositório local, você provavelmente quer enviá-lo para o GitHub. Para isso, primeiro crie um repositório vazio no GitHub (sem README, sem .gitignore — completamente vazio). Depois, conecte os dois:
+
+#### Passo 1: Obter a URL do repositório
+
+No GitHub, acesse seu repositório recém-criado e clique no botão verde **Code**. Copie a URL HTTPS, que terá este formato:
+```
+https://github.com/seu-usuario/nome-do-repositorio.git
+```
+
+#### Passo 2: Adicionar o repositório remoto
+
+::: panel-tabset
+## Positron
+
+1.  Na aba **Source Control**, clique nos três pontinhos (**⋯**) no canto superior direito
+2.  Selecione **Remote → Add Remote...**
+3.  Digite um nome para o remoto (use `origin`, que é o padrão)
+4.  Cole a URL do GitHub
+
+## Terminal
+``` bash
+git remote add origin https://github.com/seu-usuario/nome-do-repositorio.git
+```
+:::
+
+#### Passo 3: Fazer o primeiro commit
+
+Antes de enviar para o GitHub, você precisa ter pelo menos um commit. Se ainda não fez nenhum:
+
+::: panel-tabset
+## Positron
+
+1.  Na aba Source Control, clique no **+** para preparar todos os arquivos
+2.  Digite uma mensagem (ex: "Commit inicial")
+3.  Clique no botão **Commit**
+
+## Terminal
+``` bash
+git add .
+git commit -m "Commit inicial"
+```
+:::
+
+#### Passo 4: Enviar para o GitHub
+
+::: panel-tabset
+## Positron
+
+Clique em **Publish Branch** na aba Source Control. O Positron enviará seus arquivos para o GitHub.
+
+## Terminal
+``` bash
+git push -u origin main
+```
+
+Se seu branch local for `master` em vez de `main`, use:
+``` bash
+git push -u origin master
+```
+
+Ou renomeie para `main` (padrão atual do GitHub):
+``` bash
+git branch -M main
+git push -u origin main
+```
+:::
+
+::: callout-warning
+## Branches divergentes
+
+Se você criou o repositório no GitHub com README ou .gitignore, os branches local e remoto terão históricos diferentes. Nesse caso, o push será rejeitado. Você tem duas opções:
+
+**Opção A — Mesclar os históricos:**
+``` bash
+git pull --rebase origin main
+git push
+```
+
+**Opção B — Sobrescrever o GitHub com sua versão local:**
+``` bash
+git push --force
+```
+
+Para evitar esse problema, sempre crie repositórios vazios no GitHub quando for conectar a uma pasta local existente.
+:::
 
 ## Clonando um repositório do GitHub
 
