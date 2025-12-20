@@ -1,0 +1,394 @@
+# Chaves SSH
+
+## Introdução
+
+Neste capítulo, você aprenderá a configurar chaves SSH no seu computador e conectá-las ao GitHub. O processo que vamos percorrer inclui cinco etapas principais: primeiro, vamos gerar um par de chaves criptográficas no seu sistema operacional; em seguida, adicionaremos essas chaves ao ssh-agent, um programa que gerencia suas chaves de forma segura; depois, copiaremos a chave pública para a área de transferência; na sequência, cadastraremos essa chave pública no GitHub; e, finalmente, testaremos a conexão para garantir que tudo está funcionando corretamente.
+
+Ao final deste processo, você será capaz de interagir com seus repositórios no GitHub — clonando, fazendo push e pull — sem precisar digitar senha ou token de acesso a cada operação. A autenticação acontecerá de forma automática e segura, usando o par de chaves que você terá configurado. Este é um dos métodos mais seguros e convenientes para trabalhar com repositórios remotos, especialmente quando você interage com o GitHub diariamente.
+
+## Uma breve história do SSH
+
+SSH significa "Secure Shell" (shell seguro, em tradução livre) e foi desenvolvido em 1995 por Tatu Ylönen, um pesquisador finlandês da Universidade de Tecnologia de Helsinki. Na época, Ylönen estava preocupado com ataques de interceptação de senha (password sniffing) que ocorriam na rede da universidade. Ele criou o SSH como uma alternativa segura aos protocolos anteriores — como Telnet, rlogin e FTP — que transmitiam dados, incluindo senhas, em texto puro pela rede.
+
+O SSH revolucionou a forma como administradores de sistemas e desenvolvedores acessam computadores remotos. Antes do SSH, qualquer pessoa com acesso à rede poderia potencialmente interceptar senhas e comandos transmitidos entre computadores. O SSH resolveu esse problema usando criptografia forte para proteger toda a comunicação entre cliente e servidor.
+
+O protocolo SSH rapidamente se tornou o padrão da indústria para acesso remoto seguro. Hoje, praticamente todos os servidores Linux e Unix do mundo são acessados via SSH. Administradores de sistemas usam SSH diariamente para gerenciar servidores em datacenters. Desenvolvedores usam SSH para fazer deploy de aplicações. Cientistas de dados usam SSH para acessar clusters de computação de alto desempenho. E, como veremos neste capítulo, desenvolvedores de software usam SSH para interagir com plataformas de versionamento como o GitHub.
+
+## Como o SSH funciona: criptografia de chave pública
+
+Para entender por que as chaves SSH são tão seguras, precisamos compreender o conceito de criptografia de chave pública, também conhecida como criptografia assimétrica. Este tipo de criptografia usa um par de chaves matematicamente relacionadas: uma chave pública e uma chave privada.
+
+A chave pública pode ser compartilhada livremente com qualquer pessoa — você pode publicá-la em seu site, enviá-la por email ou, como faremos, cadastrá-la no GitHub. A chave privada, por outro lado, deve ser mantida em segredo absoluto, guardada apenas no seu computador e protegida por uma senha (chamada de passphrase).
+
+O que torna esse sistema elegante é a relação matemática entre essas chaves. Mensagens criptografadas com a chave pública só podem ser descriptografadas com a chave privada correspondente. Da mesma forma, mensagens "assinadas" com a chave privada podem ser verificadas usando a chave pública. Isso cria um sistema de autenticação extremamente seguro.
+
+Quando você se conecta a um servidor via SSH, acontece um "aperto de mão" criptográfico. O servidor envia um desafio criptografado com sua chave pública. Seu computador usa a chave privada para resolver esse desafio e envia a resposta de volta. Se a resposta estiver correta, o servidor sabe que você possui a chave privada correspondente à chave pública que ele tem cadastrada — e a conexão é estabelecida. Tudo isso acontece em milissegundos, de forma transparente.
+
+A beleza desse sistema é que a chave privada nunca precisa ser transmitida pela rede. Mesmo que alguém esteja interceptando toda a comunicação entre você e o servidor, não conseguirá roubar sua chave privada. Isso torna o SSH muito mais seguro do que sistemas baseados apenas em senhas.
+
+## Usos do SSH além do GitHub
+
+Embora este capítulo foque no uso de SSH com o GitHub, vale a pena conhecer outros contextos onde essas mesmas chaves podem ser úteis:
+
+**Acesso a servidores remotos**: Administradores de sistemas usam SSH diariamente para acessar e gerenciar servidores Linux. Se você algum dia precisar trabalhar com servidores em nuvem (AWS, Google Cloud, Azure) ou administrar seu próprio servidor web, usará SSH para fazer login de forma segura.
+
+**Transferência segura de arquivos**: O protocolo SFTP (SSH File Transfer Protocol) e o comando `scp` (secure copy) usam SSH para transferir arquivos entre computadores de forma criptografada. Isso é especialmente útil quando você precisa mover dados sensíveis pela rede.
+
+**Tunelamento SSH**: Desenvolvedores usam túneis SSH para acessar bancos de dados ou serviços que estão protegidos por firewalls. Por exemplo, você pode criar um túnel SSH para acessar um banco de dados PostgreSQL que só aceita conexões de dentro da rede da empresa.
+
+**Git em servidores privados**: Além do GitHub, você pode usar SSH para acessar repositórios Git hospedados em servidores privados da sua organização, em serviços como GitLab auto-hospedado, ou mesmo em um servidor Git que você mesmo configure.
+
+**Execução remota de comandos**: Pesquisadores e cientistas de dados frequentemente usam SSH para executar análises computacionalmente intensivas em servidores remotos ou clusters de alto desempenho, enviando comandos e recebendo resultados de forma segura.
+
+A versatilidade do SSH faz com que o tempo investido em aprender a configurar e usar chaves SSH seja recompensado muitas vezes ao longo da sua carreira como desenvolvedor ou pesquisador.
+
+## Por que usar SSH com o GitHub?
+
+O GitHub oferece duas formas principais de autenticação: HTTPS e SSH. Quando você usa HTTPS, precisa fornecer credenciais (nome de usuário e um token de acesso pessoal) toda vez que faz uma operação que requer autenticação, como push ou pull em repositórios privados. Embora seja possível configurar gerenciadores de credenciais para armazenar essas informações, o processo pode ser inconveniente.
+
+Com SSH, a autenticação acontece automaticamente. Depois de configurar suas chaves uma única vez, você pode clonar repositórios, fazer push de commits e pull de atualizações sem interrupções. O Git usa automaticamente suas chaves SSH para se autenticar com o GitHub, tornando o fluxo de trabalho muito mais fluido.
+
+Além disso, usar SSH é mais seguro do que armazenar tokens de acesso. Se você proteger sua chave privada com uma senha forte (passphrase) e usar o chaveiro do sistema operacional para gerenciá-la, terá um sistema de autenticação robusto e conveniente.
+
+## Gerando sua chave SSH
+
+Vamos agora gerar um par de chaves SSH no seu computador. O processo é similar nos três principais sistemas operacionais (macOS, Linux e Windows), embora haja algumas particularidades que abordaremos.
+
+### No macOS e Linux
+
+Abra o Terminal e execute o seguinte comando:
+```bash
+ssh-keygen -t ed25519 -C "seu-email@exemplo.com"
+```
+
+Vamos entender cada parte deste comando:
+
+- `ssh-keygen` é o programa que gera pares de chaves SSH
+- `-t ed25519` especifica o tipo de chave a ser gerada. ED25519 é um algoritmo de criptografia moderno, seguro e eficiente
+- `-C "seu-email@exemplo.com"` adiciona um comentário à chave (tipicamente seu email) para ajudar a identificá-la depois
+
+Substitua "seu-email@exemplo.com" pelo email que você usa no GitHub. Este email serve apenas como identificador e não afeta a segurança ou funcionalidade da chave.
+
+Após executar o comando, você verá a seguinte mensagem:
+```
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/Users/seu-usuario/.ssh/id_ed25519):
+```
+
+O sistema está perguntando onde salvar a chave. O local padrão (`~/.ssh/id_ed25519`) é perfeitamente adequado para a maioria dos casos. Pressione Enter para aceitar este local padrão.
+
+Em seguida, o sistema perguntará:
+```
+Enter passphrase (empty for no passphrase):
+```
+
+Aqui você tem uma decisão importante a tomar: proteger sua chave privada com uma senha (passphrase) ou deixá-la sem proteção.
+
+**Com passphrase (recomendado)**: Adiciona uma camada extra de segurança. Mesmo que alguém tenha acesso aos arquivos no seu computador, não conseguirá usar sua chave privada sem a senha. Quando você usa o chaveiro do sistema (Keychain no macOS), precisa digitar a senha apenas uma vez — o sistema operacional a armazena de forma segura e a fornece automaticamente nas próximas vezes.
+
+**Sem passphrase**: É mais conveniente se você confia plenamente na segurança física do seu computador e não compartilha o acesso com outras pessoas. Para deixar sem senha, apenas pressione Enter duas vezes quando solicitado.
+
+Se escolher usar uma passphrase, digite uma senha forte e pressione Enter. O sistema pedirá confirmação — digite a mesma senha novamente.
+
+O `ssh-keygen` então gerará seu par de chaves e mostrará uma mensagem como:
+```
+Your identification has been saved in /Users/seu-usuario/.ssh/id_ed25519
+Your public key has been saved in /Users/seu-usuario/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx seu-email@exemplo.com
+```
+
+Neste momento, dois arquivos foram criados na pasta `~/.ssh`:
+
+- `id_ed25519` — sua chave **privada** (nunca compartilhe!)
+- `id_ed25519.pub` — sua chave **pública** (pode compartilhar livremente)
+
+### No Windows
+
+Se você está no Windows, tem algumas opções. Se instalou o Git for Windows, pode usar o Git Bash, que fornece um ambiente Unix-like onde o comando `ssh-keygen` funciona exatamente como mostrado acima.
+
+Alternativamente, você pode usar o PowerShell ou o Windows Terminal com os mesmos comandos, pois versões recentes do Windows incluem OpenSSH por padrão.
+
+## Adicionando a chave ao ssh-agent
+
+O ssh-agent é um programa que gerencia suas chaves SSH e as mantém em memória. Usar o ssh-agent é especialmente útil quando você protege sua chave com uma passphrase — você só precisa digitar a senha uma vez, e o agente a fornecerá automaticamente quando necessário.
+
+### No macOS
+
+Primeiro, inicie o ssh-agent:
+```bash
+eval "$(ssh-agent -s)"
+```
+
+Você verá uma mensagem como `Agent pid 12345`, indicando que o agente está rodando.
+
+Agora, adicione sua chave privada ao ssh-agent e ao Keychain do macOS:
+```bash
+ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+```
+
+A flag `--apple-use-keychain` é específica do macOS e faz com que o sistema operacional armazene sua passphrase no Keychain. Isso significa que você digitará a senha apenas uma vez — o macOS a lembrará automaticamente.
+
+Se você definiu uma passphrase ao criar a chave, o sistema pedirá agora. Digite-a. A partir deste momento, sempre que o Git precisar usar sua chave SSH para se conectar ao GitHub, o macOS fornecerá automaticamente a passphrase armazenada no Keychain.
+
+### No Linux
+
+O processo no Linux é similar, mas sem a integração específica com o Keychain do macOS:
+```bash
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+```
+
+Se você usou uma passphrase, digite-a quando solicitado. Dependendo da sua distribuição Linux e ambiente desktop, pode haver integrações com gerenciadores de senha como GNOME Keyring que armazenarão a passphrase para você.
+
+### No Windows
+
+No Windows com Git Bash ou PowerShell:
+```bash
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+```
+
+O Windows também tem seu próprio ssh-agent que pode ser configurado para iniciar automaticamente, mas isso varia dependendo da versão do Windows e das ferramentas instaladas.
+
+## Copiando a chave pública
+
+Agora precisamos copiar o conteúdo da sua chave **pública** (lembre-se: não a privada!) para adicioná-la ao GitHub.
+
+### No macOS
+
+O macOS tem um comando conveniente que copia o conteúdo de um arquivo diretamente para a área de transferência:
+```bash
+pbcopy < ~/.ssh/id_ed25519.pub
+```
+
+Pronto! A chave pública está copiada e pronta para ser colada no GitHub. Não cole em nenhum lugar ainda — vamos direto para o próximo passo.
+
+### No Linux
+
+A maioria das distribuições Linux não tem um comando `pbcopy` equivalente por padrão, mas você pode exibir o conteúdo da chave e copiá-lo manualmente:
+```bash
+cat ~/.ssh/id_ed25519.pub
+```
+
+O conteúdo da chave será exibido no terminal. Selecione todo o texto (geralmente começando com `ssh-ed25519` e terminando com seu email) e copie-o (Ctrl+Shift+C na maioria dos terminais Linux).
+
+Alternativamente, se você usa o ambiente desktop GNOME, pode instalar `xclip`:
+```bash
+sudo apt install xclip  # no Ubuntu/Debian
+xclip -selection clipboard < ~/.ssh/id_ed25519.pub
+```
+
+Ou no KDE Plasma, `xsel`:
+```bash
+sudo apt install xsel
+xsel --clipboard < ~/.ssh/id_ed25519.pub
+```
+
+### No Windows
+
+No Git Bash:
+```bash
+clip < ~/.ssh/id_ed25519.pub
+```
+
+Ou simplesmente visualize com `cat` e copie manualmente:
+```bash
+cat ~/.ssh/id_ed25519.pub
+```
+
+## Adicionando a chave ao GitHub
+
+Agora vamos cadastrar sua chave pública no GitHub. Este é o passo que permite que o GitHub reconheça e confie no seu computador.
+
+1. Faça login no GitHub e acesse suas configurações. Você pode ir diretamente para https://github.com/settings/keys ou navegar manualmente: clique na sua foto de perfil no canto superior direito → Settings → na barra lateral esquerda, procure por "SSH and GPG keys".
+
+2. Você verá uma página com suas chaves SSH (se houver alguma já cadastrada) e um botão verde "New SSH key" ou "Add SSH key". Clique neste botão.
+
+3. O GitHub mostrará um formulário com dois campos:
+
+   **Title**: Digite um nome descritivo que identifique o computador onde você gerou esta chave. Por exemplo: "MacBook Pro trabalho", "Desktop pessoal", "Notebook DELL Ubuntu", etc. Este título é apenas para sua referência — ajuda a lembrar qual computador está usando qual chave, especialmente quando você tem múltiplas chaves cadastradas.
+
+   **Key**: Pressione Ctrl+V (ou Command+V no Mac) para colar a chave pública que você copiou no passo anterior. A chave deve começar com `ssh-ed25519` e terminar com o email que você especificou ao gerá-la.
+
+4. Clique no botão "Add SSH key".
+
+5. O GitHub pode solicitar sua senha para confirmar a operação. Digite sua senha do GitHub.
+
+Pronto! Sua chave pública está agora cadastrada no GitHub. O GitHub usará essa chave para verificar sua identidade sempre que você tentar fazer operações que requerem autenticação, como clonar repositórios privados ou fazer push de commits.
+
+## Testando a conexão
+
+Vamos verificar se tudo está funcionando corretamente. De volta ao Terminal, execute:
+```bash
+ssh -T git@github.com
+```
+
+Este comando tenta estabelecer uma conexão SSH com o GitHub apenas para testar a autenticação (a flag `-T` indica que não queremos abrir um terminal interativo, apenas testar).
+
+Na primeira vez que você se conecta ao GitHub via SSH, verá uma mensagem como:
+```
+The authenticity of host 'github.com (140.82.121.4)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+```
+
+Esta é uma medida de segurança. O SSH está perguntando se você confia neste servidor. O fingerprint mostrado é uma assinatura criptográfica do servidor do GitHub. Digite `yes` e pressione Enter.
+
+O sistema adicionará o GitHub à lista de hosts conhecidos (armazenada em `~/.ssh/known_hosts`) e você não verá esta mensagem novamente.
+
+Se você protegeu sua chave com uma passphrase e esta é a primeira vez que está usando a chave (ou se o ssh-agent não está rodando), o sistema pedirá:
+```
+Enter passphrase for key '/Users/seu-usuario/.ssh/id_ed25519':
+```
+
+Digite sua passphrase. Se você configurou corretamente o ssh-agent com integração ao Keychain (no macOS), esta será a última vez que precisará digitá-la — o sistema a armazenará e fornecerá automaticamente nas próximas vezes.
+
+Se tudo estiver configurado corretamente, você verá uma mensagem de sucesso:
+```
+Hi seu-usuario! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
+Vamos entender esta mensagem em duas partes:
+
+**"Hi seu-usuario! You've successfully authenticated"** — Excelente! Sua autenticação SSH funcionou perfeitamente. O GitHub reconheceu sua chave e confirmou sua identidade.
+
+**"but GitHub does not provide shell access"** — Esta é apenas uma informação. O GitHub está dizendo que, embora a autenticação SSH tenha funcionado, você não pode usar SSH para abrir um terminal nos servidores do GitHub. O SSH com o GitHub serve apenas para operações Git (clone, push, pull, fetch), não para acessar um shell remoto. Isso é completamente normal e esperado.
+
+Se você vir qualquer mensagem de erro (como "Permission denied"), significa que algo não foi configurado corretamente. Verifique se:
+
+- A chave pública foi copiada completamente e sem erros para o GitHub
+- O arquivo `~/.ssh/id_ed25519` existe e contém sua chave privada
+- As permissões dos arquivos estão corretas (o SSH é muito rigoroso quanto a isso)
+
+## Verificando a chave no Keychain (macOS)
+
+Se você está no macOS e usou a flag `--apple-use-keychain`, sua passphrase foi armazenada de forma segura no Keychain do sistema. Você pode verificar isso:
+
+1. Abra o Spotlight pressionando Command+Espaço
+2. Digite "Acesso às Chaves" (ou "Keychain Access" se seu Mac estiver em inglês)
+3. Abra o aplicativo
+4. Na barra lateral esquerda, certifique-se de que "login" está selecionado
+5. No campo de busca no canto superior direito, digite "ssh"
+
+Você verá uma entrada para `/Users/seu-usuario/.ssh/id_ed25519`. Esta entrada contém a passphrase da sua chave SSH. Se você clicar duas vezes nela e marcar "Mostrar senha", o macOS pedirá sua senha de usuário e então exibirá a passphrase armazenada.
+
+Note que esta passphrase fica no "Acesso às Chaves" (Keychain Access), não no app "Senhas" (Passwords) do macOS. O app Senhas é usado para senhas de sites e aplicativos, enquanto o Keychain armazena certificados, chaves de criptografia e outros dados do sistema.
+
+## Clonando repositórios com SSH
+
+Agora que tudo está configurado, você pode clonar repositórios usando SSH. A URL SSH de um repositório tem o formato:
+```
+git@github.com:usuario/nome-do-repositorio.git
+```
+
+Por exemplo, se você quer clonar o repositório `projeto-exemplo` do usuário `maria-dev`, usaria:
+```bash
+git clone git@github.com:maria-dev/projeto-exemplo.git
+```
+
+O Git criará uma pasta chamada `projeto-exemplo` no diretório atual, baixará todo o histórico do repositório e configurará automaticamente a conexão SSH com o GitHub.
+
+Se você quiser clonar em um local específico ou com um nome diferente:
+```bash
+# Clonar em uma pasta específica
+cd ~/Documentos/projetos
+git clone git@github.com:maria-dev/projeto-exemplo.git
+
+# Clonar com um nome diferente
+git clone git@github.com:maria-dev/projeto-exemplo.git meu-projeto
+```
+
+## Usando SSH em repositórios existentes
+
+Se você já tem um repositório local que está usando HTTPS e quer mudar para SSH, é simples:
+```bash
+# Verificar a URL atual
+git remote -v
+
+# Trocar para SSH
+git remote set-url origin git@github.com:usuario/repositorio.git
+
+# Verificar que mudou
+git remote -v
+```
+
+Agora, quando você fizer `git push` ou `git pull`, o Git usará SSH automaticamente.
+
+## Gerenciando múltiplas chaves SSH
+
+É possível ter múltiplas chaves SSH no mesmo computador. Você pode querer fazer isso se:
+
+- Usa diferentes contas do GitHub (pessoal e trabalho)
+- Precisa de chaves diferentes para serviços diferentes (GitHub, GitLab, servidor da empresa)
+- Quer ter chaves com diferentes níveis de segurança para diferentes propósitos
+
+Para gerenciar múltiplas chaves, você cria um arquivo de configuração SSH em `~/.ssh/config`. Por exemplo:
+```
+# Conta pessoal do GitHub
+Host github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_pessoal
+
+# Conta de trabalho do GitHub
+Host github-trabalho
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_trabalho
+```
+
+Com esta configuração, você clonaria repositórios da conta de trabalho usando:
+```bash
+git clone git@github-trabalho:empresa/projeto.git
+```
+
+## Segurança e boas práticas
+
+Algumas recomendações importantes sobre segurança:
+
+**Nunca compartilhe sua chave privada**: O arquivo `id_ed25519` (sem `.pub`) deve permanecer secreto. Nunca o envie por email, não o coloque em repositórios Git, não o compartilhe em serviços de armazenamento em nuvem. Se alguém obtiver sua chave privada e sua passphrase, poderá se passar por você.
+
+**Use passphrase forte**: Se você decidir proteger sua chave com passphrase, use uma senha forte e única. Não use a mesma senha que usa em outros serviços.
+
+**Uma chave por computador**: É recomendável gerar uma chave diferente para cada computador que você usa. Assim, se um computador for comprometido, você pode revogar apenas aquela chave no GitHub sem afetar seus outros dispositivos.
+
+**Revogue chaves antigas**: Quando você parar de usar um computador (vender, descartar, devolver ao empregador), delete a chave SSH correspondente no GitHub. Vá em Settings → SSH and GPG keys e clique em "Delete" na chave daquele computador.
+
+**Faça backup com cuidado**: Se você decidir fazer backup das suas chaves SSH, armazene-as de forma criptografada. Nunca deixe backups de chaves privadas em serviços de nuvem sem criptografia.
+
+**Permissões corretas**: No macOS e Linux, o SSH é rigoroso quanto às permissões dos arquivos. Se as permissões estiverem muito abertas, o SSH se recusará a usar as chaves. Os arquivos devem ter:
+  - `~/.ssh/` — permissão 700 (apenas você pode ler/escrever/executar)
+  - `~/.ssh/id_ed25519` — permissão 600 (apenas você pode ler/escrever)
+  - `~/.ssh/id_ed25519.pub` — permissão 644 (você pode ler/escrever, outros podem ler)
+
+Se precisar corrigir as permissões:
+```bash
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/id_ed25519
+chmod 644 ~/.ssh/id_ed25519.pub
+```
+
+## Solucionando problemas comuns
+
+**"Permission denied (publickey)"**: Este erro significa que o GitHub não reconheceu sua chave. Verifique se:
+- A chave pública foi adicionada corretamente no GitHub
+- Você está usando a URL SSH correta (`git@github.com:...` e não `https://...`)
+- O ssh-agent está rodando e tem a chave carregada
+
+**"Could not open a connection to your authentication agent"**: O ssh-agent não está rodando. Execute `eval "$(ssh-agent -s)"` e depois `ssh-add ~/.ssh/id_ed25519`.
+
+**"Bad permissions"**: As permissões dos arquivos SSH estão incorretas. Corrija conforme explicado acima.
+
+**Passphrase solicitada toda vez**: No macOS, certifique-se de que usou `--apple-use-keychain` ao adicionar a chave. No Linux, verifique se há integração com o gerenciador de senhas do seu ambiente desktop.
+
+## Conclusão
+
+Configurar chaves SSH pode parecer complexo inicialmente, mas é um investimento que compensa rapidamente. Depois de configuradas, suas chaves funcionam silenciosamente em segundo plano, tornando seu fluxo de trabalho com Git e GitHub muito mais fluido e seguro.
+
+Você não precisará mais digitar credenciais toda vez que fizer push ou pull. A autenticação acontecerá automaticamente, permitindo que você se concentre no que realmente importa: escrever código, documentar projetos, colaborar com colegas.
+
+Além disso, as habilidades que você desenvolveu neste capítulo — entender criptografia de chave pública, trabalhar com ssh-agent, gerenciar chaves — são transferíveis para muitos outros contextos na computação moderna. Você usará esses mesmos conceitos se algum dia precisar administrar servidores, trabalhar com infraestrutura em nuvem ou configurar pipelines de CI/CD.
+
+Bem-vindo ao mundo da autenticação SSH — uma tecnologia que, três décadas após sua criação, continua sendo a base da comunicação segura na internet.
